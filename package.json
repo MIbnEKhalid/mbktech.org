@@ -1,6 +1,6 @@
 {
     "name": "mbktech.org",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "main": "app.js",
     "type": "module",
     "scripts": {
@@ -10,25 +10,19 @@
     "author": "Muhammad Bin Khalid",
     "license": "MIT",
     "dependencies": {
-        "clean-css-cli": "^5.6.3",
         "compression": "^1.8.0",
         "cors": "^2.8.5",
         "dotenv": "^16.4.7",
         "express": "^4.21.2",
         "express-handlebars": "^8.0.1",
-        "express-minify": "^1.0.0",
-        "express-minify-html": "^0.12.0",
         "express-rate-limit": "^7.5.1",
         "handlebars": "^4.7.8",
-        "jsdom": "^26.0.0",
-        "mbkauthe": "latest",
         "node-cache": "^5.1.2",
-        "nodemailer": "^6.10.0",
         "pg": "^8.13.3",
         "sitemap": "^8.0.0"
     },
     "devDependencies": {
         "node-fetch": "^3.3.2",
-        "nodemon": "^2.0.22"
+        "nodemon": "^3.1.14"
     }
 }

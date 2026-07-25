@@ -41,11 +41,7 @@ export const apiRateLimit = rateLimit({
     retryAfter: '15 minutes'
   },
   standardHeaders: true,
-  legacyHeaders: false,
-  skip: (req) => {
-    // Skip rate limiting for admin panel and admin APIs (as requested)
-    return req.path.startsWith('/admin') || req.path.startsWith('/api/admin');
-  }
+  legacyHeaders: false
 });
 
 // Strict rate limiting for form submissions
@@ -57,11 +53,7 @@ export const formRateLimit = rateLimit({
     retryAfter: '10 minutes'
   },
   standardHeaders: true,
-  legacyHeaders: false,
-  skip: (req) => {
-    // Skip for admin operations
-    return req.path.startsWith('/admin');
-  }
+  legacyHeaders: false
 });
 
 // Rate limiting for ticket search API
@@ -79,11 +71,6 @@ export const ticketSearchRateLimit = rateLimit({
 // Cache middleware generator
 export const cacheMiddleware = (duration = 300) => {
   return (req, res, next) => {
-    // Skip caching for admin routes
-    if (req.path.startsWith('/admin') || req.path.startsWith('/api/admin')) {
-      return next();
-    }
-
     const key = req.originalUrl || req.url;
     const cachedResponse = cache.get(key);
 

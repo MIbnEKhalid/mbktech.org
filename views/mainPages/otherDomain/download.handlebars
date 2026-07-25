@@ -1,52 +1,46 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+﻿<style>
+    .download-page { padding: 120px 2rem 4rem; max-width: 900px; margin: 0 auto; }
+    .download-hero { text-align: center; margin-bottom: 3rem; }
+    .download-hero h1 { font-size: 2.2rem; color: var(--text); margin-bottom: 0.5rem; }
+    .download-hero p { color: var(--text-light); font-size: 1rem; }
 
-<head>
-  <meta charset="UTF-8" />
-  <title>Download MBK Tech App</title>
-</head>
+    .download-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+    .download-card {
+        background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s;
+        display: flex; flex-direction: column;
+    }
+    .download-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.35); }
+    .download-card-img {
+        background: linear-gradient(135deg, rgba(33,150,243,0.15), rgba(0,184,148,0.1));
+        padding: 2rem; text-align: center;
+    }
+    .download-card-img i { font-size: 3.5rem; color: var(--primary); }
+    .download-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .download-card-body h3 { color: var(--text); font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .download-card-body p { color: var(--text-light); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem; flex: 1; }
+    .download-meta { display: flex; justify-content: space-between; color: var(--text-light); font-size: 0.8rem; margin-bottom: 1rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .download-card-body .btn { width: 100%; text-align: center; }
+</style>
 
-<body>
-  <div class="scroll-button">
-    <a href="#about"><i class="fas fa-arrow-up"></i></a>
-  </div>
-  <section class="section-container" style="padding-top: 7rem; padding-bottom: 4rem; min-height: 80vh;">
-    <div class="section-title">
-      <h2>Download Apps</h2>
+<div class="download-page">
+    <div class="download-hero">
+        <h1>Download Apps</h1>
+        <p>Get our apps for the best experience on your device.</p>
     </div>
-    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 2rem;">
-      <div class="service-card" style="max-width: 350px; min-width: 300px;">
-        <div style="padding: 2rem 2rem 1rem 2rem; text-align: center;">
-          <img src="https://code.visualstudio.com/assets/images/linux-logo.png" alt="App Icon"
-            style="height: 120px; margin-bottom: 1.5rem; border-radius: 1rem; background: #fff; padding: 0.5rem;">
-          <h3 style="color: var(--light); margin-bottom: 0.5rem;">MBK Tech App</h3>
-          <p style="color: var(--text-light); margin-bottom: 1.25rem;">A simple app that uses a web view to display
-            Website content.</p>
-          <div
-            style="display: flex; justify-content: space-between; color: var(--text-light); font-size: 0.95rem; margin-bottom: 1rem;">
-            <span>Version: {{mainAppLink.VersionNumber}}</span>
-            <span>Size: 4.2 MB</span>
-          </div>
-          <a href="{{mainAppLink.Url}}" download class="btn btn-primary" style="width: 100%;">Download APK</a>
-        </div>
-      </div>
-      <div class="service-card" style="max-width: 350px; min-width: 300px;">
-        <div style="padding: 2rem 2rem 1rem 2rem; text-align: center;">
-          <img src="https://code.visualstudio.com/assets/images/linux-logo.png" alt="App Icon"
-            style="height: 120px; margin-bottom: 1.5rem; border-radius: 1rem; background: #fff; padding: 0.5rem;">
-          <h3 style="color: var(--light); margin-bottom: 0.5rem;">MBK Tech App</h3>
-          <p style="color: var(--text-light); margin-bottom: 1.25rem;">A simple app that uses a web view to display
-            Website content.</p>
-          <div
-            style="display: flex; justify-content: space-between; color: var(--text-light); font-size: 0.95rem; margin-bottom: 1rem;">
-            <span>Version: {{mainAppLink.VersionNumber}}</span>
-            <span>Size: 4.2 MB</span>
-          </div>
-          <a href="{{mainAppLink.Url}}" download class="btn btn-primary" style="width: 100%;">Download APK</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</body>
 
-</html>
+    <div class="download-grid">
+        <div class="download-card">
+            <div class="download-card-img"><i class="fas fa-mobile-alt"></i></div>
+            <div class="download-card-body">
+                <h3>MBK Tech App</h3>
+                <p>A lightweight Android app that provides quick access to all MBK Tech services through a clean web view interface.</p>
+                <div class="download-meta">
+                    <span>v{{mainAppLink.VersionNumber}}</span>
+                    <span>4.2 MB</span>
+                </div>
+                <a href="{{mainAppLink.Url}}" download class="btn btn-primary"><i class="fas fa-download"></i> Download APK</a>
+            </div>
+        </div>
+    </div>
+</div>

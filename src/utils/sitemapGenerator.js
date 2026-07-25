@@ -1,5 +1,4 @@
 import { SitemapStream, streamToPromise } from 'sitemap';
-import { createGzip } from 'zlib';
 
 const defaultRoutes = [
   { url: '/', changefreq: 'daily', priority: 1.0 },
@@ -11,10 +10,6 @@ const defaultRoutes = [
 
 const domainRoutes = {
   'mbktech.org': defaultRoutes,
-  'docs.mbktech.org': [
-    { url: '/', changefreq: 'daily', priority: 1.0 },
-    { url: '/Documentation', changefreq: 'monthly', priority: 0.9 }
-  ],
   'api.mbktech.org': [
     { url: '/', changefreq: 'daily', priority: 1.0 },
     { url: '/Documentation', changefreq: 'monthly', priority: 0.9 }
@@ -31,7 +26,7 @@ const generateSitemap = async (domain, siteType = null) => {
       cacheTime: 600000
     });
 
-    const pipeline = smStream.pipe(createGzip());
+    const pipeline = smStream;
     
     let routes;
     if (domain.includes('localhost')) {

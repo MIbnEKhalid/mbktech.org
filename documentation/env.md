@@ -15,8 +15,7 @@ GMAIL_PASS=abcdefghijklmnop
 
 ## Database Settings
 ```properties
-DATABASE_URLO=postgresql://username:password@server.domain/db_name
-DATABASE_URL1=postgresql://username:password@server.domain/db_name
+NEON_POSTGRES=postgresql://username:password@server.domain/db_name
 ```
 
 ## Environment Settings
@@ -34,20 +33,3 @@ site=main
 
 > Active only when `localenv=true`  
 > Select based on target domain host
-
-
-
-
-
-## Setup Script Settings
-```properties
-SetupScript_SECRET_TOKEN=password
-SetupScript_Github_TOKEN=githubtoken
-```
-> **Note:** `SetupScript_SECRET_TOKEN` is used to download the `setup.sh` script.
-
-## Main API Settings
-```properties
-Main_SECRET_TOKEN=password
-```
-> **Note:** `Main_SECRET_TOKEN` is used to authenticate restricted APIs.

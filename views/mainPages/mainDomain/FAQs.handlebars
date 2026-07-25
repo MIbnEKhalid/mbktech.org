@@ -1,199 +1,126 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<link rel="stylesheet" href="/Assets/Style/FAQs.css">
 
-<head>
-  <title>FAQs</title>
-  <meta name="description" content="Find answers to common questions about MBK Tech services, projects, and support. Contact us for more information." />
-  <meta name="keywords" content="FAQs, Frequently Asked Questions, MBK Tech, Help Center" />
-  <meta property="og:title" content="FAQs | MBK Tech" />
-  <meta property="og:description" content="Find answers to common questions about MBK Tech's services, projects, and support. Contact us for more information." />
-  <meta property="og:url" content="https://mbktech.org/FAQs" />
-  <meta property="og:type" content="website" />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "name": "FAQs | MBK Tech",
-      "logo": "https://mbktech.org/Assets/Images/Icon/logo.png",
-      "url": "https://mbktech.org/FAQs",
-      "description": "Find answers to common questions about MBK Tech services, projects, and support."
+<style>
+    .faq-page { padding: 120px 2rem 3rem; max-width: 800px; margin: 0 auto; }
+    .faq-page .title { text-align: center; margin-bottom: 2.5rem; }
+    .faq-page .title span { font-size: 2rem; font-weight: 700; color: var(--primary); }
+
+    /* Loader */
+    .faq-loader {
+        text-align: center; padding: 3rem 0; color: var(--text-light);
     }
-  </script>
-  <meta name="description" content="Frequently Asked Questions">
-  <link rel="stylesheet" href="/Assets/Style/main.css">
-  <link rel="stylesheet" href="/Assets/Style/FAQs.css">
-  <style>
-    .about {
-      height: auto !important;
-      display: block !important;
+    .faq-loader .spinner {
+        display: inline-block; width: 32px; height: 32px;
+        border: 3px solid rgba(255,255,255,0.1); border-top-color: var(--primary);
+        border-radius: 50%; animation: faqSpin 0.7s linear infinite;
+        margin-bottom: 0.75rem;
     }
+    @keyframes faqSpin { to { transform: rotate(360deg); } }
 
-    body {
-      font-size: 16px;
-      line-height: 1.6;
-      color: #333;
-      font-family: 'Open Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
+    /* Fade in items */
+    .faq-item { opacity: 0; transform: translateY(8px); transition: opacity 0.3s, transform 0.3s; }
+    .faq-item.ready { opacity: 1; transform: none; }
+
+    /* Error state */
+    .faq-error {
+        text-align: center; padding: 3rem 1rem; color: var(--text-light);
+        display: none;
     }
+    .faq-error i { font-size: 2.5rem; color: #ef4444; margin-bottom: 0.75rem; display: block; }
+</style>
 
-    h1,h2,h3 {
-      font-family: 'Lato', sans-serif;
-      font-weight: 700;
-      color: #222;
-      margin-bottom: 20px;
-    }
-
-    h4,h5,h6 {
-      font-family: 'Lato', sans-serif;
-      font-weight: 400;
-      color: #555;
-      margin-bottom: 15px;
-    }
-
-    .link {
-      font-family: 'Open Sans', sans-serif;
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    .faq-question {
-      font-family: 'Lato', sans-serif;
-      font-size: 20px;
-      font-weight: 800;
-      cursor: pointer;
-      color: #0056b3;
-    }
-
-    .faq-answer {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
-      color: #444;
-    }
-
-    @media (max-width: 768px) {
-      .faq-question {
-        font-size: 16px;
-      }
-
-      .faq-answer {
-        font-size: 14px;
-      }
-    }
-
-    .faq-question,
-    .faq-answer,
-    .faq-item.active .faq-answer,
-    .faq-item,
-    .faq-question::after {
-      background-color: transparent;
-      color: #ffffff;
-    }
-
-    .faq-item {
-      border: .1rem solid var(--main-border-color);
-    }
-
-    .faq-item h3 {
-      color: #fff;
-    }
-
-    .faq-question:hover,
-    .faq-question:hover::after {
-      background: #377a77;
-      background-color: #377a77;
-      color: #fff;
-      transition: all 0.4s ease;
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- Move to top button -->
-  <div class="scroll-button">
-    <a href="#."><i class="fas fa-arrow-up"></i></a>
-  </div>
-
-  <!-- FAQ Section -->
-  <section class="about" id=".">
-    <br>
+<div class="faq-page">
     <div class="title"><span>Frequently Asked Questions</span></div>
 
-    <div class="faq-container" id="faq-container"></div>
+    <!-- Loader -->
+    <div class="faq-loader" id="faqLoader">
+        <div class="spinner"></div>
+        <div>Loading FAQs...</div>
+    </div>
 
-  </section>
+    <!-- Error -->
+    <div class="faq-error" id="faqError">
+        <i class="fas fa-exclamation-circle"></i>
+        <div>Couldn't load FAQs. Please try refreshing the page.</div>
+    </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('/Assets/FAQs/faq.json')
-        .then(response => response.json())
-        .then(data => {
-          const faqContainer = document.getElementById('faq-container');
-          // Get the query parameter value for 'Q'
-          const urlParams = new URLSearchParams(window.location.search);
-          const queryId = urlParams.get('Q'); // Extracts the 'Q' parameter
-          let scrollToFaq = null;
-          // Render FAQs
-          data.forEach(item => {
-            // Check if item.display is true
-            const validDisplayValues = [
-              "true", "True", "1", "Yes", "yes", "Y", "y"
-            ];
-            if (validDisplayValues.includes(item.display)) {
-              const faqItem = document.createElement('div');
-              faqItem.classList.add('faq-item');
-              const faqQuestion = document.createElement('div');
-              faqQuestion.classList.add('faq-question');
-              faqQuestion.id = item.id; // Set ID for matching
-              faqQuestion.innerHTML = item.question;
-              const faqAnswer = document.createElement('div');
-              faqAnswer.classList.add('faq-answer');
-              // Capitalize text outside <a> tags
-              const capitalizedAnswer = item.answer.replace(/(<a\b[^>]*>.*?<\/a>)|(\b\w)/g, (match, anchor, word) => {
-                return anchor ? anchor : word.toUpperCase(); // Skip <a> content, capitalize other words
-              });
-              faqAnswer.innerHTML = `<div style='padding: 10px;'>${capitalizedAnswer}</div>`;
-              faqItem.appendChild(faqQuestion);
-              faqItem.appendChild(faqAnswer);
-              faqContainer.appendChild(faqItem);
-              // Check if this FAQ matches the query parameter
-              if (item.id === queryId) {
-                faqItem.classList.add('active'); // Open the matching FAQ
-                scrollToFaq = faqItem; // Store reference to scroll later
-              }
-            }
-          });
-          // Scroll to the matched FAQ if found
-          if (scrollToFaq) {
-            const headerOffset = document.querySelector('header').offsetHeight || 0; // Get header height
-            const elementPosition = scrollToFaq.getBoundingClientRect().top + window.scrollY;
-            const offsetPosition = elementPosition - headerOffset - 100; // Adjust by header height and add extra spacing
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-            setTimeout(function() {
-              const url = new URL(window.location);
-              url.search = ''; // Remove query parameters
-              window.history.replaceState({}, document.title, url);
-              console.log("url");
-            }, 500);
-          }
-          // FAQ Item Toggle
-          document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', function() {
-              const faqItem = this.parentNode;
-              faqItem.classList.toggle('active');
-            });
-          });
+    <div class="faq-container" id="faqContainer"></div>
+</div>
+
+<script>
+(function () {
+    var container = document.getElementById("faqContainer");
+    var loader = document.getElementById("faqLoader");
+    var errorEl = document.getElementById("faqError");
+    if (!container) return;
+
+    function slugify(text) {
+        return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    }
+
+    function getUrlTarget() {
+        var qp = new URLSearchParams(window.location.search).get("Q");
+        if (qp) return { type: "id", value: qp };
+        var path = window.location.pathname.replace(/\/+$/, "");
+        var match = path.match(/^\/FAQs?\/(.+)$/i);
+        if (match) return { type: "slug", value: match[1].toLowerCase() };
+        return null;
+    }
+
+    var urlTarget = getUrlTarget();
+
+    fetch("/Assets/FAQs/faq.json")
+        .then(function (r) {
+            if (!r.ok) throw new Error("Failed");
+            return r.json();
         })
-        .catch(error => console.error('Error fetching FAQ data:', error));
+        .then(function (data) {
+            loader.style.display = "none";
+
+            var target = null;
+            var showVals = ["true", "True", "1", "Yes", "yes", "Y", "y"];
+            var fragment = document.createDocumentFragment();
+
+            data.forEach(function (item, i) {
+                if (showVals.indexOf(item.display) === -1) return;
+
+                var div = document.createElement("div");
+                div.className = "faq-item";
+                div.innerHTML =
+                    '<div class="faq-question" id="' + item.id + '">' + item.question + '</div>' +
+                    '<div class="faq-answer"><div style="padding:10px">' + item.answer + '</div></div>';
+                fragment.appendChild(div);
+
+                // Staggered fade-in
+                setTimeout(function () { div.classList.add("ready"); }, i * 60);
+
+                if (urlTarget) {
+                    var m = false;
+                    if (urlTarget.type === "id" && item.id === urlTarget.value) m = true;
+                    if (urlTarget.type === "slug" && slugify(item.question) === urlTarget.value) m = true;
+                    if (m) { div.classList.add("active"); target = div; }
+                }
+            });
+
+            container.appendChild(fragment);
+
+            // Scroll to target after expansion animation
+            if (target) {
+                setTimeout(function () {
+                    var top = target.getBoundingClientRect().top + window.scrollY - 100;
+                    window.scrollTo({ top: top, behavior: "smooth" });
+                }, 500);
+            }
+        })
+        .catch(function () {
+            loader.style.display = "none";
+            errorEl.style.display = "block";
+        });
+
+    // Click delegation
+    container.addEventListener("click", function (e) {
+        var question = e.target.closest(".faq-question");
+        if (question) question.parentNode.classList.toggle("active");
     });
-  </script>
-
-</body>
-
-</html>
+})();
+</script>

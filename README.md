@@ -1,162 +1,183 @@
-# MBKTech.org Website 
-<img height=48px src="https://handlebarsjs.com/images/handlebars_logo.png"/>   <img src="https://skillicons.dev/icons?i=html,css,js,nodejs,vercel,postgres"/>  <img height=48px src="https://console.neon.tech/favicon/favicon.svg"/>  
+# MBKTech.org Website
 
-Welcome to the MBK Tech Website repository. This repository contains the source code and documentation for the MBK Tech website, which showcases the portfolio, projects, and services offered by Muhammad Bin Khalid. The website is built using Node.js and is hosted on Vercel, providing a seamless and efficient platform for managing multiple domains and delivering content to users.
+<img height="48px" src="https://handlebarsjs.com/handlebars-icon.svg"/> <img src="https://skillicons.dev/icons?i=html,css,js,nodejs,vercel,postgres"/> <img height="48px" src="https://console.neon.tech/favicon/favicon.svg"/>
 
-The repository includes detailed information about the website's structure, database schema, hosting architecture, and setup instructions. It also provides examples of the data models used for books, assignments, quizzes, and tickets, ensuring a comprehensive understanding of the project's backend.
+A multi-domain Node.js website showcasing the portfolio, projects, and services of Muhammad Bin Khalid. Built with **Express**, **Handlebars**, and **PostgreSQL (Neon)** — hosted on **Vercel**.
 
-Feel free to explore the code, contribute to the project, or reach out for support through the provided contact information.
+---
 
-## Website URLs
-### Redirect
+## 🌐 Live Sites
 
-The `index.html` file in the root directory is configured to redirect `mibnekhalid.github.io` to `mbktech.org`.
+| Domain | Purpose |
+|---|---|
+| [mbktech.org](https://mbktech.org/) | Main portfolio & services site |
+| [www.mbktech.org](https://www.mbktech.org/) | Redirects to main |
+| [download.mbktech.org](https://download.mbktech.org/) | App downloads portal |
 
-### Sites
-- [mbktech.org](https://mbktech.org/)
-- [www.mbktech.org](https://www.mbktech.org/)(www redirect to main) 
-- [unilib.mbktech.org](https://unilib.mbktech.org/)
-- [privacy.mbktech.org](/PrivacyPolicy)
+---
 
-### Source Code
-- [GitHub Repository](https://github.com/MIbnEKhalid/MIbnEKhalid.github.io/)
+## 🛠️ Tech Stack
 
-Detailed Documentation of this website will be available soon on: [docs.mbktech.org/mbktech.org](https://docs.mbktech.org/mbktech.org)
+| Layer | Technology |
+|---|---|
+| Runtime | Node.js (ES Modules) |
+| Framework | Express 4 |
+| Templating | Handlebars (`express-handlebars`) |
+| Database | PostgreSQL via [Neon](https://neon.tech) (`pg`) |
+| Hosting | [Vercel](https://vercel.com) |
+| Security | Rate limiting (`express-rate-limit`), CORS, compression |
+| Caching | `node-cache` (in-memory) |
+| Sitemap | `sitemap` (dynamic XML generation) |
 
-![Deployment Status](https://readme.deploystatus.mbktech.org/?platform=github&user=mibnekhalid&repo=MIbnEKhalid.github.io&background=333333&hide_border=false&border=ff0&width=200&height=50) 
+---
 
-## Database Structure
+## 📁 Project Structure
 
-See [`db.md`](documentation/db.md) for detailed information on the project database models, structure, and related documentation.
+```
+mbktech.org/
+├── app.js                          # Express app entry point
+├── package.json
+├── vercel.json                     # Vercel deployment config
+├── .env.example                    # Environment variables template
+├── database/                       # SQL migration files
+├── documentation/                  # Docs (env.md)
+├── public/                         # Static assets (CSS, JS, images)
+│   ├── robots.txt
+│   └── Assets/
+│       ├── Cookie/
+│       ├── FAQs/
+│       ├── Images/
+│       ├── Scripts/
+│       ├── Style/
+│       └── Tickett/
+├── src/
+│   ├── config/
+│   │   ├── database.js             # PostgreSQL connection pool
+│   │   └── handlebars.js           # Handlebars engine & helpers
+│   ├── controllers/
+│   │   ├── apiController.js        # /api/portalAppVersion, /api/Test
+│   │   ├── formController.js       # POST /post/SubmitForm
+│   │   ├── pageController.js       # Page rendering + 404
+│   │   ├── sitemapController.js    # sitemap.xml, robots.txt
+│   │   └── ticketController.js     # Support ticket CRUD
+│   ├── middleware/
+│   │   ├── domainRedirect.js       # Multi-domain routing
+│   │   └── security.js             # Rate limits, cache, request logging
+│   ├── routes/
+│   │   ├── index.js                # Route mount orchestrator
+│   │   ├── pageRoutes.js           # GET page routes
+│   │   ├── apiRoutes.js            # GET /api/*
+│   │   ├── ticketRoutes.js         # /api/tickets/*
+│   │   └── postRoutes.js           # POST /post/*
+│   ├── services/
+│   │   ├── portalVersionService.js # Cached portal version
+│   │   ├── spamService.js          # Blocked entries & spam check
+│   │   └── ticketService.js        # Ticket creation & lookup
+│   └── utils/
+│       ├── icon.js                 # Base64 icon helper
+│       └── sitemapGenerator.js     # Dynamic sitemap builder
+└── views/
+    ├── layouts/
+    │   └── main.handlebars         # Main layout template
+    └── mainPages/
+        ├── 404.handlebars
+        ├── mainDomain/             # mbktech.org pages
+        │   ├── index.handlebars
+        │   ├── FAQs.handlebars
+        │   ├── services.handlebars
+        │   ├── Support&Contact.handlebars
+        │   ├── Terms&Conditions.handlebars
+        │   ├── TrackTicket.handlebars
+        │   ├── BasicPackage.handlebars
+        │   └── AdvancedPackage.handlebars
+        └── otherDomain/
+            └── download.handlebars  # download.mbktech.org
+```
 
-## Project File Structure
+---
 
-See [`file.md`](documentation/file.md) for detailed information on the project file structure.
+## 🔀 Domain Routing
 
-## Hosting Architecture
+The app runs as a single Vercel instance serving multiple domains. The `domainRedirect` middleware inspects the request hostname and sets `req.site`:
 
-This Node.js application is hosted on Vercel and handles multiple domains through a single instance. Here's how the domain routing is structured:
+| Hostname | `req.site` | Views served from |
+|---|---|---|
+| `mbktech.org` | `main` | `views/mainPages/mainDomain/` |
+| `www.mbktech.org` | `main` | `views/mainPages/mainDomain/` |
+| `download.mbktech.org` | `download` | `views/mainPages/otherDomain/` |
 
-### Main Site
-- `mbktech.org` 
-→ Served from `views/mainPages/mainDomain/`
+In local development (`localenv=true`), the site is determined by the `site` env variable.
 
-### Documentation Sites
-- `docs.mbktech.org`
-- `project.mbktech.org`
-→ Served from `views/mainPages/docDomain/`
+---
 
-### Privacy Policy
-- `privacy.mbktech.org`
-→ Served from `views/mainPages/privacyDomain/`
+## 🚀 Installation & Setup
 
-### University Library
-- `unilib.mbktech.org`
-→ Served from `views/mainPages/uniDomain/`
+### Prerequisites
+- **Node.js** 18+
+- **PostgreSQL** database (e.g., [Neon](https://neon.tech) serverless)
 
-### Api Documentation
-- `api.mbktech.org`
-→ Served from `views/mainPages/apiDomain/`
-
-### Download Apps
-- `download.portal.mbktech.org`
-- `download.mbktech.org`
-→ Served from `views/mainPages/portalappDomain/`
-
-### Download Apps 
-- `portalapp.mbktech.org`
-→ Served from `views/mainPages/portalappDomain/`
-
-
-
-## Installation and Setup
-
-1. Clone the repository:
+### 1. Clone the repository
 ```bash
 git clone https://github.com/MIbnEKhalid/MIbnEKhalid.github.io.git
 cd MIbnEKhalid.github.io
 ```
 
-2. Install dependencies:
+### 2. Install dependencies
 ```bash
 npm install
 ```
 
-3. Create a `.env` file in the root directory and add the required environment variables:
+### 3. Configure environment variables
+Copy `.env.example` to `.env` and fill in the values:
 ```env
-GMAIL_USER=username@gmail.com
-
-GMAIL_PASS=your-app-password (not regular password)
-
-DATABASE_URL=postgresql://username:password@server.domain/db_name
-
+NODE_ENV=development
+PORT=5000
+PortalVersionControlJson=
 localenv=true
-
+NEON_POSTGRES=postgresql://username:password@host/database
 site=main
-
-Main_SECRET_TOKEN=password
-
 ```
 
-For detailed information about each environment variable, see the [`env.md`](documentation/env.md) file.
+| Variable | Description |
+|---|---|
+| `NODE_ENV` | `development` or `production` |
+| `PORT` | Server port (default: `4133` if unset) |
+| `PortalVersionControlJson` | JSON config for the portal app download page |
+| `localenv` | `true` for local dev, `false` for production |
+| `NEON_POSTGRES` | PostgreSQL connection string |
+| `site` | Target site for local dev: `main` or `download` |
 
-## Running the Application
-
-Development mode:
-```bash
-npm run dev
-```
-
-Production mode:
-```bash
-npm start
-```
-
-The application will be available at [`http://localhost:3000`](http://localhost:3000)
-
-## Testing
-
-### Production Test
-First, start the application in production mode:
-```bash
-npm run start
-```
-This will set `process.env.localenv=false` and run the build.
-
-### Run Tests
-Then execute the test suite:
-```bash
-npm run test
-```
-The tests will validate API endpoints and page rendering functionality.
-
-Note: Make sure all environment variables are properly configured before running tests.
-
-## License
-
-**Note:** Only The Source Code Of This Website Is Covered Under The **[MIT License](https://opensource.org/license/mit)**.  
-The Project Documentation Covered Under The **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/)** But Some **Images, Blog Posts, And Other Content Are NOT  
-Covered Under This License And Remain The Intellectual Property Of The Author**.
-
-See the [LICENSE](LICENSE) file for details.
- 
-## Contact
-
-For questions or contributions, please contact Muhammad Bin Khalid at [mbktech.org/Support](https://mbktech.org/Support/?Project=MIbnEKhalidWeb), [support@mbktech.org](mailto:support@mbktech.org) or [chmuhammadbinkhalid28.com](mailto:chmuhammadbinkhalid28.com). 
-
-**Developed by [Muhammad Bin Khalid](https://github.com/MIbnEKhalid)**
-
-
-
-
-<!-- 
-## Documentation License
-
-The project documentation is available under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/). You may share and adapt the documentation for non-commercial purposes, as long as you give appropriate credit and distribute your contributions under the same license.
+> See [`documentation/env.md`](documentation/env.md) for detailed descriptions.
 
 ---
 
-**Note:** Only The Source Code Of This Website Is Covered Under The MIT License.  
-The Project Documentation Covered Under The Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License **But Some Images, Blog Posts, And Other Content Are NOT  
-Covered Under This License And Remain The Intellectual Property Of The Author**.
--->
+## 🏃 Running the Application
+
+```bash
+# Development (with auto-reload)
+npm run dev
+
+# Production mode
+npm start
+```
+
+The app will be available at **http://localhost:4133** (or the port set in `PORT`).
+
+---
+
+## 📄 License
+
+The source code is licensed under the [MIT License](LICENSE).
+
+Project documentation is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Images, blog posts, and other content remain the intellectual property of the author.
+
+---
+
+## 📬 Contact
+
+For questions or contributions, reach out to **Muhammad Bin Khalid**:
+
+- [mbktech.org/Support](https://mbktech.org/Support/?Project=MIbnEKhalidWeb)
+- [support@mbktech.org](mailto:support@mbktech.org)
+
+**Developed by [Muhammad Bin Khalid](https://github.com/MIbnEKhalid)**

@@ -1,958 +1,116 @@
-<!DOCTYPE html>
-<html class="dark-mode" lang="en" dir="ltr">
+﻿<link rel="stylesheet" href="/Assets/Style/tickets.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="description"
-    content="MBK Tech Support & Contact Page. Contact Us For Any Support, Feedback, Collaboration, General Inquiry, And More." />
-  <meta name="keywords"
-    content="Support, Contact, MBK Tech, Feedback, Collaboration, General Inquiry, Technical Support, Bug Reporting, Feature Requests" />
-  <title>Support & Contact</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"
-    defer></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css">
-  <style>
-    .iti {
-      width: 100%;
-    }
-
-    .iti__country-list {
-      background-color: var(--darker);
-      border: 1px solid var(--primary-dark);
-      box-shadow: var(--box-shadow);
-      border-radius: var(--border-radius);
-    }
-
-    .iti__country:hover,
-    .iti__country.iti__active {
-      background-color: var(--dark);
-    }
-
-    .iti__dial-code {
-      color: var(--text-light);
-    }
-
-    body {
-      background-color: var(--dark);
-      color: var(--text);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .contact {
-      padding: 60px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-top: 120px;
-    }
-
-    .content {
-      width: 100%;
-      max-width: 800px;
-      padding: 2rem;
-      background: var(--darker);
-      border-radius: var(--border-radius);
-      box-shadow: var(--box-shadow);
-    }
-
-    .title {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .title span {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary);
-    }
-
-    .label {
-      color: var(--text-light);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .required-label::after {
-      content: ' *';
-      color: var(--danger);
-    }
-
-    .input,
-    .select select,
-    .textarea {
-      background-color: var(--dark);
-      color: var(--text);
-      border: 1px solid var(--primary-dark);
-      border-radius: var(--border-radius);
-      padding: 0.75rem;
-      width: 100%;
-      transition: var(--transition);
-    }
-
-    .input:focus,
-    .select select:focus,
-    .textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
-    }
-
-    .select {
-      position: relative;
-      width: 100%;
-    }
-
-    .field {
-      margin-bottom: 1.5rem;
-    }
-
-    .buttons {
-      background-color: var(--accent);
-      color: var(--dark);
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--border-radius);
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .buttons:hover {
-      background-color: var(--secondary);
-    }
-
-    .links {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .links:hover {
-      text-decoration: underline;
-    }
-
-    .notification {
-      padding: 1rem;
-      border-radius: var(--border-radius);
-      margin-bottom: 1rem;
-    }
-
-    .is-info {
-      background-color: rgba(33, 150, 243, 0.1);
-      color: var(--primary);
-    }
-
-    .contact-box {
-      display: none;
-      /* Hide by default */
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: var(--darker);
-      padding: 2rem;
-      border-radius: var(--border-radius);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-      z-index: 100;
-      width: 90%;
-      max-width: 500px;
-    }
-
-    .contact-box .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-    }
-
-    .contact-box .close-btn::before,
-    .contact-box .close-btn::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: var(--text);
-      transform: translateY(-50%) rotate(45deg);
-    }
-
-    .contact-box .close-btn::after {
-      transform: translateY(-50%) rotate(-45deg);
-    }
-
-    .searchbari {
-      display: flex;
-      align-items: center;
-      position: relative;
-      margin: 5px auto 0;
-      border-radius: 6px;
-      background-color: var(--dark);
-      width: 100%;
-      height: 40px;
-    }
-
-    .clearbtni {
-      position: absolute;
-      right: 10px;
-      background: transparent;
-      border: none;
-      font-size: 16px;
-      color: var(--text);
-      cursor: pointer;
-      display: none;
-      transition: all 0.3s ease;
-    }
-
-    .clearbtni:hover {
-      opacity: 0.7;
-    }
-
-    .scroll-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--accent);
-      color: var(--dark) !important;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 50px;
-      font-size: 24px;
-      z-index: 99;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .scroll-button a {
-      color: var(--dark);
-    }
-
-    .scroll-button:hover {
-      background-color: var(--secondary);
-    }
-
-    .rating {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: center;
-    }
-
-    .rating .icon {
-      color: #ddd;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .rating input[type="radio"] {
-      display: none;
-    }
-
-    .rating label {
-      cursor: pointer;
-    }
-
-    .rating label:hover .icon,
-    .rating label:hover~label .icon,
-    .rating input[type="radio"]:checked~label .icon {
-      color: var(--warning);
-    }
-
-    .VisitLINK {
-      margin-top: 5px;
-      display: inline-block;
-    }
-
-    @media(max-width: 600px) {
-      .content {
-        width: 100%;
-        padding: 1rem;
-      }
-    }
-  </style>
-</head>
-
-<div>
-  <div class="showMessageblurWindow">
-    <div class="showmessageWindow">
-      <h1></h1>
-      <p></p>
-      <a href="" target="_blank" class="error-code"></a>
-      <button class="btn btn-save full" style="font-size: 20px; margin-top: 10px;" onclick="hideMessage()">Okay</button>
+<section class="ticket-form-container">
+    <div class="form-hero">
+        <div class="form-hero-icon"><i class="fas fa-headset"></i></div>
+        <h1>Support &amp; Contact</h1>
+        <p>Need help? Have feedback? We'd love to hear from you.</p>
     </div>
-  </div>
-  <script>
-    // showMessage("Failed to load the page. Please try again later.", "Error", "404");
-    function showMessage(message, heading, errorCode) {
-      document.querySelector(".showmessageWindow h1").innerText = heading;
-      document.querySelector(".showmessageWindow p").innerHTML = message;
-      if (errorCode) {
-        document.querySelector(".showmessageWindow .error-code").style.display = "block";
-        document.querySelector(".showmessageWindow .error-code").innerText = `Error Code: ${errorCode}`;
-      } else {
-        document.querySelector(".showmessageWindow .error-code").style.display = "none";
-      }
-      document.querySelector(".showmessageWindow .error-code").href = `https://mbktech.org/ErrorCode/#${errorCode}`;
-      document
-        .querySelector(".showMessageblurWindow")
-        .classList
-        .add("active");
-      document
-        .body
-        .classList
-        .add("blur-active");
-    }
-    function hideMessage() {
-      const blurWindow = document.querySelector(".showMessageblurWindow");
-      blurWindow.classList.add("fade-out");
-      setTimeout(() => {
-        blurWindow.classList.remove("active", "fade-out");
-        document
-          .body
-          .classList
-          .remove("blur-active");
-      }, 500);
-    }
-  </script>
-  <style>
-    .showMessageblurWindow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-    }
 
-    .showMessageblurWindow.active {
-      display: flex;
-    }
+    <form id="ticketSupportForm" class="ticket-form" novalidate>
+        <!-- Name + Email row -->
+        <div class="form-row">
+            <div class="field flex-1">
+                <label class="label required">Name</label>
+                <input class="input" type="text" name="UserName" placeholder="Your name" required>
+            </div>
+            <div class="field flex-1">
+                <label class="label required">Email</label>
+                <input class="input" type="email" name="Email" placeholder="you@example.com" required>
+            </div>
+        </div>
 
-    .showMessageblurWindow.fade-out {
-      animation: fadeOut 0.5s ease-in-out forwards;
-    }
-
-    body.blur-active {
-      overflow: hidden;
-    }
-
-    .showmessageWindow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Roboto', sans-serif;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px 30px;
-      border-radius: 15px;
-      max-width: 90%;
-      width: 600px;
-      position: relative;
-      color: #fff;
-      border: 2px solid #007bff;
-      animation: fadeIn 0.5s ease-in-out;
-    }
-
-    .showmessageWindow h1 {
-      font-family: 'Roboto', sans-serif;
-      margin-top: 0;
-      font-size: 30px;
-      text-align: center;
-      color: #fff;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      margin-bottom: 10px;
-    }
-
-    .showmessageWindow p {
-      font-family: 'Roboto', sans-serif;
-      font-size: 18px;
-      text-align: center;
-      color: #ddd;
-    }
-
-    .showmessageWindow .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 30px;
-      cursor: pointer;
-      color: #bbb;
-      transition: color 0.3s;
-    }
-
-    .showmessageWindow .close-btn:hover {
-      color: #fff;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .showmessageWindow .error-code {
-      font-family: 'Roboto', sans-serif;
-      font-size: 16px;
-      text-align: center;
-      color: #ff4d4d;
-      font-weight: 700;
-      margin: 10px auto;
-      padding: 5px 10px;
-      background: rgba(255, 77, 77, 0.1);
-      border: 1px solid #ff4d4d;
-      border-radius: 5px;
-      display: inline-block;
-      transition: all 0.3s ease-in;
-    }
-
-    .showmessageWindow .error-code:hover {
-      background: rgba(255, 77, 77, 0.2);
-      color: #007bff;
-      text-decoration: none;
-      transition: all 0.3s ease-out;
-    }
-
-
-    .showmessageWindow .btn-save {
-      width: 100%;
-    }
-
-    @keyframes fadeOut {
-      from {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      to {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-    }
-  </style>
-</div>
-
-<body class="dark-mode">
-  <!-- Under Development Box -->
-  <div class="RedboxInfo"
-    style="display: none; background-color: var(--warning); color: var(--text-dark); padding: 1rem; text-align: center; border-radius: var(--border-radius); margin: 1rem;">
-    Notice: This Page Is Under Development. You May Face Some Issues.
-  </div>
-  <!-- Move to up button -->
-  <div class="scroll-button">
-    <a href="#contact">
-      <i class="fas fa-arrow-up"></i>
-    </a>
-  </div>
-  <section class="contact" id="contact">
-    <div class="content">
-      <div class="title">
-        <span>Support & Contact</span>
-      </div>
-      <form action="/post/SubmitForm" style="display: block;" id="form" class="container m-4 pl-4" method="POST">
-        <input class="input" type="hidden" name="Timestamp">
-        <input class="input" type="hidden" name="PageUrl">
+        <!-- Subject -->
         <div class="field">
-          <label class="label required-label">Subject</label>
-          <div class="control">
+            <label class="label required">What's this about?</label>
             <div class="select">
-              <select class="input" name="Subject" id="subjectSelect" required>
-                <option value="" disabled selected>Select a subject</option>
-                <option value="Get Quote">Get Quote/Service</option>
-                <option value="Feedback">Feedback</option>
-                <option value="Collaboration">Collaboration</option>
-                <option value="Support">Support</option>
-                <option value="General Inquiry">General Inquiry</option>
-              </select>
+                <select class="input" name="Subject" id="subjectSelect" required>
+                    <option value="" disabled selected>Choose a topic...</option>
+                    <option value="Support">Technical Support</option>
+                    <option value="Feedback">Feedback</option>
+                    <option value="Collaboration">Collaboration</option>
+                    <option value="Get Quote">Get a Quote</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                </select>
             </div>
-          </div>
         </div>
-        <!-- Services Field Appear When Get Quote is Selected -->
-        <div class="field servicesfield" style="display: none;">
-          <label class="label required-label">Service Type</label>
-          <div class="control">
-            <div class="select">
-              <select class="input" name="service" id="serviceselect">
-                <option value="" disabled selected>Select service type</option>
-                <option value="WebDev-Basic">Web Development - Basic Package (PKR 5,000)</option>
-                <option value="WebDev-FullStack">Web Development - Full Stack Package (PKR 10-15k)</option>
-                <option value="Technical-Consulting">Technical Consulting (Free)</option>
-                <option value="Maintenance">Maintenance & Support Service (PKR 1,000 - 2,000/month)</option>
-              </select>
+
+        <!-- Support type (Support only) -->
+        <div class="conditional-field" data-show="Support">
+            <div class="field">
+                <label class="label required">Support Type</label>
+                <div class="select">
+                    <select class="input" name="support">
+                        <option value="" disabled selected>What kind of support?</option>
+                        <option value="Docs">Documentation Help</option>
+                        <option value="Technical">Technical Issue</option>
+                        <option value="CopyRightIssue">Copyright Concern</option>
+                        <option value="BugReportingFeatureRequests">Bug Report / Feature Request</option>
+                        <option value="other">Something Else</option>
+                    </select>
+                </div>
             </div>
-          </div>
         </div>
 
-        <!-- Support Field Appear When Support is Selected -->
-        <div class="field supportfield" style="display: none;">
-          <label class="label required-label">Support Type</label>
-          <div class="control">
-            <div class="select">
-              <select class="input" name="support" id="supportselect">
-                <option value="" disabled selected>Select support type</option>
-                <option value="Docs">Documentation Help</option>
-                <option value="Technical">Technical Support</option>
-                <option value="CopyRightIssue">Copyright Issue</option>
-                <option value="BugReportingFeatureRequests">Bug Reporting & Feature Requests</option>
-                <option value="other">Other</option>
-              </select>
+        <!-- Service type (Get Quote only) -->
+        <div class="conditional-field" data-show="Get Quote">
+            <div class="field">
+                <label class="label required">Service</label>
+                <div class="select">
+                    <select class="input" name="service">
+                        <option value="" disabled selected>Which service?</option>
+                        <option value="WebDev-Basic">Web Dev - Basic (PKR 5,000)</option>
+                        <option value="WebDev-FullStack">Web Dev - Full Stack (PKR 10-15k)</option>
+                        <option value="Technical-Consulting">Technical Consulting (Free)</option>
+                        <option value="Maintenance">Maintenance (PKR 1,000-2,000/mo)</option>
+                    </select>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="field projectCatogo" style="display: none;">
-          <label class="label required-label">Project</label>
-          <div class="control">
 
-            <div class="searchbari">
-              <input class="input" type="text" id="projectSearch" placeholder="Search Project"
-                oninput="filterOptions()">
-              <button type="button" id="clearSearch" class="clearbtni">
-                <i class="fas fa-times" aria-hidden="true"></i>
-              </button>
+        <!-- Phone (Support, Collaboration, Get Quote) -->
+        <div class="conditional-field" data-show="Support,Collaboration,Get Quote">
+            <div class="field">
+                <label class="label">Phone Number <span class="label-hint">(optional)</span></label>
+                <input class="input" type="tel" name="Number" placeholder="+92 300 1234567">
             </div>
-            <div class="select">
-              <select class="input" style="margin-bottom: 2px;" name="projectCato" id="projectCatogo"
-                onchange="showLink('projectLink','projectCatogo'); closeoptionbox();">
-                <option value="" disabled selected>Select Project</option>
-              </select>
+        </div>
+
+        <!-- Rating (Feedback only) -->
+        <div class="conditional-field" data-show="Feedback">
+            <div class="field">
+                <label class="label required">Rate your experience</label>
+                <div class="star-rating" id="starRating">
+                    <input type="radio" name="stars" value="5" id="s5"><label for="s5"><i class="fas fa-star"></i></label>
+                    <input type="radio" name="stars" value="4" id="s4"><label for="s4"><i class="fas fa-star"></i></label>
+                    <input type="radio" name="stars" value="3" id="s3"><label for="s3"><i class="fas fa-star"></i></label>
+                    <input type="radio" name="stars" value="2" id="s2"><label for="s2"><i class="fas fa-star"></i></label>
+                    <input type="radio" name="stars" value="1" id="s1"><label for="s1"><i class="fas fa-star"></i></label>
+                </div>
             </div>
-            <a class="VisitLINK links" id="projectLink" href="" target="_blank">Visit Project Link
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-
-          </div>
         </div>
-        <div class="field blogCatogo" style="display: none;">
-          <label class="label required-label">Blogs</label>
-          <div class="control">
-            <div class="select">
-              <select class="input" style="margin-bottom: 2px;" name="blogCato" id="blogCatogo"
-                onchange="showLink('blogLink','blogCatogo')">
-                <option value="" disabled selected>Select Blog</option>
-              </select>
-              <a class="VisitLINK links" id="blogLink" href="" target="_blank">Visit Project Link
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-          </div>
+
+        <!-- Message -->
+        <div class="field">
+            <label class="label required">Message</label>
+            <textarea class="textarea" name="Message" rows="5" placeholder="Tell us what's on your mind..." required></textarea>
         </div>
-        <div class="field NameFie">
-          <label class="label required-label">Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Enter Your Name" name="UserName" required="">
-          </div>
-        </div>
-        <div class="field emailFie">
-          <label class="label required-label">Email</label>
-          <div class="control">
-            <input class="input" type="email" placeholder="Enter Your Email" name="Email" required="">
-          </div>
-        </div>
-        <!-- Support Field Appear When Feedback is Selected -->
-        <div class="field ratingWeb" style="display: none;">
-          <label class="label">Rating</label>
-          <requirAs style="color: red;">*</requirAs>
-          <div class="control">
-            <div class="rating">
-              <label>
-                <input type="radio" name="stars" value="1">
-                <span class="fa fa-star icon"></span>
-              </label>
-              <label>
-                <input type="radio" name="stars" value="2">
-                <span class="fa fa-star icon"></span>
-                <span class="fa fa-star icon"></span>
-              </label>
-              <label>
-                <input type="radio" name="stars" value="3">
-                <span class="fa fa-star icon"></span>
-                <span class="fa fa-star icon"></span>
-                <span class="fa fa-star icon"></span>
-              </label>
-              <label>
-                <input type="radio" name="stars" value="4">
-                <span class="fa fa-star icon"></span>
-                <span class="fa fa-star icon"></span>
-                <span class="fa fa-star icon"></span>
-                <span class="fa fa-star icon"></span>
-              </label>
-              <label>
-                <input type="radio" name="stars" value="5">
-                <span class="fa fa-star icon"></span>
-                <span class="fa fa-star icon"></span>
-                <span class="fa fa-star icon"></span>
-                <span class="fa fa-star icon"></span>
-                <span class="fa fa-star icon"></span>
-              </label>
-            </div>
-          </div>
-        </div>
-        <!-- Support Field Appear When Collabration & Support is Selected -->
-        <div class="field phoneField" style="display: none;">
-          <label class="label">Phone Number</label>
-          <div class="control" style="margin-bottom: 15px;">
-            <input class="input" type="text" id="mobile_code" placeholder="Enter Phone Number" name="Number" />
-          </div>
-        </div>
-        <div class="field messageF">
-          <label class="label required-label">Message</label>
-          <div class="control">
-            <textarea class="input" placeholder="Enter Your Message" id="message_form" name="Message" rows="6"
-              required=""></textarea>
-          </div>
-        </div>
-        <div class="field agreement-container" style="display: none;">
-          <div class="control">
-            <label>
-              <input class="checkbox" type="checkbox"> I Certify That I Have Read And Agree To The
-              <a class="links" href="https://blog.mbktech.org/post/privacy-policy/">Privacy Policy</a>,
-              <a class="links" href="https://blog.mbktech.org/post/terms-and-conditions/">Terms and
-                Conditions</a>,
-              and
-              <a class="links" href="https://blog.mbktech.org/post/cookies-policy/">Cookie Policy</a>
-              of
-              <a class="links" href="https://mbktech.org/">MBKTech.org</a>
-              .
-            </label>
-          </div>
-        </div>
-        <div class="notification is-info" style="margin-top: -5px;">
-          <p>
-            By Submitting Form, You Are Automatically Agreeing To Our
-            <a class="links" href="/Terms&amp;Conditions">Use Of Terms &amp; Conditions
-            </a>
-          </p>
-        </div>
-        <div class="notification is-info">
-          <p>
-            Note: For Quicker Assistance, Contact Us On Social Media. Email Responses May Take 1-2 Business
-            Days.
-          </p>
-        </div>
-        <div id="message"
-          style="display: none; font-weight: 700; color: var(--success); padding: 8px; background-color: var(--light); border-radius: 4px; border-color: var(--success); margin-bottom: 10px;"
-          class="message-box info"></div>
-        <div class="field is-grouped" style="display: flex; justify-content: center; margin: 0 0;">
-          <button style="font-size: 20px; margin: 0 0;" class="buttons" type="submit" id="submit-button">Submit</button>
-        </div>
-        <div class="field is-grouped" style="display: flex; justify-content: center;">
-          <div class="control">
-            <a style="font-size: 20px;" onclick="openTicketPage()" class="buttons">Track Ticket</a>
-          </div>
-        </div>
-      </form>
-      <div id="tS-form" class="contact-box">
-        <div onclick="hidebox('tS-form')" class="close-btn"></div>
-        <form id="ticketStatusForm">
-          <div class="title">
-            <span>Track Ticket</span>
-          </div>
-          <div id="ticketStatus"></div>
-          <div class="input-container">
-            <input type="text" placeholder="Enter ID eg. T000111333" required minlength="10" maxlength="10"
-              pattern=".{10}" class="input" id="ticketId" required><br> <br>
-            <div class="field is-grouped" style="display: flex; justify-content: center;">
-              <div class="control">
-                <button class="buttons" type="submit" id="submit-button">Check</button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div id="tG-form" class="contact-box">
-        <div onclick="hidebox('tG-form')" class="close-btn"></div>
-        <div class="title">
-          <span>Ticket Generated</span>
-        </div>
-        <p style="text-align: center;">Your Ticket Number Is:</p>
-        <div class="input-container">
-          <input class="input" name="ticketNumberInput" id="ticketNumberInput" readonly />
-          <div class="field is-grouped" style="display: flex; justify-content: center;">
-            <div class="control">
-              <button class="buttons" onclick="copyTicketNumber()">Copy</button>
-            </div>
-          </div>
-        </div>
-        <a id="TicketIdURL" href="" style="text-align: center; display: block; word-wrap: break-word;"
-          class="links"></a>
-        <p style="text-align: center;">You Can Use This Ticket Number To Track Your Support Status</p>
-      </div>
-      <div class="ssmedis" id="ssmedia"></div>
-    </div>
-  </section>
-</body>
-<script src="/Assets/Scripts/Support.js"></script>
-<script src="/Assets/Scripts/form.support.js"></script>
-<script>
-  $(document).ready(function () {
-    $("#mobile_code").intlTelInput({
-      initialCountry: "auto",
-      geoIpLookup: function (callback) {
-        $.get('https://ipinfo.io', function () { }, "jsonp").always(function (resp) {
-          var countryCode = (resp && resp.country) ? resp.country : "us";
-          callback(countryCode);
-        });
-      },
-      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js"
-    });
-  });
 
-  function openTicketPage() {
-    window.open(`../TrackTicket/`, '_blank');
-  }
-  // Function to get URL query parameters
-  function getQueryParams() {
-    const params = new URLSearchParams(window.location.search);
-    const result = {};
-    for (const [key, value] of params) {
-      result[key] = decodeURIComponent(value);
-    }
-    return result;
-  }
+        <!-- Submit -->
+        <button type="submit" id="submitBtn" class="btn-submit">
+            <span class="btn-text">Send Message</span>
+            <span class="btn-spinner" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Sending...</span>
+        </button>
 
-  // Function to show/hide fields based on subject
-  function handleSubjectChange(subject) {
-    const servicesField = document.querySelector(".servicesfield");
-    const supportField = document.querySelector(".supportfield");
-    const projectField = document.querySelector(".projectCatogo");
-    const ratingField = document.querySelector(".ratingWeb");
-    const phoneField = document.querySelector(".phoneField");
-    
-    // Hide all conditional fields first
-    servicesField.style.display = "none";
-    supportField.style.display = "none";
-    projectField.style.display = "none";
-    ratingField.style.display = "none";
-    phoneField.style.display = "none";
-    
-    // Show relevant fields based on selection
-    switch(subject) {
-        case "Get Quote":
-            servicesField.style.display = "block";
-            phoneField.style.display = "block";
-            break;
-        case "Support":
-            supportField.style.display = "block";
-            projectField.style.display = "block";
-            phoneField.style.display = "block";
-            break;
-        case "Feedback":
-            ratingField.style.display = "block";
-            break;
-        case "Collaboration":
-            phoneField.style.display = "block";
-            break;
-    }
-  }
+        <!-- Footer -->
+        <p class="form-footer">
+            By sending, you agree to our <a href="/Terms&amp;Conditions">Terms &amp; Conditions</a>.
+        </p>
+    </form>
 
-  // Function to set dropdown value and trigger change event
-  function setDropdownValue(selectId, value) {
-    const select = document.getElementById(selectId);
-    if (select && value) {
-      select.value = value;
-      // Create and dispatch change event
-      const event = new Event('change');
-      select.dispatchEvent(event);
-    }
-  }
+    <!-- Response area (hidden until submit) -->
+    <div id="formResponse" class="form-response" style="display:none"></div>
+</section>
 
-  // Function to show project link
-  function showLink(linkId, selectId) {
-    const select = document.getElementById(selectId);
-    const link = document.getElementById(linkId);
-    
-    // Check if projectsList exists
-    if (!window.projectsList) {
-      link.style.display = "none";
-      return;
-    }
-
-    const selectedProject = window.projectsList.find(p => p.value === select.value);
-    
-    if (selectedProject && selectedProject.link) {
-      link.href = selectedProject.link;
-      link.style.display = "inline-block";
-    } else {
-      link.href = "";
-      link.style.display = "none";
-    }
-  }
-
-  // Initialize options in project dropdown
-  async function initializeProjectOptions(projectValue = null) {
-    const projectSelect = document.getElementById('projectCatogo');
-    
-    try {
-      // Fetch projects from JSON file
-      const response = await fetch('/Assets/Support/projects.json');
-      if (!response.ok) throw new Error('Failed to load projects');
-      window.projectsList = await response.json();
-      
-      // Clear existing options except the first one
-      while (projectSelect.options.length > 1) {
-        projectSelect.remove(1);
-      }
-
-      // Add new options
-      projectsList.forEach(project => {
-        const option = new Option(project.name, project.value);
-        projectSelect.add(option);
-      });
-
-      // Set value if provided
-      if (projectValue) {
-        projectSelect.value = projectValue;
-        showLink('projectLink', 'projectCatogo');
-      }
-    } catch (error) {
-      console.error('Error loading projects:', error);
-      // Add fallback options in case of error
-      const fallbackOptions = [
-        { value: 'none', text: 'None' },
-        { value: 'other', text: 'Other' }
-      ];
-      fallbackOptions.forEach(option => {
-        projectSelect.add(new Option(option.text, option.value));
-      });
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", async function () {
-    // Get URL parameters
-    const params = getQueryParams();
-    
-    // Initialize project options and wait for it to complete
-    await initializeProjectOptions();
-    
-    // Set values from URL parameters if they exist
-    if (params.Subject) {
-      // Set subject first
-      setDropdownValue('subjectSelect', params.Subject);
-      handleSubjectChange(params.Subject);
-      
-      // Handle dependent dropdowns based on subject
-      if (params.Subject === 'Get Quote' && params.service) {
-        setDropdownValue('serviceselect', params.service);
-      } else if (params.Subject === 'Support') {
-        if (params.support) {
-          setDropdownValue('supportselect', params.support);
-        }
-        if (params.project) {
-          // After projects are loaded, set the project value
-          setDropdownValue('projectCatogo', params.project);
-          showLink('projectLink', 'projectCatogo');
-        }
-      }
-    }
-
-    // Add event listener for subject changes
-    document.getElementById('subjectSelect').addEventListener('change', function() {
-      handleSubjectChange(this.value);
-    });
-
-    // Always trigger filtering based on the current dropdown value
-    filterOptions();
-    const searchInput = document.getElementById('projectSearch');
-    const clearBtn = document.getElementById('clearSearch');
-    // Show clear button when there is input
-    searchInput.addEventListener('input', function () {
-      if (this.value.length > 0) {
-        clearBtn.style.display = 'block';
-      } else {
-        clearBtn.style.display = 'none';
-      }
-    });
-    // Clear input when clear button is clicked
-    clearBtn.addEventListener('click', function () {
-      searchInput.value = '';
-      clearBtn.style.display = 'none';
-      filterOptions(); // Optionally trigger the filter function to show all products again
-      closeoptionbox();
-    });
-  });
-
-  function closeoptionbox() {
-    const selectBox = document.getElementById("projectCatogo");
-    const options = selectBox.options;
-    // Show select box
-    selectBox.size = Math.min(options.length, 1);
-    selectBox.style.display = "block";
-  }
-
-  function filterOptions() {
-    const searchInput = document
-      .getElementById("projectSearch")
-      .value
-      .toLowerCase();
-    const selectBox = document.getElementById("projectCatogo");
-    const options = selectBox.options;
-    // Show select box
-    selectBox.size = Math.min(options.length, 6);
-    selectBox.style.display = "block";
-    let anyVisible = false;
-    // Loop through options and filter based on search input
-    for (let i = 0; i < options.length; i++) {
-      const option = options[i];
-      if (option
-        .value
-        .toLowerCase()
-        .includes(searchInput) || option
-          .text
-          .toLowerCase()
-          .includes(searchInput)) {
-        option.style.display = "";
-        anyVisible = true;
-      } else {
-        option.style.display = "none";
-      }
-    }
-    // If no options are visible, add "none" and "other"
-    if (!anyVisible) {
-      // Remove existing "none" and "other" options if they exist
-      for (let i = options.length - 1; i >= 0; i--) {
-        if (options[i].value === "none" || options[i].value === "other") {
-          selectBox.removeChild(options[i]);
-        }
-      }
-      // Create "none" option
-      const noneOption = document.createElement("option");
-      noneOption.value = "none";
-      noneOption.text = "None";
-      selectBox.appendChild(noneOption);
-      // Create "other" option
-      const otherOption = document.createElement("option");
-      otherOption.value = "other";
-      otherOption.text = "Other";
-      selectBox.appendChild(otherOption);
-    } else {
-      // Remove "none" and "other" options if they exist
-      for (let i = options.length - 1; i >= 0; i--) {
-        if (options[i].value === "none" || options[i].value === "other") {
-          selectBox.removeChild(options[i]);
-        }
-      }
-    }
-  }
-</script>
-
-</html>
+<script src="/Assets/Scripts/tickets.js"></script>

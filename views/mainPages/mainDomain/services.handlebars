@@ -1,142 +1,186 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <title>Services - MBK Tech</title>
+﻿<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="fade-in">Our Services</h1>
+    <p class="fade-in delay-1">Professional technology solutions tailored to your needs — from simple websites to full-stack applications.</p>
+  </div>
+</section>
 
-<body>
+<style>
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.pricing-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+.pricing-card.featured {
+    border-color: rgba(33,150,243,0.3);
+    background: rgba(33,150,243,0.05);
+}
+.pricing-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--primary); color: #fff; font-size: 0.75rem; font-weight: 700;
+    padding: 0.25rem 1rem; border-radius: 20px; text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.pricing-icon {
+    font-size: 2.2rem; color: var(--primary); margin-bottom: 1rem;
+}
+.pricing-card h3 {
+    color: var(--text); font-size: 1.25rem; margin-bottom: 0.5rem;
+}
+.pricing-card > p {
+    color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.2rem; line-height: 1.5;
+}
+.pricing-range {
+    font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.15rem;
+}
+.pricing-note {
+    font-size: 0.78rem; color: var(--text-light); display: block; margin-bottom: 1.2rem;
+}
+.pricing-features {
+    list-style: none; padding: 0; margin: 0 0 1.5rem;
+    text-align: left; font-size: 0.85rem; color: var(--text-light); line-height: 1.7;
+    flex: 1;
+}
+.pricing-features li { padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.pricing-features li:last-child { border: none; }
+.pricing-features li::before { content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900; color: var(--accent); margin-right: 0.5rem; font-size: 0.7rem; }
+.pricing-actions {
+    display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;
+}
+.pricing-actions .btn { font-size: 0.82rem; padding: 0.5rem 1rem; }
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="fade-in">Our Services</h1>
-      <p class="fade-in delay-1">Professional technology solutions tailored to your needs. From web development to custom software, we've got you covered.</p>
+@media (max-width: 768px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<!-- Pricing Cards -->
+<section class="services-section">
+  <div class="section-container">
+    <div class="section-title"><h2>What We Offer</h2></div>
+
+    <div class="pricing-grid">
+      <!-- Web Dev -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-icon"><i class="fas fa-code"></i></div>
+        <h3>Web Development</h3>
+        <p>Custom websites and web applications built with modern technologies.</p>
+        <div class="pricing-range">PKR 5,000 – 15,000</div>
+        <span class="pricing-note">per project + service charges</span>
+        <ul class="pricing-features">
+          <li><strong>Basic (PKR 5k):</strong> Portfolio sites, auth, ticket system</li>
+          <li><strong>Full Stack (PKR 10-15k):</strong> E-commerce, admin panel, accounts</li>
+          <li>Responsive design &amp; SEO</li>
+          <li>Post-launch security updates included</li>
+        </ul>
+        <div class="pricing-actions">
+          <a href="/Services/WebDevBasicPackage" class="btn btn-primary">Basic Package</a>
+          <a href="/Services/WebDevFullStackPackage" class="btn btn-outline">Full Stack Package</a>
+        </div>
+      </div>
+
+      <!-- Consulting -->
+      <div class="pricing-card">
+        <div class="pricing-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Technical Consulting</h3>
+        <p>Expert advice on tech stack, architecture, and project direction.</p>
+        <div class="pricing-range">Free</div>
+        <span class="pricing-note">no-cost consultation</span>
+        <ul class="pricing-features">
+          <li>Technology assessment &amp; stack recommendations</li>
+          <li>Architecture planning &amp; code review</li>
+          <li>Project guidance &amp; best practices</li>
+          <li>Response may vary based on availability</li>
+        </ul>
+        <div class="pricing-actions">
+          <a href="/Support&Contact" class="btn btn-outline">Request Consult</a>
+        </div>
+      </div>
+
+      <!-- Maintenance -->
+      <div class="pricing-card">
+        <div class="pricing-icon"><i class="fas fa-tools"></i></div>
+        <h3>Maintenance &amp; Support</h3>
+        <p>Ongoing maintenance, upgrades, and changes for existing projects.</p>
+        <div class="pricing-range">PKR 1,000 – 2,000</div>
+        <span class="pricing-note">per month + service charges</span>
+        <ul class="pricing-features">
+          <li>Website upgrades &amp; major feature changes</li>
+          <li>Bug fixes &amp; security patches</li>
+          <li>Performance monitoring &amp; optimization</li>
+          <li>Cost scales with complexity</li>
+        </ul>
+        <div class="pricing-actions">
+          <a href="/Support&Contact" class="btn btn-outline">Get Started</a>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Services Section -->
-  <section class="services-section" id="services">
-    <div class="section-container">
-      <div class="section-title">
-        <h2>What We Offer</h2>
+<!-- Process -->
+<section class="process-section">
+  <div class="section-container">
+    <div class="section-title"><h2>How We Work</h2></div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <h3>Discovery</h3>
+        <p>We learn about your goals, requirements, and constraints through detailed consultation.</p>
       </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-code"></i>
-          </div>
-          <div class="service-content">
-            <h3>Web Development</h3>
-            <p>Custom websites and web applications built with modern technologies. Two packages available based on complexity.</p>
-            <div class="pricing">
-              <span class="price">PKR 5,000 - 15,000</span>
-              <span class="duration">per project + service charges</span>
-            </div>
-            <ul class="service-features">
-              <li><strong>Basic Package (PKR 5,000):</strong> Portfolio websites with tools like authentication, ticket viewing</li>
-              <li><strong>Full Stack Package (PKR 10-15k):</strong> E-commerce sites with admin panel, account system</li>
-              <li>Responsive design & SEO optimization</li>
-              <li>Post-project: Major security updates included, major changes require "Maintenance & Support" Service</li>
-            </ul>
-            <div class="package-links" style="margin-top: 1rem; text-align: center; font-size: 0.9rem;">
-              <a href="/Services/WebDevBasicPackage" class="btn btn-primary" style="padding: 0.5rem 1rem; margin-right: 0.5rem; font-size: 0.85rem;">See Basic Package</a>
-              <a href="/Services/WebDevFullStackPackage" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;">See Advanced Package</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <div class="service-content">
-            <h3>Technical Consulting</h3>
-            <p>Expert advice on technology stack selection, architecture planning, and project guidance. Free consultation service.</p>
-            <div class="pricing">
-              <span class="price">FREE</span>
-              <span class="duration">consultation</span>
-            </div>
-            <ul class="service-features">
-              <li>Technology assessment & stack recommendations</li>
-              <li>Architecture planning & code review</li>
-              <li>Project guidance & best practices</li>
-              <li><em>Note: Response time may vary if fully scheduled</em></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-tools"></i>
-          </div>
-          <div class="service-content">
-            <h3>Maintenance & Support</h3>
-            <p>Ongoing maintenance, upgrades, and major changes for previously developed websites and applications.</p>
-            <div class="pricing">
-              <span class="price">PKR 1,000 - 2,000</span>
-              <span class="duration">per month + service charges</span>
-            </div>
-            <ul class="service-features">
-              <li>Website upgrades & major feature changes</li>
-              <li>Bug fixes & security updates</li>
-              <li>Performance monitoring & optimization</li>
-              <li>Cost may increase based on complexity of changes</li>
-            </ul>
-          </div>
-        </div>
-
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <h3>Proposal</h3>
+        <p>A clear plan with timeline, deliverables, and cost estimate tailored to your needs.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <h3>Development</h3>
+        <p>We build your solution with regular updates, milestones, and transparent communication.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <h3>Launch</h3>
+        <p>Rigorous testing, smooth deployment, and a polished final product.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">5</div>
+        <h3>Support</h3>
+        <p>Ongoing maintenance to keep your solution performing at its best.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Process Section -->
-  <section class="process-section" id="process">
-    <div class="section-container">
-      <div class="section-title">
-        <h2>Our Process</h2>
-      </div>
-      <div class="process-grid">
-        <div class="process-step">
-          <div class="step-number">1</div>
-          <h3>Discovery & Planning</h3>
-          <p>We start by understanding your requirements, goals, and constraints through detailed consultation.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">2</div>
-          <h3>Design & Proposal</h3>
-          <p>We create a detailed project plan, timeline, and cost estimate tailored to your needs.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">3</div>
-          <h3>Development</h3>
-          <p>Our team builds your solution using best practices, with regular updates and milestones.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">4</div>
-          <h3>Testing & Deployment</h3>
-          <p>Rigorous testing ensures quality, followed by smooth deployment and launch.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">5</div>
-          <h3>Support & Maintenance</h3>
-          <p>Post-launch support and maintenance to ensure your solution continues to perform optimally.</p>
-        </div>
+<!-- CTA -->
+<section class="contact-cta-section">
+  <div class="section-container">
+    <div class="contact-cta-content">
+      <h2>Ready to Start?</h2>
+      <p>Tell us about your project and we'll get back to you with a personalized quote.</p>
+      <div class="cta-buttons">
+        <a href="/Support&Contact" class="btn btn-primary">Get a Quote</a>
+        <a href="mailto:support@mbktech.org" class="btn btn-outline">Email Us</a>
       </div>
     </div>
-  </section>
-
-  <!-- Contact CTA Section -->
-  <section class="contact-cta-section">
-    <div class="section-container">
-      <div class="contact-cta-content">
-        <h2>Ready to Get Started?</h2>
-        <p>Contact us today to discuss your project requirements and get a personalized quote.</p>
-        <div class="cta-buttons">
-          <a href="/Support&Contact" class="btn btn-primary">Get Quote</a>
-          <a href="mailto:support@mbktech.org" class="btn btn-outline">Email Us</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</body>
-
-</html>
+  </div>
+</section>

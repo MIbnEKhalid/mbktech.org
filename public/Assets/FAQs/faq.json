@@ -1,80 +1,80 @@
 [
   {
+    "id": "about-1",
     "question": "What is MBKTech.org?",
-    "answer": "MBKTech.org, founded by Muhammad Bin Khalid, is a collaborative development studio focusing on open-source contributions and innovative technology solutions. We empower creators and problem-solvers through software development services and hardware projects, with an emphasis on community-driven initiatives. Our goal is to create impactful digital and hardware solutions that benefit the global tech community, fostering growth, collaboration, and the advancement of open-source technologies.",
-    "id": "0",
+    "answer": "MBKTech.org is a collaborative development studio founded by Muhammad Bin Khalid. We specialize in open-source software development, web and mobile applications, and innovative technology solutions. Our mission is to create impactful digital tools that benefit the global tech community through collaboration and open-source contributions.",
     "display": "true"
   },
   {
-    "question": "How can I contact MBKTech.org?",
-    "answer": "You can contact <strong>MBKTech.org</strong> via the <a style='font-weight:bold;' href='https://mbktech.org/Support/'>Support & Contact</a> Page on our website, though <a> Social Media </a> or by sending an Direct email to <a class='link' style='font-weight:bold;' href='mailto:support@mbktech.org'>support@mbktech.org</a>. We strive to respond to all inquiries within 24-48 hours.",
-    "id": "1",
+    "id": "about-2",
+    "question": "Who is behind MBK Tech?",
+    "answer": "MBK Tech was founded by <strong>Muhammad Bin Khalid</strong> and operates as a two-person team alongside collaborator <strong>Maaz Waheed</strong> (specializing in AI and Data Science). Together, we build and maintain all projects, write documentation, and provide support to our users and clients.",
     "display": "true"
   },
   {
-    "question": "What services do you offer?",
-    "answer": "We offer a wide range of services, including software development, cloud solutions, DevOps consulting, and more. We are dedicated to providing tailored solutions that meet the unique needs of each client.",
-    "id": "2",
-    "display": "false"
-  },
-  {
-    "question": "Need the Documentation but It's Delayed? Here's What to Do",
-    "answer": "<ul style='text-align: left;> <li> <h3>Submit a Request on the Documentation Page</h3> </li> If you're looking for documentation for a specific project (e.g., docs.mbktech.org/project1), use the contact form on that page to let me know. <li> <h3>Main Contact Form</h3> </li> If the documentation page doesn't exist yet, please submit a request through the contact form on the main site: <div class='hs'><a href='https://mbktech.org/#contact' target='_blank'>mbktech.org</a> </div> <li> <h3>Reach Out on Social Media</h3> </li> You can also contact me on through Social Media (Instagram Prefred). <li> <h3>Need a Faster Response?</h3> </li> Here's my Phone Number: +923264552255. Feel Free To Bully Me until I Upload The Documentation! </ul>",
-    "id": "3",
+    "id": "about-3",
+    "question": "What makes MBK Tech different from other development studios?",
+    "answer": "We focus heavily on <strong>open-source contributions</strong> and <strong>community-driven development</strong>. Every project we build is designed to be transparent, well-documented, and reusable. We also prioritize direct communication with our clients — no account managers, no bureaucracy — you talk directly to the developers building your project.",
     "display": "true"
   },
   {
-    "question": "Do you provide customized software development services?",
-    "answer": "Yes, we work closely with clients to deliver software solutions that fit their specific goals, from concept to deployment.",
-    "id": "4",
-    "display": "false"
-  },
-  {
-    "question": "What technologies does MBKTech.org work with?",
-    "answer": "We work with a wide range of modern technologies, including but not limited to JavaScript, Python, C#, Unity, AWS, Azure, Docker, Kubernetes, and various CI/CD tools. Our expertise spans both frontend and backend development, cloud solutions, and mobile app development.",
-    "id": "5",
+    "id": "services-1",
+    "question": "What services does MBK Tech offer?",
+    "answer": "We offer a range of professional technology services including <strong>Web Development</strong> (frontend and full-stack), <strong>Custom Software Development</strong>, <strong>Technical Consulting</strong>, and <strong>Maintenance & Support</strong>. For a complete overview with package details, visit our <a href='/Services'>Services page</a>.",
     "display": "true"
   },
   {
-    "question": "How do you ensure the security of your projects?",
-    "answer": "Security is a top priority for us. We follow best practices in coding and architecture, including regular security audits, encryption, and secure coding standards to safeguard data and protect your applications from potential threats.",
-    "id": "6",
+    "id": "services-2",
+    "question": "What technologies do you work with?",
+    "answer": "Our core stack includes <strong>HTML5, CSS3, JavaScript, Node.js, React, PostgreSQL, and Python</strong>. We also have experience with AWS, Vercel, Linux, C++, and various CI/CD tools. We choose the right technology for each project rather than forcing a one-size-fits-all approach.",
     "display": "true"
   },
   {
-    "question": "What is the process for starting a new project with MBKTech.org?",
-    "answer": "To start a new project, You can contact <strong>MBKTech.org</strong> via the <a style='font-weight:bold;' href='https://mbktech.org/Support/'>Support & Contact</a> Page on our website, though <a> Social Media </a> or by sending an Direct email to <a class='link' style='font-weight:bold;' href='mailto:support@mbktech.org'>support@mbktech.org</a>. . We'll schedule an initial consultation to understand your requirements, provide a proposal, and outline the steps to get started.",
-    "id": "7",
+    "id": "services-3",
+    "question": "Do you provide ongoing maintenance after a project is delivered?",
+    "answer": "Yes. We offer maintenance and support plans for all projects we build. This includes bug fixes, security updates, performance monitoring, and feature enhancements. Maintenance packages start at affordable monthly rates — see our <a href='/Services'>Services page</a> for details.",
     "display": "true"
   },
   {
-    "question": "What are your typical project timelines?",
-    "answer": "Project timelines vary depending on the scope and complexity of the work. After an initial consultation and requirement analysis, we provide a timeline estimate tailored to your project. We aim to deliver quality work on time and within budget.",
-    "id": "8",
-    "display": "false"
-  },
-  {
-    "question": "Do you offer ongoing support after project completion?",
-    "answer": "Yes, we offer ongoing support and maintenance for all our projects. Whether it's fixing bugs, implementing new features, or ensuring system stability, our team is here to assist you long after your project goes live.",
-    "id": "9",
+    "id": "services-4",
+    "question": "How long does a typical project take?",
+    "answer": "Timelines depend on the project scope and complexity. A basic website typically takes <strong>1–2 weeks</strong>, while a full-stack web application may take <strong>3–6 weeks</strong>. After an initial consultation, we provide a detailed timeline estimate tailored to your requirements.",
     "display": "true"
   },
   {
-    "question": "What Web Tools Do You Use for Website hosting, Business Email, etc?",
-    "answer": "We use Vercel for web hosting. For domain registration, we use Namecheap. Our business email is managed through Zoho Mail.<br><a class='links' href='/FAQs/What-Web-Tools-Do-You-Use-for-Website-hosting-Business-Email-etc/'>See More Detail</a>",
-    "id": "12",
+    "id": "support-1",
+    "question": "How can I contact MBK Tech?",
+    "answer": "The best way to reach us is through our <a href='/Support&Contact'>Support & Contact</a> page. You can submit a support ticket, send feedback, request a quote, or make a general inquiry — all from one form. You can also email us directly at <a href='mailto:support@mbktech.org'>support@mbktech.org</a>.",
     "display": "true"
   },
   {
-    "question": "What industries does MBKTech.org serve?",
-    "answer": "We serve a wide range of industries, including e-commerce, healthcare, finance, gaming, and more. Our versatile expertise allows us to deliver effective solutions across different sectors.",
-    "id": "10",
-    "display": "false"
+    "id": "support-2",
+    "question": "How do I track my support ticket?",
+    "answer": "When you submit a support request, you receive a unique <strong>ticket number</strong> (e.g., T000123456). Use this number on our <a href='/TrackTicket'>Track Ticket</a> page to check the status, view updates, and see the full audit trail of your request at any time.",
+    "display": "true"
   },
   {
-    "question": "Can MBKTech.org help with cloud migration?",
-    "answer": "Absolutely! We specialize in cloud migration services, helping businesses transition from on-premise systems to cloud infrastructure. We ensure the migration process is smooth, secure, and aligned with your business goals.",
-    "id": "11",
-    "display": "false"
+    "id": "support-3",
+    "question": "What is your typical response time?",
+    "answer": "We aim to respond to all inquiries within <strong>24–48 hours</strong>. Support tickets are prioritized by urgency, and we provide status updates throughout the resolution process. For time-sensitive issues, please include as much detail as possible in your initial message.",
+    "display": "true"
+  },
+  {
+    "id": "support-4",
+    "question": "What should I include in my support request?",
+    "answer": "To help us resolve your issue quickly, please include: <ul><li>A clear description of the issue or request</li><li>The relevant project or service name</li><li>Steps to reproduce (for bugs)</li><li>Screenshots or error messages (if applicable)</li><li>Your preferred contact method</li></ul>",
+    "display": "true"
+  },
+  {
+    "id": "collab-1",
+    "question": "How can I collaborate with MBK Tech?",
+    "answer": "We welcome collaboration on open-source projects, technical content, and community initiatives. Use the <strong>Collaboration</strong> option on our <a href='/Support&Contact'>Contact form</a> to pitch your idea. We review every proposal and respond within a few days.",
+    "display": "true"
+  },
+  {
+    "id": "collab-2",
+    "question": "Do you accept open-source contributions?",
+    "answer": "Absolutely. Our projects are open-source and hosted on <a href='https://github.com/MIbnEKhalid' target='_blank'>GitHub</a>. You can contribute by submitting pull requests, reporting bugs, improving documentation, or suggesting features. Check individual project repositories for contribution guidelines.",
+    "display": "true"
   }
 ]
