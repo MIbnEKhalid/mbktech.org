@@ -1,6 +1,6 @@
 {
     "name": "mbktech.org",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "main": "app.js",
     "type": "module",
     "scripts": {
@@ -17,6 +17,7 @@
         "express-handlebars": "^8.0.1",
         "express-rate-limit": "^7.5.1",
         "handlebars": "^4.7.8",
+        "marked": "^18.0.9",
         "node-cache": "^5.1.2",
         "pg": "^8.13.3",
         "sitemap": "^8.0.0"

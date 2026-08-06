@@ -6,7 +6,7 @@ dotenv.config();
 
 // PostgreSQL connection pool (primary)
 export const pool = new Pool({
-    connectionString: process.env.NEON_POSTGRESs,
+    connectionString: process.env.NEON_POSTGRES,
     ssl: {
         rejectUnauthorized: false,
     },

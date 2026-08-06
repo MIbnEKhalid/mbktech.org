@@ -4,6 +4,7 @@ import {
     faqsPage,
     supportPage,
     termsPage,
+    privacyPage,
     trackTicketPage,
     servicesPage,
     basicPackagePage,
@@ -25,8 +26,9 @@ router.get("/", homePage);
 // Static pages
 router.get(["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], faqsPage);
 router.get("/FAQs/:slug", faqsPage);
-router.get(["/Support&Contact", "/Support", "/Contact", "/Contact&Support"], supportPage);
-router.get(["/Terms&Conditions", "/PrivacyPolicy", "/privacypolicy", "/terms&conditions"], termsPage);
+router.get(["/Support&Contact", "/Support%26Contact", "/Support", "/Contact", "/Contact&Support", "/Contact%26Support"], supportPage);
+router.get(["/Terms&Conditions", "/Terms%26Conditions", "/terms&conditions", "/terms%26conditions"], termsPage);
+router.get(["/PrivacyPolicy", "/privacypolicy"], privacyPage);
 router.get(["/TrackTicket"], trackTicketPage);
 router.get(["/Services", "/services"], servicesPage);
 router.get(["/Services/WebDevBasicPackage", "/Services/webdevbasicpackage", "/Services/webdevbasic-package"], basicPackagePage);

@@ -1,4 +1,5 @@
 import { domainRedirect } from "../middleware/domainRedirect.js";
+import { legalContent } from "../services/legalContentService.js";
 
 const siteViews = {
     main: {
@@ -50,6 +51,16 @@ export function termsPage(req, res) {
     res.render("mainPages/mainDomain/Terms&Conditions.handlebars", {
         layout: "main",
         title: "Terms & Conditions - MBK Tech",
+        termsContent: legalContent.terms,
+    });
+}
+
+// Privacy Policy page
+export function privacyPage(req, res) {
+    res.render("mainPages/mainDomain/PrivacyPolicy.handlebars", {
+        layout: "main",
+        title: "Privacy Policy - MBK Tech",
+        privacyContent: legalContent.privacy,
     });
 }
 

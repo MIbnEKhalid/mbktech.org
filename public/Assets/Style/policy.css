@@ -1,0 +1,176 @@
+/* ============================================================
+   POLICY.CSS — Legal pages (markdown rendered)
+   Privacy Policy & Terms & Conditions
+   ============================================================ */
+
+/* ----- Compact hero for legal pages ----- */
+.policy-hero {
+    padding: 4.5rem 2rem 3rem;
+}
+.policy-hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: 0.6rem;
+}
+.policy-hero p {
+    font-size: 1.05rem;
+    margin-bottom: 0;
+    opacity: 0.85;
+}
+
+/* ----- Content section (less vertical padding) ----- */
+.policy-body {
+    padding: 2.5rem 2rem 4rem;
+}
+
+/* ----- Rendered markdown card ----- */
+.policy-content {
+    position: relative;
+    color: var(--text-light);
+    line-height: 1.75;
+    font-size: 0.95rem;
+    text-align: justify;
+    text-justify: inter-word;
+
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 2.25rem 2.75rem;
+    overflow: hidden;
+}
+
+/* Top accent bar */
+.policy-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* ----- Headings ----- */
+.policy-content h1,
+.policy-content h2,
+.policy-content h3,
+.policy-content h4 {
+    font-weight: 600;
+}
+
+/* Document title (first h1, e.g. "Privacy Policy") */
+.policy-content > h1:first-child {
+    font-size: 1.85rem;
+    color: var(--light);
+    margin: 0 0 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+/* Numbered section headings (e.g. "1. Introduction") */
+.policy-content h1 {
+    font-size: 1.35rem;
+    color: var(--primary);
+    margin: 2.25rem 0 0.6rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.policy-content h2 {
+    font-size: 1.15rem;
+    color: var(--light);
+    margin: 1.75rem 0 0.5rem;
+}
+
+.policy-content h3 {
+    font-size: 1.05rem;
+    color: var(--light);
+    margin: 1.5rem 0 0.4rem;
+}
+
+.policy-content h4 {
+    font-size: 1rem;
+    color: var(--light);
+    margin: 1.25rem 0 0.4rem;
+}
+
+/* ----- Text ----- */
+.policy-content p {
+    margin-bottom: 0.6rem;
+}
+
+.policy-content strong {
+    color: var(--light);
+}
+
+.policy-content a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(67, 233, 123, 0.35);
+    transition: var(--transition);
+}
+
+.policy-content a:hover {
+    color: var(--secondary);
+    border-bottom-color: var(--secondary);
+}
+
+/* ----- Lists ----- */
+.policy-content ul,
+.policy-content ol {
+    padding-left: 1.4rem;
+    margin: 0.4rem 0 0.8rem;
+}
+
+.policy-content li {
+    margin-bottom: 0.3rem;
+}
+
+.policy-content li ul,
+.policy-content li ol {
+    margin: 0.25rem 0;
+}
+
+.policy-content li::marker {
+    color: var(--primary);
+}
+
+/* ----- Dividers (--- in markdown) ----- */
+.policy-content hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 1.5rem 0;
+}
+
+/* ----- Blockquote & code ----- */
+.policy-content blockquote {
+    border-left: 3px solid var(--primary);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    color: var(--text-light);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.policy-content code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+    .policy-hero {
+        padding: 3.5rem 1.25rem 2.25rem;
+    }
+    .policy-hero h1 {
+        font-size: 2rem;
+    }
+    .policy-body {
+        padding: 1.5rem 1rem 3rem;
+    }
+    .policy-content {
+        padding: 1.5rem 1.25rem;
+        border-radius: 10px;
+    }
+}
