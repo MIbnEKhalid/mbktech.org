@@ -1,186 +1,146 @@
-﻿<!-- Hero -->
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="fade-in">Our Services</h1>
-    <p class="fade-in delay-1">Professional technology solutions tailored to your needs — from simple websites to full-stack applications.</p>
-  </div>
+﻿<!-- ============================================================
+     SERVICES PAGE — MBK Tech
+     ============================================================ -->
+
+<!-- Page hero -->
+<section class="relative overflow-hidden bg-slate-50">
+    <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary-100/60 blur-3xl"></div>
+    <div class="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-accent-100/60 blur-3xl"></div>
+    <div class="container relative py-16 text-center md:py-24">
+        <span class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-600 ring-1 ring-primary-100">
+            <i class="lni lni-layers"></i> Our Services
+        </span>
+        <h1 class="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">Services built around your goals</h1>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
+            Professional technology solutions tailored to your needs — from simple websites to full-stack applications.
+        </p>
+    </div>
 </section>
 
-<style>
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-.pricing-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 2rem;
-    text-align: center;
-    transition: transform 0.25s, box-shadow 0.25s;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-.pricing-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.35);
-}
-.pricing-card.featured {
-    border-color: rgba(33,150,243,0.3);
-    background: rgba(33,150,243,0.05);
-}
-.pricing-badge {
-    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-    background: var(--primary); color: #fff; font-size: 0.75rem; font-weight: 700;
-    padding: 0.25rem 1rem; border-radius: 20px; text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-.pricing-icon {
-    font-size: 2.2rem; color: var(--primary); margin-bottom: 1rem;
-}
-.pricing-card h3 {
-    color: var(--text); font-size: 1.25rem; margin-bottom: 0.5rem;
-}
-.pricing-card > p {
-    color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.2rem; line-height: 1.5;
-}
-.pricing-range {
-    font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.15rem;
-}
-.pricing-note {
-    font-size: 0.78rem; color: var(--text-light); display: block; margin-bottom: 1.2rem;
-}
-.pricing-features {
-    list-style: none; padding: 0; margin: 0 0 1.5rem;
-    text-align: left; font-size: 0.85rem; color: var(--text-light); line-height: 1.7;
-    flex: 1;
-}
-.pricing-features li { padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-.pricing-features li:last-child { border: none; }
-.pricing-features li::before { content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900; color: var(--accent); margin-right: 0.5rem; font-size: 0.7rem; }
-.pricing-actions {
-    display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;
-}
-.pricing-actions .btn { font-size: 0.82rem; padding: 0.5rem 1rem; }
-
-@media (max-width: 768px) {
-    .pricing-grid { grid-template-columns: 1fr; }
-}
-</style>
-
-<!-- Pricing Cards -->
-<section class="services-section">
-  <div class="section-container">
-    <div class="section-title"><h2>What We Offer</h2></div>
-
-    <div class="pricing-grid">
-      <!-- Web Dev -->
-      <div class="pricing-card featured">
-        <div class="pricing-badge">Most Popular</div>
-        <div class="pricing-icon"><i class="fas fa-code"></i></div>
-        <h3>Web Development</h3>
-        <p>Custom websites and web applications built with modern technologies.</p>
-        <div class="pricing-range">PKR 5,000 – 15,000</div>
-        <span class="pricing-note">per project + service charges</span>
-        <ul class="pricing-features">
-          <li><strong>Basic (PKR 5k):</strong> Portfolio sites, auth, ticket system</li>
-          <li><strong>Full Stack (PKR 10-15k):</strong> E-commerce, admin panel, accounts</li>
-          <li>Responsive design &amp; SEO</li>
-          <li>Post-launch security updates included</li>
-        </ul>
-        <div class="pricing-actions">
-          <a href="/Services/WebDevBasicPackage" class="btn btn-primary">Basic Package</a>
-          <a href="/Services/WebDevFullStackPackage" class="btn btn-outline">Full Stack Package</a>
+<!-- ================= SERVICE / PRICING CARDS ================= -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>What We Offer</h2>
+            <p>Simple, transparent packages for every stage of your project.</p>
         </div>
-      </div>
+        <div class="grid gap-6 lg:grid-cols-3">
 
-      <!-- Consulting -->
-      <div class="pricing-card">
-        <div class="pricing-icon"><i class="fas fa-graduation-cap"></i></div>
-        <h3>Technical Consulting</h3>
-        <p>Expert advice on tech stack, architecture, and project direction.</p>
-        <div class="pricing-range">Free</div>
-        <span class="pricing-note">no-cost consultation</span>
-        <ul class="pricing-features">
-          <li>Technology assessment &amp; stack recommendations</li>
-          <li>Architecture planning &amp; code review</li>
-          <li>Project guidance &amp; best practices</li>
-          <li>Response may vary based on availability</li>
-        </ul>
-        <div class="pricing-actions">
-          <a href="/Support&Contact" class="btn btn-outline">Request Consult</a>
-        </div>
-      </div>
+            <!-- Web Development (featured) -->
+            <div class="card relative flex flex-col border-primary-200 bg-gradient-to-b from-primary-50/70 to-white ring-1 ring-primary-100">
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary-600 px-4 py-1 text-xs font-bold uppercase tracking-wider text-white">Most Popular</span>
+                <span class="feature-icon"><i class="lni lni-code"></i></span>
+                <h3 class="mt-5 text-xl font-bold">Web Development</h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-500">Custom websites and web applications built with modern technologies.</p>
+                <div class="mt-4">
+                    <p class="text-2xl font-extrabold text-accent-600">PKR 5,000 – 15,000</p>
+                    <p class="text-xs text-slate-400">per project + service charges</p>
+                </div>
+                <ul class="mt-5 flex-1 space-y-2 text-sm text-slate-600">
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span><strong>Basic (PKR 5k):</strong> Portfolio sites, auth, ticket system</span></li>
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span><strong>Full Stack (PKR 10-15k):</strong> E-commerce, admin panel, accounts</span></li>
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Responsive design &amp; SEO</span></li>
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Post-launch security updates included</span></li>
+                </ul>
+                <div class="mt-6 flex flex-wrap gap-3">
+                    <a href="/Services/WebDevBasicPackage" class="btn-primary flex-1">Basic Package</a>
+                    <a href="/Services/WebDevFullStackPackage" class="btn-outline flex-1">Full Stack</a>
+                </div>
+            </div>
 
-      <!-- Maintenance -->
-      <div class="pricing-card">
-        <div class="pricing-icon"><i class="fas fa-tools"></i></div>
-        <h3>Maintenance &amp; Support</h3>
-        <p>Ongoing maintenance, upgrades, and changes for existing projects.</p>
-        <div class="pricing-range">PKR 1,000 – 2,000</div>
-        <span class="pricing-note">per month + service charges</span>
-        <ul class="pricing-features">
-          <li>Website upgrades &amp; major feature changes</li>
-          <li>Bug fixes &amp; security patches</li>
-          <li>Performance monitoring &amp; optimization</li>
-          <li>Cost scales with complexity</li>
-        </ul>
-        <div class="pricing-actions">
-          <a href="/Support&Contact" class="btn btn-outline">Get Started</a>
+            <!-- Technical Consulting -->
+            <div class="card flex flex-col">
+                <span class="feature-icon bg-accent-50 text-accent-600"><i class="lni lni-consulting"></i></span>
+                <h3 class="mt-5 text-xl font-bold">Technical Consulting</h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-500">Expert advice on tech stack, architecture, and project direction.</p>
+                <div class="mt-4">
+                    <p class="text-2xl font-extrabold text-accent-600">Free</p>
+                    <p class="text-xs text-slate-400">no-cost consultation</p>
+                </div>
+                <ul class="mt-5 flex-1 space-y-2 text-sm text-slate-600">
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Technology assessment &amp; stack recommendations</span></li>
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Architecture planning &amp; code review</span></li>
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Project guidance &amp; best practices</span></li>
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Response may vary based on availability</span></li>
+                </ul>
+                <div class="mt-6">
+                    <a href="/Support&Contact" class="btn-outline w-full">Request Consult</a>
+                </div>
+            </div>
+
+            <!-- Maintenance & Support -->
+            <div class="card flex flex-col">
+                <span class="feature-icon"><i class="lni lni-cog"></i></span>
+                <h3 class="mt-5 text-xl font-bold">Maintenance &amp; Support</h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-500">Ongoing maintenance, upgrades, and changes for existing projects.</p>
+                <div class="mt-4">
+                    <p class="text-2xl font-extrabold text-accent-600">PKR 1,000 – 2,000</p>
+                    <p class="text-xs text-slate-400">per month + service charges</p>
+                </div>
+                <ul class="mt-5 flex-1 space-y-2 text-sm text-slate-600">
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Website upgrades &amp; major feature changes</span></li>
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Bug fixes &amp; security patches</span></li>
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Performance monitoring &amp; optimization</span></li>
+                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Cost scales with complexity</span></li>
+                </ul>
+                <div class="mt-6">
+                    <a href="/Support&Contact" class="btn-outline w-full">Get Started</a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
-<!-- Process -->
-<section class="process-section">
-  <div class="section-container">
-    <div class="section-title"><h2>How We Work</h2></div>
-    <div class="process-grid">
-      <div class="process-step">
-        <div class="step-number">1</div>
-        <h3>Discovery</h3>
-        <p>We learn about your goals, requirements, and constraints through detailed consultation.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">2</div>
-        <h3>Proposal</h3>
-        <p>A clear plan with timeline, deliverables, and cost estimate tailored to your needs.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">3</div>
-        <h3>Development</h3>
-        <p>We build your solution with regular updates, milestones, and transparent communication.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">4</div>
-        <h3>Launch</h3>
-        <p>Rigorous testing, smooth deployment, and a polished final product.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">5</div>
-        <h3>Support</h3>
-        <p>Ongoing maintenance to keep your solution performing at its best.</p>
-      </div>
+<!-- ================= PROCESS ================= -->
+<section class="section bg-slate-50">
+    <div class="container">
+        <div class="section-title">
+            <span class="eyebrow">How We Work</span>
+            <h2>A simple, transparent process</h2>
+            <p>From first conversation to launch and beyond.</p>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            <!-- Step -->
+            <div class="card text-center">
+                <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-extrabold text-white">1</span>
+                <h3 class="mt-4 text-base font-bold">Discovery</h3>
+                <p class="mt-2 text-sm text-slate-500">We learn about your goals, requirements, and constraints through detailed consultation.</p>
+            </div>
+            <div class="card text-center">
+                <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-accent-500 text-lg font-extrabold text-white">2</span>
+                <h3 class="mt-4 text-base font-bold">Proposal</h3>
+                <p class="mt-2 text-sm text-slate-500">A clear plan with timeline, deliverables, and cost estimate tailored to your needs.</p>
+            </div>
+            <div class="card text-center">
+                <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-extrabold text-white">3</span>
+                <h3 class="mt-4 text-base font-bold">Development</h3>
+                <p class="mt-2 text-sm text-slate-500">We build your solution with regular updates, milestones, and transparent communication.</p>
+            </div>
+            <div class="card text-center">
+                <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-accent-500 text-lg font-extrabold text-white">4</span>
+                <h3 class="mt-4 text-base font-bold">Launch</h3>
+                <p class="mt-2 text-sm text-slate-500">Rigorous testing, smooth deployment, and a polished final product.</p>
+            </div>
+            <div class="card text-center">
+                <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-extrabold text-white">5</span>
+                <h3 class="mt-4 text-base font-bold">Support</h3>
+                <p class="mt-2 text-sm text-slate-500">Ongoing maintenance to keep your solution performing at its best.</p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- CTA -->
-<section class="contact-cta-section">
-  <div class="section-container">
-    <div class="contact-cta-content">
-      <h2>Ready to Start?</h2>
-      <p>Tell us about your project and we'll get back to you with a personalized quote.</p>
-      <div class="cta-buttons">
-        <a href="/Support&Contact" class="btn btn-primary">Get a Quote</a>
-        <a href="mailto:support@mbktech.org" class="btn btn-outline">Email Us</a>
-      </div>
+<!-- ================= CTA ================= -->
+<section class="section">
+    <div class="container">
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary-600 to-accent-500 p-10 text-center text-white md:p-14">
+            <div class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl"></div>
+            <h2 class="text-3xl font-extrabold md:text-4xl">Ready to Start?</h2>
+            <p class="mx-auto mt-3 max-w-xl text-blue-100">Tell us about your project and we'll get back to you with a personalized quote.</p>
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <a href="/Support&Contact" class="btn-white">Get a Quote</a>
+                <a href="mailto:support@mbktech.org" class="btn bg-white/10 text-white ring-1 ring-white/30 hover:bg-white/20">Email Us</a>
+            </div>
+        </div>
     </div>
-  </div>
 </section>

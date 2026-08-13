@@ -1,0 +1,77 @@
+<!-- ============================================================
+     HEADER PARTIAL — shared navbar (Alpine.js powered)
+     Included by the layout via a Handlebars partial call.
+     ============================================================ -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur-md"
+        x-data="{ open: false }"
+        @keydown.escape.window="open = false">
+
+    <div class="container flex h-20 items-center justify-between gap-4">
+
+        <!-- Logo -->
+        <a href="/" class="flex shrink-0 items-center gap-2.5" aria-label="MBK Tech home">
+            <img src="{{icon_base64}}" alt="MBK Tech logo" class="h-9 w-auto">
+            <span class="font-heading text-2xl font-extrabold tracking-tight text-slate-900">
+                MBK<span class="text-primary-600">Tech</span>
+            </span>
+        </a>
+
+        <!-- Desktop navigation -->
+        <nav class="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
+            <a data-nav href="/" class="text-sm font-semibold text-slate-700 transition hover:text-primary-600">Home</a>
+            <a data-nav href="/Services" class="text-sm font-semibold text-slate-700 transition hover:text-primary-600">Services</a>
+            <a data-nav href="/FAQs" class="text-sm font-semibold text-slate-700 transition hover:text-primary-600">FAQs</a>
+            <a data-nav href="/Support&Contact" class="text-sm font-semibold text-slate-700 transition hover:text-primary-600">Support</a>
+            <a data-nav href="/TrackTicket" class="text-sm font-semibold text-slate-700 transition hover:text-primary-600">Track Ticket</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+            <a href="/Support&Contact" class="btn-primary hidden md:inline-flex">
+                Get In Touch
+            </a>
+
+            <!-- Mobile menu toggle -->
+            <button type="button"
+                    class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-700 transition hover:bg-slate-100 lg:hidden"
+                    @click="open = !open"
+                    :aria-expanded="open ? 'true' : 'false'"
+                    aria-label="Toggle navigation menu">
+                <i class="lni lni-menu text-2xl" x-show="!open"></i>
+                <i class="lni lni-close text-2xl" x-show="open" x-cloak></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div x-show="open"
+         x-cloak
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0 -translate-y-2"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-150"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-2"
+         class="border-t border-slate-100 bg-white px-4 py-4 lg:hidden">
+        <nav class="flex flex-col gap-1" aria-label="Mobile navigation">
+            <a href="/" class="rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-primary-600" @click="open = false">Home</a>
+            <a href="/Services" class="rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-primary-600" @click="open = false">Services</a>
+            <a href="/FAQs" class="rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-primary-600" @click="open = false">FAQs</a>
+            <a href="/Support&Contact" class="rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-primary-600" @click="open = false">Support</a>
+            <a href="/TrackTicket" class="rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-primary-600" @click="open = false">Track Ticket</a>
+            <a href="/Support&Contact" class="btn-primary mt-2" @click="open = false">Get In Touch</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Highlight the active nav link -->
+<script>
+    (function () {
+        var path = window.location.pathname.replace(/\/+$/, "") || "/";
+        document.querySelectorAll("[data-nav]").forEach(function (link) {
+            var href = (link.getAttribute("href") || "").split("?")[0].replace(/\/+$/, "") || "/";
+            if (path === href) {
+                link.classList.add("text-primary-600");
+            }
+        });
+    })();
+</script>

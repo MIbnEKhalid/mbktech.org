@@ -1,116 +1,183 @@
-﻿<link rel="stylesheet" href="/Assets/Style/tickets.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+﻿<!-- ============================================================
+     SUPPORT & CONTACT PAGE — MBK Tech
+     Form hooks preserved for /Assets/Scripts/tickets.js
+     ============================================================ -->
 
-<section class="ticket-form-container">
-    <div class="form-hero">
-        <div class="form-hero-icon"><i class="fas fa-headset"></i></div>
-        <h1>Support &amp; Contact</h1>
-        <p>Need help? Have feedback? We'd love to hear from you.</p>
+<!-- Page hero -->
+<section class="relative overflow-hidden bg-slate-50">
+    <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary-100/60 blur-3xl"></div>
+    <div class="container relative py-16 text-center md:py-20">
+        <span class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-600 ring-1 ring-primary-100">
+            <i class="lni lni-support"></i> Support
+        </span>
+        <h1 class="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">Support &amp; Contact</h1>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-500">Need help? Have feedback? We'd love to hear from you.</p>
     </div>
+</section>
 
-    <form id="ticketSupportForm" class="ticket-form" novalidate>
-        <!-- Name + Email row -->
-        <div class="form-row">
-            <div class="field flex-1">
-                <label class="label required">Name</label>
-                <input class="input" type="text" name="UserName" placeholder="Your name" required>
-            </div>
-            <div class="field flex-1">
-                <label class="label required">Email</label>
-                <input class="input" type="email" name="Email" placeholder="you@example.com" required>
-            </div>
-        </div>
+<section class="section">
+    <div class="container grid gap-10 lg:grid-cols-5">
 
-        <!-- Subject -->
-        <div class="field">
-            <label class="label required">What's this about?</label>
-            <div class="select">
-                <select class="input" name="Subject" id="subjectSelect" required>
-                    <option value="" disabled selected>Choose a topic...</option>
-                    <option value="Support">Technical Support</option>
-                    <option value="Feedback">Feedback</option>
-                    <option value="Collaboration">Collaboration</option>
-                    <option value="Get Quote">Get a Quote</option>
-                    <option value="General Inquiry">General Inquiry</option>
-                </select>
+        <!-- ================= INFO CARDS ================= -->
+        <div class="space-y-5 lg:col-span-2">
+            <div class="card">
+                <div class="flex items-start gap-4">
+                    <span class="feature-icon"><i class="lni lni-envelope"></i></span>
+                    <div>
+                        <h3 class="font-bold">Email Us</h3>
+                        <p class="mt-1 text-sm text-slate-500">For general questions or feedback.</p>
+                        <a href="mailto:support@mbktech.org" class="mt-1 inline-block text-sm font-semibold text-primary-600 hover:underline">support@mbktech.org</a>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Support type (Support only) -->
-        <div class="conditional-field" data-show="Support">
-            <div class="field">
-                <label class="label required">Support Type</label>
-                <div class="select">
-                    <select class="input" name="support">
-                        <option value="" disabled selected>What kind of support?</option>
-                        <option value="Docs">Documentation Help</option>
-                        <option value="Technical">Technical Issue</option>
-                        <option value="CopyRightIssue">Copyright Concern</option>
-                        <option value="BugReportingFeatureRequests">Bug Report / Feature Request</option>
-                        <option value="other">Something Else</option>
-                    </select>
+            <div class="card">
+                <div class="flex items-start gap-4">
+                    <span class="feature-icon bg-accent-50 text-accent-600"><i class="lni lni-ticket"></i></span>
+                    <div>
+                        <h3 class="font-bold">Track a Ticket</h3>
+                        <p class="mt-1 text-sm text-slate-500">Already submitted a request? Check its status.</p>
+                        <a href="/TrackTicket" class="mt-1 inline-block text-sm font-semibold text-primary-600 hover:underline">Track Ticket <i class="lni lni-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="flex items-start gap-4">
+                    <span class="feature-icon"><i class="lni lni-book"></i></span>
+                    <div>
+                        <h3 class="font-bold">Documentation</h3>
+                        <p class="mt-1 text-sm text-slate-500">Browse guides and project documentation.</p>
+                        <a href="https://docs.mbktech.org" target="_blank" rel="noopener" class="mt-1 inline-block text-sm font-semibold text-primary-600 hover:underline">View Docs <i class="lni lni-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="font-bold">Follow Us</h3>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <a href="https://github.com/MIbnEKhalid" target="_blank" rel="noopener" title="GitHub" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/ibnekhalid28" target="_blank" rel="noopener" title="X / Twitter" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-x"></i></a>
+                    <a href="https://youtube.com/@mibnekhalid" target="_blank" rel="noopener" title="YouTube" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    <a href="https://instagram.com/mbktech_org" target="_blank" rel="noopener" title="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank" rel="noopener" title="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
         </div>
 
-        <!-- Service type (Get Quote only) -->
-        <div class="conditional-field" data-show="Get Quote">
-            <div class="field">
-                <label class="label required">Service</label>
-                <div class="select">
-                    <select class="input" name="service">
-                        <option value="" disabled selected>Which service?</option>
-                        <option value="WebDev-Basic">Web Dev - Basic (PKR 5,000)</option>
-                        <option value="WebDev-FullStack">Web Dev - Full Stack (PKR 10-15k)</option>
-                        <option value="Technical-Consulting">Technical Consulting (Free)</option>
-                        <option value="Maintenance">Maintenance (PKR 1,000-2,000/mo)</option>
-                    </select>
-                </div>
+        <!-- ================= CONTACT FORM ================= -->
+        <div class="lg:col-span-3">
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+                <h2 class="text-xl font-bold">Send us a message</h2>
+                <p class="mt-1 text-sm text-slate-500">We usually respond within 1–2 business days.</p>
+
+                <form id="ticketSupportForm" class="mt-6 space-y-5" novalidate>
+                    <!-- Name + Email row -->
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <div>
+                            <label for="f-name" class="mb-1.5 block text-sm font-semibold text-slate-700">Name <span class="text-red-500">*</span></label>
+                            <input id="f-name" type="text" name="UserName" placeholder="Your name" required
+                                   class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500" />
+                        </div>
+                        <div>
+                            <label for="f-email" class="mb-1.5 block text-sm font-semibold text-slate-700">Email <span class="text-red-500">*</span></label>
+                            <input id="f-email" type="email" name="Email" placeholder="you@example.com" required
+                                   class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500" />
+                        </div>
+                    </div>
+
+                    <!-- Subject -->
+                    <div>
+                        <label for="subjectSelect" class="mb-1.5 block text-sm font-semibold text-slate-700">What's this about? <span class="text-red-500">*</span></label>
+                        <select id="subjectSelect" name="Subject" required
+                                class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500">
+                            <option value="" disabled selected>Choose a topic...</option>
+                            <option value="Support">Technical Support</option>
+                            <option value="Feedback">Feedback</option>
+                            <option value="Collaboration">Collaboration</option>
+                            <option value="Get Quote">Get a Quote</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <!-- Support type (shown for "Support") -->
+                    <div class="conditional-field space-y-5" data-show="Support">
+                        <div>
+                            <label for="f-support" class="mb-1.5 block text-sm font-semibold text-slate-700">Support Type <span class="text-red-500">*</span></label>
+                            <select id="f-support" name="support"
+                                    class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500">
+                                <option value="" disabled selected>What kind of support?</option>
+                                <option value="Docs">Documentation Help</option>
+                                <option value="Technical">Technical Issue</option>
+                                <option value="CopyRightIssue">Copyright Concern</option>
+                                <option value="BugReportingFeatureRequests">Bug Report / Feature Request</option>
+                                <option value="other">Something Else</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Service type (shown for "Get Quote") -->
+                    <div class="conditional-field space-y-5" data-show="Get Quote">
+                        <div>
+                            <label for="f-service" class="mb-1.5 block text-sm font-semibold text-slate-700">Service <span class="text-red-500">*</span></label>
+                            <select id="f-service" name="service"
+                                    class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500">
+                                <option value="" disabled selected>Which service?</option>
+                                <option value="WebDev-Basic">Web Dev - Basic (PKR 5,000)</option>
+                                <option value="WebDev-FullStack">Web Dev - Full Stack (PKR 10-15k)</option>
+                                <option value="Technical-Consulting">Technical Consulting (Free)</option>
+                                <option value="Maintenance">Maintenance (PKR 1,000-2,000/mo)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Phone (Support, Collaboration, Get Quote) -->
+                    <div class="conditional-field space-y-5" data-show="Support,Collaboration,Get Quote">
+                        <div>
+                            <label for="f-phone" class="mb-1.5 block text-sm font-semibold text-slate-700">Phone Number <span class="font-normal text-slate-400">(optional)</span></label>
+                            <input id="f-phone" type="tel" name="Number" placeholder="+92 300 1234567"
+                                   class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500" />
+                        </div>
+                    </div>
+
+                    <!-- Rating (Feedback only) -->
+                    <div class="conditional-field space-y-5" data-show="Feedback">
+                        <div>
+                            <label class="mb-1.5 block text-sm font-semibold text-slate-700">Rate your experience <span class="text-red-500">*</span></label>
+                            <div class="star-rating" id="starRating">
+                                <input type="radio" name="stars" value="5" id="s5"><label for="s5"><i class="fas fa-star"></i></label>
+                                <input type="radio" name="stars" value="4" id="s4"><label for="s4"><i class="fas fa-star"></i></label>
+                                <input type="radio" name="stars" value="3" id="s3"><label for="s3"><i class="fas fa-star"></i></label>
+                                <input type="radio" name="stars" value="2" id="s2"><label for="s2"><i class="fas fa-star"></i></label>
+                                <input type="radio" name="stars" value="1" id="s1"><label for="s1"><i class="fas fa-star"></i></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label for="f-message" class="mb-1.5 block text-sm font-semibold text-slate-700">Message <span class="text-red-500">*</span></label>
+                        <textarea id="f-message" name="Message" rows="5" placeholder="Tell us what's on your mind..." required
+                                  class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500"></textarea>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" id="submitBtn" class="btn-primary w-full">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-spinner" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Sending...</span>
+                    </button>
+
+                    <!-- Footer -->
+                    <p class="text-center text-xs text-slate-400">
+                        By sending, you agree to our <a href="/Terms&Conditions" class="font-semibold text-primary-600 hover:underline">Terms &amp; Conditions</a>.
+                    </p>
+                </form>
+
+                <!-- Response area (hidden until submit) -->
+                <div id="formResponse" class="form-response" style="display:none"></div>
             </div>
         </div>
-
-        <!-- Phone (Support, Collaboration, Get Quote) -->
-        <div class="conditional-field" data-show="Support,Collaboration,Get Quote">
-            <div class="field">
-                <label class="label">Phone Number <span class="label-hint">(optional)</span></label>
-                <input class="input" type="tel" name="Number" placeholder="+92 300 1234567">
-            </div>
-        </div>
-
-        <!-- Rating (Feedback only) -->
-        <div class="conditional-field" data-show="Feedback">
-            <div class="field">
-                <label class="label required">Rate your experience</label>
-                <div class="star-rating" id="starRating">
-                    <input type="radio" name="stars" value="5" id="s5"><label for="s5"><i class="fas fa-star"></i></label>
-                    <input type="radio" name="stars" value="4" id="s4"><label for="s4"><i class="fas fa-star"></i></label>
-                    <input type="radio" name="stars" value="3" id="s3"><label for="s3"><i class="fas fa-star"></i></label>
-                    <input type="radio" name="stars" value="2" id="s2"><label for="s2"><i class="fas fa-star"></i></label>
-                    <input type="radio" name="stars" value="1" id="s1"><label for="s1"><i class="fas fa-star"></i></label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Message -->
-        <div class="field">
-            <label class="label required">Message</label>
-            <textarea class="textarea" name="Message" rows="5" placeholder="Tell us what's on your mind..." required></textarea>
-        </div>
-
-        <!-- Submit -->
-        <button type="submit" id="submitBtn" class="btn-submit">
-            <span class="btn-text">Send Message</span>
-            <span class="btn-spinner" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Sending...</span>
-        </button>
-
-        <!-- Footer -->
-        <p class="form-footer">
-            By sending, you agree to our <a href="/Terms&amp;Conditions">Terms &amp; Conditions</a>.
-        </p>
-    </form>
-
-    <!-- Response area (hidden until submit) -->
-    <div id="formResponse" class="form-response" style="display:none"></div>
+    </div>
 </section>
 
 <script src="/Assets/Scripts/tickets.js"></script>

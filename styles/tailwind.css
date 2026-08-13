@@ -1,0 +1,364 @@
+/* ============================================================
+   TAILWIND INPUT — compiled to /public/Assets/Style/tailwind.css
+   Run: npm run build:css   (or watch:css during development)
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-slate-700 antialiased;
+  }
+
+  /* Alpine.js x-cloak — keep elements hidden until Alpine initializes */
+  [x-cloak] {
+    display: none !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-slate-900;
+  }
+
+  /* Focus visibility for accessibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+  }
+}
+
+/* ---------- Reusable components ---------- */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-primary-600 text-white shadow-sm hover:bg-primary-700 focus:ring-primary-500;
+  }
+  .btn-accent {
+    @apply btn bg-accent-500 text-white shadow-sm hover:bg-accent-600 focus:ring-accent-400;
+  }
+  .btn-outline {
+    @apply btn border border-slate-300 bg-white text-slate-700 hover:border-primary-400 hover:text-primary-600 focus:ring-primary-500;
+  }
+  .btn-white {
+    @apply btn bg-white text-primary-700 shadow-sm hover:bg-slate-100 focus:ring-white;
+  }
+  .btn-ghost {
+    @apply btn text-slate-600 hover:bg-slate-100 hover:text-primary-600 focus:ring-slate-300;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-title {
+    @apply mb-12 text-center;
+  }
+  .section-title .eyebrow {
+    @apply mb-3 inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-600;
+  }
+  .section-title h2 {
+    @apply text-3xl font-extrabold tracking-tight md:text-4xl;
+  }
+  .section-title p {
+    @apply mx-auto mt-4 max-w-2xl text-slate-500;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .feature-icon {
+    @apply inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-2xl text-primary-600;
+  }
+}
+
+/* ============================================================
+   tickets.js — injected markup styles (Support & Track pages)
+   tickets.js relies on these exact class names.
+   ============================================================ */
+.conditional-field {
+  display: none;
+}
+.conditional-field.visible {
+  display: block;
+}
+
+.form-response {
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  border: 1px solid #e2e8f0;
+}
+.form-response.success {
+  background-color: #f0fdfa;
+  border-color: #99f6e4;
+  color: #0f766e;
+}
+.form-response.error {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+.form-response .resp-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.form-response .resp-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+.form-response .resp-detail {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: #475569;
+}
+.form-response .ticket-display {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.form-response .ticket-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 700;
+  color: #0d9488;
+  background: #fff;
+  border: 1px solid #99f6e4;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.form-response .btn-copy,
+.form-response .btn-retry {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #0f172a;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.form-response .btn-copy:hover,
+.form-response .btn-retry:hover {
+  background: #f1f5f9;
+}
+.form-response .resp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+/* Star rating (Support feedback) */
+.star-rating {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: 0.25rem;
+}
+.star-rating input {
+  display: none;
+}
+.star-rating label {
+  font-size: 1.75rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input:checked ~ label {
+  color: #f59e0b;
+}
+
+/* ============================================================
+   Track Ticket page — injected markup styles (tickets.js)
+   ============================================================ */
+#ticketResult,
+#ticketNotFound {
+  display: none;
+}
+#ticketResult.visible,
+#ticketNotFound.visible {
+  display: block;
+}
+
+.track-status {
+  text-align: center;
+  padding: 0.5rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+.track-status.error {
+  color: #ef4444;
+}
+
+.ticket-result h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid #dbeafe;
+  color: #2563eb;
+  font-size: 1.3rem;
+}
+.ticket-result .detail-row {
+  display: flex;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.ticket-result .detail-label {
+  min-width: 130px;
+  font-weight: 600;
+  color: #64748b;
+}
+.ticket-result .detail-value {
+  color: #0f172a;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.status-badge.pending,
+.status-badge.on_hold,
+.status-badge.on-hold { background: rgba(255, 193, 7, 0.15); color: #d97706; }
+.status-badge.open { background: rgba(37, 99, 235, 0.12); color: #2563eb; }
+.status-badge.in_progress,
+.status-badge.in-progress { background: rgba(147, 51, 234, 0.12); color: #9333ea; }
+.status-badge.resolved { background: rgba(22, 163, 74, 0.12); color: #16a34a; }
+.status-badge.closed { background: rgba(100, 116, 139, 0.15); color: #64748b; }
+
+/* Audit trail */
+.audit-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+.audit-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: #0f172a;
+  user-select: none;
+}
+.audit-toggle:hover { color: #2563eb; }
+.audit-toggle .arrow { transition: transform 0.3s; }
+.audit-toggle.open .arrow { transform: rotate(180deg); }
+
+.audit-list {
+  display: none;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+.audit-list.visible { display: block; }
+.audit-list li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+  padding: 0.6rem 0.8rem;
+  border-left: 3px solid #2563eb;
+  border-radius: 6px;
+  background: #f8fafc;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+.audit-list li .audit-action {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Not found card */
+.ticket-not-found {
+  border: 1px solid rgba(244, 63, 94, 0.25);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(244, 63, 94, 0.06);
+}
+.ticket-not-found h3 { color: #e11d48; margin-top: 0; }
+
+/* ============================================================
+   FAQ page — injected markup styles (fetch /Assets/FAQs/faq.json)
+   ============================================================ */
+.faq-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  background: #fff;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: box-shadow 0.25s;
+}
+.faq-item.active {
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
+  border-color: #bfdbfe;
+}
+.faq-item .faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.faq-item .faq-question::after {
+  content: "+";
+  flex-shrink: 0;
+  margin-left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.faq-item.active .faq-question::after {
+  content: "−";
+}
+.faq-item .faq-answer {
+  display: none;
+  border-top: 1px solid #f1f5f9;
+}
+.faq-item.active .faq-answer {
+  display: block;
+}
+.faq-item .faq-answer > div {
+  padding: 1rem 1.25rem;
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
