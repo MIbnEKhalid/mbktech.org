@@ -4,11 +4,11 @@ import { legalContent } from "../services/legalContentService.js";
 const siteViews = {
     main: {
         view: "mainPages/mainDomain/index.handlebars",
-        layout: "tailwind",
+        layout: "main",
     },
     download: {
         view: "mainPages/otherDomain/download.handlebars",
-        layout: "tailwind",
+        layout: "main",
         mainAppLink: process.env.PortalVersionControlJson
             ? JSON.parse(process.env.PortalVersionControlJson)
             : null,
@@ -33,7 +33,7 @@ export function homePage(req, res) {
 // FAQs page
 export function faqsPage(req, res) {
     res.render("mainPages/mainDomain/FAQs.handlebars", {
-        layout: "tailwind",
+        layout: "main",
         title: "Frequently Asked Questions - MBK Tech",
     });
 }
@@ -41,7 +41,7 @@ export function faqsPage(req, res) {
 // Support & Contact page
 export function supportPage(req, res) {
     res.render("mainPages/mainDomain/Support&Contact.handlebars", {
-        layout: "tailwind",
+        layout: "main",
         title: "Support Ticket System - MBK Tech Support & Contact",
     });
 }
@@ -49,7 +49,7 @@ export function supportPage(req, res) {
 // Terms & Conditions page
 export function termsPage(req, res) {
     res.render("mainPages/mainDomain/Terms&Conditions.handlebars", {
-        layout: "tailwind",
+        layout: "main",
         title: "Terms & Conditions - MBK Tech",
         termsContent: legalContent.terms,
     });
@@ -58,7 +58,7 @@ export function termsPage(req, res) {
 // Privacy Policy page
 export function privacyPage(req, res) {
     res.render("mainPages/mainDomain/PrivacyPolicy.handlebars", {
-        layout: "tailwind",
+        layout: "main",
         title: "Privacy Policy - MBK Tech",
         privacyContent: legalContent.privacy,
     });
@@ -67,7 +67,7 @@ export function privacyPage(req, res) {
 // Track Ticket page
 export function trackTicketPage(req, res) {
     res.render("mainPages/mainDomain/TrackTicket.handlebars", {
-        layout: "tailwind",
+        layout: "main",
         title: "Support Ticket System - MBK Tech",
     });
 }
@@ -75,7 +75,7 @@ export function trackTicketPage(req, res) {
 // Services page
 export function servicesPage(req, res) {
     res.render("mainPages/mainDomain/services.handlebars", {
-        layout: "tailwind",
+        layout: "main",
         title: "Services - MBK Tech",
     });
 }
@@ -83,7 +83,7 @@ export function servicesPage(req, res) {
 // Basic Package page
 export function basicPackagePage(req, res) {
     res.render("mainPages/mainDomain/BasicPackage.handlebars", {
-        layout: "tailwind",
+        layout: "main",
         title: "Basic Package - MBK Tech",
     });
 }
@@ -91,8 +91,16 @@ export function basicPackagePage(req, res) {
 // Advanced Package page
 export function advancedPackagePage(req, res) {
     res.render("mainPages/mainDomain/AdvancedPackage.handlebars", {
-        layout: "tailwind",
+        layout: "main",
         title: "Advanced Package - MBK Tech",
+    });
+}
+
+// Service Status page
+export function statusPage(req, res) {
+    res.render("mainPages/mainDomain/Status.handlebars", {
+        layout: "main",
+        title: "Service Status - MBK Tech",
     });
 }
 
@@ -105,6 +113,6 @@ export function trackTicketRedirect(req, res) {
 export function notFound(req, res) {
     console.log(`Path not found: ${req.url}`);
     res.status(404).render("mainPages/404.handlebars", {
-        layout: "tailwind",
+        layout: "main",
     });
 }

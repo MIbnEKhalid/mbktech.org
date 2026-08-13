@@ -1,0 +1,113 @@
+<!-- ============================================================
+     SERVICE STATUS PAGE — MBK Tech
+     Alpine.js reachability check for all MBK Tech services.
+     ============================================================ -->
+
+<!-- Page hero -->
+<section class="relative overflow-hidden bg-slate-50">
+    <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary-100/60 blur-3xl"></div>
+    <div class="container relative py-16 text-center md:py-20">
+        <span class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-600 ring-1 ring-primary-100">
+            <i class="lni lni-signal"></i> Status
+        </span>
+        <h1 class="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">Service Status</h1>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-500">Live reachability of all MBK Tech services and platforms.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container max-w-3xl">
+        <div
+            x-data="statusChecker()"
+            x-init="checkAll()"
+            class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8 dark:border-slate-700 dark:bg-slate-800"
+        >
+            <!-- Header row -->
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <h2 class="text-lg font-bold">Services</h2>
+                <button type="button" @click="checkAll()" class="btn-outline !px-4 !py-2">
+                    <i class="lni lni-reload" :class="checking ? 'animate-spin' : ''"></i>
+                    Refresh
+                </button>
+            </div>
+
+            <!-- Service list -->
+            <ul class="mt-5 divide-y divide-slate-100 dark:divide-slate-700">
+                <template x-for="svc in services" :key="svc.url">
+                    <li class="flex items-center justify-between gap-4 py-3.5">
+                        <div class="flex min-w-0 items-center gap-3">
+                            <span
+                                class="h-2.5 w-2.5 shrink-0 rounded-full"
+                                :class="{
+                                    'bg-emerald-500': svc.status === 'up',
+                                    'bg-red-500': svc.status === 'down',
+                                    'bg-amber-400 animate-pulse': svc.status === 'checking',
+                                    'bg-slate-300': !svc.status
+                                }"
+                            ></span>
+                            <div class="min-w-0">
+                                <p class="truncate text-sm font-semibold" x-text="svc.name"></p>
+                                <a :href="svc.url" target="_blank" rel="noopener"
+                                   class="truncate text-xs text-slate-400 transition hover:text-primary-600"
+                                   x-text="svc.url"></a>
+                            </div>
+                        </div>
+                        <span
+                            class="shrink-0 text-sm font-semibold"
+                            :class="{
+                                'text-emerald-600': svc.status === 'up',
+                                'text-red-500': svc.status === 'down',
+                                'text-amber-500': svc.status === 'checking',
+                                'text-slate-400': !svc.status
+                            }"
+                            x-text="svc.status === 'up' ? 'Operational' : svc.status === 'down' ? 'Down' : svc.status === 'checking' ? 'Checking…' : '…'"
+                        ></span>
+                    </li>
+                </template>
+            </ul>
+
+            <!-- Footer note -->
+            <p class="mt-4 text-xs text-slate-400">
+                <template x-if="lastChecked"><span>Last checked: <span x-text="lastChecked"></span> · </span></template>
+                Reachability check only — actual performance may vary.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+    function statusChecker() {
+        return {
+            services: [
+                { name: "Main Site", url: "https://mbktech.org" },
+                { name: "Blog", url: "https://blog.mbktech.org" },
+                { name: "Web Portal", url: "https://core.mbktech.org" },
+                { name: "Chat App", url: "https://chat.mbktech.org" },
+                { name: "AI Chatbot", url: "https://chatapi.mbktech.org" },
+                { name: "Unilib", url: "https://unilib.mbktech.org" },
+                { name: "Download Apps", url: "https://download.mbktech.org" },
+            ],
+            checking: false,
+            lastChecked: null,
+            async check(svc) {
+                svc.status = "checking";
+                const controller = new AbortController();
+                const timer = setTimeout(() => controller.abort(), 6000);
+                try {
+                    await fetch(svc.url, { mode: "no-cors", cache: "no-store", signal: controller.signal });
+                    svc.status = "up";
+                } catch (e) {
+                    svc.status = "down";
+                } finally {
+                    clearTimeout(timer);
+                }
+            },
+            async checkAll() {
+                this.checking = true;
+                await Promise.all(this.services.map((s) => this.check(s)));
+                this.checking = false;
+                this.lastChecked = new Date().toLocaleTimeString();
+            },
+        };
+    }
+</script>

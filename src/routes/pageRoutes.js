@@ -9,6 +9,7 @@ import {
     servicesPage,
     basicPackagePage,
     advancedPackagePage,
+    statusPage,
     trackTicketRedirect,
 } from "../controllers/pageController.js";
 import {
@@ -33,6 +34,7 @@ router.get(["/TrackTicket"], trackTicketPage);
 router.get(["/Services", "/services"], servicesPage);
 router.get(["/Services/WebDevBasicPackage", "/Services/webdevbasicpackage", "/Services/webdevbasic-package"], basicPackagePage);
 router.get(["/Services/WebDevFullStackPackage", "/Services/webdevfullstackpackage", "/Services/webdevfullstack-package"], advancedPackagePage);
+router.get(["/Status", "/status"], statusPage);
 
 // Redirects
 router.get(["/Ticket", "/Track", "/trackticket"], trackTicketRedirect);

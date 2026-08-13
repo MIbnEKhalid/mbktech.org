@@ -1,34 +1,31 @@
-<!DOCTYPE html>
+<!--
+  Cookie consent notice.
+  This fragment is injected into the page by /Assets/Scripts/cookie.js
+  (into the #cookie placeholder in the layout). Styling lives in
+  /Assets/Style/tailwind.css under #cookieNotice.
+-->
+<div id="cookieNotice" style="display: none;">
 
-<html lang="en" dir="ltr">
-
-<head>
-  <link rel="stylesheet" href="https://mbktech.org/Assets/Style/cookie.css" />
-</head>
-
-<body>
-  <div id="cookieNotice" class="light display-right" style="display: none;">
-
-    <div id="closeIcon" onclick="hideCookieNotice();"></div>
+    <button type="button" id="closeIcon" onclick="hideOverlay();" aria-label="Dismiss cookie notice">
+        <i class="fas fa-times"></i>
+    </button>
 
     <div class="title-wrap">
-      <h4>Cookie Consent</h4>
+        <i class="fas fa-cookie-bite"></i>
+        <h4>Cookie Consent</h4>
     </div>
 
     <div class="content-wrap">
-      <div class="msg-wrap">
-        <p>This Website Uses Cookies. By Continuing To Use Our Website, You Agree To Our <a href="/PrivacyPolicy" target="_blank">Privacy Policy</a>,<a href="/PrivacyPolicy" target="_blank">Term And Conditions</a> And <a href="/PrivacyPolicy" target="_blank">Cookie Policy</a>.</p>
-        <div class="btn-wrap">
-          <div class="button" style="width: 100%;">
-            <button id="agreeButton" class="buttons" style="width: 100%;" onclick="SaveCookie();">ACCEPT</button>
-          </div>
+        <div class="msg-wrap">
+            <p>
+                This website uses cookies. By continuing to use our website, you agree to our
+                <a href="/PrivacyPolicy" target="_blank">Privacy Policy</a> and
+                <a href="/Terms&Conditions" target="_blank">Terms &amp; Conditions</a>.
+            </p>
+            <div class="btn-wrap">
+                <button id="agreeButton" class="buttons" onclick="SaveCookie();">Accept</button>
+            </div>
         </div>
-      </div>
     </div>
 
-  </div>
-</body>
-
-<script src="https://mbktech.org/Assets/script.js"></script>
-
-</html>
+</div>

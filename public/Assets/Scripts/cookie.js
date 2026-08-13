@@ -1,7 +1,7 @@
 async function getTermsVersionFromPrivacyPolicy() {
     try {
         console.log('Fetching terms version from privacy policy...');
-        const response = await fetch('https://mbktech.org/Terms&Conditions');
+        const response = await fetch('/Terms&Conditions');
         const html = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');

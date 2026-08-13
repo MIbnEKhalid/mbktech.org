@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./views/**/*.handlebars"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
