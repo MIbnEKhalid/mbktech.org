@@ -17,6 +17,78 @@
     var btnText = submitBtn.querySelector(".btn-text");
     var btnSpinner = submitBtn.querySelector(".btn-spinner");
 
+    // Bot protection elements
+    var botWidget = document.getElementById("botProtectionWidget");
+    var botCheckBtn = document.getElementById("botCheckBtn");
+    var botLabel = document.getElementById("botLabel");
+    var botSubLabel = document.getElementById("botSubLabel");
+    var botTokenInput = document.getElementById("botToken");
+    var botTsInput = document.getElementById("botTimestamp");
+    var botErrorMsg = document.getElementById("botErrorMsg");
+    var botHoneypot = document.getElementById("botHoneypot");
+    var isBotVerified = false;
+    var isBotVerifying = false;
+
+    // ----- Fetch initial Bot Challenge Token -----
+    function fetchBotChallenge() {
+        fetch("/api/bot-challenge")
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                if (data.success && data.token) {
+                    if (botTokenInput) botTokenInput.value = data.token;
+                    if (botTsInput) botTsInput.value = data.ts;
+                }
+            })
+            .catch(function () { /* fallback gracefully */ });
+    }
+    fetchBotChallenge();
+
+    // ----- Bot Checkbox Click Handler -----
+    if (botCheckBtn) {
+        botCheckBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (isBotVerified || isBotVerifying) return;
+
+            isBotVerifying = true;
+            if (botWidget) {
+                botWidget.classList.remove("shake");
+                botWidget.classList.add("verifying");
+            }
+            if (botLabel) botLabel.textContent = "Verifying security...";
+            if (botSubLabel) botSubLabel.textContent = "Please wait";
+            if (botErrorMsg) botErrorMsg.classList.add("hidden");
+
+            // Ensure challenge token exists
+            if (!botTokenInput || !botTokenInput.value) {
+                fetchBotChallenge();
+            }
+
+            // Realistic micro-verification animation
+            setTimeout(function () {
+                isBotVerifying = false;
+                isBotVerified = true;
+                if (botWidget) {
+                    botWidget.classList.remove("verifying");
+                    botWidget.classList.add("verified");
+                }
+                if (botLabel) botLabel.textContent = "I'm not a robot";
+                if (botSubLabel) botSubLabel.textContent = "Verification complete";
+            }, 750);
+        });
+    }
+
+    function resetBotProtection() {
+        isBotVerified = false;
+        isBotVerifying = false;
+        if (botWidget) {
+            botWidget.classList.remove("verified", "verifying", "shake");
+        }
+        if (botLabel) botLabel.textContent = "I'm not a robot";
+        if (botSubLabel) botSubLabel.textContent = "Click to verify";
+        if (botTokenInput) botTokenInput.value = "";
+        fetchBotChallenge();
+    }
+
     // ----- Conditional fields via data-show -----
     function toggleFields() {
         var val = subjectSelect.value;
@@ -82,6 +154,33 @@
     // ----- Submit -----
     form.addEventListener("submit", function (e) {
         e.preventDefault();
+
+        // 1. Bot check verification gate
+        var cfTurnstileEl = form.querySelector(".cf-turnstile");
+        if (cfTurnstileEl) {
+            var turnstileResp = form.querySelector('[name="cf-turnstile-response"]');
+            if (!turnstileResp || !turnstileResp.value) {
+                if (botErrorMsg) {
+                    botErrorMsg.textContent = "Please complete the Cloudflare verification challenge.";
+                    botErrorMsg.classList.remove("hidden");
+                }
+                return;
+            }
+        } else if (!isBotVerified) {
+            if (botErrorMsg) {
+                botErrorMsg.textContent = "Please verify that you are not a robot before submitting.";
+                botErrorMsg.classList.remove("hidden");
+            }
+            if (botWidget) {
+                botWidget.classList.add("shake");
+                setTimeout(function () {
+                    botWidget.classList.remove("shake");
+                }, 600);
+                botWidget.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+            return;
+        }
+
         hideResponse();
         setLoading(true);
 
@@ -96,6 +195,7 @@
     });
 
     function submitTicket() {
+        var cfTurnstile = form.querySelector('[name="cf-turnstile-response"]');
         var payload = {
             name: fieldVal("UserName"),
             email: fieldVal("Email"),
@@ -104,7 +204,14 @@
             category: fieldVal("support"),
             message: fieldVal("Message"),
             pageUrl: window.location.href,
+            _bot_token: botTokenInput ? botTokenInput.value : "",
+            _bot_hp: botHoneypot ? botHoneypot.value : "",
+            _bot_ts: botTsInput ? botTsInput.value : "",
         };
+
+        if (cfTurnstile && cfTurnstile.value) {
+            payload["cf-turnstile-response"] = cfTurnstile.value;
+        }
 
         fetch("/api/tickets", {
             method: "POST",
@@ -129,6 +236,7 @@
                 '</div>' +
                 '<a class="resp-link" href="/TrackTicket#' + tn + '">Track your ticket <i class="fas fa-arrow-right"></i></a>');
             form.reset();
+            resetBotProtection();
             toggleFields();
         })
         .catch(function () {
@@ -145,6 +253,9 @@
         fd.forEach(function (v, k) { payload[k] = v; });
         payload.Timestamp = new Date().toISOString();
         payload.PageUrl = window.location.href;
+        if (botTokenInput) payload._bot_token = botTokenInput.value;
+        if (botHoneypot) payload._bot_hp = botHoneypot.value;
+        if (botTsInput) payload._bot_ts = botTsInput.value;
 
         fetch("/post/SubmitForm", {
             method: "POST",
@@ -163,6 +274,7 @@
             showResponse("success", "Message sent!",
                 result.data.data.message || "We'll get back to you soon.");
             form.reset();
+            resetBotProtection();
             toggleFields();
         })
         .catch(function () {

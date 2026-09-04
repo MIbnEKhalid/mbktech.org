@@ -1,0 +1,203 @@
+<!-- ============================================================
+     LEGAL DOCUMENT TEMPLATE — MBK Tech 
+     Unified template for Privacy Policy, Terms & Conditions, and Legal Docs
+     ============================================================ -->
+
+<!-- Page Header Hero -->
+<section class="relative overflow-hidden py-8 sm:py-10 border-b border-primary-600/10 bg-white/40 dark:bg-dark-surface/40 backdrop-blur-md">
+    <div class="container max-w-6xl relative z-10 space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <div class="space-y-1.5">
+                <span class="eyebrow inline-flex items-center gap-1.5 rounded-full bg-primary-50 px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-primary-700 border border-primary-600/20 dark:bg-primary-950/70 dark:text-primary-300 dark:border-primary-500/30">
+                    <i class="lni {{#if docIcon}}{{docIcon}}{{else}}lni-shield{{/if}}"></i> {{#if docCategory}}{{docCategory}}{{else}}Legal &amp; Compliance{{/if}}
+                </span>
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                    {{#if docTitle}}{{docTitle}}{{else}}Legal Document{{/if}}
+                </h1>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+                    {{#if docDescription}}{{docDescription}}{{else}}Official legal documentation for MBKTech.org services and software.{{/if}}
+                </p>
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="flex flex-wrap items-center gap-2 shrink-0">
+                <button type="button" onclick="window.print()" class="btn-outline text-xs py-1.5 px-3 gap-1.5" title="Print or save as PDF">
+                    <i class="lni lni-printer"></i> Print / PDF
+                </button>
+                <button type="button" onclick="copyCurrentUrl(this)" class="btn-outline text-xs py-1.5 px-3 gap-1.5" title="Copy document URL">
+                    <i class="lni lni-link"></i> Share
+                </button>
+            </div>
+        </div>
+
+        <!-- Document Metadata Pill Strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs">
+            <div class="rounded-lg bg-primary-50/60 dark:bg-primary-950/40 p-3 border border-primary-600/15">
+                <span class="text-slate-500 dark:text-slate-400 block text-[11px]">Effective Date</span>
+                <span class="font-bold text-slate-900 dark:text-white font-mono">{{#if effectiveDate}}{{effectiveDate}}{{else}}August 6, 2026{{/if}}</span>
+            </div>
+            <div class="rounded-lg bg-primary-50/60 dark:bg-primary-950/40 p-3 border border-primary-600/15">
+                <span class="text-slate-500 dark:text-slate-400 block text-[11px]">Document Version</span>
+                <span id="termVersionPrivacy" class="font-bold text-primary-600 dark:text-primary-400 font-mono">Terms Version: {{#if versionNumber}}{{versionNumber}}{{else}}1.0.0{{/if}}</span>
+            </div>
+            <div class="rounded-lg bg-primary-50/60 dark:bg-primary-950/40 p-3 border border-primary-600/15">
+                <span class="text-slate-500 dark:text-slate-400 block text-[11px]">Jurisdiction</span>
+                <span class="font-bold text-slate-900 dark:text-white">{{#if entity}}{{entity}}{{else}}MBKTech.org{{/if}}</span>
+            </div>
+            <div class="rounded-lg bg-primary-50/60 dark:bg-primary-950/40 p-3 border border-primary-600/15">
+                <span class="text-slate-500 dark:text-slate-400 block text-[11px]">Reading Time</span>
+                <span class="font-bold text-slate-900 dark:text-white">{{#if readingTime}}{{readingTime}}{{else}}~6 mins read{{/if}}</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= DOCUMENT READER & TOC ================= -->
+<section class="section py-10 sm:py-14">
+    <div class="container max-w-6xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            <!-- Sticky Sidebar: Table of Contents -->
+            <aside class="hidden lg:block lg:col-span-4 sticky top-24 space-y-4">
+                <div class="card p-5 border-primary-600/20 space-y-4">
+                    <div class="flex items-center justify-between pb-2 border-b border-primary-600/10 dark:border-primary-500/20">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                            <i class="lni lni-list text-primary-600"></i> Table of Contents
+                        </h3>
+                        <span id="tocCount" class="text-[10px] font-mono text-primary-600 bg-primary-50 dark:bg-primary-950 px-2 py-0.5 rounded"></span>
+                    </div>
+
+                    <!-- Filter search -->
+                    <div class="relative">
+                        <i class="lni lni-search-alt absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="tocFilter" placeholder="Filter sections..."
+                               class="w-full rounded-lg border border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 pl-8 pr-3 py-1.5 text-xs focus:border-primary-600 focus:ring-1 focus:ring-primary-500">
+                    </div>
+
+                    <!-- TOC Navigation list -->
+                    <nav id="docToc" class="max-h-[50vh] overflow-y-auto space-y-1 text-xs pr-1 divide-y divide-primary-600/5 dark:divide-primary-500/10"></nav>
+                </div>
+
+                <!-- Support Callout -->
+                <div class="card p-4 bg-primary-50/50 dark:bg-primary-950/30 border-primary-600/15 space-y-2">
+                    <h4 class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                        <i class="lni lni-question-circle text-primary-600"></i> Legal Inquiry?
+                    </h4>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                        For questions regarding data processing, licensing, or commercial terms, contact our desk.
+                    </p>
+                    <a href="/Support&Contact" class="btn-primary text-xs py-1.5 px-3 w-full justify-center">
+                        Contact Support
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Legal Markdown Content Card -->
+            <div class="lg:col-span-8">
+                <article class="card p-6 sm:p-10 shadow-lg border-primary-600/20 bg-white/90 dark:bg-dark-surface/90">
+                    <div id="legalContentWrap" class="legal-doc-content">
+                        {{#if docContent}}{{{docContent}}}{{else}}{{#if privacyContent}}{{{privacyContent}}}{{else}}{{{termsContent}}}{{/if}}{{/if}}
+                    </div>
+
+                    <!-- Bottom Document Sign-off -->
+                    <div class="mt-10 pt-6 border-t border-primary-600/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                            <span>Official Legal Document &mdash; MBKTech.org</span>
+                        </div>
+                        <a href="#top" class="inline-flex items-center gap-1 text-primary-600 dark:text-primary-400 font-semibold hover:underline">
+                            Back to Top <i class="lni lni-arrow-up"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Dynamic TOC & Scrollspy Script -->
+<script>
+(function () {
+    var wrap = document.getElementById("legalContentWrap");
+    var toc = document.getElementById("docToc");
+    var countEl = document.getElementById("tocCount");
+    var filterInput = document.getElementById("tocFilter");
+    if (!wrap || !toc) return;
+
+    var headings = wrap.querySelectorAll("h1, h2");
+    var tocItems = [];
+
+    headings.forEach(function (h, i) {
+        var id = h.id;
+        if (!id) {
+            id = "sec-" + (i + 1) + "-" + h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+            h.id = id;
+        }
+
+        var isH1 = h.tagName.toLowerCase() === "h1";
+        var a = document.createElement("a");
+        a.href = "#" + id;
+        a.className = "block py-1.5 px-2.5 rounded transition-all " + 
+            (isH1 ? "font-bold text-slate-900 dark:text-white hover:bg-primary-50 dark:hover:bg-primary-950/60 hover:text-primary-600" : "pl-5 font-normal text-slate-600 dark:text-slate-400 hover:text-primary-600 hover:bg-primary-50/50");
+        a.textContent = h.textContent.trim();
+        a.setAttribute("data-target-id", id);
+
+        a.addEventListener("click", function (e) {
+            e.preventDefault();
+            var target = document.getElementById(id);
+            if (target) {
+                var top = target.getBoundingClientRect().top + window.scrollY - 90;
+                window.scrollTo({ top: top, behavior: "smooth" });
+            }
+        });
+
+        toc.appendChild(a);
+        tocItems.push({ el: a, targetId: id, heading: h });
+    });
+
+    if (countEl) countEl.textContent = headings.length + " sections";
+
+    // Filter TOC search
+    if (filterInput) {
+        filterInput.addEventListener("input", function () {
+            var q = this.value.trim().toLowerCase();
+            tocItems.forEach(function (item) {
+                var txt = item.el.textContent.toLowerCase();
+                if (!q || txt.indexOf(q) !== -1) {
+                    item.el.style.display = "";
+                } else {
+                    item.el.style.display = "none";
+                }
+            });
+        });
+    }
+
+    // Scrollspy
+    window.addEventListener("scroll", function () {
+        var scrollPos = window.scrollY + 120;
+        var currentId = "";
+
+        headings.forEach(function (h) {
+            if (h.offsetTop <= scrollPos) {
+                currentId = h.id;
+            }
+        });
+
+        tocItems.forEach(function (item) {
+            if (item.targetId === currentId) {
+                item.el.classList.add("bg-primary-50", "text-primary-700", "dark:bg-primary-950", "dark:text-primary-300", "font-bold");
+            } else {
+                item.el.classList.remove("bg-primary-50", "text-primary-700", "dark:bg-primary-950", "dark:text-primary-300");
+            }
+        });
+    });
+})();
+
+function copyCurrentUrl(btn) {
+    navigator.clipboard.writeText(window.location.href).then(function () {
+        var orig = btn.innerHTML;
+        btn.innerHTML = '<i class="lni lni-checkmark"></i> Copied!';
+        setTimeout(function () { btn.innerHTML = orig; }, 1500);
+    });
+}
+</script>

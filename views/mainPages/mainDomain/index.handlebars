@@ -1,51 +1,48 @@
 <!-- ============================================================
-     HOME PAGE — MBK Tech (GoTailwind-inspired, Tailwind CSS)
+     HOME PAGE — MBK Tech
      ============================================================ -->
 
 <!-- ================= HERO ================= -->
-<section class="relative overflow-hidden bg-slate-50">
-    <!-- Decorative gradient blobs -->
-    <div class="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-primary-100/60 blur-3xl"></div>
-    <div class="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-accent-100/60 blur-3xl"></div>
-
-    <div class="container relative grid items-center gap-12 py-20 md:py-28 lg:grid-cols-2">
+<section class="relative overflow-hidden py-16 sm:py-24 lg:py-28">
+    <div class="container relative z-10 grid items-center gap-12 lg:grid-cols-2">
         <!-- Copy -->
         <div>
-            <span class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-600 ring-1 ring-primary-100">
+            <span class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-700 border border-primary-600/20 dark:bg-primary-950/80 dark:text-primary-300 dark:border-primary-500/30">
                 <i class="lni lni-code"></i> Open-Source Innovation Studio
             </span>
-            <h1 class="mt-5 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">
-                Innovating Through <span class="text-primary-600">Open-Source</span>
+            <h1 class="mt-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-slate-900 dark:text-white">
+                Innovating Through <span class="text-primary-600 dark:text-primary-400">Open-Source</span>
             </h1>
-            <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-500">
+            <p class="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-slate-600 dark:text-slate-300">
                 At MBKTech.org, we're passionate about creating impactful technology solutions and fostering
                 collaborative development — empowering creators and problem-solvers through software services
                 and hardware projects.
             </p>
-            <div class="mt-8 flex flex-wrap gap-4">
+            <div class="mt-8 flex flex-wrap gap-3.5">
                 <a href="/Services" class="btn-primary">Our Services <i class="lni lni-arrow-right"></i></a>
                 <a href="/Support&Contact" class="btn-outline">Get In Touch</a>
             </div>
-            <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-slate-500">
-                <span class="inline-flex items-center gap-2"><i class="lni lni-checkmark-circle text-accent-500"></i> Community-driven</span>
-                <span class="inline-flex items-center gap-2"><i class="lni lni-checkmark-circle text-accent-500"></i> Open by default</span>
-                <span class="inline-flex items-center gap-2"><i class="lni lni-checkmark-circle text-accent-500"></i> Modern stack</span>
+            <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 border-t border-primary-600/10 dark:border-primary-500/20 pt-6">
+                <span class="inline-flex items-center gap-2"><i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base"></i> Community-driven</span>
+                <span class="inline-flex items-center gap-2"><i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base"></i> Open by default</span>
+                <span class="inline-flex items-center gap-2"><i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base"></i> Modern stack</span>
             </div>
         </div>
 
         <!-- Hero visual -->
         <div class="relative">
-            <div class="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-primary-100 via-white to-accent-100 blur-xl dark:via-slate-900"></div>
-            <img
-                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-                alt="Code on a screen at MBK Tech"
-                class="relative w-full rounded-3xl object-cover shadow-2xl ring-1 ring-slate-200">
-            <!-- Floating badge -->
-            <div class="absolute -bottom-5 left-6 flex items-center gap-3 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-100 dark:bg-slate-800">
-                <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-accent-50 text-xl text-accent-500"><i class="lni lni-github"></i></span>
-                <div>
-                    <p class="text-sm font-bold text-slate-900">Open-Source First</p>
-                    <p class="text-xs text-slate-500">Community-driven development</p>
+            <div class="card p-3 sm:p-4 shadow-xl border-primary-600/20 overflow-hidden relative">
+                <img
+                    src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+                    alt="Code on a screen at MBK Tech"
+                    class="w-full rounded-lg object-cover shadow-sm">
+                <!-- Floating badge -->
+                <div class="absolute bottom-6 left-6 flex items-center gap-3 rounded-xl bg-white/95 dark:bg-dark-surface/95 p-3.5 shadow-lg border border-primary-600/20 backdrop-blur-md">
+                    <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-xl text-primary-600 dark:bg-primary-950/60 dark:text-primary-300"><i class="lni lni-github"></i></span>
+                    <div>
+                        <p class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Open-Source First</p>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400">Community-driven development</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,22 +50,22 @@
 </section>
 
 <!-- ================= TECH STACK STRIP ================= -->
-<section class="border-y border-slate-100 bg-white py-14 dark:bg-slate-900">
+<section class="border-y border-primary-600/10 bg-white/60 dark:bg-dark-surface/60 backdrop-blur-md py-12">
     <div class="container">
-        <p class="text-center text-xs font-bold uppercase tracking-widest text-slate-400">Technologies we use</p>
+        <p class="text-center text-xs font-bold uppercase tracking-widest text-primary-700 dark:text-primary-300">Technologies we use</p>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-            <img src="https://skillicons.dev/icons?i=html" alt="HTML5" title="HTML5" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
-            <img src="https://skillicons.dev/icons?i=css" alt="CSS3" title="CSS3" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
-            <img src="https://skillicons.dev/icons?i=js" alt="JavaScript" title="JavaScript" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
-            <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js" title="Node.js" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
-            <img src="https://skillicons.dev/icons?i=postgres" alt="PostgreSQL" title="PostgreSQL" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
-            <img src="https://skillicons.dev/icons?i=python" alt="Python" title="Python" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
-            <img src="https://skillicons.dev/icons?i=react" alt="React" title="React" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
-            <img src="https://skillicons.dev/icons?i=github" alt="GitHub" title="GitHub" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
-            <img src="https://skillicons.dev/icons?i=aws" alt="AWS" title="AWS" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
-            <img src="https://skillicons.dev/icons?i=vercel" alt="Vercel" title="Vercel" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
-            <img src="https://skillicons.dev/icons?i=linux" alt="Linux" title="Linux" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
-            <img src="https://skillicons.dev/icons?i=cpp" alt="C++" title="C++" class="h-10 w-auto opacity-70 transition hover:opacity-100" />
+            <img src="https://skillicons.dev/icons?i=html" alt="HTML5" title="HTML5" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
+            <img src="https://skillicons.dev/icons?i=css" alt="CSS3" title="CSS3" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
+            <img src="https://skillicons.dev/icons?i=js" alt="JavaScript" title="JavaScript" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
+            <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js" title="Node.js" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
+            <img src="https://skillicons.dev/icons?i=postgres" alt="PostgreSQL" title="PostgreSQL" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
+            <img src="https://skillicons.dev/icons?i=python" alt="Python" title="Python" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
+            <img src="https://skillicons.dev/icons?i=react" alt="React" title="React" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
+            <img src="https://skillicons.dev/icons?i=github" alt="GitHub" title="GitHub" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
+            <img src="https://skillicons.dev/icons?i=aws" alt="AWS" title="AWS" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
+            <img src="https://skillicons.dev/icons?i=vercel" alt="Vercel" title="Vercel" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
+            <img src="https://skillicons.dev/icons?i=linux" alt="Linux" title="Linux" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
+            <img src="https://skillicons.dev/icons?i=cpp" alt="C++" title="C++" class="h-9 w-auto opacity-75 transition-all hover:opacity-100 hover:scale-110" />
         </div>
     </div>
 </section>
@@ -77,20 +74,23 @@
 <section class="section">
     <div class="container grid items-center gap-12 lg:grid-cols-2">
         <div class="relative order-2 lg:order-1">
-            <div class="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-accent-100 to-primary-100 blur-lg dark:from-accent-900/40 dark:to-primary-900/40"></div>
-            <img
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-                alt="Team collaboration at MBKTech"
-                class="relative w-full rounded-3xl object-cover shadow-2xl ring-1 ring-slate-200">
+            <div class="card p-3 sm:p-4 shadow-xl border-primary-600/20 overflow-hidden">
+                <img
+                    src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+                    alt="Team collaboration at MBKTech"
+                    class="w-full rounded-lg object-cover shadow-sm">
+            </div>
         </div>
-        <div class="order-1 lg:order-2">
-            <span class="eyebrow inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-600"><i class="lni lni-layers"></i> About MBK Tech</span>
-            <h2 class="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">A collaborative development studio</h2>
+        <div class="order-1 lg:order-2 space-y-4">
+            <span class="eyebrow inline-flex items-center gap-2 rounded-full bg-primary-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary-700 border border-primary-600/20 dark:bg-primary-950/70 dark:text-primary-300 dark:border-primary-500/30">
+                <i class="lni lni-layers"></i> About MBK Tech
+            </span>
+            <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 dark:text-white">A collaborative development studio</h2>
 
-            <div class="mt-6 space-y-4 text-slate-500">
+            <div class="space-y-3 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
                 <p>
                     MBKTech.org, founded by
-                    <a href="https://github.com/MIbnEKhalid" target="_blank" rel="noopener" class="font-semibold text-primary-600 hover:underline">Muhammad Bin Khalid</a>,
+                    <a href="https://github.com/MIbnEKhalid" target="_blank" rel="noopener" class="font-semibold text-primary-600 dark:text-primary-400 hover:underline">Muhammad Bin Khalid</a>,
                     is a collaborative development studio focusing on open-source contributions and innovative
                     technology solutions.
                 </p>
@@ -101,25 +101,25 @@
             </div>
 
             <!-- Mission -->
-            <div class="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-6">
-                <h3 class="flex items-center gap-2 text-lg font-bold text-slate-900"><i class="lni lni-target text-primary-600"></i> Our Mission</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">
+            <div class="card p-5 border-primary-600/20 bg-primary-50/50 dark:bg-primary-950/40 space-y-2">
+                <h3 class="flex items-center gap-2 text-base font-bold text-slate-900 dark:text-white"><i class="lni lni-target text-primary-600"></i> Our Mission</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                     Our goal is to create impactful digital and hardware solutions that benefit the global tech
                     community — fostering growth, collaboration, and the advancement of open-source technologies.
                 </p>
             </div>
 
-            <ul class="mt-8 space-y-3 text-sm font-medium text-slate-600">
-                <li class="flex items-center gap-3"><i class="lni lni-checkmark-circle text-accent-500"></i> Open-source contributions</li>
-                <li class="flex items-center gap-3"><i class="lni lni-checkmark-circle text-accent-500"></i> Software development services &amp; hardware projects</li>
-                <li class="flex items-center gap-3"><i class="lni lni-checkmark-circle text-accent-500"></i> Community-driven initiatives</li>
+            <ul class="space-y-2 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">
+                <li class="flex items-center gap-2.5"><i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base"></i> Open-source contributions</li>
+                <li class="flex items-center gap-2.5"><i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base"></i> Software development services &amp; hardware projects</li>
+                <li class="flex items-center gap-2.5"><i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base"></i> Community-driven initiatives</li>
             </ul>
         </div>
     </div>
 </section>
 
 <!-- ================= FEATURES ================= -->
-<section class="section bg-slate-50">
+<section class="section bg-primary-50/20 dark:bg-dark-surface/40 border-y border-primary-600/10">
     <div class="container">
         <div class="section-title">
             <span class="eyebrow">Why MBK Tech</span>
@@ -128,25 +128,25 @@
         </div>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <!-- Feature -->
-            <div class="card">
+            <div class="card space-y-3">
                 <span class="feature-icon"><i class="lni lni-code"></i></span>
-                <h3 class="mt-5 text-lg font-bold">Open-Source Focus</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Everything we build leans on open standards and community-driven tools.</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Open-Source Focus</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">Everything we build leans on open standards and community-driven tools.</p>
             </div>
-            <div class="card">
-                <span class="feature-icon bg-accent-50 text-accent-600"><i class="lni lni-layers"></i></span>
-                <h3 class="mt-5 text-lg font-bold">Software Development</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Web apps, mobile apps, custom software, and consulting tailored to you.</p>
+            <div class="card space-y-3">
+                <span class="feature-icon"><i class="lni lni-layers"></i></span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Software Development</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">Web apps, mobile apps, custom software, and consulting tailored to you.</p>
             </div>
-            <div class="card">
+            <div class="card space-y-3">
                 <span class="feature-icon"><i class="lni lni-cog"></i></span>
-                <h3 class="mt-5 text-lg font-bold">Hardware Projects</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Physical builds and embedded experiments that bridge software and hardware.</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Hardware Projects</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">Physical builds and embedded experiments that bridge software and hardware.</p>
             </div>
-            <div class="card">
-                <span class="feature-icon bg-accent-50 text-accent-600"><i class="lni lni-users"></i></span>
-                <h3 class="mt-5 text-lg font-bold">Community-Driven</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">We grow with contributors, collaborators, and open-source maintainers.</p>
+            <div class="card space-y-3">
+                <span class="feature-icon"><i class="lni lni-users"></i></span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Community-Driven</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">We grow with contributors, collaborators, and open-source maintainers.</p>
             </div>
         </div>
     </div>
@@ -162,75 +162,75 @@
         </div>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <!-- Resource card -->
-            <a href="/Services" class="card group">
+            <a href="/Services" class="card group space-y-3">
                 <span class="feature-icon"><i class="lni lni-layers"></i></span>
-                <h3 class="mt-5 text-lg font-bold">Our Services</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Web development, mobile apps, custom software, and consulting.</p>
-                <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-600">View Services <i class="lni lni-arrow-right transition group-hover:translate-x-1"></i></span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">Our Services</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">Web development, mobile apps, custom software, and consulting.</p>
+                <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400 pt-1">View Services <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i></span>
             </a>
-            <a href="/Terms&Conditions" target="_blank" class="card group">
+            <a href="/Terms&Conditions" target="_blank" class="card group space-y-3">
                 <span class="feature-icon"><i class="lni lni-shield"></i></span>
-                <h3 class="mt-5 text-lg font-bold">Privacy Policy</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Privacy policies and legal notices for our services.</p>
-                <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-600">View Policy <i class="lni lni-arrow-right transition group-hover:translate-x-1"></i></span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">Privacy Policy</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">Privacy policies and legal notices for our services.</p>
+                <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400 pt-1">View Policy <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i></span>
             </a>
-            <a href="https://blog.mbktech.org" target="_blank" rel="noopener" class="card group">
+            <a href="https://blog.mbktech.org" target="_blank" rel="noopener" class="card group space-y-3">
                 <span class="feature-icon"><i class="lni lni-write"></i></span>
-                <h3 class="mt-5 text-lg font-bold">Blog</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Latest articles, updates, and insights from the team.</p>
-                <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-600">Visit Blog <i class="lni lni-arrow-right transition group-hover:translate-x-1"></i></span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">Blog</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">Latest articles, updates, and insights from the team.</p>
+                <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400 pt-1">Visit Blog <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i></span>
             </a>
-            <a href="https://core.mbktech.org" target="_blank" rel="noopener" class="card group">
+            <a href="https://core.mbktech.org" target="_blank" rel="noopener" class="card group space-y-3">
                 <span class="feature-icon"><i class="lni lni-lock"></i></span>
-                <h3 class="mt-5 text-lg font-bold">Web Portal</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Centralized portal for private use or team members only.</p>
-                <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-600">Access Portal <i class="lni lni-arrow-right transition group-hover:translate-x-1"></i></span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">Web Portal</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">Centralized portal for private use or team members only.</p>
+                <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400 pt-1">Access Portal <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i></span>
             </a>
-            <a href="https://chat.mbktech.org" target="_blank" rel="noopener" class="card group">
+            <a href="https://chat.mbktech.org" target="_blank" rel="noopener" class="card group space-y-3">
                 <span class="feature-icon"><i class="lni lni-comments"></i></span>
-                <h3 class="mt-5 text-lg font-bold">Chat App</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Private chat for MBK Tech members.</p>
-                <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-600">Try Chat App <i class="lni lni-arrow-right transition group-hover:translate-x-1"></i></span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">Chat App</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">Private chat for MBK Tech members.</p>
+                <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400 pt-1">Try Chat App <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i></span>
             </a>
-            <a href="https://chatapi.mbktech.org" target="_blank" rel="noopener" class="card group">
+            <a href="https://chatapi.mbktech.org" target="_blank" rel="noopener" class="card group space-y-3">
                 <span class="feature-icon"><i class="lni lni-bullhorn"></i></span>
-                <h3 class="mt-5 text-lg font-bold">AI Chat Bot</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Private AI chatbot for MBK Tech members.</p>
-                <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-600">Try Chatbot <i class="lni lni-arrow-right transition group-hover:translate-x-1"></i></span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">AI Chat Bot</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">Private AI chatbot for MBK Tech members.</p>
+                <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400 pt-1">Try Chatbot <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i></span>
             </a>
-            <a href="https://unilib.mbktech.org" target="_blank" rel="noopener" class="card group">
+            <a href="https://unilib.mbktech.org" target="_blank" rel="noopener" class="card group space-y-3">
                 <span class="feature-icon"><i class="lni lni-graduation"></i></span>
-                <h3 class="mt-5 text-lg font-bold">Unilib</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Resource hub for course materials, quizzes, and assignments.</p>
-                <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-600">View Unilib <i class="lni lni-arrow-right transition group-hover:translate-x-1"></i></span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">Unilib</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">Resource hub for course materials, quizzes, and assignments.</p>
+                <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400 pt-1">View Unilib <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i></span>
             </a>
-            <a href="https://download.mbktech.org" target="_blank" rel="noopener" class="card group">
+            <a href="https://download.mbktech.org" target="_blank" rel="noopener" class="card group space-y-3">
                 <span class="feature-icon"><i class="lni lni-download"></i></span>
-                <h3 class="mt-5 text-lg font-bold">Download Apps</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Download our latest apps for seamless integration and productivity.</p>
-                <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-600">View Download <i class="lni lni-arrow-right transition group-hover:translate-x-1"></i></span>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors">Download Apps</h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">Download our latest apps for seamless integration and productivity.</p>
+                <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400 pt-1">View Download <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i></span>
             </a>
         </div>
     </div>
 </section>
 
 <!-- ================= COLLABORATOR ================= -->
-<section class="section bg-slate-50">
+<section class="section bg-primary-50/20 dark:bg-dark-surface/40 border-y border-primary-600/10">
     <div class="container">
         <div class="section-title">
             <span class="eyebrow">Our Collaborators</span>
             <h2>Partners we work with</h2>
         </div>
         <div class="mx-auto max-w-3xl">
-            <div class="card flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
-                <img src="/Assets/Images/Icon/M-Dev.png" alt="Maaz Dev" class="h-24 w-24 rounded-2xl object-cover ring-1 ring-slate-200" />
-                <div>
-                    <h3 class="text-xl font-bold">Maaz Dev</h3>
-                    <p class="mt-2 text-sm leading-relaxed text-slate-500">
+            <div class="card flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left p-6">
+                <img src="/Assets/Images/Icon/M-Dev.png" alt="Maaz Dev" class="h-24 w-24 rounded-2xl object-cover ring-1 ring-primary-600/20" />
+                <div class="space-y-2">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Maaz Dev</h3>
+                    <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">
                         Maaz Dev is our partner specializing in AI and Data Science, contributing significantly
                         to our Python and other projects.
                     </p>
-                    <a href="https://maaz-dev.vercel.app/" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:underline">
+                    <a href="https://maaz-dev.vercel.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400 hover:underline">
                         Visit Website <i class="lni lni-arrow-right"></i>
                     </a>
                 </div>
@@ -241,61 +241,61 @@
 
 <!-- ================= CONTACT / CTA ================= -->
 <section class="section" id="social">
-    <div class="container">
+    <div class="container space-y-12">
         <!-- CTA banner -->
-        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary-600 to-accent-500 p-10 text-center text-white md:p-14">
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary-800 to-secondary-600 p-10 text-center text-white md:p-14 shadow-xl border border-primary-600/30">
             <div class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl"></div>
-            <h2 class="text-3xl font-extrabold md:text-4xl">Ready to collaborate?</h2>
-            <p class="mx-auto mt-3 max-w-xl text-blue-100">
+            <h2 class="text-3xl font-extrabold md:text-4xl text-white">Ready to collaborate?</h2>
+            <p class="mx-auto mt-3 max-w-xl text-teal-100 text-sm sm:text-base">
                 Have a project, an idea, or just a question? We'd love to hear from you.
             </p>
             <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <a href="/Support&Contact" class="btn-white">Get In Touch</a>
-                <a href="mailto:support@mbktech.org" class="btn bg-white/10 text-white ring-1 ring-white/30 hover:bg-white/20">Email Us</a>
+                <a href="/Support&Contact" class="btn bg-white text-primary-900 font-bold hover:bg-teal-50 shadow-md">Get In Touch</a>
+                <a href="mailto:support@mbktech.org" class="btn bg-white/10 text-white border border-white/30 hover:bg-white/20">Email Us</a>
             </div>
         </div>
 
         <!-- Contact methods -->
-        <div class="mt-14 grid gap-6 md:grid-cols-3">
-            <div class="card text-center">
+        <div class="grid gap-6 md:grid-cols-3">
+            <div class="card text-center p-6 space-y-2">
                 <span class="feature-icon mx-auto"><i class="lni lni-envelope"></i></span>
-                <h3 class="mt-4 text-lg font-bold">Email Us</h3>
-                <a href="mailto:support@mbktech.org" class="mt-1 inline-block text-sm font-semibold text-primary-600 hover:underline">support@mbktech.org</a>
+                <h3 class="text-base font-bold text-slate-900 dark:text-white">Email Us</h3>
+                <a href="mailto:support@mbktech.org" class="inline-block text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400 hover:underline">support@mbktech.org</a>
             </div>
-            <div class="card text-center">
-                <span class="feature-icon mx-auto bg-accent-50 text-accent-600"><i class="lni lni-bubble"></i></span>
-                <h3 class="mt-4 text-lg font-bold">Contact Form</h3>
-                <a href="/Support&Contact" class="mt-1 inline-block text-sm font-semibold text-primary-600 hover:underline">Open Support Page</a>
+            <div class="card text-center p-6 space-y-2">
+                <span class="feature-icon mx-auto"><i class="lni lni-bubble"></i></span>
+                <h3 class="text-base font-bold text-slate-900 dark:text-white">Contact Form</h3>
+                <a href="/Support&Contact" class="inline-block text-xs sm:text-sm font-semibold text-primary-600 dark:text-primary-400 hover:underline">Open Support Page</a>
             </div>
-            <div class="card text-center">
+            <div class="card text-center p-6 space-y-2">
                 <span class="feature-icon mx-auto"><i class="lni lni-heart"></i></span>
-                <h3 class="mt-4 text-lg font-bold">Social Media</h3>
-                <p class="mt-1 text-sm text-slate-500">Connect with the team below</p>
+                <h3 class="text-base font-bold text-slate-900 dark:text-white">Social Media</h3>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Connect with the team below</p>
             </div>
         </div>
 
         <!-- Team socials -->
-        <div class="mt-10 grid gap-6 md:grid-cols-2">
+        <div class="grid gap-6 md:grid-cols-2">
             <!-- Muhammad Bin Khalid -->
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 text-center dark:bg-slate-800">
-                <h4 class="text-base font-bold text-slate-900">Muhammad Bin Khalid</h4>
-                <div class="mt-4 flex flex-wrap items-center justify-center gap-3">
-                    <a href="https://instagram.com/mbktech_org" target="_blank" rel="noopener" title="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank" rel="noopener" title="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/ibnekhalid28" target="_blank" rel="noopener" title="X / Twitter" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-x"></i></a>
-                    <a href="https://github.com/MIbnEKhalid" target="_blank" rel="noopener" title="GitHub" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-github"></i></a>
-                    <a href="https://youtube.com/@mibnekhalid" target="_blank" rel="noopener" title="YouTube" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-youtube"></i></a>
+            <div class="card p-6 text-center space-y-3">
+                <h4 class="text-base font-bold text-slate-900 dark:text-white">Muhammad Bin Khalid</h4>
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <a href="https://instagram.com/mbktech_org" target="_blank" rel="noopener" title="Instagram" class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank" rel="noopener" title="Facebook" class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/ibnekhalid28" target="_blank" rel="noopener" title="X / Twitter" class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-x"></i></a>
+                    <a href="https://github.com/MIbnEKhalid" target="_blank" rel="noopener" title="GitHub" class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-github"></i></a>
+                    <a href="https://youtube.com/@mibnekhalid" target="_blank" rel="noopener" title="YouTube" class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <!-- Maaz Waheed -->
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 text-center dark:bg-slate-800">
-                <h4 class="text-base font-bold text-slate-900">Maaz Waheed</h4>
-                <div class="mt-4 flex flex-wrap items-center justify-center gap-3">
-                    <a href="https://github.com/42Wor" target="_blank" rel="noopener" title="GitHub" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-accent-600 hover:text-white"><i class="fab fa-github"></i></a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener" title="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-accent-600 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/wwork4287" target="_blank" rel="noopener" title="X / Twitter" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-accent-600 hover:text-white"><i class="fab fa-x"></i></a>
-                    <a href="https://instagram.com/maa.zwaheed" target="_blank" rel="noopener" title="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-accent-600 hover:text-white"><i class="fab fa-instagram"></i></a>
-                    <a href="https://huggingface.co/Maazwaheed" target="_blank" rel="noopener" title="HuggingFace" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-accent-600 hover:text-white"><i class="fas fa-robot"></i></a>
+            <div class="card p-6 text-center space-y-3">
+                <h4 class="text-base font-bold text-slate-900 dark:text-white">Maaz Waheed</h4>
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <a href="https://github.com/42Wor" target="_blank" rel="noopener" title="GitHub" class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-github"></i></a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener" title="Facebook" class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/wwork4287" target="_blank" rel="noopener" title="X / Twitter" class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-x"></i></a>
+                    <a href="https://instagram.com/maa.zwaheed" target="_blank" rel="noopener" title="Instagram" class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-instagram"></i></a>
+                    <a href="https://huggingface.co/Maazwaheed" target="_blank" rel="noopener" title="HuggingFace" class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fas fa-robot"></i></a>
                 </div>
             </div>
         </div>

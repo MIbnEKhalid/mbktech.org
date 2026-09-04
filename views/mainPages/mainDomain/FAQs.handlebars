@@ -1,23 +1,33 @@
 <!-- ============================================================
-     FAQS PAGE — MBK Tech (loads /Assets/FAQs/faq.json)
+     FAQS PAGE — MBK Tech 
      ============================================================ -->
 
-<!-- Page hero -->
-<section class="relative overflow-hidden bg-slate-50">
-    <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary-100/60 blur-3xl"></div>
-    <div class="container relative py-16 text-center md:py-20">
-        <span class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-600 ring-1 ring-primary-100">
-            <i class="lni lni-question-circle"></i> Help Center
+<!-- Page Header Hero -->
+<section class="relative overflow-hidden py-14 sm:py-20">
+    <div class="container relative z-10 text-center max-w-3xl space-y-4">
+        <span class="eyebrow inline-flex items-center gap-2 rounded-full bg-primary-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary-700 border border-primary-600/20 dark:bg-primary-950/70 dark:text-primary-300 dark:border-primary-500/30">
+            <i class="lni lni-question-circle"></i> Knowledge Base &amp; FAQ
         </span>
-        <h1 class="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">Frequently Asked Questions</h1>
-        <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            Answers to the questions we hear most often. Can't find what you need?
-            <a href="/Support&Contact" class="font-semibold text-primary-600 hover:underline">Contact support</a>.
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl text-slate-900 dark:text-white">
+            Frequently Asked <span class="text-primary-600 dark:text-primary-400">Questions</span>
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            Find immediate answers regarding our development packages, deployment timelines, payment options, and open-source practices.
         </p>
+
+        <!-- Search Bar -->
+        <div class="pt-4 max-w-lg mx-auto">
+            <div class="relative">
+                <i class="lni lni-search-alt absolute left-4 top-1/2 -translate-y-1/2 text-primary-600 dark:text-primary-400 text-lg"></i>
+                <input type="text" id="faqSearch" placeholder="Search questions or keywords..."
+                       class="w-full rounded-xl border border-primary-600/20 bg-white/90 pl-11 pr-4 py-3 text-sm shadow-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-500/20 dark:border-primary-500/25 dark:bg-dark-surface/90 dark:text-white">
+            </div>
+        </div>
     </div>
 </section>
 
-<section class="section">
+<!-- ================= FAQ ACCORDION SECTION ================= -->
+<section class="section pt-0">
     <div class="container max-w-3xl">
         <!-- Loader -->
         <div id="faqLoader" class="flex flex-col items-center justify-center py-16 text-slate-500">
@@ -25,17 +35,31 @@
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
             </svg>
-            <p class="mt-3 text-sm">Loading FAQs...</p>
+            <p class="mt-3 text-sm font-medium">Loading answers from Knowledge Base...</p>
         </div>
 
-        <!-- Error -->
-        <div id="faqError" class="flex flex-col items-center py-16 text-center" style="display:none">
-            <i class="fas fa-exclamation-circle text-3xl text-red-500"></i>
-            <p class="mt-3 text-sm text-slate-500">Couldn't load FAQs. Please try refreshing the page.</p>
+        <!-- Error State -->
+        <div id="faqError" class="card flex flex-col items-center py-12 text-center border-red-200 bg-red-50/50 dark:bg-red-950/20" style="display:none">
+            <i class="lni lni-warning text-3xl text-red-500"></i>
+            <h3 class="mt-3 text-base font-bold text-slate-900 dark:text-white">Unable to load FAQs</h3>
+            <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Please refresh the page or contact support directly.</p>
+            <a href="/Support&Contact" class="btn-primary mt-4 text-xs">Contact Support</a>
         </div>
 
-        <!-- FAQ list (rendered from faq.json) -->
-        <div id="faqContainer"></div>
+        <!-- FAQ Container -->
+        <div id="faqContainer" class="space-y-3"></div>
+
+        <!-- Still have questions footer card -->
+        <div class="mt-12 card p-8 text-center bg-primary-50/50 dark:bg-dark-surface/80 border-primary-600/20 space-y-3">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Still have questions?</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
+                Can't find the answer you're looking for? Reach out directly and our team will get back to you.
+            </p>
+            <div class="pt-2 flex justify-center gap-3">
+                <a href="/Support&Contact" class="btn-primary text-xs sm:text-sm">Submit a Ticket</a>
+                <a href="mailto:support@mbktech.org" class="btn-outline text-xs sm:text-sm">Email Support</a>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -44,6 +68,7 @@
     var container = document.getElementById("faqContainer");
     var loader = document.getElementById("faqLoader");
     var errorEl = document.getElementById("faqError");
+    var searchInput = document.getElementById("faqSearch");
     if (!container) return;
 
     function slugify(text) {
@@ -63,7 +88,7 @@
 
     fetch("/Assets/FAQs/faq.json")
         .then(function (r) {
-            if (!r.ok) throw new Error("Failed");
+            if (!r.ok) throw new Error("Failed to load FAQs");
             return r.json();
         })
         .then(function (data) {
@@ -78,13 +103,11 @@
 
                 var div = document.createElement("div");
                 div.className = "faq-item";
+                div.setAttribute("data-searchable", (item.question + " " + item.answer).toLowerCase());
                 div.innerHTML =
                     '<div class="faq-question" id="' + item.id + '">' + item.question + '</div>' +
-                    '<div class="faq-answer"><div style="padding:10px">' + item.answer + '</div></div>';
+                    '<div class="faq-answer"><div class="p-4 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-300">' + item.answer + '</div></div>';
                 fragment.appendChild(div);
-
-                // Staggered fade-in
-                setTimeout(function () { div.classList.add("ready"); }, i * 60);
 
                 if (urlTarget) {
                     var m = false;
@@ -96,12 +119,27 @@
 
             container.appendChild(fragment);
 
-            // Scroll to target after expansion animation
             if (target) {
                 setTimeout(function () {
                     var top = target.getBoundingClientRect().top + window.scrollY - 100;
                     window.scrollTo({ top: top, behavior: "smooth" });
-                }, 500);
+                }, 400);
+            }
+
+            // Real-time filter search
+            if (searchInput) {
+                searchInput.addEventListener("input", function () {
+                    var q = this.value.trim().toLowerCase();
+                    var items = container.querySelectorAll(".faq-item");
+                    items.forEach(function (item) {
+                        var text = item.getAttribute("data-searchable") || "";
+                        if (!q || text.indexOf(q) !== -1) {
+                            item.style.display = "";
+                        } else {
+                            item.style.display = "none";
+                        }
+                    });
+                });
             }
         })
         .catch(function () {

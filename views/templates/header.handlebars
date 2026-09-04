@@ -1,57 +1,58 @@
 <!-- ============================================================
-     HEADER PARTIAL — shared navbar (Alpine.js powered)
-     Included by the layout via a Handlebars partial call.
+     HEADER PARTIAL — MBK Tech Navbar (Alpine.js powered)
      ============================================================ -->
-<header class="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/95 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/95"
+<header class="sticky top-0 z-50 w-full border-b border-primary-600/10 bg-white/85 backdrop-blur-md dark:border-primary-500/20 dark:bg-dark-surface/85 transition-colors duration-200"
         x-data="{ open: false }"
         @keydown.escape.window="open = false">
 
-    <div class="container flex h-20 items-center justify-between gap-4">
+    <div class="container flex h-14 sm:h-16 items-center justify-between gap-4">
 
         <!-- Logo -->
-        <a href="/" class="flex shrink-0 items-center gap-2.5" aria-label="MBK Tech home">
-            <img src="{{icon_base64}}" alt="MBK Tech logo" class="h-9 w-auto">
-            <span class="font-heading text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        <a href="/" class="flex shrink-0 items-center gap-1.5 group" aria-label="MBK Tech home">
+            <img src="{{icon_base64}}" alt="MBK Tech logo" class="h-6 sm:h-7 w-auto transition-transform duration-200 group-hover:scale-105">
+            <span class="font-heading text-lg sm:text-xl font-bold tracking-tight text-primary-950 dark:text-white" style="padding-top:0.7rem">
                 BK<span class="text-primary-600">Tech</span>
             </span>
         </a>
 
-        <!-- Desktop navigation -->
-        <nav class="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
-            <a data-nav href="/" class="text-sm font-semibold text-slate-700 transition hover:text-primary-600 dark:text-slate-200">Home</a>
-            <a data-nav href="/Services" class="text-sm font-semibold text-slate-700 transition hover:text-primary-600 dark:text-slate-200">Services</a>
-            <a data-nav href="/FAQs" class="text-sm font-semibold text-slate-700 transition hover:text-primary-600 dark:text-slate-200">FAQs</a>
-            <a data-nav href="/Support&Contact" class="text-sm font-semibold text-slate-700 transition hover:text-primary-600 dark:text-slate-200">Support</a>
-            <a data-nav href="/TrackTicket" class="text-sm font-semibold text-slate-700 transition hover:text-primary-600 dark:text-slate-200">Track Ticket</a>
+        <!-- Desktop Navigation -->
+        <nav class="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+            <a data-nav href="/" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Home</a>
+            <a data-nav href="/Services" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Services</a>
+            <a data-nav href="/FAQs" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">FAQs</a>
+            <a data-nav href="/Support&Contact" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Support</a>
+            <a data-nav href="/TrackTicket" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Track Ticket</a>
+            <a data-nav href="/Status" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Status</a>
         </nav>
 
-        <div class="flex items-center gap-3">
-            <a href="/Support&Contact" class="btn-primary hidden md:inline-flex">
-                Get In Touch
+        <div class="flex items-center gap-2">
+            <a href="/Support&Contact" class="btn-primary hidden md:inline-flex text-xs py-1.5 px-3">
+                <span>Get In Touch</span>
+                <i class="lni lni-arrow-right text-[10px]"></i>
             </a>
 
-            <!-- Dark / light theme toggle -->
+            <!-- Dark / Light theme toggle -->
             <button type="button"
                     onclick="toggleTheme()"
                     aria-label="Toggle dark mode"
-                    class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">
-                <i class="lni lni-night text-xl dark:hidden"></i>
-                <i class="lni lni-sun text-xl hidden dark:inline-block"></i>
+                    class="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-primary-600/15 bg-white/70 text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 hover:border-primary-600/30 dark:border-primary-500/25 dark:bg-dark-surface/70 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">
+                <i class="lni lni-night text-base dark:hidden"></i>
+                <i class="lni lni-sun text-base hidden dark:inline-block text-amber-400"></i>
             </button>
 
             <!-- Mobile menu toggle -->
             <button type="button"
-                    class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-700 transition hover:bg-slate-100 lg:hidden dark:text-slate-200 dark:hover:bg-slate-800"
+                    class="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-primary-600/15 bg-white/70 text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 lg:hidden dark:border-primary-500/25 dark:bg-dark-surface/70 dark:text-slate-200 dark:hover:bg-primary-950/60"
                     @click="open = !open"
                     :aria-expanded="open ? 'true' : 'false'"
                     aria-label="Toggle navigation menu">
-                <i class="lni lni-menu text-2xl" x-show="!open"></i>
-                <i class="lni lni-close text-2xl" x-show="open" x-cloak></i>
+                <i class="lni lni-menu text-lg" x-show="!open"></i>
+                <i class="lni lni-close text-lg" x-show="open" x-cloak></i>
             </button>
         </div>
     </div>
 
-    <!-- Mobile menu -->
+    <!-- Mobile Navigation Menu -->
     <div x-show="open"
          x-cloak
          x-transition:enter="transition ease-out duration-200"
@@ -60,26 +61,28 @@
          x-transition:leave="transition ease-in duration-150"
          x-transition:leave-start="opacity-100 translate-y-0"
          x-transition:leave-end="opacity-0 -translate-y-2"
-         class="border-t border-slate-100 bg-white px-4 py-4 lg:hidden dark:border-slate-800 dark:bg-slate-900">
-        <nav class="flex flex-col gap-1" aria-label="Mobile navigation">
-            <a href="/" class="rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-primary-600 dark:text-slate-200 dark:hover:bg-slate-800" @click="open = false">Home</a>
-            <a href="/Services" class="rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-primary-600 dark:text-slate-200 dark:hover:bg-slate-800" @click="open = false">Services</a>
-            <a href="/FAQs" class="rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-primary-600 dark:text-slate-200 dark:hover:bg-slate-800" @click="open = false">FAQs</a>
-            <a href="/Support&Contact" class="rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-primary-600 dark:text-slate-200 dark:hover:bg-slate-800" @click="open = false">Support</a>
-            <a href="/TrackTicket" class="rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-primary-600 dark:text-slate-200 dark:hover:bg-slate-800" @click="open = false">Track Ticket</a>
-            <a href="/Support&Contact" class="btn-primary mt-2" @click="open = false">Get In Touch</a>
+         class="border-t border-primary-600/10 bg-white/95 backdrop-blur-lg px-4 py-4 lg:hidden dark:border-primary-500/20 dark:bg-dark-surface/95">
+        <nav class="flex flex-col gap-1.5" aria-label="Mobile navigation">
+            <a href="/" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Home</a>
+            <a href="/Services" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Services</a>
+            <a href="/FAQs" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">FAQs</a>
+            <a href="/Support&Contact" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Support</a>
+            <a href="/TrackTicket" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Track Ticket</a>
+            <a href="/Status" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Service Status</a>
+            <a href="/Support&Contact" class="btn-primary mt-2 justify-center" @click="open = false">Get In Touch</a>
         </nav>
     </div>
 </header>
 
-<!-- Highlight the active nav link -->
+<!-- Highlight active nav link -->
 <script>
     (function () {
         var path = window.location.pathname.replace(/\/+$/, "") || "/";
         document.querySelectorAll("[data-nav]").forEach(function (link) {
             var href = (link.getAttribute("href") || "").split("?")[0].replace(/\/+$/, "") || "/";
-            if (path === href) {
-                link.classList.add("text-primary-600");
+            if (path === href || (href !== "/" && path.startsWith(href))) {
+                link.classList.add("bg-primary-50", "text-primary-700", "dark:bg-primary-950/80", "dark:text-primary-300", "font-bold");
+                link.classList.remove("text-slate-700", "dark:text-slate-200");
             }
         });
     })();

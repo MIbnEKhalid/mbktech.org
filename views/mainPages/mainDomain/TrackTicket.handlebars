@@ -1,56 +1,74 @@
-﻿<!-- ============================================================
-     TRACK TICKET PAGE — MBK Tech
-     Hooks preserved for /Assets/Scripts/tickets.js
+<!-- ============================================================
+     TRACK TICKET PAGE — MBK Tech 
+     Hooks strictly preserved for /Assets/Scripts/tickets.js
      ============================================================ -->
 
-<!-- Page hero -->
-<section class="relative overflow-hidden bg-slate-50">
-    <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary-100/60 blur-3xl"></div>
-    <div class="container relative py-16 text-center md:py-20">
-        <span class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-600 ring-1 ring-primary-100">
-            <i class="lni lni-ticket"></i> Support
+<!-- Page Header Hero -->
+<section class="relative overflow-hidden py-14 sm:py-20">
+    <div class="container relative z-10 text-center max-w-3xl space-y-4">
+        <span class="eyebrow inline-flex items-center gap-2 rounded-full bg-primary-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary-700 border border-primary-600/20 dark:bg-primary-950/70 dark:text-primary-300 dark:border-primary-500/30">
+            <i class="lni lni-ticket"></i> Ticket Lookup
         </span>
-        <h1 class="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">Track Your Ticket</h1>
-        <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-500">Enter your ticket number to check the status of your support request.</p>
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl text-slate-900 dark:text-white">
+            Track Your <span class="text-primary-600 dark:text-primary-400">Ticket</span>
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            Enter your 10-character ticket tracking ID to retrieve real-time status updates and resolution history.
+        </p>
     </div>
 </section>
 
-<section class="section">
-    <div class="container max-w-2xl">
-        <!-- Search card -->
-        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8 dark:bg-slate-800">
-            <h2 class="text-lg font-bold">Search a ticket</h2>
-            <p class="mt-1 text-sm text-slate-500">Format: T followed by 9 digits, e.g. T000123456</p>
+<!-- ================= SEARCH CARD ================= -->
+<section class="section pt-0">
+    <div class="container max-w-2xl space-y-6">
+        <!-- Search Card -->
+        <div class="card p-6 sm:p-8 shadow-md border-primary-600/20 space-y-4">
+            <div>
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="lni lni-search-alt text-primary-600"></i> Search by Ticket Number
+                </h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Format: <span class="font-mono font-bold text-primary-600">T</span> followed by 9 digits (e.g. <span class="font-mono">T000123456</span>)</p>
+            </div>
 
-            <form id="trackSearchForm" class="mt-5 flex flex-col gap-3 sm:flex-row">
+            <form id="trackSearchForm" class="flex flex-col sm:flex-row gap-2.5" novalidate>
                 <label for="ticketNumberInput" class="sr-only">Ticket number</label>
-                <input
-                    type="text"
-                    id="ticketNumberInput"
-                    class="w-full flex-1 rounded-lg border-slate-300 font-mono text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500"
-                    placeholder="e.g., T000123456"
-                    maxlength="10"
-                    pattern="T[0-9]{9}"
-                    title="Format: T followed by 9 digits"
-                    required
-                >
-                <button type="submit" class="btn-primary"><i class="fas fa-search"></i> Search</button>
-                <button type="button" id="clearSearch" class="btn-ghost">Clear</button>
+                <div class="relative flex-1">
+                    <input
+                        type="text"
+                        id="ticketNumberInput"
+                        class="w-full rounded-lg border border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 px-3.5 py-2.5 font-mono text-sm shadow-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-500/20 dark:border-primary-500/25 dark:text-white uppercase placeholder:normal-case"
+                        placeholder="e.g. T000123456"
+                        maxlength="10"
+                        pattern="T[0-9]{9}"
+                        title="Format: T followed by 9 digits"
+                        required
+                    >
+                </div>
+                <button type="submit" class="btn-primary shrink-0 text-sm font-bold shadow-sm">
+                    <i class="fas fa-search"></i> Search
+                </button>
+                <button type="button" id="clearSearch" class="btn-outline shrink-0 text-sm">
+                    Clear
+                </button>
             </form>
 
-            <div id="trackStatus" class="mt-3"></div>
+            <div id="trackStatus" class="mt-2"></div>
         </div>
 
-        <!-- Ticket Result (populated by tickets.js) -->
-        <div id="ticketResult" class="ticket-result mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8 dark:bg-slate-800"></div>
+        <!-- Ticket Result Container (controlled via .visible class by tickets.js) -->
+        <div id="ticketResult" class="ticket-result card p-6 sm:p-8 shadow-md border-primary-600/20"></div>
 
-        <!-- Not Found -->
-        <div id="ticketNotFound" class="mt-8">
-            <h3 class="flex items-center justify-center gap-2 text-lg font-bold text-red-600"><i class="fas fa-exclamation-circle"></i> Ticket Not Found</h3>
-            <p class="mt-2 text-center text-sm text-slate-500">No ticket matches that number. Please double-check and try again.</p>
-            <p class="mt-4 text-center text-sm">
-                Need help? <a href="/Support&Contact" class="font-semibold text-primary-600 hover:underline">Contact Support</a>
+        <!-- Not Found Card (controlled via .visible class by tickets.js) -->
+        <div id="ticketNotFound" class="card p-6 sm:p-8 text-center border-red-200 bg-red-50/60 dark:bg-red-950/20 space-y-2">
+            <h3 class="flex items-center justify-center gap-2 text-base font-bold text-red-600 dark:text-red-400">
+                <i class="fas fa-exclamation-circle text-lg"></i> Ticket Not Found
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                No matching support ticket found. Please verify the ID format or check your confirmation email.
             </p>
+            <div class="pt-2">
+                <a href="/Support&Contact" class="btn-primary text-xs">Open New Support Ticket</a>
+            </div>
         </div>
     </div>
 </section>

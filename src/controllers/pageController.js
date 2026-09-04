@@ -43,24 +43,41 @@ export function supportPage(req, res) {
     res.render("mainPages/mainDomain/Support&Contact.handlebars", {
         layout: "main",
         title: "Support Ticket System - MBK Tech Support & Contact",
+        turnstileSiteKey: process.env.TURNSTILE_SITE_KEY || null,
     });
 }
 
 // Terms & Conditions page
 export function termsPage(req, res) {
-    res.render("mainPages/mainDomain/Terms&Conditions.handlebars", {
+    res.render("mainPages/mainDomain/LegalDocument.handlebars", {
         layout: "main",
         title: "Terms & Conditions - MBK Tech",
-        termsContent: legalContent.terms,
+        docCategory: "Terms of Service & Governance",
+        docIcon: "lni-file",
+        docTitle: "Terms & Conditions",
+        docDescription: "The contractual rules, licensing terms, and obligations governing access to and usage of MBKTech software, services, and web portals.",
+        effectiveDate: "August 6, 2026",
+        version: "v1.0.0 (Active)",
+        entity: "MBKTech.org",
+        readingTime: "~7 mins read",
+        docContent: legalContent.terms,
     });
 }
 
 // Privacy Policy page
 export function privacyPage(req, res) {
-    res.render("mainPages/mainDomain/PrivacyPolicy.handlebars", {
+    res.render("mainPages/mainDomain/LegalDocument.handlebars", {
         layout: "main",
         title: "Privacy Policy - MBK Tech",
-        privacyContent: legalContent.privacy,
+        docCategory: "Legal & Compliance",
+        docIcon: "lni-shield",
+        docTitle: "Privacy Policy",
+        docDescription: "How MBKTech.org collects, uses, processes, stores, and safeguards your personal information across all platforms.",
+        effectiveDate: "August 6, 2026",
+        version: "v1.0.0 (Active)",
+        entity: "MBKTech.org",
+        readingTime: "~6 mins read",
+        docContent: legalContent.privacy,
     });
 }
 

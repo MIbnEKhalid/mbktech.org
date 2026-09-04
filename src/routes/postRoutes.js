@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { submitForm } from "../controllers/formController.js";
 import { formRateLimit } from "../middleware/security.js";
+import { botProtectionGuard } from "../middleware/botProtection.js";
 import { validateSubmission } from "../services/spamService.js";
 
 const router = Router();
@@ -15,6 +16,6 @@ async function spamGuard(req, res, next) {
     next();
 }
 
-router.post("/SubmitForm", formRateLimit, spamGuard, submitForm);
+router.post("/SubmitForm", botProtectionGuard, formRateLimit, spamGuard, submitForm);
 
 export default router;

@@ -1,88 +1,97 @@
 <!-- ============================================================
-     FOOTER PARTIAL — shared site footer (Alpine.js powered)
-     Included by the layout via a Handlebars partial call.
+     FOOTER PARTIAL — MBK Tech Footer
      ============================================================ -->
-<footer class="bg-dark text-slate-300 border-t border-white/10">
+<footer class="mt-auto border-t border-primary-600/20 bg-dark-surface text-slate-300 transition-colors duration-200">
 
-    <!-- Link columns -->
-    <div class="container grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <!-- Main Footer Grid -->
+    <div class="container grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
 
-        <!-- Brand -->
-        <div>
-            <a href="/" class="flex items-center gap-2.5">
-                <img src="{{icon_base64}}" alt="MBK Tech logo" class="h-9 w-auto">
-                <span class="font-heading text-2xl font-extrabold text-white">BK<span class="text-accent-400">Tech</span></span>
+        <!-- Brand Column -->
+        <div class="space-y-4">
+            <a href="/" class="flex items-center gap-1.5 group">
+                <img src="{{icon_base64}}" alt="MBK Tech logo" class="h-9 w-auto transition-transform group-hover:scale-105">
+                <span class="font-heading text-2xl font-bold text-white tracking-tight" style="padding-top:0.7rem">BK<span class="text-primary-400">Tech</span></span>
             </a>
-            <p class="mt-4 text-sm leading-relaxed text-slate-400">
-                A collaborative development studio focused on open-source contributions and innovative technology solutions.
+            <p class="text-sm leading-relaxed text-slate-400">
+                A collaborative open-source technology studio and software solutions provider empowering developers and problem-solvers worldwide.
             </p>
-            <div class="mt-5 flex items-center gap-3">
-                <a href="https://instagram.com/mbktech_org" target="_blank" rel="noopener" title="Instagram"
-                   class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-slate-300 transition hover:bg-accent-500 hover:text-white"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank" rel="noopener" title="Facebook"
-                   class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-slate-300 transition hover:bg-accent-500 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://x.com/ibnekhalid28" target="_blank" rel="noopener" title="X / Twitter"
-                   class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-slate-300 transition hover:bg-accent-500 hover:text-white"><i class="fab fa-x"></i></a>
+            <div class="flex items-center gap-2.5 pt-1">
                 <a href="https://github.com/MIbnEKhalid" target="_blank" rel="noopener" title="GitHub"
-                   class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-slate-300 transition hover:bg-accent-500 hover:text-white"><i class="fab fa-github"></i></a>
+                   class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-300 transition-all hover:bg-primary-600 hover:text-white hover:border-primary-500"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/ibnekhalid28" target="_blank" rel="noopener" title="X / Twitter"
+                   class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-300 transition-all hover:bg-primary-600 hover:text-white hover:border-primary-500"><i class="fab fa-x"></i></a>
                 <a href="https://youtube.com/@mibnekhalid" target="_blank" rel="noopener" title="YouTube"
-                   class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-slate-300 transition hover:bg-accent-500 hover:text-white"><i class="fab fa-youtube"></i></a>
+                   class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-300 transition-all hover:bg-primary-600 hover:text-white hover:border-primary-500"><i class="fab fa-youtube"></i></a>
+                <a href="https://instagram.com/mbktech_org" target="_blank" rel="noopener" title="Instagram"
+                   class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-300 transition-all hover:bg-primary-600 hover:text-white hover:border-primary-500"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank" rel="noopener" title="Facebook"
+                   class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-300 transition-all hover:bg-primary-600 hover:text-white hover:border-primary-500"><i class="fab fa-facebook-f"></i></a>
             </div>
         </div>
 
-        <!-- Quick links -->
+        <!-- Quick Links -->
         <div>
-            <h4 class="font-heading text-sm font-bold uppercase tracking-wider text-white">Quick Links</h4>
-            <ul class="mt-4 space-y-3 text-sm">
-                <li><a href="/" class="text-slate-400 transition hover:text-white">Home</a></li>
-                <li><a href="/Services" class="text-slate-400 transition hover:text-white">Services</a></li>
-                <li><a href="/FAQs" class="text-slate-400 transition hover:text-white">FAQs</a></li>
-                <li><a href="/Support&Contact" class="text-slate-400 transition hover:text-white">Support</a></li>
-                <li><a href="/TrackTicket" class="text-slate-400 transition hover:text-white">Track Ticket</a></li>
-                <li><a href="/Status" class="text-slate-400 transition hover:text-white">Service Status</a></li>
+            <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-primary-300 border-b border-white/10 pb-2.5 mb-3.5">Quick Links</h4>
+            <ul class="space-y-2.5 text-sm">
+                <li><a href="/" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Home</a></li>
+                <li><a href="/Services" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Services &amp; Packages</a></li>
+                <li><a href="/FAQs" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> FAQs</a></li>
+                <li><a href="/Support&Contact" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Support &amp; Contact</a></li>
+                <li><a href="/TrackTicket" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Track Ticket</a></li>
+                <li><a href="/Status" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span> Service Status</a></li>
             </ul>
         </div>
 
-        <!-- Resources -->
+        <!-- Ecosystem & Resources -->
         <div>
-            <h4 class="font-heading text-sm font-bold uppercase tracking-wider text-white">Resources</h4>
-            <ul class="mt-4 space-y-3 text-sm">
-                <li><a href="https://blog.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-white">Blog</a></li>
-                <li><a href="https://core.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-white">Web Portal</a></li>
-                <li><a href="https://chat.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-white">Chat App</a></li>
-                <li><a href="https://chatapi.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-white">AI Chatbot</a></li>
-                <li><a href="https://unilib.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-white">Unilib</a></li>
-                <li><a href="https://download.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-white">Download Apps</a></li>
+            <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-primary-300 border-b border-white/10 pb-2.5 mb-3.5">Ecosystem</h4>
+            <ul class="space-y-2.5 text-sm">
+                <li><a href="https://blog.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Engineering Blog</a></li>
+                <li><a href="https://core.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Web Portal</a></li>
+                <li><a href="https://chat.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Chat App</a></li>
+                <li><a href="https://chatapi.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> AI Assistant API</a></li>
+                <li><a href="https://unilib.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Unilib Resources</a></li>
+                <li><a href="https://download.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> App Downloads</a></li>
             </ul>
         </div>
 
-        <!-- Contact -->
+        <!-- Contact & Studio Info -->
         <div>
-            <h4 class="font-heading text-sm font-bold uppercase tracking-wider text-white">Contact</h4>
-            <ul class="mt-4 space-y-3 text-sm">
+            <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-primary-300 border-b border-white/10 pb-2.5 mb-3.5">Contact</h4>
+            <ul class="space-y-3 text-sm">
                 <li class="flex items-start gap-3">
-                    <i class="lni lni-envelope mt-0.5 text-accent-400"></i>
-                    <a href="mailto:support@mbktech.org" class="text-slate-400 transition hover:text-white">support@mbktech.org</a>
+                    <i class="lni lni-envelope mt-1 text-primary-400"></i>
+                    <div>
+                        <span class="block text-xs text-slate-500 font-medium">Support Email</span>
+                        <a href="mailto:support@mbktech.org" class="text-slate-300 hover:text-primary-300 font-mono text-xs">support@mbktech.org</a>
+                    </div>
                 </li>
                 <li class="flex items-start gap-3">
-                    <i class="lni lni-world mt-0.5 text-accent-400"></i>
-                    <a href="https://mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-white">mbktech.org</a>
+                    <i class="lni lni-world mt-1 text-primary-400"></i>
+                    <div>
+                        <span class="block text-xs text-slate-500 font-medium">Main Domain</span>
+                        <a href="https://mbktech.org" target="_blank" rel="noopener" class="text-slate-300 hover:text-primary-300 font-mono text-xs">mbktech.org</a>
+                    </div>
                 </li>
                 <li class="flex items-start gap-3">
-                    <i class="lni lni-map-marker mt-0.5 text-accent-400"></i>
-                    <span class="text-slate-400">Open-source community worldwide</span>
+                    <i class="lni lni-map-marker mt-1 text-primary-400"></i>
+                    <div>
+                        <span class="block text-xs text-slate-500 font-medium">Community</span>
+                        <span class="text-slate-300 text-xs">Global Open-Source Studio</span>
+                    </div>
                 </li>
             </ul>
         </div>
     </div>
 
-    <!-- Bottom bar -->
-    <div class="border-t border-white/10">
-        <div class="container flex flex-col items-center justify-between gap-3 py-6 text-sm text-slate-400 md:flex-row">
+    <!-- Bottom Metadata Bar -->
+    <div class="border-t border-primary-600/15 bg-black/20">
+        <div class="container flex flex-col items-center justify-between gap-3 py-5 text-xs text-slate-400 md:flex-row">
             <p>&copy; <span id="year"></span> MBKTech.org. All rights reserved.</p>
             <div class="flex items-center gap-5">
-                <a href="/PrivacyPolicy" class="transition hover:text-white">Privacy Policy</a>
-                <a href="/Terms&Conditions" class="transition hover:text-white">Terms &amp; Conditions</a>
+                <a href="/PrivacyPolicy" class="transition hover:text-primary-300">Privacy Policy</a>
+                <a href="/Terms&Conditions" class="transition hover:text-primary-300">Terms &amp; Conditions</a>
+                <a href="/Status" class="transition hover:text-primary-300 flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span> All Systems Normal</a>
             </div>
         </div>
     </div>

@@ -1,130 +1,192 @@
-﻿<!-- ============================================================
-     SERVICES PAGE — MBK Tech
+<!-- ============================================================
+     SERVICES PAGE — MBK Tech 
      ============================================================ -->
 
-<!-- Page hero -->
-<section class="relative overflow-hidden bg-slate-50">
-    <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary-100/60 blur-3xl"></div>
-    <div class="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-accent-100/60 blur-3xl"></div>
-    <div class="container relative py-16 text-center md:py-24">
-        <span class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-600 ring-1 ring-primary-100">
-            <i class="lni lni-layers"></i> Our Services
+<!-- Page Header Hero -->
+<section class="relative overflow-hidden py-14 sm:py-20">
+    <div class="container relative z-10 text-center max-w-3xl space-y-4">
+        <span class="eyebrow inline-flex items-center gap-2 rounded-full bg-primary-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary-700 border border-primary-600/20 dark:bg-primary-950/70 dark:text-primary-300 dark:border-primary-500/30">
+            <i class="lni lni-layers"></i> Engineering Services
         </span>
-        <h1 class="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">Services built around your goals</h1>
-        <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-500">
-            Professional technology solutions tailored to your needs — from simple websites to full-stack applications.
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl text-slate-900 dark:text-white">
+            Services Built Around <span class="text-primary-600 dark:text-primary-400">Your Goals</span>
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            Professional technology solutions tailored to your requirements — from accessible websites to scalable cloud architectures and dedicated maintenance.
         </p>
     </div>
 </section>
 
 <!-- ================= SERVICE / PRICING CARDS ================= -->
-<section class="section">
+<section class="section pt-0">
     <div class="container">
         <div class="section-title">
-            <h2>What We Offer</h2>
-            <p>Simple, transparent packages for every stage of your project.</p>
+            <span class="eyebrow">Service Catalog</span>
+            <h2>Transparent Development Packages</h2>
+            <p>Predictable pricing and transparent milestones for every stage of your digital journey.</p>
         </div>
+        
         <div class="grid gap-6 lg:grid-cols-3">
-
-            <!-- Web Development (featured) -->
-            <div class="card relative flex flex-col border-primary-200 bg-gradient-to-b from-primary-50/70 to-white ring-1 ring-primary-100 dark:from-primary-900/30 dark:to-slate-800">
-                <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary-600 px-4 py-1 text-xs font-bold uppercase tracking-wider text-white">Most Popular</span>
+            <!-- Web Development (Featured) -->
+            <div class="card relative flex flex-col border-primary-600/30 bg-white/90 dark:bg-dark-surface/90 shadow-md ring-1 ring-primary-500/20">
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary-600 px-3.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-white shadow-sm">
+                    Most Popular
+                </span>
+                
                 <span class="feature-icon"><i class="lni lni-code"></i></span>
-                <h3 class="mt-5 text-xl font-bold">Web Development</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Custom websites and web applications built with modern technologies.</p>
-                <div class="mt-4">
-                    <p class="text-2xl font-extrabold text-accent-600">PKR 5,000 – 15,000</p>
-                    <p class="text-xs text-slate-400">per project + service charges</p>
+                
+                <div class="mt-4 space-y-1">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Web Development</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Custom websites, portals, and web applications built with modern tools.</p>
                 </div>
-                <ul class="mt-5 flex-1 space-y-2 text-sm text-slate-600">
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span><strong>Basic (PKR 5k):</strong> Portfolio sites, auth, ticket system</span></li>
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span><strong>Full Stack (PKR 10-15k):</strong> E-commerce, admin panel, accounts</span></li>
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Responsive design &amp; SEO</span></li>
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Post-launch security updates included</span></li>
+
+                <div class="my-5 rounded-lg bg-primary-50/60 dark:bg-primary-950/50 p-3.5 border border-primary-600/15">
+                    <p class="text-2xl font-heading font-extrabold text-primary-800 dark:text-primary-200">PKR 5,000 – 15,000</p>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">per project scope + service fees</p>
+                </div>
+
+                <ul class="flex-1 space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span><strong>Basic (PKR 5k):</strong> Portfolios, authentication, support tickets</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span><strong>Full-Stack (PKR 10k–15k):</strong> E-commerce, database, custom CMS</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span>Responsive mobile layout &amp; modern SEO optimizations</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span>Post-launch deployment support &amp; security hardening</span>
+                    </li>
                 </ul>
-                <div class="mt-6 flex flex-wrap gap-3">
-                    <a href="/Services/WebDevBasicPackage" class="btn-primary flex-1">Basic Package</a>
-                    <a href="/Services/WebDevFullStackPackage" class="btn-outline flex-1">Full Stack</a>
+
+                <div class="mt-6 pt-4 border-t border-primary-600/10 dark:border-primary-500/20 flex flex-wrap gap-2.5">
+                    <a href="/Services/WebDevBasicPackage" class="btn-primary flex-1 text-xs sm:text-sm justify-center">Basic Tier</a>
+                    <a href="/Services/WebDevFullStackPackage" class="btn-outline flex-1 text-xs sm:text-sm justify-center">Full Stack</a>
                 </div>
             </div>
 
             <!-- Technical Consulting -->
-            <div class="card flex flex-col">
-                <span class="feature-icon bg-accent-50 text-accent-600"><i class="lni lni-consulting"></i></span>
-                <h3 class="mt-5 text-xl font-bold">Technical Consulting</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Expert advice on tech stack, architecture, and project direction.</p>
-                <div class="mt-4">
-                    <p class="text-2xl font-extrabold text-accent-600">Free</p>
-                    <p class="text-xs text-slate-400">no-cost consultation</p>
+            <div class="card flex flex-col p-6">
+                <span class="feature-icon"><i class="lni lni-bulb"></i></span>
+                
+                <div class="mt-4 space-y-1">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Technical Consulting</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Architecture guidance, stack selection, and code optimization.</p>
                 </div>
-                <ul class="mt-5 flex-1 space-y-2 text-sm text-slate-600">
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Technology assessment &amp; stack recommendations</span></li>
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Architecture planning &amp; code review</span></li>
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Project guidance &amp; best practices</span></li>
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Response may vary based on availability</span></li>
+
+                <div class="my-5 rounded-lg bg-primary-50/60 dark:bg-primary-950/50 p-3.5 border border-primary-600/15">
+                    <p class="text-2xl font-heading font-extrabold text-primary-800 dark:text-primary-200">Free / Open</p>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">initial technical assessment</p>
+                </div>
+
+                <ul class="flex-1 space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span>Technology stack evaluation &amp; database recommendations</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span>Cloud infrastructure design (Cloudflare, AWS, Vercel)</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span>Performance profiling &amp; security best practices</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span>Response tailored to project availability</span>
+                    </li>
                 </ul>
-                <div class="mt-6">
-                    <a href="/Support&Contact" class="btn-outline w-full">Request Consult</a>
+
+                <div class="mt-6 pt-4 border-t border-primary-600/10 dark:border-primary-500/20">
+                    <a href="/Support&Contact" class="btn-outline w-full justify-center text-xs sm:text-sm">Request Consultation</a>
                 </div>
             </div>
 
             <!-- Maintenance & Support -->
-            <div class="card flex flex-col">
+            <div class="card flex flex-col p-6">
                 <span class="feature-icon"><i class="lni lni-cog"></i></span>
-                <h3 class="mt-5 text-xl font-bold">Maintenance &amp; Support</h3>
-                <p class="mt-2 text-sm leading-relaxed text-slate-500">Ongoing maintenance, upgrades, and changes for existing projects.</p>
-                <div class="mt-4">
-                    <p class="text-2xl font-extrabold text-accent-600">PKR 1,000 – 2,000</p>
-                    <p class="text-xs text-slate-400">per month + service charges</p>
+                
+                <div class="mt-4 space-y-1">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Maintenance &amp; Support</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Continuous uptime monitoring, patches, and feature updates.</p>
                 </div>
-                <ul class="mt-5 flex-1 space-y-2 text-sm text-slate-600">
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Website upgrades &amp; major feature changes</span></li>
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Bug fixes &amp; security patches</span></li>
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Performance monitoring &amp; optimization</span></li>
-                    <li class="flex gap-2"><i class="lni lni-checkmark-circle mt-0.5 text-accent-500"></i><span>Cost scales with complexity</span></li>
+
+                <div class="my-5 rounded-lg bg-primary-50/60 dark:bg-primary-950/50 p-3.5 border border-primary-600/15">
+                    <p class="text-2xl font-heading font-extrabold text-primary-800 dark:text-primary-200">PKR 1,000 – 2,000</p>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400">per month + custom additions</p>
+                </div>
+
+                <ul class="flex-1 space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span>Ongoing system upgrades &amp; dependency security patches</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span>Bug fixes, styling refinements, and copy updates</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span>Database backup verifications &amp; server monitoring</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="lni lni-checkmark-circle mt-0.5 text-primary-600 text-base"></i>
+                        <span>Scalable support tiers matching traffic demands</span>
+                    </li>
                 </ul>
-                <div class="mt-6">
-                    <a href="/Support&Contact" class="btn-outline w-full">Get Started</a>
+
+                <div class="mt-6 pt-4 border-t border-primary-600/10 dark:border-primary-500/20">
+                    <a href="/Support&Contact" class="btn-outline w-full justify-center text-xs sm:text-sm">Start Retainer</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ================= PROCESS ================= -->
-<section class="section bg-slate-50">
+<!-- ================= PROCESS STEPS ================= -->
+<section class="section bg-primary-50/30 dark:bg-dark-surface/40 border-y border-primary-600/10">
     <div class="container">
         <div class="section-title">
             <span class="eyebrow">How We Work</span>
-            <h2>A simple, transparent process</h2>
-            <p>From first conversation to launch and beyond.</p>
+            <h2>Simple &amp; Structured Process</h2>
+            <p>From initial design blueprint to deployment and ongoing support.</p>
         </div>
+        
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            <!-- Step -->
-            <div class="card text-center">
-                <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-extrabold text-white">1</span>
-                <h3 class="mt-4 text-base font-bold">Discovery</h3>
-                <p class="mt-2 text-sm text-slate-500">We learn about your goals, requirements, and constraints through detailed consultation.</p>
+            <div class="card text-center p-6 space-y-2">
+                <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-primary-600 text-base font-bold text-white shadow-sm">1</span>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">Discovery</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400">Understanding your exact requirements, tech stack, and goals.</p>
             </div>
-            <div class="card text-center">
-                <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-accent-500 text-lg font-extrabold text-white">2</span>
-                <h3 class="mt-4 text-base font-bold">Proposal</h3>
-                <p class="mt-2 text-sm text-slate-500">A clear plan with timeline, deliverables, and cost estimate tailored to your needs.</p>
+            
+            <div class="card text-center p-6 space-y-2">
+                <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-500 text-base font-bold text-white shadow-sm">2</span>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">Proposal</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400">Detailed deliverables, milestones, and fixed pricing breakdown.</p>
             </div>
-            <div class="card text-center">
-                <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-extrabold text-white">3</span>
-                <h3 class="mt-4 text-base font-bold">Development</h3>
-                <p class="mt-2 text-sm text-slate-500">We build your solution with regular updates, milestones, and transparent communication.</p>
+            
+            <div class="card text-center p-6 space-y-2">
+                <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-primary-600 text-base font-bold text-white shadow-sm">3</span>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">Development</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400">Agile sprints, code reviews, and live preview staging environments.</p>
             </div>
-            <div class="card text-center">
-                <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-accent-500 text-lg font-extrabold text-white">4</span>
-                <h3 class="mt-4 text-base font-bold">Launch</h3>
-                <p class="mt-2 text-sm text-slate-500">Rigorous testing, smooth deployment, and a polished final product.</p>
+            
+            <div class="card text-center p-6 space-y-2">
+                <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-secondary-500 text-base font-bold text-white shadow-sm">4</span>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">Launch</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400">Production deployment, SSL configuration, and domain setup.</p>
             </div>
-            <div class="card text-center">
-                <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-lg font-extrabold text-white">5</span>
-                <h3 class="mt-4 text-base font-bold">Support</h3>
-                <p class="mt-2 text-sm text-slate-500">Ongoing maintenance to keep your solution performing at its best.</p>
+            
+            <div class="card text-center p-6 space-y-2">
+                <span class="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-primary-600 text-base font-bold text-white shadow-sm">5</span>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">Support</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400">Continuous updates, performance checks, and ticket support.</p>
             </div>
         </div>
     </div>
@@ -133,13 +195,18 @@
 <!-- ================= CTA ================= -->
 <section class="section">
     <div class="container">
-        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary-600 to-accent-500 p-10 text-center text-white md:p-14">
-            <div class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl"></div>
-            <h2 class="text-3xl font-extrabold md:text-4xl">Ready to Start?</h2>
-            <p class="mx-auto mt-3 max-w-xl text-blue-100">Tell us about your project and we'll get back to you with a personalized quote.</p>
-            <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <a href="/Support&Contact" class="btn-white">Get a Quote</a>
-                <a href="mailto:support@mbktech.org" class="btn bg-white/10 text-white ring-1 ring-white/30 hover:bg-white/20">Email Us</a>
+        <div class="card bg-gradient-to-r from-primary-800 to-primary-700 text-white p-8 sm:p-12 text-center relative overflow-hidden shadow-xl border-primary-600/30">
+            <div class="relative z-10 max-w-xl mx-auto space-y-4">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Ready to start your project?</h2>
+                <p class="text-xs sm:text-sm text-teal-100">Send us your project outline and we will review and respond promptly.</p>
+                <div class="pt-2 flex flex-wrap justify-center gap-3">
+                    <a href="/Support&Contact" class="btn bg-white text-primary-900 font-bold hover:bg-teal-50">
+                        Request a Quote <i class="lni lni-arrow-right"></i>
+                    </a>
+                    <a href="mailto:support@mbktech.org" class="btn bg-white/10 text-white border border-white/30 hover:bg-white/20">
+                        <i class="lni lni-envelope"></i> Email Us
+                    </a>
+                </div>
             </div>
         </div>
     </div>

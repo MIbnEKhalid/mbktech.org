@@ -34,11 +34,11 @@ export const securityHeaders = helmet({
 
 // Rate limiting for general API endpoints
 export const apiRateLimit = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 1 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per windowMs
   message: {
     error: 'Too many requests from this IP, please try again later.',
-    retryAfter: '15 minutes'
+    retryAfter: '1 minutes'
   },
   standardHeaders: true,
   legacyHeaders: false

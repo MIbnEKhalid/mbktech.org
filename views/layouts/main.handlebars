@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{#if title}}{{title}}{{else}}MBK Tech | Open-Source &amp; Innovation{{/if}}</title>
+    <title>{{#if title}}{{title}}{{else}}MBK Tech | Open-Source &amp; Innovation Studio{{/if}}</title>
 
     <meta name="description" content="MBKTech.org — Open-source innovation and technology solutions. Web development, mobile apps, custom software, and consulting from a collaborative development studio." />
-    <meta name="keywords" content="MBKTech.org, Open-Source, Software Development, Technology Solutions" />
+    <meta name="keywords" content="MBKTech.org, Open-Source, Software Development, Technology Solutions, MBK Tech" />
     <meta property="og:title" content="MBKTech.org | Open-Source and Innovation" />
     <meta property="og:description" content="Empowering technology through open-source innovation and collaborative development." />
     <meta property="og:image" content="https://mbktech.org/Assets/Images/Icon/logo.png" />
@@ -15,25 +15,25 @@
 
     <link rel="icon" type="image/svg+xml" href="/M.png" />
 
-    <!-- Fonts -->
+    <!-- Google Fonts: Sora, IBM Plex Sans, JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Icons: LineIcons (design) + Font Awesome (legacy/tickets.js) -->
+    <!-- Icons: LineIcons + Font Awesome -->
     <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- Tailwind (compiled) -->
     <link rel="stylesheet" href="/Assets/Style/tailwind.css" />
 
-    <!-- Optional page-specific head content (e.g. view styles) -->
+    <!-- Optional page-specific head content -->
     {{{headExtra}}}
 
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 
-    <!-- Dark / light theme — apply before first paint to avoid a flash -->
+    <!-- Dark / light theme initialization -->
     <script>
         (function () {
             try {
@@ -50,7 +50,7 @@
     </script>
 </head>
 
-<body class="flex min-h-screen flex-col bg-white font-sans text-slate-700 antialiased dark:bg-slate-900 dark:text-slate-300">
+<body class="flex min-h-screen flex-col font-sans antialiased">
 
     {{> header}}
 
@@ -60,7 +60,7 @@
 
     {{> footer}}
 
-    <!-- Cookie consent banner (content injected by /Assets/Scripts/cookie.js) -->
+    <!-- Cookie consent banner -->
     <div id="cookie"></div>
     <script src="/Assets/Scripts/cookie.js"></script>
 

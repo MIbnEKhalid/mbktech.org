@@ -1,138 +1,160 @@
-﻿<!-- ============================================================
-     SUPPORT & CONTACT PAGE — MBK Tech
-     Form hooks preserved for /Assets/Scripts/tickets.js
+<!-- ============================================================
+     SUPPORT & CONTACT PAGE — MBK Tech 
+     Form hooks strictly preserved for /Assets/Scripts/tickets.js
      ============================================================ -->
 
-<!-- Page hero -->
-<section class="relative overflow-hidden bg-slate-50">
-    <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary-100/60 blur-3xl"></div>
-    <div class="container relative py-16 text-center md:py-20">
-        <span class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-600 ring-1 ring-primary-100">
-            <i class="lni lni-support"></i> Support
+<!-- Page Header Hero -->
+<section class="relative overflow-hidden py-14 sm:py-20">
+    <div class="container relative z-10 text-center max-w-3xl space-y-4">
+        <span class="eyebrow inline-flex items-center gap-2 rounded-full bg-primary-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary-700 border border-primary-600/20 dark:bg-primary-950/70 dark:text-primary-300 dark:border-primary-500/30">
+            <i class="lni lni-support"></i> Help Desk &amp; Inquiry
         </span>
-        <h1 class="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">Support &amp; Contact</h1>
-        <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-500">Need help? Have feedback? We'd love to hear from you.</p>
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl text-slate-900 dark:text-white">
+            Support &amp; <span class="text-primary-600 dark:text-primary-400">Contact</span>
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            Have a project idea, need technical assistance, or want to provide feedback? Submit an inquiry and our team will get in touch promptly.
+        </p>
     </div>
 </section>
 
-<section class="section">
-    <div class="container grid gap-10 lg:grid-cols-5">
+<!-- ================= MAIN CONTENT ================= -->
+<section class="section pt-0">
+    <div class="container grid gap-8 lg:grid-cols-12 items-start">
 
-        <!-- ================= INFO CARDS ================= -->
-        <div class="space-y-5 lg:col-span-2">
-            <div class="card">
-                <div class="flex items-start gap-4">
-                    <span class="feature-icon"><i class="lni lni-envelope"></i></span>
+        <!-- Info Sidebar Cards -->
+        <div class="lg:col-span-4 space-y-4">
+            <div class="card p-6 space-y-3">
+                <div class="flex items-start gap-3.5">
+                    <span class="feature-icon shrink-0"><i class="lni lni-envelope"></i></span>
                     <div>
-                        <h3 class="font-bold">Email Us</h3>
-                        <p class="mt-1 text-sm text-slate-500">For general questions or feedback.</p>
-                        <a href="mailto:support@mbktech.org" class="mt-1 inline-block text-sm font-semibold text-primary-600 hover:underline">support@mbktech.org</a>
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white">Email Us</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">For direct outreach and partnerships.</p>
+                        <a href="mailto:support@mbktech.org" class="mt-2 inline-block text-xs font-mono font-bold text-primary-600 dark:text-primary-400 hover:underline">support@mbktech.org</a>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="flex items-start gap-4">
-                    <span class="feature-icon bg-accent-50 text-accent-600"><i class="lni lni-ticket"></i></span>
+            <div class="card p-6 space-y-3">
+                <div class="flex items-start gap-3.5">
+                    <span class="feature-icon shrink-0"><i class="lni lni-ticket"></i></span>
                     <div>
-                        <h3 class="font-bold">Track a Ticket</h3>
-                        <p class="mt-1 text-sm text-slate-500">Already submitted a request? Check its status.</p>
-                        <a href="/TrackTicket" class="mt-1 inline-block text-sm font-semibold text-primary-600 hover:underline">Track Ticket <i class="lni lni-arrow-right"></i></a>
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white">Track an Existing Ticket</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Check status updates on your existing request code.</p>
+                        <a href="/TrackTicket" class="mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">
+                            Track Status <i class="lni lni-arrow-right text-[10px]"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
-                <h3 class="font-bold">Follow Us</h3>
-                <div class="mt-4 flex flex-wrap items-center gap-3">
-                    <a href="https://github.com/MIbnEKhalid" target="_blank" rel="noopener" title="GitHub" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-github"></i></a>
-                    <a href="https://x.com/ibnekhalid28" target="_blank" rel="noopener" title="X / Twitter" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-x"></i></a>
-                    <a href="https://youtube.com/@mibnekhalid" target="_blank" rel="noopener" title="YouTube" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-youtube"></i></a>
-                    <a href="https://instagram.com/mbktech_org" target="_blank" rel="noopener" title="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank" rel="noopener" title="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition hover:bg-primary-600 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+            <div class="card p-6 space-y-3">
+                <div class="flex items-start gap-3.5">
+                    <span class="feature-icon shrink-0"><i class="lni lni-pulse"></i></span>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white">Live System Status</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Check availability of all MBKTech platforms.</p>
+                        <a href="/Status" class="mt-2 inline-flex items-center gap-1.5 text-xs font-bold text-primary-600 dark:text-primary-400 hover:underline">
+                            View Dashboard <i class="lni lni-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Links Card -->
+            <div class="card p-6 space-y-3">
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">Studio Channels</h3>
+                <div class="flex flex-wrap items-center gap-2 pt-1">
+                    <a href="https://github.com/MIbnEKhalid" target="_blank" rel="noopener" title="GitHub" class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/ibnekhalid28" target="_blank" rel="noopener" title="X / Twitter" class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-x"></i></a>
+                    <a href="https://youtube.com/@mibnekhalid" target="_blank" rel="noopener" title="YouTube" class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-youtube"></i></a>
+                    <a href="https://instagram.com/mbktech_org" target="_blank" rel="noopener" title="Instagram" class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/people/MBK-Tech-Studio/61559079077988/" target="_blank" rel="noopener" title="Facebook" class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white transition-colors dark:bg-primary-950/60 dark:text-primary-300"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
         </div>
 
-        <!-- ================= CONTACT FORM ================= -->
-        <div class="lg:col-span-3">
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8 dark:bg-slate-800">
-                <h2 class="text-xl font-bold">Send us a message</h2>
-                <p class="mt-1 text-sm text-slate-500">We usually respond within 1–2 business days.</p>
+        <!-- Contact & Ticket Submission Form -->
+        <div class="lg:col-span-8">
+            <div class="card p-6 sm:p-8 shadow-md border-primary-600/20 space-y-6">
+                <div class="border-b border-primary-600/10 dark:border-primary-500/20 pb-4">
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Submit a Request</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Fill out the fields below. A unique ticket tracking code will be generated upon submission.</p>
+                </div>
 
-                <form id="ticketSupportForm" class="mt-6 space-y-5" novalidate>
-                    <!-- Name + Email row -->
+                <form id="ticketSupportForm" class="space-y-4" novalidate>
+                    <!-- Name + Email Row -->
                     <div class="grid gap-4 sm:grid-cols-2">
                         <div>
-                            <label for="f-name" class="mb-1.5 block text-sm font-semibold text-slate-700">Name <span class="text-red-500">*</span></label>
-                            <input id="f-name" type="text" name="UserName" placeholder="Your name" required
-                                   class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500" />
+                            <label for="f-name" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Name <span class="text-red-500">*</span></label>
+                            <input id="f-name" type="text" name="UserName" placeholder="Muhammad Ali" required
+                                   class="w-full rounded-lg border border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 px-3.5 py-2.5 text-sm shadow-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-500/20 dark:border-primary-500/25" />
                         </div>
                         <div>
-                            <label for="f-email" class="mb-1.5 block text-sm font-semibold text-slate-700">Email <span class="text-red-500">*</span></label>
-                            <input id="f-email" type="email" name="Email" placeholder="you@example.com" required
-                                   class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500" />
+                            <label for="f-email" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Email Address <span class="text-red-500">*</span></label>
+                            <input id="f-email" type="email" name="Email" placeholder="ali@example.com" required
+                                   class="w-full rounded-lg border border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 px-3.5 py-2.5 text-sm shadow-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-500/20 dark:border-primary-500/25" />
                         </div>
                     </div>
 
-                    <!-- Subject -->
+                    <!-- Subject Topic Selector -->
                     <div>
-                        <label for="subjectSelect" class="mb-1.5 block text-sm font-semibold text-slate-700">What's this about? <span class="text-red-500">*</span></label>
+                        <label for="subjectSelect" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Category / Purpose <span class="text-red-500">*</span></label>
                         <select id="subjectSelect" name="Subject" required
-                                class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500">
-                            <option value="" disabled selected>Choose a topic...</option>
+                                class="w-full rounded-lg border border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 px-3.5 py-2.5 text-sm shadow-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-500/20 dark:border-primary-500/25">
+                            <option value="" disabled selected>Select an inquiry category...</option>
                             <option value="Support">Technical Support</option>
-                            <option value="Feedback">Feedback</option>
-                            <option value="Collaboration">Collaboration</option>
-                            <option value="Get Quote">Get a Quote</option>
+                            <option value="Feedback">Feedback &amp; Rating</option>
+                            <option value="Collaboration">Open-Source Collaboration</option>
+                            <option value="Get Quote">Get a Service Quote</option>
                             <option value="General Inquiry">General Inquiry</option>
                         </select>
                     </div>
 
-                    <!-- Support type (shown for "Support") -->
-                    <div class="conditional-field space-y-5" data-show="Support">
+                    <!-- Conditional: Support Type -->
+                    <div class="conditional-field space-y-4" data-show="Support">
                         <div>
-                            <label for="f-support" class="mb-1.5 block text-sm font-semibold text-slate-700">Support Type <span class="text-red-500">*</span></label>
+                            <label for="f-support" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Support Type <span class="text-red-500">*</span></label>
                             <select id="f-support" name="support"
-                                    class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500">
-                                <option value="" disabled selected>What kind of support?</option>
+                                    class="w-full rounded-lg border border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 px-3.5 py-2.5 text-sm shadow-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-500/20 dark:border-primary-500/25">
+                                <option value="" disabled selected>What kind of support is required?</option>
                                 <option value="Docs">Documentation Help</option>
-                                <option value="Technical">Technical Issue</option>
+                                <option value="Technical">Technical Issue / Bug</option>
                                 <option value="CopyRightIssue">Copyright Concern</option>
                                 <option value="BugReportingFeatureRequests">Bug Report / Feature Request</option>
-                                <option value="other">Something Else</option>
+                                <option value="other">Other Inquiry</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- Service type (shown for "Get Quote") -->
-                    <div class="conditional-field space-y-5" data-show="Get Quote">
+                    <!-- Conditional: Service Tier -->
+                    <div class="conditional-field space-y-4" data-show="Get Quote">
                         <div>
-                            <label for="f-service" class="mb-1.5 block text-sm font-semibold text-slate-700">Service <span class="text-red-500">*</span></label>
+                            <label for="f-service" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Desired Package / Service <span class="text-red-500">*</span></label>
                             <select id="f-service" name="service"
-                                    class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500">
-                                <option value="" disabled selected>Which service?</option>
-                                <option value="WebDev-Basic">Web Dev - Basic (PKR 5,000)</option>
-                                <option value="WebDev-FullStack">Web Dev - Full Stack (PKR 10-15k)</option>
-                                <option value="Technical-Consulting">Technical Consulting (Free)</option>
-                                <option value="Maintenance">Maintenance (PKR 1,000-2,000/mo)</option>
+                                    class="w-full rounded-lg border border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 px-3.5 py-2.5 text-sm shadow-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-500/20 dark:border-primary-500/25">
+                                <option value="" disabled selected>Select service package...</option>
+                                <option value="WebDev-Basic">Web Dev - Basic Package (PKR 5,000)</option>
+                                <option value="WebDev-FullStack">Web Dev - Full Stack (PKR 10,000–15,000)</option>
+                                <option value="Technical-Consulting">Technical Consulting (Free initial review)</option>
+                                <option value="Maintenance">Maintenance Retainer (PKR 1,000–2,000/mo)</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- Phone (Support, Collaboration, Get Quote) -->
-                    <div class="conditional-field space-y-5" data-show="Support,Collaboration,Get Quote">
+                    <!-- Conditional: Phone -->
+                    <div class="conditional-field space-y-4" data-show="Support,Collaboration,Get Quote">
                         <div>
-                            <label for="f-phone" class="mb-1.5 block text-sm font-semibold text-slate-700">Phone Number <span class="font-normal text-slate-400">(optional)</span></label>
+                            <label for="f-phone" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Phone / WhatsApp Number <span class="font-normal text-slate-400 normal-case">(optional)</span></label>
                             <input id="f-phone" type="tel" name="Number" placeholder="+92 300 1234567"
-                                   class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500" />
+                                   class="w-full rounded-lg border border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 px-3.5 py-2.5 text-sm shadow-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-500/20 dark:border-primary-500/25" />
                         </div>
                     </div>
 
-                    <!-- Rating (Feedback only) -->
-                    <div class="conditional-field space-y-5" data-show="Feedback">
-                        <div>
-                            <label class="mb-1.5 block text-sm font-semibold text-slate-700">Rate your experience <span class="text-red-500">*</span></label>
+                    <!-- Conditional: Rating -->
+                    <div class="conditional-field space-y-4" data-show="Feedback">
+                        <div class="rounded-lg bg-primary-50/50 dark:bg-primary-950/40 p-4 border border-primary-600/15">
+                            <label class="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Rating Experience <span class="text-red-500">*</span></label>
                             <div class="star-rating" id="starRating">
                                 <input type="radio" name="stars" value="5" id="s5"><label for="s5"><i class="fas fa-star"></i></label>
                                 <input type="radio" name="stars" value="4" id="s4"><label for="s4"><i class="fas fa-star"></i></label>
@@ -143,26 +165,72 @@
                         </div>
                     </div>
 
-                    <!-- Message -->
+                    <!-- Message Body -->
                     <div>
-                        <label for="f-message" class="mb-1.5 block text-sm font-semibold text-slate-700">Message <span class="text-red-500">*</span></label>
-                        <textarea id="f-message" name="Message" rows="5" placeholder="Tell us what's on your mind..." required
-                                  class="w-full rounded-lg border-slate-300 text-sm shadow-sm focus:border-primary-500 focus:ring-primary-500"></textarea>
+                        <label for="f-message" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Message / Details <span class="text-red-500">*</span></label>
+                        <textarea id="f-message" name="Message" rows="5" placeholder="Provide details, scope, or questions..." required
+                                  class="w-full rounded-lg border border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 px-3.5 py-2.5 text-sm shadow-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-500/20 dark:border-primary-500/25"></textarea>
                     </div>
 
-                    <!-- Submit -->
-                    <button type="submit" id="submitBtn" class="btn-primary w-full">
-                        <span class="btn-text">Send Message</span>
-                        <span class="btn-spinner" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Sending...</span>
-                    </button>
+                    <!-- Hidden Honeypot & Security Tokens for Bot Protection -->
+                    <div style="position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+                        <label for="botHoneypot">Leave this empty</label>
+                        <input type="text" name="_bot_hp" id="botHoneypot" tabindex="-1" autocomplete="off" />
+                    </div>
+                    <input type="hidden" name="_bot_token" id="botToken" value="" />
+                    <input type="hidden" name="_bot_ts" id="botTimestamp" value="" />
 
-                    <!-- Footer -->
-                    <p class="text-center text-xs text-slate-400">
-                        By sending, you agree to our <a href="/Terms&Conditions" class="font-semibold text-primary-600 hover:underline">Terms &amp; Conditions</a>.
+                    <!-- Bot & DDoS Protection Widget -->
+                    <div class="pt-1">
+                        {{#if turnstileSiteKey}}
+                        <!-- Cloudflare Turnstile Managed Widget -->
+                        <div class="flex justify-center py-2">
+                            <div class="cf-turnstile" data-sitekey="{{turnstileSiteKey}}" data-theme="auto" data-action="contact-form"></div>
+                        </div>
+                        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+                        {{else}}
+                        <!-- Built-in MBK Shield Protection Widget -->
+                        <div id="botProtectionWidget" class="bot-protection-widget">
+                            <button type="button" id="botCheckBtn" class="bot-check-btn" aria-label="I am not a robot verification">
+                                <span class="bot-check-box" id="botCheckBox">
+                                    <i class="fas fa-circle-notch fa-spin spinner-icon"></i>
+                                    <i class="fas fa-check check-icon text-white"></i>
+                                </span>
+                                <div class="text-left">
+                                    <span id="botLabel" class="block text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">I'm not a robot</span>
+                                    <span id="botSubLabel" class="block text-[10px] text-slate-400 dark:text-slate-400">Click to verify</span>
+                                </div>
+                            </button>
+                            <div class="flex items-center gap-1.5 pl-3 border-l border-slate-200 dark:border-slate-700/60 text-right">
+                                <div class="flex flex-col items-end">
+                                    <span class="text-[10px] font-bold tracking-wider uppercase text-primary-700 dark:text-primary-400 flex items-center gap-1">
+                                        <i class="lni lni-shield"></i> MBK Shield
+                                    </span>
+                                    <span class="text-[9px] text-slate-400 dark:text-slate-400">Anti-Bot &amp; DDoS</span>
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+                        <p id="botErrorMsg" class="mt-1.5 text-xs text-red-500 dark:text-red-400 font-medium hidden flex items-center gap-1">
+                            <i class="fas fa-exclamation-circle text-[11px]"></i> Please verify that you are not a robot before submitting.
+                        </p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-2">
+                        <button type="submit" id="submitBtn" class="btn-primary w-full py-3 justify-center text-sm sm:text-base font-bold shadow-md">
+                            <span class="btn-text flex items-center gap-2"><i class="lni lni-telegram"></i> Send Inquiry &amp; Generate Ticket</span>
+                            <span class="btn-spinner" style="display:none"><i class="fas fa-circle-notch fa-spin"></i> Processing...</span>
+                        </button>
+                    </div>
+
+                    <!-- Terms Notice -->
+                    <p class="text-center text-xs text-slate-400 dark:text-slate-500 pt-1">
+                        By submitting, you agree to our <a href="/Terms&Conditions" class="font-semibold text-primary-600 dark:text-primary-400 hover:underline">Terms &amp; Conditions</a> and <a href="/PrivacyPolicy" class="font-semibold text-primary-600 dark:text-primary-400 hover:underline">Privacy Policy</a>.
                     </p>
                 </form>
 
-                <!-- Response area (hidden until submit) -->
+                <!-- Response Area (injected by tickets.js) -->
                 <div id="formResponse" class="form-response" style="display:none"></div>
             </div>
         </div>
