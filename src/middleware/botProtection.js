@@ -5,7 +5,7 @@ import NodeCache from "node-cache";
 const usedTokensCache = new NodeCache({ stdTTL: 900, checkperiod: 120 });
 
 // Secret key for HMAC signing (uses env variable or stable fallback)
-const SECRET_KEY = process.env.BOT_PROTECTION_SECRET || "mbktech-shield-security-salt-2026";
+const getSecretKey = () => process.env.BOT_PROTECTION_SECRET || "mbktech-shield-security-salt-2026";
 const MIN_FILL_TIME_MS = 1500; // Humans need at least 1.5s to read & submit
 const MAX_TOKEN_AGE_MS = 15 * 60 * 1000; // 15 minutes validity
 
@@ -22,7 +22,7 @@ export function generateChallenge(clientIp = "") {
     };
     const payload = Buffer.from(JSON.stringify(payloadObj)).toString("base64url");
     const signature = crypto
-        .createHmac("sha256", SECRET_KEY)
+        .createHmac("sha256", getSecretKey())
         .update(payload)
         .digest("base64url");
 
@@ -98,7 +98,7 @@ export async function verifyBotProtection(req) {
     }
 
     // 3. Built-in "I am not a robot" Shield token check
-    const token = body._bot_token || body.botToken;
+    const token = body._mbk_shield_token || body._bot_token || body.botToken || body.shieldToken;
     if (!token || typeof token !== "string") {
         return {
             valid: false,
@@ -120,7 +120,7 @@ export async function verifyBotProtection(req) {
 
     // Verify HMAC signature
     const expectedSig = crypto
-        .createHmac("sha256", SECRET_KEY)
+        .createHmac("sha256", getSecretKey())
         .update(payloadBase64)
         .digest("base64url");
 
@@ -161,7 +161,7 @@ export async function verifyBotProtection(req) {
     if (elapsed < MIN_FILL_TIME_MS) {
         return {
             valid: false,
-            error: "Submission submitted too rapidly. Please take your time.",
+            error: "Submission too rapid. Please take your time.",
             code: "SUBMITTED_TOO_FAST",
         };
     }

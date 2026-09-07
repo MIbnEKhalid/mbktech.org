@@ -9,7 +9,18 @@ export function domainRedirect(req, res, next) {
 
     console.log(`Incoming request to hostname: http://${hostname}`);
 
-    if (process.env.localenv === "true") {
+    if (
+        hostname === "mbkauthe.mbktech.org" ||
+        hostname === "auth.mbktech.org" ||
+        hostname.startsWith("mbkauthe.")
+    ) {
+        req.site = "mbkauthe";
+    } else if (
+        hostname === "download.mbktech.org" ||
+        hostname.startsWith("download.")
+    ) {
+        req.site = "download";
+    } else if (process.env.localenv === "true" && process.env.site) {
         req.site = process.env.site;
     } else {
         req.site =
@@ -17,6 +28,8 @@ export function domainRedirect(req, res, next) {
                 "mbktech.org": "main",
                 "www.mbktech.org": "main",
                 "download.mbktech.org": "download",
+                "mbkauthe.mbktech.org": "mbkauthe",
+                "auth.mbktech.org": "mbkauthe",
             }[hostname] || "main";
     }
 

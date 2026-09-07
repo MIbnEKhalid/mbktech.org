@@ -1,0 +1,128 @@
+<!-- ============================================================
+     FEATURES & SECURITY — MBKAuthe
+     ============================================================ -->
+
+<!-- Page Header Hero -->
+<section class="relative overflow-hidden py-12 sm:py-16 border-b border-primary-600/10 bg-white/40 dark:bg-dark-surface/40 backdrop-blur-md">
+    <div class="container max-w-[1600px] relative z-10 space-y-4">
+        <span class="eyebrow"><i class="lni lni-shield"></i> Security &amp; Architecture</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+            Engineered with <span class="text-primary-600 dark:text-primary-400">Defense in Depth</span>
+        </h1>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+            MBKAuthe is designed from the ground up to protect user credentials, prevent session hijacking, and safeguard APIs through rigorous cryptography and secure defaults.
+        </p>
+    </div>
+</section>
+
+<!-- Security Guarantees Grid -->
+<section class="section">
+    <div class="container max-w-[1600px] space-y-12">
+        <div class="section-title">
+            <span class="eyebrow">Security Principles</span>
+            <h2>Security Safeguards by Default</h2>
+            <p>Every layer of authentication is hardened to withstand common web vulnerabilities.</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {{#each product.securityHighlights}}
+            <div class="card space-y-3 border-primary-600/20">
+                <div class="flex items-center gap-2.5">
+                    <span class="feature-icon"><i class="lni lni-lock"></i></span>
+                    <h3 class="text-base font-bold text-slate-900 dark:text-white">{{this.title}}</h3>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {{this.description}}
+                </p>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+<!-- Feature Matrix Table -->
+<section class="section bg-primary-50/20 dark:bg-dark-surface/40 border-y border-primary-600/10">
+    <div class="container max-w-[1600px] space-y-10">
+        <div class="section-title">
+            <span class="eyebrow">Technical Specifications</span>
+            <h2>Architecture Matrix</h2>
+        </div>
+
+        <div class="card p-0 overflow-hidden border-primary-600/20 shadow-md">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs sm:text-sm border-collapse">
+                    <thead class="bg-primary-50 dark:bg-primary-950/60 text-primary-950 dark:text-primary-200 border-b border-primary-600/15 font-heading">
+                        <tr>
+                            <th class="p-3.5 font-bold">Feature / Component</th>
+                            <th class="p-3.5 font-bold">Implementation Standard</th>
+                            <th class="p-3.5 font-bold">Storage / Engine</th>
+                            <th class="p-3.5 font-bold">Configuration Key</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-primary-600/10 dark:divide-primary-500/10 text-slate-700 dark:text-slate-300">
+                        <tr class="hover:bg-primary-50/30 dark:hover:bg-primary-950/20">
+                            <td class="p-3.5 font-bold text-slate-900 dark:text-white">Password Hashing</td>
+                            <td class="p-3.5">PBKDF2 with unique per-user salt</td>
+                            <td class="p-3.5 font-mono text-xs">Users table (password)</td>
+                            <td class="p-3.5 font-mono text-xs text-primary-600 dark:text-primary-400">Automatic</td>
+                        </tr>
+                        <tr class="hover:bg-primary-50/30 dark:hover:bg-primary-950/20">
+                            <td class="p-3.5 font-bold text-slate-900 dark:text-white">Two-Factor Authentication</td>
+                            <td class="p-3.5">RFC 6238 TOTP (6 digits, 30s step)</td>
+                            <td class="p-3.5 font-mono text-xs">TwoFactorAuth &amp; speakeasy</td>
+                            <td class="p-3.5 font-mono text-xs text-primary-600 dark:text-primary-400">MBKAUTH_TWO_FA_ENABLE</td>
+                        </tr>
+                        <tr class="hover:bg-primary-50/30 dark:hover:bg-primary-950/20">
+                            <td class="p-3.5 font-bold text-slate-900 dark:text-white">Session Encryption</td>
+                            <td class="p-3.5">AES-256 encrypted cookies</td>
+                            <td class="p-3.5 font-mono text-xs">Sessions table &amp; cookies</td>
+                            <td class="p-3.5 font-mono text-xs text-primary-600 dark:text-primary-400">SESSION_SECRET_KEY</td>
+                        </tr>
+                        <tr class="hover:bg-primary-50/30 dark:hover:bg-primary-950/20">
+                            <td class="p-3.5 font-bold text-slate-900 dark:text-white">Dual-Database Engines</td>
+                            <td class="p-3.5">PostgreSQL (pooled) &amp; SQLite (WAL)</td>
+                            <td class="p-3.5 font-mono text-xs">pg.Pool / better-sqlite3</td>
+                            <td class="p-3.5 font-mono text-xs text-primary-600 dark:text-primary-400">DB_TYPE, LOGIN_DB, SQLITE_PATH</td>
+                        </tr>
+                        <tr class="hover:bg-primary-50/30 dark:hover:bg-primary-950/20">
+                            <td class="p-3.5 font-bold text-slate-900 dark:text-white">CLI Device Authorization</td>
+                            <td class="p-3.5">RFC 8628 Device Flow (single delivery)</td>
+                            <td class="p-3.5 font-mono text-xs">PendingToken &amp; ApiTokens</td>
+                            <td class="p-3.5 font-mono text-xs text-primary-600 dark:text-primary-400">CLI_AUTH_ENABLED</td>
+                        </tr>
+                        <tr class="hover:bg-primary-50/30 dark:hover:bg-primary-950/20">
+                            <td class="p-3.5 font-bold text-slate-900 dark:text-white">Social Sign-in (OAuth)</td>
+                            <td class="p-3.5">GitHub App &amp; Google OAuth2</td>
+                            <td class="p-3.5 font-mono text-xs">Passport strategies</td>
+                            <td class="p-3.5 font-mono text-xs text-primary-600 dark:text-primary-400">GITHUB_LOGIN_ENABLED, GOOGLE_LOGIN_ENABLED</td>
+                        </tr>
+                        <tr class="hover:bg-primary-50/30 dark:hover:bg-primary-950/20">
+                            <td class="p-3.5 font-bold text-slate-900 dark:text-white">Multi-Session Pruning</td>
+                            <td class="p-3.5">FIFO automated eviction on limit</td>
+                            <td class="p-3.5 font-mono text-xs">Sessions table</td>
+                            <td class="p-3.5 font-mono text-xs text-primary-600 dark:text-primary-400">MAX_SESSIONS_PER_USER</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Callout -->
+<section class="section">
+    <div class="container max-w-5xl text-center space-y-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Ready to implement in your stack?</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-300">
+            Read through the complete step-by-step documentation to set up your database and secure your Express routes.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+            <a href="{{#if isSubdomain}}/docs/getting-started{{else}}/mbkauthe/docs/getting-started{{/if}}" class="btn-primary">
+                <span>Getting Started Guide</span> <i class="lni lni-arrow-right"></i>
+            </a>
+            <a href="{{#if isSubdomain}}/api-reference{{else}}/mbkauthe/api-reference{{/if}}" class="btn-outline">
+                <span>View API Reference</span>
+            </a>
+        </div>
+    </div>
+</section>

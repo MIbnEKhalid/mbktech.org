@@ -1,5 +1,3 @@
-import { pool } from "../config/database.js";
-
 const PORTAL_VERSION_CACHE = { data: null, fetchedAt: 0, ttl: 3600_000 };
 
 export function getPortalAppVersion() {

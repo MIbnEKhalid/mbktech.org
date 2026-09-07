@@ -16,6 +16,28 @@ const domainRoutes = {
   ],
   'download.mbktech.org': [
     { url: '/', changefreq: 'daily', priority: 1.0 }
+  ],
+  'mbkauthe.mbktech.org': [
+    { url: '/', changefreq: 'daily', priority: 1.0 },
+    { url: '/features', changefreq: 'weekly', priority: 0.9 },
+    { url: '/docs', changefreq: 'daily', priority: 0.9 },
+    { url: '/docs/getting-started', changefreq: 'weekly', priority: 0.9 },
+    { url: '/docs/configuration', changefreq: 'weekly', priority: 0.8 },
+    { url: '/docs/database', changefreq: 'weekly', priority: 0.8 },
+    { url: '/docs/authentication', changefreq: 'weekly', priority: 0.8 },
+    { url: '/docs/rbac', changefreq: 'weekly', priority: 0.8 },
+    { url: '/docs/oauth', changefreq: 'weekly', priority: 0.8 },
+    { url: '/docs/2fa', changefreq: 'weekly', priority: 0.8 },
+    { url: '/docs/api-tokens', changefreq: 'weekly', priority: 0.8 },
+    { url: '/docs/cli-auth', changefreq: 'weekly', priority: 0.8 },
+    { url: '/docs/deployment', changefreq: 'weekly', priority: 0.8 },
+    { url: '/docs/api-reference', changefreq: 'weekly', priority: 0.8 },
+    { url: '/docs/error-codes', changefreq: 'weekly', priority: 0.7 },
+    { url: '/docs/examples', changefreq: 'weekly', priority: 0.8 },
+    { url: '/docs/changelog', changefreq: 'weekly', priority: 0.7 },
+    { url: '/api-reference', changefreq: 'weekly', priority: 0.8 },
+    { url: '/examples', changefreq: 'weekly', priority: 0.8 },
+    { url: '/changelog', changefreq: 'weekly', priority: 0.7 }
   ]
 };
 

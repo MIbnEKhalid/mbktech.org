@@ -1,0 +1,210 @@
+<!-- ============================================================
+     API REFERENCE — MBKAuthe
+     ============================================================ -->
+
+<!-- Page Header Hero -->
+<section class="relative overflow-hidden py-10 sm:py-14 border-b border-primary-600/10 bg-white/40 dark:bg-dark-surface/40 backdrop-blur-md">
+    <div class="container max-w-[1600px] relative z-10 space-y-4">
+        <span class="eyebrow"><i class="lni lni-code-alt"></i> Complete Reference</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+            REST API Reference
+        </h1>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+            Comprehensive directory of all endpoints, authentication headers, request payloads, response structures, and rate limits exposed by MBKAuthe.
+        </p>
+    </div>
+</section>
+
+<!-- Endpoints Explorer Section -->
+<section class="section py-10 sm:py-16" x-data="{ activeFilter: 'all', search: '' }">
+    <div class="container max-w-[1600px] space-y-8">
+        
+        <!-- Controls: Filters & Search -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            
+            <!-- Category Filter Pills -->
+            <div class="flex flex-wrap items-center gap-1.5">
+                <button type="button" @click="activeFilter = 'all'" :class="activeFilter === 'all' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">All Endpoints</button>
+                <button type="button" @click="activeFilter = 'auth'" :class="activeFilter === 'auth' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">Auth &amp; Login</button>
+                <button type="button" @click="activeFilter = '2fa'" :class="activeFilter === '2fa' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">2FA (TOTP)</button>
+                <button type="button" @click="activeFilter = 'tokens'" :class="activeFilter === 'tokens' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">API Tokens</button>
+                <button type="button" @click="activeFilter = 'cli'" :class="activeFilter === 'cli' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">CLI Device Flow</button>
+                <button type="button" @click="activeFilter = 'sessions'" :class="activeFilter === 'sessions' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">Sessions</button>
+            </div>
+
+            <!-- Search Filter Input -->
+            <div class="relative w-full sm:w-64">
+                <i class="lni lni-search-alt absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input type="text" x-model="search" placeholder="Search path or method..."
+                       class="w-full rounded-lg border border-primary-600/20 bg-white/90 dark:bg-dark/80 pl-8 pr-3 py-1.5 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:border-primary-600 focus:ring-1 focus:ring-primary-500">
+            </div>
+        </div>
+
+        <!-- Endpoints List -->
+        <div class="space-y-6">
+
+            <!-- POST /mbkauthe/api/login -->
+            <div class="card p-6 border-primary-600/20 space-y-4"
+                 x-show="(activeFilter === 'all' || activeFilter === 'auth') && (!search || 'post /mbkauthe/api/login login authenticate password'.includes(search.toLowerCase()))">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="rounded bg-emerald-500 px-2.5 py-1 text-xs font-bold font-mono text-white">POST</span>
+                        <code class="font-mono text-sm sm:text-base font-bold text-slate-900 dark:text-white">/mbkauthe/api/login</code>
+                    </div>
+                    <span class="badge-teal">Rate Limit: 8 / min</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Authenticates user credentials, sets encrypted session cookie, or prompts 2FA challenge.</p>
+                <div class="grid sm:grid-cols-2 gap-4 text-xs font-mono">
+                    <div class="rounded-lg bg-slate-900 p-3.5 text-slate-300">
+                        <span class="text-slate-500 block text-[11px] mb-1 font-sans">Request Body (JSON)</span>
+                        {<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"username"</span>: <span class="text-amber-300">"john.doe"</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"password"</span>: <span class="text-amber-300">"SecurePass123!"</span><br />
+                        }
+                    </div>
+                    <div class="rounded-lg bg-slate-900 p-3.5 text-slate-300">
+                        <span class="text-slate-500 block text-[11px] mb-1 font-sans">Success Response (200 OK)</span>
+                        {<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"success"</span>: <span class="text-amber-300">true</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"message"</span>: <span class="text-amber-300">"Login successful"</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"redirect_url"</span>: <span class="text-amber-300">"/dashboard"</span><br />
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- POST /mbkauthe/api/verify-2fa -->
+            <div class="card p-6 border-primary-600/20 space-y-4"
+                 x-show="(activeFilter === 'all' || activeFilter === '2fa') && (!search || 'post /mbkauthe/api/verify-2fa 2fa totp verify'.includes(search.toLowerCase()))">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="rounded bg-emerald-500 px-2.5 py-1 text-xs font-bold font-mono text-white">POST</span>
+                        <code class="font-mono text-sm sm:text-base font-bold text-slate-900 dark:text-white">/mbkauthe/api/verify-2fa</code>
+                    </div>
+                    <span class="badge-teal">Rate Limit: 5 / min</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Verifies 6-digit TOTP token to complete 2FA login challenge.</p>
+                <div class="grid sm:grid-cols-2 gap-4 text-xs font-mono">
+                    <div class="rounded-lg bg-slate-900 p-3.5 text-slate-300">
+                        <span class="text-slate-500 block text-[11px] mb-1 font-sans">Request Body (JSON)</span>
+                        {<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"token"</span>: <span class="text-amber-300">"123456"</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"_csrf"</span>: <span class="text-amber-300">"csrf_token"</span><br />
+                        }
+                    </div>
+                    <div class="rounded-lg bg-slate-900 p-3.5 text-slate-300">
+                        <span class="text-slate-500 block text-[11px] mb-1 font-sans">Success Response (200 OK)</span>
+                        {<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"success"</span>: <span class="text-amber-300">true</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"message"</span>: <span class="text-amber-300">"Login successful"</span><br />
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- POST /api/token -->
+            <div class="card p-6 border-primary-600/20 space-y-4"
+                 x-show="(activeFilter === 'all' || activeFilter === 'tokens') && (!search || 'post /api/token create token api bearer'.includes(search.toLowerCase()))">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="rounded bg-emerald-500 px-2.5 py-1 text-xs font-bold font-mono text-white">POST</span>
+                        <code class="font-mono text-sm sm:text-base font-bold text-slate-900 dark:text-white">/api/token</code>
+                    </div>
+                    <span class="badge-teal">Auth: Session</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Generates a scoped API token with SHA-256 storage hashing.</p>
+                <div class="grid sm:grid-cols-2 gap-4 text-xs font-mono">
+                    <div class="rounded-lg bg-slate-900 p-3.5 text-slate-300">
+                        <span class="text-slate-500 block text-[11px] mb-1 font-sans">Request Body (JSON)</span>
+                        {<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"name"</span>: <span class="text-amber-300">"CI Bot"</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"scope"</span>: <span class="text-amber-300">"read-only"</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"expiresDays"</span>: <span class="text-purple-400">30</span><br />
+                        }
+                    </div>
+                    <div class="rounded-lg bg-slate-900 p-3.5 text-slate-300">
+                        <span class="text-slate-500 block text-[11px] mb-1 font-sans">Success Response (201 Created)</span>
+                        {<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"success"</span>: <span class="text-amber-300">true</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"token"</span>: <span class="text-amber-300">"mbk_a1b2c3..."</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"id"</span>: <span class="text-purple-400">42</span><br />
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- POST /api/tokens/verify -->
+            <div class="card p-6 border-primary-600/20 space-y-4"
+                 x-show="(activeFilter === 'all' || activeFilter === 'tokens') && (!search || 'post /api/tokens/verify check token valid'.includes(search.toLowerCase()))">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="rounded bg-emerald-500 px-2.5 py-1 text-xs font-bold font-mono text-white">POST</span>
+                        <code class="font-mono text-sm sm:text-base font-bold text-slate-900 dark:text-white">/api/tokens/verify</code>
+                    </div>
+                    <span class="badge-teal">Public</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Validates an API token and returns assigned username, permissions, and expiration.</p>
+                <div class="grid sm:grid-cols-2 gap-4 text-xs font-mono">
+                    <div class="rounded-lg bg-slate-900 p-3.5 text-slate-300">
+                        <span class="text-slate-500 block text-[11px] mb-1 font-sans">Request Body (JSON)</span>
+                        { <span class="text-emerald-400">"token"</span>: <span class="text-amber-300">"mbk_a1b2c3d4..."</span> }
+                    </div>
+                    <div class="rounded-lg bg-slate-900 p-3.5 text-slate-300">
+                        <span class="text-slate-500 block text-[11px] mb-1 font-sans">Success Response (200 OK)</span>
+                        {<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"tokenValid"</span>: <span class="text-amber-300">true</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"username"</span>: <span class="text-amber-300">"jane"</span><br />
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- POST /api/cli/device -->
+            <div class="card p-6 border-primary-600/20 space-y-4"
+                 x-show="(activeFilter === 'all' || activeFilter === 'cli') && (!search || 'post /api/cli/device cli device rfc 8628'.includes(search.toLowerCase()))">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="rounded bg-emerald-500 px-2.5 py-1 text-xs font-bold font-mono text-white">POST</span>
+                        <code class="font-mono text-sm sm:text-base font-bold text-slate-900 dark:text-white">/api/cli/device</code>
+                    </div>
+                    <span class="badge-teal">Rate Limit: 20 / min</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Initiates RFC 8628 CLI device flow and generates a verification link and user code.</p>
+                <div class="grid sm:grid-cols-2 gap-4 text-xs font-mono">
+                    <div class="rounded-lg bg-slate-900 p-3.5 text-slate-300">
+                        <span class="text-slate-500 block text-[11px] mb-1 font-sans">Request Body (JSON)</span>
+                        {<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"client_name"</span>: <span class="text-amber-300">"my-cli"</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"profile_key"</span>: <span class="text-amber-300">"1362403658a3"</span><br />
+                        }
+                    </div>
+                    <div class="rounded-lg bg-slate-900 p-3.5 text-slate-300">
+                        <span class="text-slate-500 block text-[11px] mb-1 font-sans">Success Response (201 Created)</span>
+                        {<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"verification_url"</span>: <span class="text-amber-300">"https://.../XXXX-XXXX"</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"user_code"</span>: <span class="text-amber-300">"XXXX-XXXX"</span>,<br />
+                        &nbsp;&nbsp;<span class="text-emerald-400">"interval"</span>: <span class="text-purple-400">5</span><br />
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- GET /mbkauthe/api/checkSession -->
+            <div class="card p-6 border-primary-600/20 space-y-4"
+                 x-show="(activeFilter === 'all' || activeFilter === 'sessions') && (!search || 'get /mbkauthe/api/checksession session validate'.includes(search.toLowerCase()))">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="rounded bg-blue-500 px-2.5 py-1 text-xs font-bold font-mono text-white">GET</span>
+                        <code class="font-mono text-sm sm:text-base font-bold text-slate-900 dark:text-white">/mbkauthe/api/checkSession</code>
+                    </div>
+                    <span class="badge-teal">Auth: Cookie</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Checks current cookie session validity and returns expiration timestamp.</p>
+                <div class="rounded-lg bg-slate-900 p-3.5 font-mono text-xs text-slate-300">
+                    <span class="text-slate-500 block text-[11px] mb-1 font-sans">Success Response (200 OK)</span>
+                    { <span class="text-emerald-400">"session_valid"</span>: <span class="text-amber-300">true</span>, <span class="text-emerald-400">"expiry"</span>: <span class="text-amber-300">"2026-09-14T12:00:00.000Z"</span> }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

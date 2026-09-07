@@ -1,8 +1,8 @@
 # MBKTech.org Website
 
-<img height="48px" src="https://handlebarsjs.com/handlebars-icon.svg"/> <img src="https://skillicons.dev/icons?i=html,css,js,nodejs,vercel,postgres"/> <img height="48px" src="https://console.neon.tech/favicon/favicon.svg"/>
+<img height="48px" src="https://handlebarsjs.com/handlebars-icon.svg"/> <img src="https://skillicons.dev/icons?i=html,css,js,nodejs,vercel,postgres,sqlite"/> <img height="48px" src="https://console.neon.tech/favicon/favicon.svg"/>
 
-A multi-domain Node.js website showcasing the portfolio, projects, and services of Muhammad Bin Khalid. Built with **Express**, **Handlebars**, and **PostgreSQL (Neon)** — hosted on **Vercel**.
+A multi-domain Node.js website showcasing the portfolio, projects, and services of Muhammad Bin Khalid. Standardized with the **`mbkcore` ecosystem architecture**, supporting **PostgreSQL (Neon)** and **SQLite (better-sqlite3)** via `mbkauthe` repository abstractions — hosted on **Vercel**.
 
 ---
 
@@ -16,16 +16,18 @@ A multi-domain Node.js website showcasing the portfolio, projects, and services 
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Ecosystem Architecture
 
 | Layer | Technology |
 |---|---|
 | Runtime | Node.js (ES Modules) |
-| Framework | Express 4 |
+| Framework | Express 4 (Decoupled `src/app.js` & `src/server.js`) |
 | Templating | Handlebars (`express-handlebars`) |
-| Database | PostgreSQL via [Neon](https://neon.tech) (`pg`) |
+| Database Layer | Dual-Database (`PostgreSQL` / `SQLite`) via `mbkauthe` abstraction |
+| Repositories | Domain repositories extending `BaseRepository` from `mbkauthe` |
+| Testing Suite | `vitest` + `supertest` with in-memory SQLite runner |
 | Hosting | [Vercel](https://vercel.com) |
-| Security | Rate limiting (`express-rate-limit`), CORS, compression |
+| Security | Anti-bot challenge (`MBK Shield`), rate limiting, CORS, compression |
 | Caching | `node-cache` (in-memory) |
 | Sitemap | `sitemap` (dynamic XML generation) |
 
@@ -35,25 +37,32 @@ A multi-domain Node.js website showcasing the portfolio, projects, and services 
 
 ```
 mbktech.org/
-├── app.js                          # Express app entry point
-├── package.json
-├── vercel.json                     # Vercel deployment config
+├── app.js                          # Root backward-compatible re-export of src/app.js
+├── package.json                    # Ecosystem scripts & dependencies
+├── vercel.json                     # Vercel deployment config (points to src/server.js)
+├── vitest.config.js                # Vitest testing suite configuration
 ├── .env.example                    # Environment variables template
-├── database/                       # SQL migration files
-├── documentation/                  # Docs (env.md)
+├── data/                           # Legal markdown docs & local SQLite databases
+│   ├── PrivacyPolicy.md
+│   └── TermsofService.md
 ├── public/                         # Static assets (CSS, JS, images)
 │   ├── robots.txt
 │   └── Assets/
-│       ├── Cookie/
-│       ├── FAQs/
-│       ├── Images/
-│       ├── Scripts/
-│       ├── Style/
-│       └── Tickett/
 ├── src/
+│   ├── app.js                      # Express application assembly & middleware
+│   ├── server.js                   # Dedicated server bootstrap & listener
 │   ├── config/
-│   │   ├── database.js             # PostgreSQL connection pool
 │   │   └── handlebars.js           # Handlebars engine & helpers
+│   ├── db/
+│   │   ├── connection.js           # Pool / SQLite connection & health-check
+│   │   ├── index.js                # Instantiates & exports defaultAdapter & dialects
+│   │   └── schema/
+│   │       ├── schema.sql          # PostgreSQL DDL (canonical mbkcore_ tables + views)
+│   │       └── schema.sqlite.sql   # SQLite DDL
+│   ├── repositories/
+│   │   ├── TicketRepository.js     # Manages mbkcore_support_submissions
+│   │   ├── SpamRepository.js       # Manages mbkcore_blocked_entries
+│   │   └── index.js                # Barrel export for repositories
 │   ├── controllers/
 │   │   ├── apiController.js        # /api/portalAppVersion, /api/Test
 │   │   ├── formController.js       # POST /post/SubmitForm
@@ -61,6 +70,7 @@ mbktech.org/
 │   │   ├── sitemapController.js    # sitemap.xml, robots.txt
 │   │   └── ticketController.js     # Support ticket CRUD
 │   ├── middleware/
+│   │   ├── botProtection.js        # MBK Shield cryptographic challenge & honeypot
 │   │   ├── domainRedirect.js       # Multi-domain routing
 │   │   └── security.js             # Rate limits, cache, request logging
 │   ├── routes/
@@ -69,29 +79,26 @@ mbktech.org/
 │   │   ├── apiRoutes.js            # GET /api/*
 │   │   ├── ticketRoutes.js         # /api/tickets/*
 │   │   └── postRoutes.js           # POST /post/*
+│   ├── scripts/
+│   │   └── init-sqlite.js          # SQLite schema initialization CLI
 │   ├── services/
+│   │   ├── legalContentService.js  # Markdown document renderer
 │   │   ├── portalVersionService.js # Cached portal version
-│   │   ├── spamService.js          # Blocked entries & spam check
-│   │   └── ticketService.js        # Ticket creation & lookup
+│   │   ├── spamService.js          # Blocked entries & spam check (delegates to repository)
+│   │   └── ticketService.js        # Ticket creation & lookup (delegates to repository)
 │   └── utils/
 │       ├── icon.js                 # Base64 icon helper
 │       └── sitemapGenerator.js     # Dynamic sitemap builder
+├── tests/
+│   ├── setup.js                    # Global test runner setup (SQLite in-memory)
+│   ├── helpers/
+│   │   └── createTestDb.js         # Test database initialization
+│   ├── unit/                       # Repository & service unit tests
+│   └── integration/                # Supertest HTTP integration tests
 └── views/
     ├── layouts/
     │   └── main.handlebars         # Main layout template
-    └── mainPages/
-        ├── 404.handlebars
-        ├── mainDomain/             # mbktech.org pages
-        │   ├── index.handlebars
-        │   ├── FAQs.handlebars
-        │   ├── services.handlebars
-        │   ├── Support&Contact.handlebars
-        │   ├── Terms&Conditions.handlebars
-        │   ├── TrackTicket.handlebars
-        │   ├── BasicPackage.handlebars
-        │   └── AdvancedPackage.handlebars
-        └── otherDomain/
-            └── download.handlebars  # download.mbktech.org
+    └── mainPages/                  # Page templates
 ```
 
 ---
@@ -114,54 +121,73 @@ In local development (`localenv=true`), the site is determined by the `site` env
 
 ### Prerequisites
 - **Node.js** 18+
-- **PostgreSQL** database (e.g., [Neon](https://neon.tech) serverless)
+- **PostgreSQL** database (e.g., [Neon](https://neon.tech) serverless) or **SQLite** (built-in via better-sqlite3)
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/MIbnEKhalid/MIbnEKhalid.github.io.git
-cd MIbnEKhalid.github.io
-```
-
-### 2. Install dependencies
+### 1. Install dependencies
 ```bash
 npm install
 ```
 
-### 3. Configure environment variables
+### 2. Configure environment variables
 Copy `.env.example` to `.env` and fill in the values:
 ```env
 NODE_ENV=development
-PORT=5000
-PortalVersionControlJson=
+PORT=4133
 localenv=true
-NEON_POSTGRES=postgresql://username:password@host/database
 site=main
+
+# Database configuration
+DB_TYPE=sqlite                     # 'postgres' or 'sqlite'
+SQLITE_PATH=./data/mbktech.org.db   # Used when DB_TYPE=sqlite
+NEON_POSTGRES=postgresql://user:password@ep-sample.region.neon.tech/dbname?sslmode=require
+
+# Version control & Security
+PortalVersionControlJson={"latestVersion":"1.5.0","downloadUrl":"https://mbktech.org/download","mandatory":false}
+BOT_PROTECTION_SECRET=your-random-hmac-salt-here
 ```
 
-| Variable | Description |
-|---|---|
-| `NODE_ENV` | `development` or `production` |
-| `PORT` | Server port (default: `4133` if unset) |
-| `PortalVersionControlJson` | JSON config for the portal app download page |
-| `localenv` | `true` for local dev, `false` for production |
-| `NEON_POSTGRES` | PostgreSQL connection string |
-| `site` | Target site for local dev: `main` or `download` |
-
-> See [`documentation/env.md`](documentation/env.md) for detailed descriptions.
+### 3. Initialize SQLite (optional, for local development without Neon)
+```bash
+npm run schema:sqlite
+```
 
 ---
 
 ## 🏃 Running the Application
 
 ```bash
-# Development (with auto-reload)
+# Development (PostgreSQL)
 npm run dev
+
+# Development (SQLite)
+npm run dev:sqlite
 
 # Production mode
 npm start
 ```
 
 The app will be available at **http://localhost:4133** (or the port set in `PORT`).
+
+---
+
+## 🧪 Testing
+
+```bash
+# Run all tests (unit & integration)
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run unit tests only
+npm run test:unit
+
+# Run integration tests only
+npm run test:integration
+
+# Generate code coverage report
+npm run test:coverage
+```
 
 ---
 

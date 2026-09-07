@@ -1,0 +1,459 @@
+<!-- ============================================================
+     MBKAuthe — Product Homepage
+     ============================================================ -->
+
+<!-- ================= HERO ================= -->
+<section class="relative overflow-hidden py-16 sm:py-24 lg:py-28">
+    <div class="container max-w-[1600px] relative z-10 grid items-center gap-12 lg:grid-cols-12">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7 space-y-6">
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="inline-flex items-center gap-2 rounded-full bg-primary-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary-700 border border-primary-600/20 dark:bg-primary-950/80 dark:text-primary-300 dark:border-primary-500/30">
+                    <i class="lni lni-shield"></i> Production-Ready Authentication
+                </span>
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-0.5 text-xs font-semibold text-emerald-700 border border-emerald-600/20 dark:bg-emerald-950/80 dark:text-emerald-300 dark:border-emerald-500/30 font-mono">
+                    <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span> v{{product.version}}
+                </span>
+            </div>
+
+            <h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-slate-900 dark:text-white">
+                Authentication for Node.js, <span class="text-primary-600 dark:text-primary-400">Simplified</span>.
+            </h1>
+
+            <p class="max-w-2xl text-base sm:text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+                A flexible authentication and session engine for Express.js with dual-database support for 
+                <strong class="text-slate-900 dark:text-white">PostgreSQL</strong> and <strong class="text-slate-900 dark:text-white">SQLite</strong>, 
+                TOTP 2FA, OAuth social logins, API tokens, and RFC 8628 CLI device flows.
+            </p>
+
+            <!-- Install & Actions -->
+            <div class="space-y-4 pt-2">
+                <div class="flex flex-wrap items-center gap-3">
+                    <a href="{{#if isSubdomain}}/docs/getting-started{{else}}/mbkauthe/docs/getting-started{{/if}}" class="btn-primary text-sm py-2.5 px-5 shadow-md">
+                        <span>Get Started</span>
+                        <i class="lni lni-arrow-right"></i>
+                    </a>
+                    <a href="{{#if isSubdomain}}/docs{{else}}/mbkauthe/docs{{/if}}" class="btn-outline text-sm py-2.5 px-5">
+                        <i class="lni lni-book"></i> Read Documentation
+                    </a>
+                    <a href="https://github.com/MIbnEKhalid/mbkauthe" target="_blank" rel="noopener" class="btn-ghost text-sm py-2.5 px-4 gap-2">
+                        <i class="fab fa-github text-lg"></i> GitHub
+                    </a>
+                </div>
+
+                <!-- One-click copy install command -->
+                <div class="inline-flex items-center gap-3 rounded-xl border border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 px-4 py-2.5 shadow-sm backdrop-blur-md">
+                    <span class="text-primary-600 font-mono text-xs font-bold">$</span>
+                    <code class="font-mono text-xs sm:text-sm text-slate-800 dark:text-slate-200 select-all font-semibold">npm install mbkauthe</code>
+                    <button type="button"
+                            onclick="copyInstallCmd(this, 'npm install mbkauthe')"
+                            class="ml-2 inline-flex items-center gap-1 rounded-md bg-primary-50 px-2 py-1 text-[11px] font-bold text-primary-700 hover:bg-primary-100 dark:bg-primary-950 dark:text-primary-300 transition-colors"
+                            title="Copy install command">
+                        <i class="lni lni-clipboard"></i> <span>Copy</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Guarantee checkmarks -->
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-2.5 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 border-t border-primary-600/10 dark:border-primary-500/20 pt-6">
+                <span class="inline-flex items-center gap-2"><i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base"></i> PostgreSQL &amp; SQLite Dual DB</span>
+                <span class="inline-flex items-center gap-2"><i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base"></i> PBKDF2 &amp; TOTP 2FA</span>
+                <span class="inline-flex items-center gap-2"><i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base"></i> RFC 8628 Device Flow</span>
+            </div>
+        </div>
+
+        <!-- Right Code Preview Terminal -->
+        <div class="lg:col-span-5">
+            <div class="card p-0 shadow-2xl border-primary-600/25 overflow-hidden bg-slate-950 text-slate-200">
+                <!-- Terminal Header Bar -->
+                <div class="flex items-center justify-between border-b border-slate-800 bg-slate-900/90 px-4 py-3">
+                    <div class="flex items-center gap-2">
+                        <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
+                        <span class="h-3 w-3 rounded-full bg-amber-500/80"></span>
+                        <span class="h-3 w-3 rounded-full bg-emerald-500/80"></span>
+                    </div>
+                    <span class="font-mono text-xs text-slate-400 font-medium">server.js</span>
+                    <span class="text-[11px] font-mono text-primary-400">Node.js ES6</span>
+                </div>
+
+                <!-- Code Block -->
+                <div class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300 space-y-1">
+                    <div><span class="text-purple-400">import</span> express <span class="text-purple-400">from</span> <span class="text-emerald-300">"express"</span>;</div>
+                    <div><span class="text-purple-400">import</span> mbkauthe, { sessVal, roleChk } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe"</span>;</div>
+                    <div class="pt-2"><span class="text-blue-400">const</span> app = <span class="text-yellow-300">express</span>();</div>
+                    <div class="pt-2 text-slate-500">// 1. Mount authentication core router</div>
+                    <div>app.<span class="text-yellow-300">use</span>(mbkauthe);</div>
+                    <div class="pt-2 text-slate-500">// 2. Protect session routes</div>
+                    <div>app.<span class="text-yellow-300">get</span>(<span class="text-emerald-300">"/dashboard"</span>, sessVal, (req, res) => {</div>
+                    <div class="pl-4">res.<span class="text-yellow-300">send</span>(<span class="text-emerald-300">`Welcome ${req.session.user.username}!`</span>);</div>
+                    <div>});</div>
+                    <div class="pt-2 text-slate-500">// 3. Enforce role-based access</div>
+                    <div>app.<span class="text-yellow-300">get</span>(<span class="text-emerald-300">"/admin"</span>, sessVal, <span class="text-yellow-300">roleChk</span>(<span class="text-emerald-300">"superadmin"</span>), (req, res) => {</div>
+                    <div class="pl-4">res.<span class="text-yellow-300">send</span>(<span class="text-emerald-300">"Admin Control Panel"</span>);</div>
+                    <div>});</div>
+                    <div class="pt-2">app.<span class="text-yellow-300">listen</span>(<span class="text-amber-300">3000</span>);</div>
+                </div>
+
+                <!-- Terminal Footer -->
+                <div class="border-t border-slate-800/80 bg-slate-900/60 px-4 py-2.5 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                    <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-400"></span> Ready in &lt;10 LOC</span>
+                    <a href="{{#if isSubdomain}}/examples{{else}}/mbkauthe/examples{{/if}}" class="text-primary-400 hover:underline">View More Examples &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= STATS STRIP ================= -->
+<section class="border-y border-primary-600/10 bg-white/60 dark:bg-dark-surface/60 backdrop-blur-md py-8">
+    <div class="container grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+        <div>
+            <p class="font-heading text-2xl sm:text-3xl font-extrabold text-primary-600 dark:text-primary-400 font-mono">Dual-DB</p>
+            <p class="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">PostgreSQL &amp; SQLite</p>
+        </div>
+        <div>
+            <p class="font-heading text-2xl sm:text-3xl font-extrabold text-primary-600 dark:text-primary-400 font-mono">PBKDF2</p>
+            <p class="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">Cryptographic Hashing</p>
+        </div>
+        <div>
+            <p class="font-heading text-2xl sm:text-3xl font-extrabold text-primary-600 dark:text-primary-400 font-mono">RFC 8628</p>
+            <p class="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">CLI Device Auth Flow</p>
+        </div>
+        <div>
+            <p class="font-heading text-2xl sm:text-3xl font-extrabold text-primary-600 dark:text-primary-400 font-mono">100%</p>
+            <p class="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">Open-Source &amp; MIT</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FEATURES GRID ================= -->
+<section class="section">
+    <div class="container space-y-12">
+        <div class="section-title">
+            <span class="eyebrow"><i class="lni lni-layers"></i> Core Features</span>
+            <h2>Built for developers, engineered for security</h2>
+            <p>Everything your Node.js application needs for authentication, session verification, and access delegation.</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {{#each product.keyFeatures}}
+            <div class="card space-y-3.5 group">
+                <div class="flex items-center justify-between">
+                    <span class="feature-icon"><i class="lni {{this.icon}}"></i></span>
+                    <span class="badge-teal">{{this.badge}}</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    {{this.title}}
+                </h3>
+                <p class="text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                    {{this.description}}
+                </p>
+            </div>
+            {{/each}}
+        </div>
+
+        <div class="text-center pt-4">
+            <a href="{{#if isSubdomain}}/features{{else}}/mbkauthe/features{{/if}}" class="btn-outline text-xs sm:text-sm py-2 px-5">
+                Explore All Security Features &amp; Specifications <i class="lni lni-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= DUAL DATABASE CALLOUT ================= -->
+<section class="section bg-primary-50/30 dark:bg-dark-surface/40 border-y border-primary-600/10">
+    <div class="container grid items-center gap-10 lg:grid-cols-2">
+        <div class="space-y-4">
+            <span class="eyebrow"><i class="lni lni-database"></i> Dual-Database Layer</span>
+            <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 dark:text-white">
+                PostgreSQL or SQLite.<br /><span class="text-primary-600 dark:text-primary-400">Zero code changes.</span>
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                Whether you need high-concurrency connection-pooled PostgreSQL for cloud production or zero-config SQLite with Write-Ahead Logging (WAL) for local dev and embedded apps, MBKAuthe provides a unified driver abstraction layer.
+            </p>
+
+            <ul class="space-y-2.5 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">
+                <li class="flex items-start gap-2.5">
+                    <i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base mt-0.5"></i>
+                    <span><strong>Runtime SQL Translation</strong>: Converts Postgres <code>$1</code>, <code>ANY()</code>, and typecasts to SQLite dynamically.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base mt-0.5"></i>
+                    <span><strong>BaseRepository</strong>: Extensible query builder with atomic <code>withTransaction</code> support.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="lni lni-checkmark-circle text-primary-600 dark:text-primary-400 text-base mt-0.5"></i>
+                    <span><strong>FIFO Transaction Mutex</strong>: Eliminates write contention deadlocks in SQLite WAL mode.</span>
+                </li>
+            </ul>
+
+            <div class="pt-2">
+                <a href="{{#if isSubdomain}}/docs/database{{else}}/mbkauthe/docs/database{{/if}}" class="btn-primary text-xs py-2 px-4">
+                    <span>Dual-Database Architecture Guide</span>
+                    <i class="lni lni-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Database Comparison Card -->
+        <div class="grid gap-4 sm:grid-cols-2">
+            <div class="card p-5 border-primary-600/20 space-y-3">
+                <div class="flex items-center gap-2">
+                    <i class="lni lni-database text-xl text-primary-600"></i>
+                    <h3 class="font-bold text-slate-900 dark:text-white">PostgreSQL</h3>
+                </div>
+                <span class="badge-teal">Production &amp; Serverless</span>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Ideal for multi-instance clusters, Neon Postgres, Supabase, and AWS RDS. Powered by <code>pg.Pool</code>.
+                </p>
+                <div class="rounded bg-slate-900 p-2.5 font-mono text-[11px] text-slate-300">
+                    DB_TYPE=postgres<br />LOGIN_DB=postgresql://...
+                </div>
+            </div>
+
+            <div class="card p-5 border-primary-600/20 space-y-3">
+                <div class="flex items-center gap-2">
+                    <i class="lni lni-folder text-xl text-primary-600"></i>
+                    <h3 class="font-bold text-slate-900 dark:text-white">SQLite</h3>
+                </div>
+                <span class="badge-teal">Dev, Test &amp; Embedded</span>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Zero database server needed. High performance Write-Ahead Logging (WAL) via <code>better-sqlite3</code>.
+                </p>
+                <div class="rounded bg-slate-900 p-2.5 font-mono text-[11px] text-slate-300">
+                    DB_TYPE=sqlite<br />SQLITE_PATH=./data/app.db
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CODE RECIPES TABS ================= -->
+<section class="section" x-data="{ tab: 'middleware' }">
+    <div class="container space-y-10">
+        <div class="section-title">
+            <span class="eyebrow"><i class="lni lni-code"></i> Integration Patterns</span>
+            <h2>Simple, declarative API integration</h2>
+            <p>From Express middleware to custom database repositories, MBKAuthe fits naturally into modern Node.js applications.</p>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="flex flex-wrap items-center justify-center gap-2 border-b border-primary-600/10 dark:border-primary-500/20 pb-4">
+            <button type="button" @click="tab = 'middleware'" :class="tab === 'middleware' ? 'bg-primary-600 text-white shadow-sm' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-200 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-4 font-semibold rounded-lg transition-all">
+                Session &amp; Role Middleware
+            </button>
+            <button type="button" @click="tab = 'dualDb'" :class="tab === 'dualDb' ? 'bg-primary-600 text-white shadow-sm' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-200 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-4 font-semibold rounded-lg transition-all">
+                BaseRepository Pattern
+            </button>
+            <button type="button" @click="tab = 'cliAuth'" :class="tab === 'cliAuth' ? 'bg-primary-600 text-white shadow-sm' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-200 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-4 font-semibold rounded-lg transition-all">
+                RFC 8628 CLI Device Login
+            </button>
+            <button type="button" @click="tab = 'apiTokens'" :class="tab === 'apiTokens' ? 'bg-primary-600 text-white shadow-sm' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-200 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-4 font-semibold rounded-lg transition-all">
+                API Token Verification
+            </button>
+        </div>
+
+        <!-- Tab 1: Middleware -->
+        <div x-show="tab === 'middleware'" class="card p-0 overflow-hidden bg-slate-950 text-slate-200 shadow-xl border-primary-600/25">
+            <div class="border-b border-slate-800 bg-slate-900/80 px-4 py-2.5 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>routes/admin.js</span>
+                <span>Role-based protection</span>
+            </div>
+            <pre class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-purple-400">import</span> { Router } <span class="text-purple-400">from</span> <span class="text-emerald-300">"express"</span>;
+<span class="text-purple-400">import</span> { sessRole, strictSessRole } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe"</span>;
+
+<span class="text-blue-400">const</span> router = <span class="text-yellow-300">Router</span>();
+
+<span class="text-slate-500">// 1. Standard role check (accepts active session cookie or API token)</span>
+router.<span class="text-yellow-300">get</span>(<span class="text-emerald-300">"/reports"</span>, <span class="text-yellow-300">sessRole</span>(<span class="text-emerald-300">"normaluser"</span>), (req, res) => {
+  res.<span class="text-yellow-300">json</span>({ reports: [] });
+});
+
+<span class="text-slate-500">// 2. Strict cookie-only check for sensitive superadmin actions (rejects API tokens)</span>
+router.<span class="text-yellow-300">post</span>(<span class="text-emerald-300">"/wipe-database"</span>, <span class="text-yellow-300">strictSessRole</span>(<span class="text-emerald-300">"superadmin"</span>), <span class="text-purple-400">async</span> (req, res) => {
+  res.<span class="text-yellow-300">json</span>({ success: <span class="text-amber-300">true</span>, message: <span class="text-emerald-300">"Action authorized"</span> });
+});
+
+<span class="text-purple-400">export default</span> router;</code></pre>
+        </div>
+
+        <!-- Tab 2: Dual DB -->
+        <div x-show="tab === 'dualDb'" x-cloak class="card p-0 overflow-hidden bg-slate-950 text-slate-200 shadow-xl border-primary-600/25">
+            <div class="border-b border-slate-800 bg-slate-900/80 px-4 py-2.5 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>repositories/ProjectRepository.js</span>
+                <span>BaseRepository &amp; Transactions</span>
+            </div>
+            <pre class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-purple-400">import</span> { BaseRepository, defaultAdapter } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe"</span>;
+
+<span class="text-purple-400">export class</span> ProjectRepository <span class="text-purple-400">extends</span> BaseRepository {
+  <span class="text-yellow-300">constructor</span>(adapter = defaultAdapter) {
+    <span class="text-purple-400">super</span>(adapter);
+  }
+
+  <span class="text-purple-400">async</span> <span class="text-yellow-300">transferOwnership</span>(projectId, newOwnerId) {
+    <span class="text-purple-400">return await</span> <span class="text-purple-400">this</span>.<span class="text-yellow-300">withTransaction</span>(<span class="text-purple-400">async</span> (txRepo) => {
+      <span class="text-purple-400">await</span> txRepo.<span class="text-yellow-300">query</span>(
+        <span class="text-emerald-300">"UPDATE projects SET owner_id = $1 WHERE id = $2"</span>,
+        [newOwnerId, projectId]
+      );
+      <span class="text-purple-400">await</span> txRepo.<span class="text-yellow-300">query</span>(
+        <span class="text-emerald-300">"INSERT INTO audit_logs (project_id, action) VALUES ($1, $2)"</span>,
+        [projectId, <span class="text-emerald-300">"TRANSFERRED_OWNERSHIP"</span>]
+      );
+    });
+  }
+}</code></pre>
+        </div>
+
+        <!-- Tab 3: CLI Auth -->
+        <div x-show="tab === 'cliAuth'" x-cloak class="card p-0 overflow-hidden bg-slate-950 text-slate-200 shadow-xl border-primary-600/25">
+            <div class="border-b border-slate-800 bg-slate-900/80 px-4 py-2.5 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>cli/auth.js</span>
+                <span>RFC 8628 Device Flow Client</span>
+            </div>
+            <pre class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-purple-400">const</span> init = <span class="text-purple-400">await</span> <span class="text-yellow-300">fetch</span>(<span class="text-emerald-300">"https://portal.mbktech.org/api/cli/device"</span>, {
+  method: <span class="text-emerald-300">"POST"</span>,
+  headers: { <span class="text-emerald-300">"Content-Type"</span>: <span class="text-emerald-300">"application/json"</span> },
+  body: JSON.<span class="text-yellow-300">stringify</span>({ client_name: <span class="text-emerald-300">"my-cli"</span>, profile_key: <span class="text-emerald-300">"1362403658a3"</span> })
+}).<span class="text-yellow-300">then</span>(r => r.<span class="text-yellow-300">json</span>());
+
+console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">`Open to approve:\n  ${init.verification_url}\n`</span>);
+
+<span class="text-slate-500">// Poll for issued token</span>
+<span class="text-purple-400">for</span> (;;) {
+  <span class="text-purple-400">await</span> <span class="text-yellow-300">sleep</span>(init.interval * <span class="text-amber-300">1000</span>);
+  <span class="text-purple-400">const</span> res = <span class="text-purple-400">await</span> <span class="text-yellow-300">fetch</span>(<span class="text-emerald-300">"https://portal.mbktech.org/api/cli/device/token"</span>, {
+    method: <span class="text-emerald-300">"POST"</span>,
+    headers: { <span class="text-emerald-300">"Content-Type"</span>: <span class="text-emerald-300">"application/json"</span> },
+    body: JSON.<span class="text-yellow-300">stringify</span>({ device_code: init.device_code })
+  }).<span class="text-yellow-300">then</span>(r => r.<span class="text-yellow-300">json</span>());
+
+  <span class="text-purple-400">if</span> (res.status === <span class="text-emerald-300">"approved"</span>) {
+    console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">`Logged in as ${res.username}. Token: ${res.token}`</span>);
+    <span class="text-purple-400">break</span>;
+  }
+}</code></pre>
+        </div>
+
+        <!-- Tab 4: API Tokens -->
+        <div x-show="tab === 'apiTokens'" x-cloak class="card p-0 overflow-hidden bg-slate-950 text-slate-200 shadow-xl border-primary-600/25">
+            <div class="border-b border-slate-800 bg-slate-900/80 px-4 py-2.5 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>scripts/deploy.js</span>
+                <span>Bearer Token Verification</span>
+            </div>
+            <pre class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-purple-400">import</span> fetch <span class="text-purple-400">from</span> <span class="text-emerald-300">"node-fetch"</span>;
+
+<span class="text-purple-400">async function</span> <span class="text-yellow-300">queryProtectedApi</span>(token) {
+  <span class="text-blue-400">const</span> res = <span class="text-purple-400">await</span> <span class="text-yellow-300">fetch</span>(<span class="text-emerald-300">"https://portal.mbktech.org/api/tokens/verify"</span>, {
+    method: <span class="text-emerald-300">"POST"</span>,
+    headers: { <span class="text-emerald-300">"Content-Type"</span>: <span class="text-emerald-300">"application/json"</span> },
+    body: JSON.<span class="text-yellow-300">stringify</span>({ token })
+  });
+
+  <span class="text-blue-400">const</span> data = <span class="text-purple-400">await</span> res.<span class="text-yellow-300">json</span>();
+  <span class="text-purple-400">if</span> (data.tokenValid) {
+    console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">`Valid token for user: ${data.username}`</span>);
+    console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">`Allowed scopes: ${data.permissions.scope}`</span>);
+  }
+}</code></pre>
+        </div>
+    </div>
+</section>
+
+<!-- ================= QUICK DOCUMENTATION PATHWAYS ================= -->
+<section class="section bg-primary-50/20 dark:bg-dark-surface/40 border-y border-primary-600/10">
+    <div class="container space-y-12">
+        <div class="section-title">
+            <span class="eyebrow"><i class="lni lni-book"></i> Documentation Pathways</span>
+            <h2>Explore MBKAuthe documentation</h2>
+            <p>Comprehensive guides, architecture deep dives, and full API endpoint documentation.</p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <a href="{{#if isSubdomain}}/docs/getting-started{{else}}/mbkauthe/docs/getting-started{{/if}}" class="card group space-y-2.5">
+                <span class="feature-icon"><i class="lni lni-rocket"></i></span>
+                <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    Installation &amp; Setup
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Prerequisites, package installation, environment templates, and table creation.
+                </p>
+                <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 dark:text-primary-400 pt-1">
+                    Start Guide <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i>
+                </span>
+            </a>
+
+            <a href="{{#if isSubdomain}}/docs/configuration{{else}}/mbkauthe/docs/configuration{{/if}}" class="card group space-y-2.5">
+                <span class="feature-icon"><i class="lni lni-cog"></i></span>
+                <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    Environment Config
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    mbkautheVar vs mbkauthShared, case-insensitivity, proxy mappings, and defaults.
+                </p>
+                <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 dark:text-primary-400 pt-1">
+                    View Config <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i>
+                </span>
+            </a>
+
+            <a href="{{#if isSubdomain}}/docs/database{{else}}/mbkauthe/docs/database{{/if}}" class="card group space-y-2.5">
+                <span class="feature-icon"><i class="lni lni-database"></i></span>
+                <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    PostgreSQL &amp; SQLite
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Dual database architecture, BaseRepository, and translatePgToSqlite engine.
+                </p>
+                <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 dark:text-primary-400 pt-1">
+                    Read Architecture <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i>
+                </span>
+            </a>
+
+            <a href="{{#if isSubdomain}}/api-reference{{else}}/mbkauthe/api-reference{{/if}}" class="card group space-y-2.5">
+                <span class="feature-icon"><i class="lni lni-code-alt"></i></span>
+                <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    API Reference
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Full catalog of REST endpoints, authentication methods, payloads, and rate limits.
+                </p>
+                <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 dark:text-primary-400 pt-1">
+                    Browse API <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CTA BANNER ================= -->
+<section class="section">
+    <div class="container">
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary-800 to-secondary-600 p-10 text-center text-white md:p-14 shadow-xl border border-primary-600/30">
+            <div class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl"></div>
+            <h2 class="text-3xl font-extrabold md:text-4xl text-white">Ready to secure your Node.js application?</h2>
+            <p class="mx-auto mt-3 max-w-xl text-teal-100 text-sm sm:text-base">
+                Get started with MBKAuthe in minutes. Install via npm, run the database schema generator, and protect your routes.
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <a href="{{#if isSubdomain}}/docs/getting-started{{else}}/mbkauthe/docs/getting-started{{/if}}" class="btn bg-white text-primary-900 font-bold hover:bg-teal-50 shadow-md">
+                    Quickstart Guide
+                </a>
+                <a href="https://github.com/MIbnEKhalid/mbkauthe" target="_blank" rel="noopener" class="btn bg-white/10 text-white border border-white/30 hover:bg-white/20 gap-2">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Copy command snippet script -->
+<script>
+function copyInstallCmd(btn, cmd) {
+    navigator.clipboard.writeText(cmd).then(function () {
+        var orig = btn.innerHTML;
+        btn.innerHTML = '<i class="lni lni-checkmark"></i> <span>Copied!</span>';
+        setTimeout(function () { btn.innerHTML = orig; }, 1500);
+    });
+}
+</script>

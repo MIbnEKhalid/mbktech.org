@@ -190,27 +190,30 @@
     @apply inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-2xl text-primary-600 border border-primary-600/20 dark:bg-primary-950/60 dark:text-primary-400 dark:border-primary-500/30;
   }
 
-  /* Legal Document Reader Styles */
+  /* Legal & Technical Document Reader Styles */
   .legal-doc-content {
     @apply text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base;
   }
   .legal-doc-content h1 {
-    @apply font-heading text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-8 mb-4 pt-6 border-t border-primary-600/10 dark:border-primary-500/20 first:mt-0 first:pt-0 first:border-0;
+    @apply font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-10 mb-4 pb-3 border-b border-primary-600/15 dark:border-primary-500/20 first:mt-0;
   }
   .legal-doc-content h2 {
-    @apply font-heading text-lg sm:text-xl font-bold text-primary-800 dark:text-primary-300 mt-6 mb-3;
+    @apply font-heading text-xl sm:text-2xl font-bold text-primary-900 dark:text-primary-300 mt-8 mb-3 pb-2 border-b border-primary-600/10 dark:border-primary-500/15;
   }
   .legal-doc-content h3 {
-    @apply font-heading text-base font-bold text-slate-900 dark:text-white mt-4 mb-2;
+    @apply font-heading text-lg sm:text-xl font-bold text-slate-900 dark:text-white mt-6 mb-2.5;
+  }
+  .legal-doc-content h4 {
+    @apply font-heading text-base font-bold text-slate-800 dark:text-slate-200 mt-5 mb-2;
   }
   .legal-doc-content p {
-    @apply my-3 leading-relaxed;
+    @apply my-3.5 leading-relaxed text-slate-700 dark:text-slate-300;
   }
   .legal-doc-content ul {
-    @apply my-3 space-y-1.5 pl-5 list-disc marker:text-primary-600 dark:marker:text-primary-400;
+    @apply my-3.5 space-y-2 pl-6 list-disc marker:text-primary-600 dark:marker:text-primary-400;
   }
   .legal-doc-content ol {
-    @apply my-3 space-y-1.5 pl-5 list-decimal marker:text-primary-600 dark:marker:text-primary-400;
+    @apply my-3.5 space-y-2 pl-6 list-decimal marker:text-primary-600 dark:marker:text-primary-400;
   }
   .legal-doc-content li {
     @apply leading-relaxed;
@@ -219,13 +222,135 @@
     @apply font-bold text-slate-900 dark:text-white;
   }
   .legal-doc-content a {
-    @apply text-primary-600 dark:text-primary-400 font-semibold underline underline-offset-2 hover:text-primary-700 dark:hover:text-primary-300;
+    @apply text-primary-600 dark:text-primary-400 font-semibold underline underline-offset-4 decoration-primary-500/40 hover:decoration-primary-600 hover:text-primary-700 dark:hover:text-primary-300 transition-colors;
   }
   .legal-doc-content hr {
-    @apply my-6 border-primary-600/10 dark:border-primary-500/20;
+    @apply my-8 border-primary-600/15 dark:border-primary-500/20;
   }
   .legal-doc-content blockquote {
-    @apply my-4 rounded-r-lg border-l-4 border-primary-600 bg-primary-50/60 dark:bg-primary-950/40 p-4 text-xs sm:text-sm italic text-slate-600 dark:text-slate-300;
+    @apply my-5 rounded-r-xl border-l-4 border-primary-600 bg-primary-50/70 dark:bg-primary-950/50 p-4 text-xs sm:text-sm italic text-slate-600 dark:text-slate-300 shadow-sm;
+  }
+  .legal-doc-content .table-wrapper {
+    @apply my-6 w-full overflow-x-auto rounded-xl border border-primary-600/15 dark:border-primary-500/20 shadow-md max-w-full;
+  }
+  .legal-doc-content table {
+    @apply w-full text-left text-xs sm:text-sm border-collapse min-w-full;
+  }
+  .legal-doc-content thead {
+    @apply bg-primary-50/90 dark:bg-primary-950/80 text-primary-950 dark:text-primary-200 border-b border-primary-600/15 dark:border-primary-500/25;
+  }
+  .legal-doc-content th {
+    @apply p-3.5 sm:p-4 font-bold font-heading text-xs uppercase tracking-wider text-slate-900 dark:text-white whitespace-nowrap;
+  }
+  .legal-doc-content tbody {
+    @apply divide-y divide-primary-600/10 dark:divide-primary-500/10 text-slate-700 dark:text-slate-300;
+  }
+  .legal-doc-content td {
+    @apply p-3.5 sm:p-4 text-xs sm:text-sm align-top leading-relaxed;
+  }
+  .legal-doc-content tr:hover {
+    @apply bg-primary-50/40 dark:bg-primary-950/30 transition-colors;
+  }
+  
+  /* Inline Code Styling */
+  .legal-doc-content :not(pre) > code,
+  code:not(pre code) {
+    @apply rounded-md bg-teal-500/10 dark:bg-teal-400/15 border border-teal-600/20 dark:border-teal-400/25 px-1.5 py-0.5 font-mono text-[0.85em] font-semibold text-teal-800 dark:text-teal-300 select-all;
+  }
+
+  /* Code Block Wrapper & Header */
+  .code-block-wrapper {
+    @apply my-6 rounded-xl border border-primary-600/20 dark:border-primary-500/25 bg-[#0a1514] shadow-xl overflow-hidden;
+  }
+  .code-block-header {
+    @apply flex items-center justify-between px-4 py-2.5 bg-[#0f1f1d] border-b border-primary-600/15 text-xs font-mono text-slate-400 select-none;
+  }
+  .code-block-lang {
+    @apply px-2 py-0.5 rounded bg-primary-950/80 text-[11px] font-bold font-mono text-primary-300 border border-primary-600/30 uppercase tracking-wider;
+  }
+  .code-copy-btn {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/10 hover:bg-primary-600 hover:text-white text-slate-300 text-[11px] font-sans font-semibold transition-all border border-white/10 cursor-pointer;
+  }
+  .code-block-pre {
+    @apply p-4 sm:p-5 text-xs sm:text-[13px] font-mono leading-relaxed text-slate-200 overflow-x-auto m-0 bg-[#0a1514];
+    tab-size: 2;
+  }
+  .code-block-pre code {
+    @apply bg-transparent dark:bg-transparent border-0 p-0 text-inherit font-normal;
+  }
+  .code-block-pre::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .code-block-pre::-webkit-scrollbar-track {
+    background: #081110;
+  }
+  .code-block-pre::-webkit-scrollbar-thumb {
+    background: rgba(15, 118, 110, 0.4);
+    border-radius: 4px;
+  }
+  .code-block-pre::-webkit-scrollbar-thumb:hover {
+    background: rgba(15, 118, 110, 0.7);
+  }
+
+  /* Syntax Highlighting Tokens (Tailored MBKTech Palette) */
+  .hljs {
+    color: #e2e8f0;
+    background: transparent;
+  }
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-subst {
+    color: #c084fc; /* Tailwind Purple 400 */
+    font-weight: 600;
+  }
+  .hljs-string,
+  .hljs-title,
+  .hljs-section,
+  .hljs-attribute,
+  .hljs-literal,
+  .hljs-template-tag,
+  .hljs-template-variable,
+  .hljs-type,
+  .hljs-addition {
+    color: #34d399; /* Emerald 400 */
+  }
+  .hljs-comment,
+  .hljs-quote,
+  .hljs-deletion,
+  .hljs-meta {
+    color: #64748b; /* Slate 500 */
+    font-style: italic;
+  }
+  .hljs-number,
+  .hljs-regexp,
+  .hljs-link {
+    color: #fb923c; /* Orange 400 */
+  }
+  .hljs-function,
+  .hljs-title.function_,
+  .hljs-title.class_ {
+    color: #38bdf8; /* Sky 400 */
+    font-weight: 600;
+  }
+  .hljs-built_in,
+  .hljs-name {
+    color: #fde047; /* Yellow 300 */
+  }
+  .hljs-variable,
+  .hljs-params,
+  .hljs-attr {
+    color: #a7f3d0; /* Teal 200 */
+  }
+  .hljs-symbol,
+  .hljs-bullet {
+    color: #f472b6; /* Pink 400 */
+  }
+  .hljs-emphasis {
+    font-style: italic;
+  }
+  .hljs-strong {
+    font-weight: bold;
   }
 }
 

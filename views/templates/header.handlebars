@@ -1,3 +1,6 @@
+{{#if isAutheSite}}
+{{> mbkauthe/header}}
+{{else}}
 <!-- ============================================================
      HEADER PARTIAL — MBK Tech Navbar (Alpine.js powered)
      ============================================================ -->
@@ -16,13 +19,17 @@
         </a>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
-            <a data-nav href="/" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Home</a>
-            <a data-nav href="/Services" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Services</a>
-            <a data-nav href="/FAQs" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">FAQs</a>
-            <a data-nav href="/Support&Contact" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Support</a>
-            <a data-nav href="/TrackTicket" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Track Ticket</a>
-            <a data-nav href="/Status" class="px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Status</a>
+        <nav class="hidden items-center gap-0.5 xl:gap-1 lg:flex shrink min-w-0" aria-label="Main navigation">
+            <a data-nav href="/" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Home</a>
+            <a href="https://mbkauthe.mbktech.org" class="inline-flex items-center gap-1.5 px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-primary-700 transition-all hover:bg-primary-50 dark:text-primary-300 dark:hover:bg-primary-950/60">
+                <span>MBKAuthe</span>
+                <span class="rounded bg-primary-100 dark:bg-primary-900/80 px-1 py-0.2 text-[10px] font-mono font-bold text-primary-800 dark:text-primary-200">v5.6</span>
+            </a>
+            <a data-nav href="/Services" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Services</a>
+            <a data-nav href="/FAQs" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">FAQs</a>
+            <a data-nav href="/Support&Contact" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Support</a>
+            <a data-nav href="/TrackTicket" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Track Ticket</a>
+            <a data-nav href="/Status" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Status</a>
         </nav>
 
         <div class="flex items-center gap-2">
@@ -64,6 +71,10 @@
          class="border-t border-primary-600/10 bg-white/95 backdrop-blur-lg px-4 py-4 lg:hidden dark:border-primary-500/20 dark:bg-dark-surface/95">
         <nav class="flex flex-col gap-1.5" aria-label="Mobile navigation">
             <a href="/" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Home</a>
+            <a href="https://mbkauthe.mbktech.org" class="flex items-center justify-between rounded-lg px-3.5 py-2.5 text-sm font-semibold text-primary-700 bg-primary-50/70 dark:text-primary-300 dark:bg-primary-950/40" @click="open = false">
+                <span>MBKAuthe Platform</span>
+                <span class="rounded bg-primary-600 text-white px-1.5 py-0.5 text-[10px] font-mono">v5.6</span>
+            </a>
             <a href="/Services" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Services</a>
             <a href="/FAQs" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">FAQs</a>
             <a href="/Support&Contact" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Support</a>
@@ -87,3 +98,4 @@
         });
     })();
 </script>
+{{/if}}

@@ -1,0 +1,240 @@
+<!-- ============================================================
+     DOCUMENTATION READER — MBKAuthe
+     ============================================================ -->
+
+<!-- Document Header Bar -->
+<section class="relative overflow-hidden py-8 sm:py-10 border-b border-primary-600/10 bg-white/40 dark:bg-dark-surface/40 backdrop-blur-md">
+    <div class="container max-w-[1600px] relative z-10 space-y-4">
+        
+        <!-- Breadcrumbs & Actions -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+            <div class="space-y-1.5">
+                <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400 font-medium">
+                    <a href="{{#if isSubdomain}}/{{else}}/mbkauthe{{/if}}" class="hover:text-primary-600 transition-colors">MBKAuthe</a>
+                    <span>/</span>
+                    <a href="{{#if isSubdomain}}/docs{{else}}/mbkauthe/docs{{/if}}" class="hover:text-primary-600 transition-colors">Docs</a>
+                    <span>/</span>
+                    <span class="text-primary-700 dark:text-primary-300 font-semibold">{{doc.section}}</span>
+                </div>
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                    {{doc.title}}
+                </h1>
+                {{#if doc.description}}
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+                    {{doc.description}}
+                </p>
+                {{/if}}
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="flex flex-wrap items-center gap-2 shrink-0">
+                <button type="button" onclick="window.print()" class="btn-outline text-xs py-1.5 px-3 gap-1.5" title="Print document">
+                    <i class="lni lni-printer"></i> Print / PDF
+                </button>
+                <button type="button" onclick="copyCurrentUrl(this)" class="btn-outline text-xs py-1.5 px-3 gap-1.5" title="Copy link to document">
+                    <i class="lni lni-link"></i> Share
+                </button>
+            </div>
+        </div>
+
+        <!-- Document Metadata Pill Strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs">
+            <div class="rounded-lg bg-primary-50/60 dark:bg-primary-950/40 p-3 border border-primary-600/15">
+                <span class="text-slate-500 dark:text-slate-400 block text-[11px]">Topic Area</span>
+                <span class="font-bold text-slate-900 dark:text-white font-mono">{{doc.section}}</span>
+            </div>
+            <div class="rounded-lg bg-primary-50/60 dark:bg-primary-950/40 p-3 border border-primary-600/15">
+                <span class="text-slate-500 dark:text-slate-400 block text-[11px]">Package Version</span>
+                <span class="font-bold text-primary-600 dark:text-primary-400 font-mono">v{{#if product.version}}{{product.version}}{{else}}5.6.0{{/if}}</span>
+            </div>
+            <div class="rounded-lg bg-primary-50/60 dark:bg-primary-950/40 p-3 border border-primary-600/15">
+                <span class="text-slate-500 dark:text-slate-400 block text-[11px]">Reading Time</span>
+                <span class="font-bold text-slate-900 dark:text-white">{{doc.readingTime}}</span>
+            </div>
+            <div class="rounded-lg bg-primary-50/60 dark:bg-primary-950/40 p-3 border border-primary-600/15">
+                <span class="text-slate-500 dark:text-slate-400 block text-[11px]">License / Source</span>
+                <span class="font-bold text-slate-900 dark:text-white">MIT &bull; Open Source</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= MAIN DOC CONTENT + SIDEBARS ================= -->
+<section class="section py-8 sm:py-12">
+    <div class="container max-w-[1600px]">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+
+            <!-- Left: Sidebar Navigation -->
+            <div class="lg:col-span-3 xl:col-span-3 2xl:col-span-2 min-w-0 sticky top-20">
+                {{> mbkauthe/sidebar}}
+            </div>
+
+            <!-- Center: Markdown Content Article -->
+            <main class="lg:col-span-9 xl:col-span-6 2xl:col-span-7 min-w-0 space-y-6">
+                <article class="card p-6 sm:p-10 shadow-lg border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 min-w-0 overflow-hidden">
+                    <div id="autheDocContent" class="legal-doc-content min-w-0">
+                        {{{doc.html}}}
+                    </div>
+
+                    <!-- Next & Previous Document Navigation -->
+                    <div class="mt-12 pt-6 border-t border-primary-600/15 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                        {{#if doc.prevDoc}}
+                        <a href="{{#if ../isSubdomain}}/docs/{{doc.prevDoc.slug}}{{else}}/mbkauthe/docs/{{doc.prevDoc.slug}}{{/if}}"
+                           class="card p-3.5 border-primary-600/15 hover:border-primary-600/40 flex flex-col gap-1 transition-all group">
+                            <span class="text-[11px] text-slate-400 flex items-center gap-1"><i class="lni lni-arrow-left"></i> Previous Topic</span>
+                            <span class="font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">{{doc.prevDoc.title}}</span>
+                        </a>
+                        {{else}}
+                        <div></div>
+                        {{/if}}
+
+                        {{#if doc.nextDoc}}
+                        <a href="{{#if ../isSubdomain}}/docs/{{doc.nextDoc.slug}}{{else}}/mbkauthe/docs/{{doc.nextDoc.slug}}{{/if}}"
+                           class="card p-3.5 border-primary-600/15 hover:border-primary-600/40 flex flex-col gap-1 text-right transition-all group sm:col-start-2">
+                            <span class="text-[11px] text-slate-400 flex items-center justify-end gap-1">Next Topic <i class="lni lni-arrow-right"></i></span>
+                            <span class="font-bold text-slate-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">{{doc.nextDoc.title}}</span>
+                        </a>
+                        {{/if}}
+                    </div>
+
+                    <!-- Document Footer Meta -->
+                    <div class="mt-8 pt-4 border-t border-primary-600/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400">
+                        <a href="https://github.com/MIbnEKhalid/mbkauthe/blob/main/docs" target="_blank" rel="noopener"
+                           class="inline-flex items-center gap-1.5 text-primary-600 dark:text-primary-400 hover:underline">
+                            <i class="lni lni-pencil-alt"></i> Suggest an edit on GitHub
+                        </a>
+                        <a href="#top" class="inline-flex items-center gap-1 text-primary-600 dark:text-primary-400 hover:underline">
+                            Back to top <i class="lni lni-arrow-up"></i>
+                        </a>
+                    </div>
+                </article>
+            </main>
+
+            <!-- Right: Sticky Table of Contents & Scrollspy -->
+            <aside class="hidden xl:block xl:col-span-3 2xl:col-span-3 min-w-0 sticky top-20 space-y-4">
+                <div class="card p-4 sm:p-5 border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between pb-2 border-b border-primary-600/10 dark:border-primary-500/20">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                            <i class="lni lni-list text-primary-600"></i> On This Page
+                        </h3>
+                        <span id="docTocCount" class="text-[10px] font-mono text-primary-600 bg-primary-50 dark:bg-primary-950 px-2 py-0.5 rounded">
+                            {{doc.toc.length}} sections
+                        </span>
+                    </div>
+
+                    <nav id="autheDocToc" class="max-h-[60vh] overflow-y-auto space-y-1 text-xs pr-1 divide-y divide-primary-600/5 dark:divide-primary-500/10">
+                        {{#each doc.toc}}
+                        <a href="#{{this.id}}"
+                           data-toc-target="{{this.id}}"
+                           class="block py-1 px-2 rounded transition-all text-slate-600 dark:text-slate-400 hover:text-primary-600 hover:bg-primary-50/50 dark:hover:bg-primary-950/40 {{#if (eq this.level 1)}}font-bold text-slate-900 dark:text-white{{else}}{{#if (eq this.level 3)}}pl-4 text-[11px]{{else}}pl-2{{/if}}{{/if}}">
+                            {{this.text}}
+                        </a>
+                        {{/each}}
+                    </nav>
+                </div>
+
+                <!-- Community Help Box -->
+                <div class="card p-4 bg-primary-50/50 dark:bg-primary-950/30 border-primary-600/15 space-y-2">
+                    <h4 class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                        <i class="lni lni-comments text-primary-600"></i> Need Assistance?
+                    </h4>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                        Join our GitHub discussion or reach out to our team via MBKTech Support.
+                    </p>
+                    <div class="space-y-1.5 pt-1">
+                        <a href="https://github.com/MIbnEKhalid/mbkauthe/issues" target="_blank" rel="noopener" class="btn-primary text-xs py-1.5 px-3 w-full justify-center">
+                            Open GitHub Issues
+                        </a>
+                        <a href="{{#if isSubdomain}}https://mbktech.org/Support&Contact{{else}}/Support&Contact{{/if}}" class="btn-outline text-xs py-1.5 px-3 w-full justify-center gap-1.5">
+                            <i class="lni lni-headphone-alt"></i> Contact Support
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<!-- Scrollspy & Clipboard Script -->
+<script>
+(function () {
+    // 1. Attach copy handler to all code blocks
+    document.querySelectorAll("#autheDocContent .code-block-wrapper").forEach(function (wrapper) {
+        var btn = wrapper.querySelector(".code-copy-btn");
+        var codeEl = wrapper.querySelector("code");
+        if (btn && codeEl) {
+            btn.addEventListener("click", function () {
+                var text = codeEl.innerText;
+                navigator.clipboard.writeText(text).then(function () {
+                    var originalHtml = btn.innerHTML;
+                    btn.innerHTML = '<i class="lni lni-checkmark text-xs text-emerald-400"></i> <span>Copied!</span>';
+                    btn.classList.add("bg-emerald-700/60", "text-white");
+                    setTimeout(function () {
+                        btn.innerHTML = originalHtml;
+                        btn.classList.remove("bg-emerald-700/60", "text-white");
+                    }, 1800);
+                });
+            });
+        }
+    });
+
+    // Fallback for any standard pre tags without custom wrapper
+    document.querySelectorAll("#autheDocContent pre:not(.code-block-pre)").forEach(function (pre) {
+        var wrapper = document.createElement("div");
+        wrapper.className = "relative group";
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "absolute top-2 right-2 rounded bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-[11px] font-mono px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity border border-slate-700";
+        btn.innerHTML = '<i class="lni lni-clipboard"></i> Copy';
+        btn.addEventListener("click", function () {
+            var code = pre.querySelector("code") ? pre.querySelector("code").innerText : pre.innerText;
+            navigator.clipboard.writeText(code).then(function () {
+                btn.innerHTML = '<i class="lni lni-checkmark"></i> Copied!';
+                setTimeout(function () { btn.innerHTML = '<i class="lni lni-clipboard"></i> Copy'; }, 1500);
+            });
+        });
+        wrapper.appendChild(btn);
+    });
+
+    // 2. Scrollspy for TOC
+    var tocLinks = document.querySelectorAll("#autheDocToc a[data-toc-target]");
+    if (!tocLinks.length) return;
+
+    var headings = [];
+    tocLinks.forEach(function (link) {
+        var id = link.getAttribute("data-toc-target");
+        var el = document.getElementById(id);
+        if (el) headings.push({ id: id, el: el, link: link });
+    });
+
+    window.addEventListener("scroll", function () {
+        var scrollPos = window.scrollY + 140;
+        var currentId = "";
+
+        headings.forEach(function (h) {
+            if (h.el.offsetTop <= scrollPos) {
+                currentId = h.id;
+            }
+        });
+
+        headings.forEach(function (h) {
+            if (h.id === currentId) {
+                h.link.classList.add("bg-primary-50", "text-primary-700", "dark:bg-primary-950", "dark:text-primary-300", "font-bold");
+            } else {
+                h.link.classList.remove("bg-primary-50", "text-primary-700", "dark:bg-primary-950", "dark:text-primary-300");
+            }
+        });
+    });
+})();
+
+function copyCurrentUrl(btn) {
+    navigator.clipboard.writeText(window.location.href).then(function () {
+        var orig = btn.innerHTML;
+        btn.innerHTML = '<i class="lni lni-checkmark"></i> Copied!';
+        setTimeout(function () { btn.innerHTML = orig; }, 1500);
+    });
+}
+</script>

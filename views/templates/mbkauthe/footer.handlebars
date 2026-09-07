@@ -1,0 +1,91 @@
+<!-- ============================================================
+     FOOTER PARTIAL — MBKAuthe Product & Docs Footer
+     ============================================================ -->
+<footer class="mt-auto border-t border-primary-600/20 bg-dark-surface text-slate-300 transition-colors duration-200">
+
+    <!-- Main Footer Grid -->
+    <div class="container max-w-[1600px] grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
+
+        <!-- Brand & Open Source Column -->
+        <div class="space-y-4">
+            <a href="{{#if isSubdomain}}/{{else}}/mbkauthe{{/if}}" class="flex items-center gap-1.5 group">
+                <img src="{{icon_base64}}" alt="MBK Tech logo" class="h-9 w-auto transition-transform group-hover:scale-105">
+                <span class="font-heading text-2xl font-bold text-white tracking-tight" style="padding-top:0.7rem">
+                    BK<span class="text-primary-400">Authe</span>
+                </span>
+            </a>
+            <p class="text-sm leading-relaxed text-slate-400">
+                A modern, developer-first authentication and session engine for Node.js and Express apps with dual-database PostgreSQL &amp; SQLite support.
+            </p>
+            <div class="flex items-center gap-2.5 pt-1">
+                <a href="https://github.com/MIbnEKhalid/mbkauthe" target="_blank" rel="noopener" title="GitHub"
+                   class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-300 transition-all hover:bg-primary-600 hover:text-white hover:border-primary-500"><i class="fab fa-github"></i></a>
+                <a href="https://www.npmjs.com/package/mbkauthe" target="_blank" rel="noopener" title="npm"
+                   class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-300 transition-all hover:bg-primary-600 hover:text-white hover:border-primary-500"><i class="fab fa-npm"></i></a>
+                <a href="https://x.com/ibnekhalid28" target="_blank" rel="noopener" title="X / Twitter"
+                   class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-300 transition-all hover:bg-primary-600 hover:text-white hover:border-primary-500"><i class="fab fa-x"></i></a>
+                <a href="https://github.com/MIbnEKhalid/mbkauthe/issues" target="_blank" rel="noopener" title="Bug Tracker"
+                   class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-300 transition-all hover:bg-primary-600 hover:text-white hover:border-primary-500"><i class="lni lni-bug"></i></a>
+            </div>
+        </div>
+
+        <!-- Documentation Links -->
+        <div>
+            <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-primary-300 border-b border-white/10 pb-2.5 mb-3.5">Documentation</h4>
+            <ul class="space-y-2.5 text-sm">
+                <li><a href="{{#if isSubdomain}}/docs/getting-started{{else}}/mbkauthe/docs/getting-started{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Getting Started</a></li>
+                <li><a href="{{#if isSubdomain}}/docs/configuration{{else}}/mbkauthe/docs/configuration{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Configuration</a></li>
+                <li><a href="{{#if isSubdomain}}/docs/database{{else}}/mbkauthe/docs/database{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> PostgreSQL &amp; SQLite</a></li>
+                <li><a href="{{#if isSubdomain}}/docs/authentication{{else}}/mbkauthe/docs/authentication{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Sessions &amp; Cookies</a></li>
+                <li><a href="{{#if isSubdomain}}/docs/rbac{{else}}/mbkauthe/docs/rbac{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> RBAC Authorization</a></li>
+                <li><a href="{{#if isSubdomain}}/docs/api-tokens{{else}}/mbkauthe/docs/api-tokens{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> API Tokens &amp; CLI</a></li>
+            </ul>
+        </div>
+
+        <!-- Developer Resources -->
+        <div>
+            <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-primary-300 border-b border-white/10 pb-2.5 mb-3.5">Developer Resources</h4>
+            <ul class="space-y-2.5 text-sm">
+                <li><a href="{{#if isSubdomain}}/api-reference{{else}}/mbkauthe/api-reference{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> API Reference</a></li>
+                <li><a href="{{#if isSubdomain}}/docs/error-codes{{else}}/mbkauthe/docs/error-codes{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Error Codes Guide</a></li>
+                <li><a href="{{#if isSubdomain}}/examples{{else}}/mbkauthe/examples{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Example Recipes</a></li>
+                <li><a href="{{#if isSubdomain}}/changelog{{else}}/mbkauthe/changelog{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Version Changelog</a></li>
+                <li><a href="{{#if isSubdomain}}https://mbktech.org/Support&Contact{{else}}/Support&Contact{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Support &amp; Contact</a></li>
+                <li><a href="{{#if isSubdomain}}https://mbktech.org/TrackTicket{{else}}/TrackTicket{{/if}}" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Track Support Ticket</a></li>
+                <li><a href="https://github.com/MIbnEKhalid/mbkauthe/blob/main/LICENSE" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> MIT License</a></li>
+            </ul>
+        </div>
+
+        <!-- Ecosystem Cross-Links -->
+        <div>
+            <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-primary-300 border-b border-white/10 pb-2.5 mb-3.5">MBKTech Ecosystem</h4>
+            <ul class="space-y-2.5 text-sm">
+                <li><a href="https://mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> MBKTech Studio Home</a></li>
+                <li><a href="https://blog.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Engineering Blog</a></li>
+                <li><a href="https://core.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> MBKCore Management</a></li>
+                <li><a href="https://chat.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Chat Platform</a></li>
+                <li><a href="https://download.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> App Downloads</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bottom Metadata Bar -->
+    <div class="border-t border-primary-600/15 bg-black/20">
+        <div class="container max-w-[1600px] flex flex-col items-center justify-between gap-3 py-5 text-xs text-slate-400 md:flex-row">
+            <p>&copy; <span id="autheYear"></span> MBKTech.org &mdash; Open-Source Software Studio.</p>
+            <div class="flex items-center gap-5">
+                <a href="{{#if isSubdomain}}https://mbktech.org/Support&Contact{{else}}/Support&Contact{{/if}}" class="transition hover:text-primary-300">Support Desk</a>
+                <a href="https://mbktech.org/PrivacyPolicy" target="_blank" rel="noopener" class="transition hover:text-primary-300">Privacy Policy</a>
+                <a href="https://mbktech.org/Terms&amp;Conditions" target="_blank" rel="noopener" class="transition hover:text-primary-300">Terms of Service</a>
+                <a href="https://mbktech.org/Status" target="_blank" rel="noopener" class="transition hover:text-primary-300 flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span> Service Status</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function () {
+        var el = document.getElementById("autheYear");
+        if (el) el.textContent = new Date().getFullYear();
+    })();
+</script>

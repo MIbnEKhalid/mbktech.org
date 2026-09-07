@@ -1,3 +1,6 @@
+{{#if isAutheSite}}
+{{> mbkauthe/footer}}
+{{else}}
 <!-- ============================================================
      FOOTER PARTIAL — MBK Tech Footer
      ============================================================ -->
@@ -46,6 +49,7 @@
         <div>
             <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-primary-300 border-b border-white/10 pb-2.5 mb-3.5">Ecosystem</h4>
             <ul class="space-y-2.5 text-sm">
+                <li><a href="https://mbkauthe.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5 font-semibold text-primary-400"><i class="lni lni-shield text-xs text-primary-500"></i> MBKAuthe Auth Engine</a></li>
                 <li><a href="https://blog.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Engineering Blog</a></li>
                 <li><a href="https://core.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Web Portal</a></li>
                 <li><a href="https://chat.mbktech.org" target="_blank" rel="noopener" class="text-slate-400 transition hover:text-primary-300 flex items-center gap-1.5"><i class="lni lni-chevron-right text-xs text-primary-500"></i> Chat App</a></li>
@@ -100,3 +104,4 @@
 <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+{{/if}}

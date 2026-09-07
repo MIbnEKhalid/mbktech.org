@@ -1,0 +1,90 @@
+<!-- ============================================================
+     CHANGELOG & RELEASES — MBKAuthe
+     ============================================================ -->
+
+<!-- Page Header Hero -->
+<section class="relative overflow-hidden py-10 sm:py-14 border-b border-primary-600/10 bg-white/40 dark:bg-dark-surface/40 backdrop-blur-md">
+    <div class="container max-w-[1560px] relative z-10 space-y-4">
+        <span class="eyebrow"><i class="lni lni-tag"></i> Release Notes</span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+            Changelog &amp; Version History
+        </h1>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+            Detailed record of new features, performance enhancements, security hardening, and breaking changes across all MBKAuthe releases.
+        </p>
+    </div>
+</section>
+
+<!-- Releases Timeline -->
+<section class="section py-10 sm:py-16">
+    <div class="container max-w-5xl space-y-10">
+
+        <!-- v5.6.0 -->
+        <div class="card p-6 sm:p-8 border-primary-600/20 space-y-4 shadow-md">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-4">
+                <div class="flex items-center gap-3">
+                    <span class="font-heading text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white font-mono">v5.6.0</span>
+                    <span class="badge-teal">Latest Release</span>
+                </div>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400">August 20, 2026</span>
+            </div>
+
+            <div class="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                <h4 class="font-bold text-primary-700 dark:text-primary-300">Added</h4>
+                <ul class="space-y-1.5 pl-5 list-disc marker:text-primary-600">
+                    <li><strong>Unified Dual-Database Architecture</strong>: Complete support for SQLite (<code>better-sqlite3</code>) alongside PostgreSQL with runtime SQL translation via <code>translatePgToSqlite</code>.</li>
+                    <li><strong><code>BaseRepository</code> Class</strong>: Driver-agnostic base repository with transactional helpers (<code>withTransaction</code>) and dialect builders (<code>postgresDialect</code>, <code>sqliteDialect</code>).</li>
+                    <li><strong>RFC 8628 Browser-based CLI Device Flow</strong>: Staging table <code>PendingToken</code>, authorization verification links, and single-delivery token polling.</li>
+                    <li><strong>Dynamic Re-targeting with <code>setDb()</code></strong>: Ability to switch database connections dynamically during runtime or testing.</li>
+                    <li><strong>Graceful Pool Shutdown &amp; Connection Draining</strong>: Centralized <code>registerGracefulShutdown</code> and test teardown <code>closeAllConnections</code>.</li>
+                </ul>
+
+                <h4 class="font-bold text-primary-700 dark:text-primary-300 pt-2">Improved</h4>
+                <ul class="space-y-1.5 pl-5 list-disc marker:text-primary-600">
+                    <li>SQLite FIFO promise mutex preventing write contention deadlocks in WAL mode.</li>
+                    <li>Case-insensitive configuration resolution across flat env vars and JSON configurations.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- v5.5.0 -->
+        <div class="card p-6 sm:p-8 border-primary-600/20 space-y-4 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-4">
+                <div class="flex items-center gap-3">
+                    <span class="font-heading text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white font-mono">v5.5.0</span>
+                </div>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400">June 12, 2026</span>
+            </div>
+
+            <div class="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                <h4 class="font-bold text-primary-700 dark:text-primary-300">Added</h4>
+                <ul class="space-y-1.5 pl-5 list-disc marker:text-primary-600">
+                    <li><strong>Multi-Session Pruning</strong>: Configurable <code>MAX_SESSIONS_PER_USER</code> with automated eviction of oldest active sessions.</li>
+                    <li><strong>Strict Validation Helpers</strong>: Introduced <code>strictValidateSession</code> and <code>strictValidateSessionAndRole</code> for enforcing cookie-only authentication.</li>
+                    <li><strong><code>reloadSessionUser</code> Helper</strong>: Seamlessly refreshes cached session user data from the database.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- v5.0.0 -->
+        <div class="card p-6 sm:p-8 border-primary-600/20 space-y-4 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-4">
+                <div class="flex items-center gap-3">
+                    <span class="font-heading text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white font-mono">v5.0.0</span>
+                </div>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400">March 15, 2026</span>
+            </div>
+
+            <div class="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                <h4 class="font-bold text-primary-700 dark:text-primary-300">Added</h4>
+                <ul class="space-y-1.5 pl-5 list-disc marker:text-primary-600">
+                    <li><strong>PBKDF2 Password Hashing</strong>: Migration to cryptographically strong Node.js PBKDF2 with unique salts.</li>
+                    <li><strong>GitHub App &amp; Google OAuth</strong>: Social login support with unified account linking.</li>
+                    <li><strong>Dev-only DB Query Monitor</strong>: Visual execution profiling at <code>/mbkauthe/db</code> with callsites, pool metrics, and latency stats.</li>
+                    <li><strong>Two-Factor Authentication (TOTP)</strong>: RFC 6238 implementation with trusted device cookies.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>

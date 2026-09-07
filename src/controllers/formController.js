@@ -1,4 +1,4 @@
-import { pool } from "../config/database.js";
+import { ticketRepository } from "../repositories/index.js";
 
 /**
  * POST /post/SubmitForm
@@ -11,7 +11,9 @@ export async function submitForm(req, res) {
     const allowedOrigin = "https://mbktech.org";
     const referer = req.headers.referer;
     const isLocalEnv =
-        process.env.localenv === "true" || process.env.NODE_ENV === "development";
+        process.env.localenv === "true" ||
+        process.env.NODE_ENV === "development" ||
+        process.env.NODE_ENV === "test";
 
     if (!isLocalEnv) {
         if (
@@ -49,48 +51,27 @@ export async function submitForm(req, res) {
         });
     }
 
-    const auditTrail = [
-        {
-            type: "created",
-            action: "Submission received",
-            timestamp: new Date().toISOString(),
-            by: "system",
-        },
-    ];
-
     try {
-        const result = await pool.query(
-            `INSERT INTO support_submissions (
-                subject, support_type, project_category, blog_category,
-                name, email, phone_number, message, rating,
-                status, priority, page_url,
-                audit_trail, additional_fields
-            ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
-            RETURNING id`,
-            [
-                subject,
-                support || null,
-                projectCato || null,
-                blogCato || null,
-                name,
-                email,
-                phoneNumber || null,
-                message,
-                rating ? parseInt(rating) : null,
-                "pending",
-                "normal",
-                PageUrl || null,
-                JSON.stringify(auditTrail),
-                JSON.stringify(additionalFields),
-            ]
-        );
+        const result = await ticketRepository.createFormSubmission({
+            name,
+            email,
+            subject,
+            message,
+            pageUrl: PageUrl || null,
+            phoneNumber,
+            rating,
+            support,
+            projectCato,
+            blogCato,
+            additionalFields,
+        });
 
-        console.log("Submission saved, id:", result.rows[0].id);
+        console.log("Submission saved, id:", result.id);
 
         return res.status(200).json({
             success: true,
             data: {
-                id: result.rows[0].id,
+                id: result.id,
                 message: "Submission received successfully!",
             },
         });
@@ -102,4 +83,3 @@ export async function submitForm(req, res) {
         });
     }
 }
-

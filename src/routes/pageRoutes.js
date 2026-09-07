@@ -13,6 +13,14 @@ import {
     trackTicketRedirect,
 } from "../controllers/pageController.js";
 import {
+    mbkautheHome,
+    mbkautheDocs,
+    mbkautheFeatures,
+    mbkautheApiReference,
+    mbkautheExamples,
+    mbkautheChangelog,
+} from "../controllers/mbkautheController.js";
+import {
     sitemapXML,
     sitemapByType,
     robotsTxt,
@@ -21,8 +29,47 @@ import { domainRedirect } from "../middleware/domainRedirect.js";
 
 const router = Router();
 
-// Home
+// Apply domain redirect middleware to establish req.site
+router.use(domainRedirect);
+
+// Home (domain-aware)
 router.get("/", homePage);
+
+// Disallow /mbkauthe and /mbkauthe/* on mbktech.org (redirect to https://mbkauthe.mbktech.org)
+router.all(["/mbkauthe", "/mbkauthe/*"], (req, res) => {
+    const rawPath = req.path.replace(/^\/mbkauthe/i, "") || "";
+    const cleanPath = rawPath.startsWith("/") ? rawPath : `/${rawPath}`;
+    if (req.site === "mbkauthe") {
+        return res.redirect(301, cleanPath === "/" ? "/" : cleanPath);
+    }
+    return res.redirect(301, `https://mbkauthe.mbktech.org${cleanPath === "/" ? "" : cleanPath}`);
+});
+
+// MBKAuthe dedicated product & doc routes
+router.get(["/docs", "/Docs"], (req, res, next) => {
+    if (req.site === "mbkauthe") return mbkautheDocs(req, res);
+    return res.redirect(301, "https://mbkauthe.mbktech.org/docs");
+});
+router.get(["/docs/:slug", "/Docs/:slug"], (req, res, next) => {
+    if (req.site === "mbkauthe") return mbkautheDocs(req, res);
+    return res.redirect(301, `https://mbkauthe.mbktech.org/docs/${req.params.slug}`);
+});
+router.get(["/features", "/Features", "/security", "/Security"], (req, res, next) => {
+    if (req.site === "mbkauthe") return mbkautheFeatures(req, res);
+    return res.redirect(301, "https://mbkauthe.mbktech.org/features");
+});
+router.get(["/api-reference", "/apiReference", "/api"], (req, res, next) => {
+    if (req.site === "mbkauthe") return mbkautheApiReference(req, res);
+    return res.redirect(301, "https://mbkauthe.mbktech.org/api-reference");
+});
+router.get(["/examples", "/Examples"], (req, res, next) => {
+    if (req.site === "mbkauthe") return mbkautheExamples(req, res);
+    return res.redirect(301, "https://mbkauthe.mbktech.org/examples");
+});
+router.get(["/changelog", "/Changelog"], (req, res, next) => {
+    if (req.site === "mbkauthe") return mbkautheChangelog(req, res);
+    return res.redirect(301, "https://mbkauthe.mbktech.org/changelog");
+});
 
 // Static pages
 router.get(["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], faqsPage);
@@ -40,8 +87,8 @@ router.get(["/Status", "/status"], statusPage);
 router.get(["/Ticket", "/Track", "/trackticket"], trackTicketRedirect);
 
 // Sitemap & robots
-router.get("/sitemap.xml", domainRedirect, sitemapXML);
-router.get("/sitemap/:type", domainRedirect, sitemapByType);
-router.get("/robots.txt", domainRedirect, robotsTxt);
+router.get("/sitemap.xml", sitemapXML);
+router.get("/sitemap/:type", sitemapByType);
+router.get("/robots.txt", robotsTxt);
 
 export default router;

@@ -1,0 +1,133 @@
+<!-- ============================================================
+     HEADER PARTIAL — MBKAuthe Product & Docs Navbar (Alpine.js)
+     ============================================================ -->
+<header class="sticky top-0 z-50 w-full border-b border-primary-600/10 bg-white/85 backdrop-blur-md dark:border-primary-500/20 dark:bg-dark-surface/85 transition-colors duration-200"
+        x-data="{ open: false, searchOpen: false }"
+        @keydown.escape.window="open = false; searchOpen = false">
+
+    <div class="container max-w-[1600px] flex h-14 sm:h-16 items-center justify-between gap-3 sm:gap-4">
+
+        <!-- Logo & Product Badge -->
+        <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            <a href="{{#if isSubdomain}}/{{else}}/mbkauthe{{/if}}" class="flex items-center gap-1.5 group" aria-label="MBKAuthe home">
+                <img src="{{icon_base64}}" alt="MBKTech logo" class="h-6 sm:h-7 w-auto transition-transform duration-200 group-hover:scale-105">
+                <span class="font-heading text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white" style="padding-top:0.7rem">
+                    BK<span class="text-primary-600 dark:text-primary-400">Authe</span>
+                </span>
+            </a>
+            <a href="{{#if isSubdomain}}/docs/changelog{{else}}/mbkauthe/docs/changelog{{/if}}" class="hidden xs:inline-flex items-center gap-1 rounded-full bg-primary-50 px-2 py-0.5 text-[11px] font-bold font-mono text-primary-700 border border-primary-600/20 dark:bg-primary-950/80 dark:text-primary-300 dark:border-primary-500/30 hover:border-primary-600/50 transition-colors">
+                v{{#if product.version}}{{product.version}}{{else}}5.6.0{{/if}}
+            </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden items-center gap-0.5 xl:gap-1 lg:flex shrink min-w-0" aria-label="MBKAuthe navigation">
+            <a data-authe-nav href="{{#if isSubdomain}}/{{else}}/mbkauthe{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Overview</a>
+            <a data-authe-nav href="{{#if isSubdomain}}/features{{else}}/mbkauthe/features{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Features</a>
+            <a data-authe-nav href="{{#if isSubdomain}}/docs{{else}}/mbkauthe/docs{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Docs</a>
+            <a data-authe-nav href="{{#if isSubdomain}}/api-reference{{else}}/mbkauthe/api-reference{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">API</a>
+            <a data-authe-nav href="{{#if isSubdomain}}/examples{{else}}/mbkauthe/examples{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Examples</a>
+            <a data-authe-nav href="{{#if isSubdomain}}/changelog{{else}}/mbkauthe/changelog{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Changelog</a>
+            <a href="{{#if isSubdomain}}https://mbktech.org/Support&Contact{{else}}/Support&Contact{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Support</a>
+        </nav>
+
+        <!-- Right Actions -->
+        <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <!-- GitHub link -->
+            <a href="https://github.com/MIbnEKhalid/mbkauthe" target="_blank" rel="noopener" title="GitHub Repository"
+               class="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-primary-600/15 bg-white/70 text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 hover:border-primary-600/30 dark:border-primary-500/25 dark:bg-dark-surface/70 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">
+                <i class="fab fa-github text-base"></i>
+            </a>
+
+            <!-- npm link -->
+            <a href="https://www.npmjs.com/package/mbkauthe" target="_blank" rel="noopener" title="npm package"
+               class="hidden sm:inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-primary-600/15 bg-white/70 text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 hover:border-primary-600/30 dark:border-primary-500/25 dark:bg-dark-surface/70 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">
+                <i class="fab fa-npm text-lg text-rose-500"></i>
+            </a>
+
+            <!-- Get Started CTA -->
+            <a href="{{#if isSubdomain}}/docs/getting-started{{else}}/mbkauthe/docs/getting-started{{/if}}" class="btn-primary hidden md:inline-flex text-xs py-1.5 px-3">
+                <span>Get Started</span>
+                <i class="lni lni-arrow-right text-[10px]"></i>
+            </a>
+
+            <!-- Dark / Light theme toggle -->
+            <button type="button"
+                    onclick="toggleTheme()"
+                    aria-label="Toggle dark mode"
+                    class="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-primary-600/15 bg-white/70 text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 hover:border-primary-600/30 dark:border-primary-500/25 dark:bg-dark-surface/70 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">
+                <i class="lni lni-night text-base dark:hidden"></i>
+                <i class="lni lni-sun text-base hidden dark:inline-block text-amber-400"></i>
+            </button>
+
+            <!-- Mobile menu toggle -->
+            <button type="button"
+                    class="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border border-primary-600/15 bg-white/70 text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 lg:hidden dark:border-primary-500/25 dark:bg-dark-surface/70 dark:text-slate-200 dark:hover:bg-primary-950/60"
+                    @click="open = !open"
+                    :aria-expanded="open ? 'true' : 'false'"
+                    aria-label="Toggle navigation menu">
+                <i class="lni lni-menu text-lg" x-show="!open"></i>
+                <i class="lni lni-close text-lg" x-show="open" x-cloak></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div x-show="open"
+         x-cloak
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0 -translate-y-2"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-150"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-2"
+         class="border-t border-primary-600/10 bg-white/95 backdrop-blur-lg px-4 py-4 lg:hidden dark:border-primary-500/20 dark:bg-dark-surface/95">
+        <nav class="flex flex-col gap-1.5" aria-label="Mobile MBKAuthe navigation">
+            <a href="{{#if isSubdomain}}/{{else}}/mbkauthe{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Overview</a>
+            <a href="{{#if isSubdomain}}/features{{else}}/mbkauthe/features{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Features &amp; Security</a>
+            <a href="{{#if isSubdomain}}/docs{{else}}/mbkauthe/docs{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Documentation</a>
+            <a href="{{#if isSubdomain}}/api-reference{{else}}/mbkauthe/api-reference{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">API Reference</a>
+            <a href="{{#if isSubdomain}}/examples{{else}}/mbkauthe/examples{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Examples &amp; Recipes</a>
+            <a href="{{#if isSubdomain}}/changelog{{else}}/mbkauthe/changelog{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Changelog</a>
+            <a href="{{#if isSubdomain}}https://mbktech.org/Support&Contact{{else}}/Support&Contact{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Support &amp; Contact</a>
+            
+            <div class="pt-3 mt-2 border-t border-primary-600/10 dark:border-primary-500/20 flex flex-col gap-2">
+                <a href="{{#if isSubdomain}}/docs/getting-started{{else}}/mbkauthe/docs/getting-started{{/if}}" class="btn-primary justify-center text-xs py-2" @click="open = false">
+                    <span>Quickstart Guide</span>
+                    <i class="lni lni-arrow-right text-[10px]"></i>
+                </a>
+                <div class="flex items-center justify-between px-2 pt-1 text-xs text-slate-500 dark:text-slate-400">
+                    <a href="https://github.com/MIbnEKhalid/mbkauthe" target="_blank" rel="noopener" class="hover:text-primary-600 flex items-center gap-1.5">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.npmjs.com/package/mbkauthe" target="_blank" rel="noopener" class="hover:text-primary-600 flex items-center gap-1.5">
+                        <i class="fab fa-npm text-rose-500"></i> npm v{{#if product.version}}{{product.version}}{{else}}5.6.0{{/if}}
+                    </a>
+                    <a href="https://mbktech.org" class="hover:text-primary-600 flex items-center gap-1.5">
+                        MBKTech.org &rarr;
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Highlight active navigation link -->
+<script>
+    (function () {
+        var path = window.location.pathname.replace(/\/+$/, "") || "/";
+        document.querySelectorAll("[data-authe-nav]").forEach(function (link) {
+            var href = (link.getAttribute("href") || "").split("?")[0].replace(/\/+$/, "") || "/";
+            var isMatch = false;
+            if (href === "/" || href === "/mbkauthe") {
+                isMatch = (path === "/" || path === "/mbkauthe");
+            } else {
+                isMatch = (path === href || path.startsWith(href + "/"));
+            }
+            if (isMatch) {
+                link.classList.add("bg-primary-50", "text-primary-700", "dark:bg-primary-950/80", "dark:text-primary-300", "font-bold");
+                link.classList.remove("text-slate-700", "dark:text-slate-200");
+            }
+        });
+    })();
+</script>

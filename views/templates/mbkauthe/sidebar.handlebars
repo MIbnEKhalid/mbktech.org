@@ -1,0 +1,66 @@
+<!-- ============================================================
+     SIDEBAR PARTIAL — MBKAuthe Docs Sidebar
+     ============================================================ -->
+<aside class="w-full space-y-4" x-data="{ filter: '' }">
+    <div class="card p-4 sm:p-5 border-primary-600/20 bg-white/90 dark:bg-dark-surface/90 shadow-sm space-y-4">
+        
+        <!-- Search filter -->
+        <div class="relative">
+            <i class="lni lni-search-alt absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input type="text"
+                   x-model="filter"
+                   placeholder="Filter docs &amp; guides..."
+                   class="w-full rounded-lg border border-primary-600/20 bg-white/95 dark:bg-dark/80 pl-8 pr-3 py-1.5 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:border-primary-600 focus:ring-1 focus:ring-primary-500">
+        </div>
+
+        <!-- Navigation Sections List -->
+        <nav class="space-y-5 max-h-[calc(100vh-14rem)] overflow-y-auto pr-1 text-xs" aria-label="Documentation sidebar navigation">
+            {{#each nav.sections}}
+            <div class="space-y-1.5"
+                 x-show="!filter || $el.querySelectorAll('a').length > 0"
+                 x-init="$watch('filter', val => {
+                     let hasMatch = false;
+                     $el.querySelectorAll('a').forEach(a => {
+                         let match = !val || a.textContent.toLowerCase().includes(val.toLowerCase());
+                         a.style.display = match ? '' : 'none';
+                         if (match) hasMatch = true;
+                     });
+                     $el.style.display = hasMatch ? '' : 'none';
+                 })">
+                <h4 class="font-heading text-[11px] font-bold uppercase tracking-wider text-primary-800 dark:text-primary-300 px-2 py-1 flex items-center justify-between">
+                    <span>{{this.title}}</span>
+                </h4>
+                <ul class="space-y-0.5">
+                    {{#each this.items}}
+                    <li>
+                        <a href="{{#if ../../isSubdomain}}/docs/{{this.slug}}{{else}}/mbkauthe/docs/{{this.slug}}{{/if}}"
+                           class="flex items-center justify-between px-2.5 py-1.5 rounded-lg transition-all text-xs {{#if (eq this.slug ../../currentSlug)}}bg-primary-50 text-primary-700 font-bold border-l-2 border-primary-600 dark:bg-primary-950/80 dark:text-primary-300 dark:border-primary-400{{else}}text-slate-600 hover:text-primary-700 hover:bg-primary-50/50 dark:text-slate-300 dark:hover:text-primary-300 dark:hover:bg-primary-950/40{{/if}}">
+                            <span>{{this.title}}</span>
+                            {{#if (eq this.slug ../../currentSlug)}}
+                            <i class="lni lni-chevron-right text-[10px] text-primary-600 dark:text-primary-400"></i>
+                            {{/if}}
+                        </a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{/each}}
+        </nav>
+
+        <!-- Sidebar Callout -->
+        <div class="pt-3 border-t border-primary-600/10 dark:border-primary-500/20 text-xs space-y-2">
+            <a href="{{#if isSubdomain}}https://mbktech.org/Support&Contact{{else}}/Support&Contact{{/if}}"
+               class="flex items-center gap-2 text-slate-500 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-300 transition-colors">
+                <i class="lni lni-headphone-alt"></i> <span>Get Support &amp; Help</span>
+            </a>
+            <a href="https://github.com/MIbnEKhalid/mbkauthe/issues" target="_blank" rel="noopener"
+               class="flex items-center gap-2 text-slate-500 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-300 transition-colors">
+                <i class="lni lni-github"></i> <span>Report an issue / feedback</span>
+            </a>
+            <a href="https://www.npmjs.com/package/mbkauthe" target="_blank" rel="noopener"
+               class="flex items-center gap-2 text-slate-500 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-300 transition-colors">
+                <i class="lni lni-package"></i> <span>npm registry package</span>
+            </a>
+        </div>
+    </div>
+</aside>

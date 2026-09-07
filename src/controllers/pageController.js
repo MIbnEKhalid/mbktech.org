@@ -1,5 +1,7 @@
 import { domainRedirect } from "../middleware/domainRedirect.js";
 import { legalContent } from "../services/legalContentService.js";
+import { mbkautheContentService } from "../services/mbkautheContentService.js";
+import { mbkautheHome } from "./mbkautheController.js";
 
 const siteViews = {
     main: {
@@ -13,11 +15,22 @@ const siteViews = {
             ? JSON.parse(process.env.PortalVersionControlJson)
             : null,
     },
+    mbkauthe: {
+        view: "mainPages/mbkautheDomain/index.handlebars",
+        layout: "main",
+        title: "MBKAuthe — Modern Node.js & Express Authentication Engine",
+        isAutheSite: true,
+        isSubdomain: true,
+    },
 };
 
 // Home page (domain-aware)
 export function homePage(req, res) {
     domainRedirect(req, res, () => {
+        if (req.site === "mbkauthe") {
+            return mbkautheHome(req, res);
+        }
+
         const viewEntry = siteViews[req.site] || siteViews.main;
         console.log(`Rendering view: ${JSON.stringify(viewEntry)}`);
 
