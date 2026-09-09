@@ -1,6 +1,52 @@
 import { mbkautheContentService } from "../services/mbkauthe-content.service.js";
 
 /**
+ * Domain-aware page route helpers. Each renders the MBKAuthe page when the
+ * request is on the mbkauthe subdomain, otherwise 301-redirects to it.
+ */
+
+// /mbkauthe and /mbkauthe/* — redirect to the mbkauthe subdomain (or stay local on it)
+export function mbkautheSplatRedirect(req, res) {
+    const rawPath = req.path.replace(/^\/mbkauthe/i, "") || "";
+    const cleanPath = rawPath.startsWith("/") ? rawPath : `/${rawPath}`;
+    if (req.site === "mbkauthe") {
+        return res.redirect(301, cleanPath === "/" ? "/" : cleanPath);
+    }
+    return res.redirect(301, `https://mbkauthe.mbktech.org${cleanPath === "/" ? "" : cleanPath}`);
+}
+
+// /docs and /docs/:slug
+export function mbkautheDocsRoute(req, res) {
+    if (req.site === "mbkauthe") return mbkautheDocs(req, res);
+    const slug = req.params.slug ? `/${req.params.slug}` : "";
+    return res.redirect(301, `https://mbkauthe.mbktech.org/docs${slug}`);
+}
+
+// /features (/security)
+export function mbkautheFeaturesRoute(req, res) {
+    if (req.site === "mbkauthe") return mbkautheFeatures(req, res);
+    return res.redirect(301, "https://mbkauthe.mbktech.org/features");
+}
+
+// /api-reference
+export function mbkautheApiReferenceRoute(req, res) {
+    if (req.site === "mbkauthe") return mbkautheApiReference(req, res);
+    return res.redirect(301, "https://mbkauthe.mbktech.org/api-reference");
+}
+
+// /examples
+export function mbkautheExamplesRoute(req, res) {
+    if (req.site === "mbkauthe") return mbkautheExamples(req, res);
+    return res.redirect(301, "https://mbkauthe.mbktech.org/examples");
+}
+
+// /changelog
+export function mbkautheChangelogRoute(req, res) {
+    if (req.site === "mbkauthe") return mbkautheChangelog(req, res);
+    return res.redirect(301, "https://mbkauthe.mbktech.org/changelog");
+}
+
+/**
  * MBKAuthe Product Homepage controller
  */
 export function mbkautheHome(req, res) {
