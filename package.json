@@ -1,6 +1,6 @@
 {
   "name": "mbktech.org",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "src/server.js",
   "type": "module",
   "scripts": {
@@ -8,7 +8,8 @@
     "dev": "nodemon src/server.js",
     "start:sqlite": "cross-env DB_TYPE=sqlite node src/server.js",
     "dev:sqlite": "cross-env DB_TYPE=sqlite nodemon src/server.js",
-    "schema:sqlite": "node src/scripts/init-sqlite.js",
+    "db:init:postgres": "node scripts/initDb.js --type=postgres",
+    "db:init:sqlite": "node scripts/initDb.js --type=sqlite",
     "test": "vitest run",
     "build:css": "tailwindcss -i styles/tailwind.css -o public/Assets/Style/tailwind.css --minify",
     "watch:css": "tailwindcss -i styles/tailwind.css -o public/Assets/Style/tailwind.css --watch"

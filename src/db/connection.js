@@ -3,7 +3,8 @@ import path from "node:path";
 import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
-import { applySchema, registerGracefulShutdown } from "mbkauthe";
+import { registerGracefulShutdown } from "mbkauthe";
+
 
 const { Pool } = pkg;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -68,22 +69,6 @@ if (dbType !== "sqlite" && pool && typeof pool.on === "function") {
   }
 }
 
-/**
- * Initializes schema using mbkauthe applySchema helper.
- */
-export async function initSchema(adapter) {
-  try {
-    const isSqlite = adapter?.dialect?.name === "sqlite" || dbType === "sqlite";
-    const schemaFile = isSqlite ? "schema.sqlite.sql" : "schema.sql";
-    const schemaPath = path.resolve(__dirname, "schema", schemaFile);
-
-    if (fs.existsSync(schemaPath)) {
-      await applySchema(adapter || pool, schemaPath, { name: "mbktech.org" });
-    }
-  } catch (err) {
-    console.error("[db] Schema initialization error:", err.message);
-  }
-}
 
 /**
  * Tests database connectivity.

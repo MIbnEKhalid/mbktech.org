@@ -4,7 +4,7 @@ import { applySchema, closeAllConnections } from "mbkauthe";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const SCHEMA_PATH = path.resolve(__dirname, "../../src/db/schema/schema.sqlite.sql");
+const SCHEMA_PATH = path.resolve(__dirname, "../../src/db/schema/sqlite.sql");
 
 /**
  * Initializes and returns the shared singleton database adapter with the mbktech schema applied.

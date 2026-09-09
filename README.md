@@ -37,7 +37,6 @@ A multi-domain Node.js website showcasing the portfolio, projects, and services 
 
 ```
 mbktech.org/
-├── app.js                          # Root backward-compatible re-export of src/app.js
 ├── package.json                    # Ecosystem scripts & dependencies
 ├── vercel.json                     # Vercel deployment config (points to src/server.js)
 ├── vitest.config.js                # Vitest testing suite configuration
@@ -57,8 +56,8 @@ mbktech.org/
 │   │   ├── connection.js           # Pool / SQLite connection & health-check
 │   │   ├── index.js                # Instantiates & exports defaultAdapter & dialects
 │   │   └── schema/
-│   │       ├── schema.sql          # PostgreSQL DDL (canonical mbkcore_ tables + views)
-│   │       └── schema.sqlite.sql   # SQLite DDL
+│   │       ├── postgres.sql        # PostgreSQL DDL (canonical mbkcore_ tables + views)
+│   │       └── sqlite.sql          # SQLite DDL
 │   ├── repositories/
 │   │   ├── TicketRepository.js     # Manages mbkcore_support_submissions
 │   │   ├── SpamRepository.js       # Manages mbkcore_blocked_entries
@@ -80,7 +79,7 @@ mbktech.org/
 │   │   ├── ticketRoutes.js         # /api/tickets/*
 │   │   └── postRoutes.js           # POST /post/*
 │   ├── scripts/
-│   │   └── init-sqlite.js          # SQLite schema initialization CLI
+│   │   └── initDb.js               # Database schema initialization CLI
 │   ├── services/
 │   │   ├── legalContentService.js  # Markdown document renderer
 │   │   ├── portalVersionService.js # Cached portal version
@@ -148,7 +147,7 @@ BOT_PROTECTION_SECRET=your-random-hmac-salt-here
 
 ### 3. Initialize SQLite (optional, for local development without Neon)
 ```bash
-npm run schema:sqlite
+npm run db:init:sqlite
 ```
 
 ---
