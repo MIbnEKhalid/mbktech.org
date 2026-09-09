@@ -80,8 +80,17 @@ describe("HTTP Route Integration Tests", () => {
     expect(res.body).toHaveProperty("token");
   });
 
-  it("GET /unknown-random-404-route returns 404", async () => {
+  it("GET /unknown-random-404-route returns 404 HTML", async () => {
     const res = await request(app).get("/unknown-random-404-route");
     expect(res.status).toBe(404);
   });
+
+  it("GET /api/unknown-api-route returns 404 JSON standard error envelope", async () => {
+    const res = await request(app).get("/api/unknown-api-route");
+    expect(res.status).toBe(404);
+    expect(res.body.success).toBe(false);
+    expect(res.body.error).toHaveProperty("code", "ROUTE_NOT_FOUND");
+    expect(res.body).toHaveProperty("timestamp");
+  });
 });
+

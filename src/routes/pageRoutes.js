@@ -36,7 +36,7 @@ router.use(domainRedirect);
 router.get("/", homePage);
 
 // Disallow /mbkauthe and /mbkauthe/* on mbktech.org (redirect to https://mbkauthe.mbktech.org)
-router.all(["/mbkauthe", "/mbkauthe/*"], (req, res) => {
+router.all(["/mbkauthe", "/mbkauthe/*splat"], (req, res) => {
     const rawPath = req.path.replace(/^\/mbkauthe/i, "") || "";
     const cleanPath = rawPath.startsWith("/") ? rawPath : `/${rawPath}`;
     if (req.site === "mbkauthe") {

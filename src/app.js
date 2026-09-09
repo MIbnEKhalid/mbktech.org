@@ -9,12 +9,10 @@ import { configureHandlebars } from "./config/handlebars.js";
 
 // --- Middleware ---
 import { apiRateLimit, requestLogger } from "./middleware/security.js";
+import { notFoundHandler, errorHandler } from "./middleware/errorHandler.js";
 
 // --- Routes ---
 import { mountRoutes } from "./routes/index.js";
-
-// --- Controllers ---
-import { notFound } from "./controllers/pageController.js";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -55,9 +53,10 @@ configureHandlebars(app);
 mountRoutes(app);
 
 // ---------------------
-// 404 catch-all
+// Error & 404 handling
 // ---------------------
-app.use(notFound);
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 export { app };
 export default app;
