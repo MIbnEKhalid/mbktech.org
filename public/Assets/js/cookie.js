@@ -22,7 +22,7 @@ async function getTermsVersionFromPrivacyPolicy() {
 async function AskForCookieConsent() {
     try {
         console.log('Fetching cookie consent HTML...');
-        const response = await fetch('/Assets/Cookie/index.html');
+        const response = await fetch('/assets/Cookie/index.html');
         const html = await response.text();
         document.getElementById('cookie').innerHTML = html;
         console.log('Cookie consent HTML loaded.');

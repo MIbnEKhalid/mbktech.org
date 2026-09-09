@@ -86,7 +86,7 @@
 
     var urlTarget = getUrlTarget();
 
-    fetch("/Assets/FAQs/faq.json")
+    fetch("/assets/FAQs/faq.json")
         .then(function (r) {
             if (!r.ok) throw new Error("Failed to load FAQs");
             return r.json();

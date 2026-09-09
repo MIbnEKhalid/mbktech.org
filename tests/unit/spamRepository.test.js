@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createTestDb, cleanupTestDb } from "../helpers/createTestDb.js";
-import { spamRepository } from "../../src/repositories/SpamRepository.js";
-import { validateSubmission } from "../../src/services/spamService.js";
+import { spamRepository } from "../../src/repositories/spam.repository.js";
+import { validateSubmission } from "../../src/services/spam.service.js";
 
 describe("SpamRepository & SpamService", () => {
   beforeAll(async () => {

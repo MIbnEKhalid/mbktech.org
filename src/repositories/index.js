@@ -1,5 +1,5 @@
-import { TicketRepository, ticketRepository } from "./TicketRepository.js";
-import { SpamRepository, spamRepository } from "./SpamRepository.js";
+import { TicketRepository, ticketRepository } from "./ticket.repository.js";
+import { SpamRepository, spamRepository } from "./spam.repository.js";
 
 export {
   TicketRepository,

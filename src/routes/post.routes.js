@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { submitForm } from "../controllers/formController.js";
+import { submitForm } from "../controllers/form.controller.js";
 import { formRateLimit } from "../middleware/security.js";
-import { botProtectionGuard } from "../middleware/botProtection.js";
-import { validateSubmission } from "../services/spamService.js";
+import { botProtectionGuard } from "../middleware/bot-protection.js";
+import { validateSubmission } from "../services/spam.service.js";
 
 const router = Router();
 

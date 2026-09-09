@@ -11,7 +11,7 @@ import {
     advancedPackagePage,
     statusPage,
     trackTicketRedirect,
-} from "../controllers/pageController.js";
+} from "../controllers/page.controller.js";
 import {
     mbkautheHome,
     mbkautheDocs,
@@ -19,13 +19,13 @@ import {
     mbkautheApiReference,
     mbkautheExamples,
     mbkautheChangelog,
-} from "../controllers/mbkautheController.js";
+} from "../controllers/mbkauthe.controller.js";
 import {
     sitemapXML,
     sitemapByType,
     robotsTxt,
-} from "../controllers/sitemapController.js";
-import { domainRedirect } from "../middleware/domainRedirect.js";
+} from "../controllers/sitemap.controller.js";
+import { domainRedirect } from "../middleware/domain-redirect.js";
 
 const router = Router();
 

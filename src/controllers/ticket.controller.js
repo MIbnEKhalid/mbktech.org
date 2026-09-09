@@ -1,4 +1,4 @@
-import * as ticketService from "../services/ticketService.js";
+import * as ticketService from "../services/ticket.service.js";
 
 /**
  * POST /api/tickets

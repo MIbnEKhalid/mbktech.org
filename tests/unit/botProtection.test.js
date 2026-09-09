@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { generateChallenge, verifyBotProtection } from "../../src/middleware/botProtection.js";
+import { generateChallenge, verifyBotProtection } from "../../src/middleware/bot-protection.js";
 
 describe("BotProtection Middleware", () => {
   it("should generate a signed challenge token containing payload and signature", () => {

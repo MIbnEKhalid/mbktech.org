@@ -1,7 +1,7 @@
-import { domainRedirect } from "../middleware/domainRedirect.js";
-import { legalContent } from "../services/legalContentService.js";
-import { mbkautheContentService } from "../services/mbkautheContentService.js";
-import { mbkautheHome } from "./mbkautheController.js";
+import { domainRedirect } from "../middleware/domain-redirect.js";
+import { legalContent } from "../services/legal-content.service.js";
+import { mbkautheContentService } from "../services/mbkauthe-content.service.js";
+import { mbkautheHome } from "./mbkauthe.controller.js";
 
 const siteViews = {
     main: {

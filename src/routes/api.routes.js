@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { portalAppVersion, testEndpoint } from "../controllers/apiController.js";
+import { portalAppVersion, testEndpoint } from "../controllers/api.controller.js";
 import { cacheMiddleware } from "../middleware/security.js";
-import { botChallengeHandler } from "../middleware/botProtection.js";
+import { botChallengeHandler } from "../middleware/bot-protection.js";
 
 const router = Router();
 

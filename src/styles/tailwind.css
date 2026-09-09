@@ -609,7 +609,7 @@
 .ticket-not-found h3 { color: #dc2626; margin-top: 0; }
 
 /* ============================================================
-   FAQ page — injected markup styles (fetch /Assets/FAQs/faq.json)
+   FAQ page — injected markup styles (fetch /assets/FAQs/faq.json)
    ============================================================ */
 .faq-item {
   border: 1px solid rgba(15, 118, 110, 0.15);
@@ -820,7 +820,7 @@
 }
 
 /* ============================================================
-   Cookie consent banner (injected markup from /Assets/Cookie/index.html)
+   Cookie consent banner (injected markup from /assets/Cookie/index.html)
    ============================================================ */
 #cookieNotice {
   position: fixed;

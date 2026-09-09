@@ -38,7 +38,7 @@
     position: absolute;
     top: 7px;
     right: 5px;
-    background: url(../Images/close-icon-white.svg) 0 0 / 20px 20px no-repeat;
+    background: url(../images/close-icon-white.svg) 0 0 / 20px 20px no-repeat;
 }
 
 #cookieNotice #closeIcon:hover {
@@ -50,7 +50,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    background: url(../Images/cookie-icon.svg) 0 0 / 40px 40px no-repeat;
+    background: url(../images/cookie-icon.svg) 0 0 / 40px 40px no-repeat;
     padding-left: 45px;
     height: 40px;
 }

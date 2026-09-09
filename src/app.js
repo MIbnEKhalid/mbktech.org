@@ -9,7 +9,7 @@ import { configureHandlebars } from "./config/handlebars.js";
 
 // --- Middleware ---
 import { apiRateLimit, requestLogger } from "./middleware/security.js";
-import { notFoundHandler, errorHandler } from "./middleware/errorHandler.js";
+import { notFoundHandler, errorHandler } from "./middleware/error-handler.js";
 
 // --- Routes ---
 import { mountRoutes } from "./routes/index.js";

@@ -1,4 +1,4 @@
-import { generateSitemap as generate } from "../utils/sitemapGenerator.js";
+import { generateSitemap as generate } from "../utils/sitemap-generator.js";
 
 export async function sitemapXML(req, res) {
     try {

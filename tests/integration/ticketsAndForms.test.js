@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import request from "supertest";
 import app from "../../src/app.js";
 import { createTestDb, cleanupTestDb } from "../helpers/createTestDb.js";
-import { spamRepository } from "../../src/repositories/SpamRepository.js";
+import { spamRepository } from "../../src/repositories/spam.repository.js";
 import crypto from "crypto";
 
 // Helper to generate a valid bot challenge token that bypasses the 1.5s time check

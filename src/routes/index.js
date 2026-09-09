@@ -1,7 +1,7 @@
-import pageRoutes from "./pageRoutes.js";
-import apiRoutes from "./apiRoutes.js";
-import ticketRoutes from "./ticketRoutes.js";
-import postRoutes from "./postRoutes.js";
+import pageRoutes from "./page.routes.js";
+import apiRoutes from "./api.routes.js";
+import ticketRoutes from "./ticket.routes.js";
+import postRoutes from "./post.routes.js";
 
 /**
  * Mount all sub-routers onto the provided Express app.

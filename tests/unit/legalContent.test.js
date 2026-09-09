@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { legalContent } from "../../src/services/legalContentService.js";
+import { legalContent } from "../../src/services/legal-content.service.js";
 
 describe("LegalContentService", () => {
   it("should render Terms of Service markdown into HTML", () => {

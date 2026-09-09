@@ -1,4 +1,4 @@
-import { getPortalAppVersion } from "../services/portalVersionService.js";
+import { getPortalAppVersion } from "../services/portal-version.service.js";
 
 export function portalAppVersion(req, res) {
     const response = getPortalAppVersion();

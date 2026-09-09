@@ -1,4 +1,4 @@
-import { mbkautheContentService } from "../services/mbkautheContentService.js";
+import { mbkautheContentService } from "../services/mbkauthe-content.service.js";
 
 /**
  * MBKAuthe Product Homepage controller

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createTestDb, cleanupTestDb } from "../helpers/createTestDb.js";
-import { ticketRepository } from "../../src/repositories/TicketRepository.js";
+import { ticketRepository } from "../../src/repositories/ticket.repository.js";
 
 describe("TicketRepository", () => {
   beforeAll(async () => {
