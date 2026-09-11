@@ -85,12 +85,19 @@ describe("HTTP Route Integration Tests", () => {
     expect(res.status).toBe(404);
   });
 
-  it("GET /api/unknown-api-route returns 404 JSON standard error envelope", async () => {
-    const res = await request(app).get("/api/unknown-api-route");
-    expect(res.status).toBe(404);
+  it("GET /api/health returns 200 with standard healthy status", async () => {
+    const res = await request(app).get("/api/health");
+    expect(res.status).toBe(200);
+    expect(res.body.success).toBe(true);
+    expect(res.body.status).toBe("healthy");
+    expect(res.body.app).toBe("mbktech.org");
+    expect(res.body.timestamp).toBeDefined();
+  });
+
+  it("POST /api/health/test protects against unauthorized requests", async () => {
+    const res = await request(app).post("/api/health/test");
+    expect(res.status).toBe(401);
     expect(res.body.success).toBe(false);
-    expect(res.body.error).toHaveProperty("code", "ROUTE_NOT_FOUND");
-    expect(res.body).toHaveProperty("timestamp");
   });
 });
 

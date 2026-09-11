@@ -29,6 +29,7 @@
     "highlight.js": "^11.12.0",
     "marked": "^18.0.9",
     "mbkauthe": "latest",
+    "mbkhealth": "latest",
     "node-cache": "^5.1.2",
     "pg": "^8.13.3",
     "sitemap": "^8.0.0"
