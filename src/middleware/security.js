@@ -1,36 +1,8 @@
 import rateLimit from 'express-rate-limit';
-//import helmet from 'helmet';
 import NodeCache from 'node-cache';
 
 // Initialize cache (TTL: 5 minutes for most endpoints, 1 minute for frequently changing data)
 export const cache = new NodeCache({ stdTTL: 300, checkperiod: 60 });
-
-/*
-// Helmet security middleware with relaxed CSP for development
-export const securityHeaders = helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'", "*"],
-      styleSrc: ["'self'", "'unsafe-inline'", "*"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "*"],
-      scriptSrcAttr: ["'unsafe-inline'", "'unsafe-hashes'"], // Added 'unsafe-hashes'
-      imgSrc: ["'self'", "data:", "*"],
-      fontSrc: ["'self'", "*"],
-      connectSrc: ["'self'", "*"],
-      frameSrc: ["*"],
-      objectSrc: ["'none'"],
-      baseUri: ["'self'"],
-      formAction: ["'self'"],
-    },
-  },
-  crossOriginEmbedderPolicy: false, // Disable for development
-  hsts: {
-    maxAge: 31536000,
-    includeSubDomains: true,
-    preload: true
-  }
-});
-*/
 
 // Rate limiting for general API endpoints
 export const apiRateLimit = rateLimit({

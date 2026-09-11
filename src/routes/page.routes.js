@@ -1,30 +1,7 @@
 import { Router } from "express";
-import {
-    homePage,
-    faqsPage,
-    supportPage,
-    termsPage,
-    privacyPage,
-    trackTicketPage,
-    servicesPage,
-    basicPackagePage,
-    advancedPackagePage,
-    statusPage,
-    trackTicketRedirect,
-} from "../controllers/page.controller.js";
-import {
-    mbkautheSplatRedirect,
-    mbkautheDocsRoute,
-    mbkautheFeaturesRoute,
-    mbkautheApiReferenceRoute,
-    mbkautheExamplesRoute,
-    mbkautheChangelogRoute,
-} from "../controllers/mbkauthe.controller.js";
-import {
-    sitemapXML,
-    sitemapByType,
-    robotsTxt,
-} from "../controllers/sitemap.controller.js";
+import { homePage, faqsPage, supportPage, termsPage, privacyPage, trackTicketPage, servicesPage, basicPackagePage, advancedPackagePage, statusPage, trackTicketRedirect } from "../controllers/page.controller.js";
+import { mbkautheSplatRedirect, mbkautheDocsRoute, mbkautheFeaturesRoute, mbkautheApiReferenceRoute, mbkautheExamplesRoute, mbkautheChangelogRoute } from "../controllers/mbkauthe.controller.js";
+import { sitemapXML, sitemapByType, robotsTxt } from "../controllers/sitemap.controller.js";
 import { domainRedirect } from "../middleware/domain-redirect.js";
 
 const router = Router();

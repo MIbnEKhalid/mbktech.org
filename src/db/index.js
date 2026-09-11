@@ -1,11 +1,4 @@
-import {
-  PostgresAdapter,
-  SqliteAdapter,
-  postgresDialect,
-  sqliteDialect,
-  BaseRepository,
-  registerGracefulShutdown,
-} from "mbkauthe";
+import { PostgresAdapter, SqliteAdapter, postgresDialect, sqliteDialect, BaseRepository, registerGracefulShutdown } from "mbkauthe";
 import { pool, poolConfig, sqlitePath, dbType, testDbConnection } from "./connection.js";
 import { initPostgresSchema, initSqliteSchema } from "./schema/init.js";
 

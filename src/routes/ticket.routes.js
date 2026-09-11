@@ -1,9 +1,5 @@
 import { Router } from "express";
-import {
-    createTicket,
-    getTicket,
-    getAuditTrail,
-} from "../controllers/ticket.controller.js";
+import { createTicket, getTicket, getAuditTrail } from "../controllers/ticket.controller.js";
 import { formRateLimit } from "../middleware/security.js";
 import { botProtectionGuard } from "../middleware/bot-protection.js";
 
