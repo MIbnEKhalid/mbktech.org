@@ -44,13 +44,13 @@
   {
     "id": "support-1",
     "question": "How can I contact MBK Tech?",
-    "answer": "The best way to reach us is through our <a href='/Support&Contact'>Support & Contact</a> page. You can submit a support ticket, send feedback, request a quote, or make a general inquiry — all from one form. You can also email us directly at <a href='mailto:support@mbktech.org'>support@mbktech.org</a>.",
+    "answer": "The best way to reach us is through our <a href='/support'>Support & Contact</a> page. You can submit a support ticket, send feedback, request a quote, or make a general inquiry — all from one form. You can also email us directly at <a href='mailto:support@mbktech.org'>support@mbktech.org</a>.",
     "display": "true"
   },
   {
     "id": "support-2",
     "question": "How do I track my support ticket?",
-    "answer": "When you submit a support request, you receive a unique <strong>ticket number</strong> (e.g., T000123456). Use this number on our <a href='/TrackTicket'>Track Ticket</a> page to check the status, view updates, and see the full audit trail of your request at any time.",
+    "answer": "When you submit a support request, you receive a unique <strong>ticket number</strong> (e.g., T000123456). Use this number on our <a href='/tickets/track'>Track Ticket</a> page to check the status, view updates, and see the full audit trail of your request at any time.",
     "display": "true"
   },
   {
@@ -68,7 +68,7 @@
   {
     "id": "collab-1",
     "question": "How can I collaborate with MBK Tech?",
-    "answer": "We welcome collaboration on open-source projects, technical content, and community initiatives. Use the <strong>Collaboration</strong> option on our <a href='/Support&Contact'>Contact form</a> to pitch your idea. We review every proposal and respond within a few days.",
+    "answer": "We welcome collaboration on open-source projects, technical content, and community initiatives. Use the <strong>Collaboration</strong> option on our <a href='/support'>Contact form</a> to pitch your idea. We review every proposal and respond within a few days.",
     "display": "true"
   },
   {

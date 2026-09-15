@@ -10,7 +10,7 @@
             Code Examples &amp; Recipes
         </h1>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
-            Ready-to-use boilerplate patterns and implementation examples for integrating MBKAuthe into your Node.js apps.
+            Ready-to-use boilerplate patterns and implementation examples for integrating MBKAuthe v6 into your Node.js and Express applications.
         </p>
     </div>
 </section>
@@ -26,35 +26,34 @@
                     <h3 class="text-lg font-bold text-slate-900 dark:text-white">1. Minimal Express Application Setup</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400">Initialize Express, mount MBKAuthe, and protect public and private routes.</p>
                 </div>
-                <span class="badge-teal font-mono">server.js</span>
+                <span class="badge-teal font-mono">server.ts</span>
             </div>
             <div class="card p-0 overflow-hidden bg-slate-950 text-slate-200">
                 <pre class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-purple-400">import</span> express <span class="text-purple-400">from</span> <span class="text-emerald-300">"express"</span>;
-<span class="text-purple-400">import</span> dotenv <span class="text-purple-400">from</span> <span class="text-emerald-300">"dotenv"</span>;
-<span class="text-purple-400">import</span> mbkauthe, { sessVal, roleChk } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe"</span>;
-
-dotenv.<span class="text-yellow-300">config</span>();
+<span class="text-purple-400">import</span> mbkauthe, { sessVal, roleChk, sessPerm } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe"</span>;
+<span class="text-purple-400">import</span> { definePermissions } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe/core"</span>;
+<span class="text-purple-400">import</span> { syncAppPermissions } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe/services"</span>;
 
 <span class="text-blue-400">const</span> app = <span class="text-yellow-300">express</span>();
 app.<span class="text-yellow-300">use</span>(express.<span class="text-yellow-300">json</span>());
 
-<span class="text-slate-500">// Mount MBKAuthe core router</span>
+<span class="text-slate-500">// 1. Mount MBKAuthe core router (/mbkauthe/*)</span>
 app.<span class="text-yellow-300">use</span>(mbkauthe);
 
-<span class="text-slate-500">// Public route</span>
+<span class="text-slate-500">// 2. Public route</span>
 app.<span class="text-yellow-300">get</span>(<span class="text-emerald-300">"/"</span>, (req, res) => res.<span class="text-yellow-300">send</span>(<span class="text-emerald-300">"Home Page"</span>));
 
-<span class="text-slate-500">// Protected dashboard</span>
+<span class="text-slate-500">// 3. Protected user dashboard</span>
 app.<span class="text-yellow-300">get</span>(<span class="text-emerald-300">"/dashboard"</span>, sessVal, (req, res) => {
   res.<span class="text-yellow-300">send</span>(<span class="text-emerald-300">`Hello ${req.session.user.username}!`</span>);
 });
 
-<span class="text-slate-500">// Superadmin role check</span>
+<span class="text-slate-500">// 4. Superadmin role check</span>
 app.<span class="text-yellow-300">get</span>(<span class="text-emerald-300">"/admin"</span>, sessVal, <span class="text-yellow-300">roleChk</span>(<span class="text-emerald-300">"superadmin"</span>), (req, res) => {
-  res.<span class="text-yellow-300">send</span>(<span class="text-emerald-300">"Superadmin Area"</span>);
+  res.<span class="text-yellow-300">send</span>(<span class="text-emerald-300">"Superadmin Control Area"</span>);
 });
 
-app.<span class="text-yellow-300">listen</span>(<span class="text-amber-300">3000</span>, () => console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">"Server running at :3000"</span>));</code></pre>
+app.<span class="text-yellow-300">listen</span>(<span class="text-amber-300">3000</span>, () => console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">"Server running at http://localhost:3000"</span>));</code></pre>
             </div>
         </div>
 
@@ -65,28 +64,32 @@ app.<span class="text-yellow-300">listen</span>(<span class="text-amber-300">300
                     <h3 class="text-lg font-bold text-slate-900 dark:text-white">2. Dual-Database Repository with Transactions</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400">Extend BaseRepository for seamless PostgreSQL and SQLite support.</p>
                 </div>
-                <span class="badge-teal font-mono">UserRepository.js</span>
+                <span class="badge-teal font-mono">ProjectRepository.ts</span>
             </div>
             <div class="card p-0 overflow-hidden bg-slate-950 text-slate-200">
-                <pre class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-purple-400">import</span> { BaseRepository, defaultAdapter } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe"</span>;
+                <pre class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-purple-400">import</span> { BaseRepository, dblogin, dialect } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe/db"</span>;
 
-<span class="text-purple-400">export class</span> UserRepository <span class="text-purple-400">extends</span> BaseRepository {
-  <span class="text-yellow-300">constructor</span>(adapter = defaultAdapter) {
-    <span class="text-purple-400">super</span>(adapter);
+<span class="text-purple-400">export interface</span> Project {
+  id: <span class="text-blue-400">number</span>;
+  name: <span class="text-blue-400">string</span>;
+  owner_id: <span class="text-blue-400">number</span>;
+}
+
+<span class="text-purple-400">export class</span> ProjectRepository <span class="text-purple-400">extends</span> BaseRepository&lt;Project&gt; {
+  <span class="text-yellow-300">constructor</span>() {
+    <span class="text-purple-400">super</span>(<span class="text-emerald-300">"projects"</span>, dblogin, dialect);
   }
 
-  <span class="text-purple-400">async</span> <span class="text-yellow-300">findByUsername</span>(username) {
-    <span class="text-blue-400">const</span> { rows } = <span class="text-purple-400">await</span> <span class="text-purple-400">this</span>.<span class="text-yellow-300">query</span>(
-      <span class="text-emerald-300">"SELECT id, username, email, role FROM users WHERE username = $1"</span>,
-      [username]
-    );
-    <span class="text-purple-400">return</span> rows[<span class="text-amber-300">0</span>] || <span class="text-blue-400">null</span>;
+  <span class="text-purple-400">async</span> <span class="text-yellow-300">findByOwner</span>(ownerId: <span class="text-blue-400">number</span>): <span class="text-blue-400">Promise</span>&lt;Project[]&gt; {
+    <span class="text-purple-400">return this</span>.<span class="text-yellow-300">findMany</span>({ owner_id: ownerId });
   }
 
-  <span class="text-purple-400">async</span> <span class="text-yellow-300">transferCredits</span>(fromUserId, toUserId, amount) {
-    <span class="text-purple-400">return await</span> <span class="text-purple-400">this</span>.<span class="text-yellow-300">withTransaction</span>(<span class="text-purple-400">async</span> (txRepo) => {
-      <span class="text-purple-400">await</span> txRepo.<span class="text-yellow-300">query</span>(<span class="text-emerald-300">"UPDATE accounts SET credits = credits - $1 WHERE user_id = $2"</span>, [amount, fromUserId]);
-      <span class="text-purple-400">await</span> txRepo.<span class="text-yellow-300">query</span>(<span class="text-emerald-300">"UPDATE accounts SET credits = credits + $1 WHERE user_id = $2"</span>, [amount, toUserId]);
+  <span class="text-purple-400">async</span> <span class="text-yellow-300">transferOwnership</span>(projectId: <span class="text-blue-400">number</span>, newOwnerId: <span class="text-blue-400">number</span>) {
+    <span class="text-purple-400">return await this</span>.<span class="text-yellow-300">withTransaction</span>(<span class="text-purple-400">async</span> (txRepo) => {
+      <span class="text-purple-400">await</span> txRepo.<span class="text-yellow-300">query</span>(
+        <span class="text-emerald-300">"UPDATE projects SET owner_id = $1 WHERE id = $2"</span>,
+        [newOwnerId, projectId]
+      );
     });
   }
 }</code></pre>
@@ -100,15 +103,16 @@ app.<span class="text-yellow-300">listen</span>(<span class="text-amber-300">300
                     <h3 class="text-lg font-bold text-slate-900 dark:text-white">3. Server-to-Server Webhook Protection</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400">Protect internal microservice endpoints using authenticate(token).</p>
                 </div>
-                <span class="badge-teal font-mono">webhooks.js</span>
+                <span class="badge-teal font-mono">webhooks.ts</span>
             </div>
             <div class="card p-0 overflow-hidden bg-slate-950 text-slate-200">
                 <pre class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-purple-400">import</span> { authenticate } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe"</span>;
+<span class="text-purple-400">import</span> { mbkautheVar } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe/config"</span>;
 
 <span class="text-slate-500">// Requires Authorization: Bearer &lt;MAIN_SECRET_TOKEN&gt;</span>
 app.<span class="text-yellow-300">post</span>(
   <span class="text-emerald-300">"/api/internal/deploy-trigger"</span>,
-  <span class="text-yellow-300">authenticate</span>(process.env.MAIN_SECRET_TOKEN),
+  <span class="text-yellow-300">authenticate</span>(mbkautheVar.MAIN_SECRET_TOKEN),
   (req, res) => {
     res.<span class="text-yellow-300">json</span>({ success: <span class="text-amber-300">true</span>, message: <span class="text-emerald-300">"Deploy initiated"</span> });
   }

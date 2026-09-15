@@ -87,14 +87,14 @@
                         <tr class="hover:bg-primary-50/30 dark:hover:bg-primary-950/20">
                             <td class="p-3.5 font-bold text-slate-900 dark:text-white">CLI Device Authorization</td>
                             <td class="p-3.5">RFC 8628 Device Flow (single delivery)</td>
-                            <td class="p-3.5 font-mono text-xs">PendingToken &amp; ApiTokens</td>
+                            <td class="p-3.5 font-mono text-xs">CliAuthSession &amp; ApiTokens</td>
                             <td class="p-3.5 font-mono text-xs text-primary-600 dark:text-primary-400">CLI_AUTH_ENABLED</td>
                         </tr>
                         <tr class="hover:bg-primary-50/30 dark:hover:bg-primary-950/20">
-                            <td class="p-3.5 font-bold text-slate-900 dark:text-white">Social Sign-in (OAuth)</td>
-                            <td class="p-3.5">GitHub App &amp; Google OAuth2</td>
-                            <td class="p-3.5 font-mono text-xs">Passport strategies</td>
-                            <td class="p-3.5 font-mono text-xs text-primary-600 dark:text-primary-400">GITHUB_LOGIN_ENABLED, GOOGLE_LOGIN_ENABLED</td>
+                            <td class="p-3.5 font-bold text-slate-900 dark:text-white">Provider-Neutral OAuth &amp; OIDC</td>
+                            <td class="p-3.5">PKCE (RFC 7636) + jose JWKS + AES-256-GCM token encryption</td>
+                            <td class="p-3.5 font-mono text-xs">OAuthAccountRepository</td>
+                            <td class="p-3.5 font-mono text-xs text-primary-600 dark:text-primary-400">OAUTH_PROVIDERS / createAuth()</td>
                         </tr>
                         <tr class="hover:bg-primary-50/30 dark:hover:bg-primary-950/20">
                             <td class="p-3.5 font-bold text-slate-900 dark:text-white">Multi-Session Pruning</td>

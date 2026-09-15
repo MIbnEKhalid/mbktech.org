@@ -5,8 +5,8 @@ import { botChallengeHandler } from "../middleware/bot-protection.js";
 
 const router = Router();
 
-router.get("/portalAppVersion", cacheMiddleware(3600), portalAppVersion);
-router.get("/Test", testEndpoint);
+router.get(["/app-version", "/portalAppVersion"], cacheMiddleware(3600), portalAppVersion);
+router.get("/test", testEndpoint);
 router.get("/bot-challenge", botChallengeHandler);
 
 export default router;

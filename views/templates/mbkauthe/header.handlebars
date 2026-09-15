@@ -10,7 +10,7 @@
         <!-- Logo & Product Badge -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
             <a href="{{#if isSubdomain}}/{{else}}/mbkauthe{{/if}}" class="flex items-center gap-1.5 group" aria-label="MBKAuthe home">
-                <img src="{{icon_base64}}" alt="MBKTech logo" class="h-6 sm:h-7 w-auto transition-transform duration-200 group-hover:scale-105">
+                <img src="{{icon_base64}}" alt="MBKTech logo" class="h-6 sm:h-7 w-auto">
                 <span class="font-heading text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white" style="padding-top:0.7rem">
                     BK<span class="text-primary-600 dark:text-primary-400">Authe</span>
                 </span>
@@ -28,7 +28,7 @@
             <a data-authe-nav href="{{#if isSubdomain}}/api-reference{{else}}/mbkauthe/api-reference{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">API</a>
             <a data-authe-nav href="{{#if isSubdomain}}/examples{{else}}/mbkauthe/examples{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Examples</a>
             <a data-authe-nav href="{{#if isSubdomain}}/changelog{{else}}/mbkauthe/changelog{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Changelog</a>
-            <a href="{{#if isSubdomain}}https://mbktech.org/Support&Contact{{else}}/Support&Contact{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Support</a>
+            <a href="{{#if isSubdomain}}https://mbktech.org/support{{else}}/support{{/if}}" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Support</a>
         </nav>
 
         <!-- Right Actions -->
@@ -89,7 +89,7 @@
             <a href="{{#if isSubdomain}}/api-reference{{else}}/mbkauthe/api-reference{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">API Reference</a>
             <a href="{{#if isSubdomain}}/examples{{else}}/mbkauthe/examples{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Examples &amp; Recipes</a>
             <a href="{{#if isSubdomain}}/changelog{{else}}/mbkauthe/changelog{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Changelog</a>
-            <a href="{{#if isSubdomain}}https://mbktech.org/Support&Contact{{else}}/Support&Contact{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Support &amp; Contact</a>
+            <a href="{{#if isSubdomain}}https://mbktech.org/support{{else}}/support{{/if}}" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Support &amp; Contact</a>
             
             <div class="pt-3 mt-2 border-t border-primary-600/10 dark:border-primary-500/20 flex flex-col gap-2">
                 <a href="{{#if isSubdomain}}/docs/getting-started{{else}}/mbkauthe/docs/getting-started{{/if}}" class="btn-primary justify-center text-xs py-2" @click="open = false">

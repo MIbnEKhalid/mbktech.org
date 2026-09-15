@@ -84,20 +84,5 @@ describe("HTTP Route Integration Tests", () => {
     const res = await request(app).get("/unknown-random-404-route");
     expect(res.status).toBe(404);
   });
-
-  it("GET /api/health returns 200 with standard healthy status", async () => {
-    const res = await request(app).get("/api/health");
-    expect(res.status).toBe(200);
-    expect(res.body.success).toBe(true);
-    expect(res.body.status).toBe("healthy");
-    expect(res.body.app).toBe("mbktech.org");
-    expect(res.body.timestamp).toBeDefined();
-  });
-
-  it("POST /api/health/test protects against unauthorized requests", async () => {
-    const res = await request(app).post("/api/health/test");
-    expect(res.status).toBe(401);
-    expect(res.body.success).toBe(false);
-  });
 });
 

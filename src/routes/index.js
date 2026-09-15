@@ -16,6 +16,7 @@ export function mountRoutes(app) {
     // API routes — /api/*
     app.use("/api", apiRoutes);
 
-    // POST routes — /post/*
+    // Form submission routes — /api/forms/submit and legacy /post/SubmitForm
+    app.use("/api/forms", postRoutes);
     app.use("/post", postRoutes);
 }

@@ -11,9 +11,9 @@
     <div class="container flex h-14 sm:h-16 items-center justify-between gap-4">
 
         <!-- Logo -->
-        <a href="/" class="flex shrink-0 items-center gap-1.5 group" aria-label="MBK Tech home">
-            <img src="{{icon_base64}}" alt="MBK Tech logo" class="h-6 sm:h-7 w-auto transition-transform duration-200 group-hover:scale-105">
-            <span class="font-heading text-lg sm:text-xl font-bold tracking-tight text-primary-950 dark:text-white" style="padding-top:0.7rem">
+        <a href="/" class="flex items-center gap-1.5 group shrink-0" aria-label="MBK Tech home">
+            <img src="{{icon_base64}}" alt="MBK Tech logo" class="h-6 sm:h-7 w-auto">
+            <span class="font-heading text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white" style="padding-top: 0.7rem">
                 BK<span class="text-primary-600">Tech</span>
             </span>
         </a>
@@ -21,13 +21,13 @@
         <!-- Desktop Navigation -->
         <nav class="hidden items-center gap-0.5 xl:gap-1 lg:flex shrink min-w-0" aria-label="Main navigation">
             <a data-nav href="/" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Home</a>
-            <a data-nav href="/Services" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Services</a>
-            <a data-nav href="/FAQs" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">FAQs</a>
-            <a data-nav href="/Support&Contact" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Support</a>
+            <a data-nav href="/services" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Services</a>
+            <a data-nav href="/faqs" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">FAQs</a>
+            <a data-nav href="/support" class="px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-semibold text-slate-700 transition-all hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300">Support</a>
         </nav>
 
         <div class="flex items-center gap-2">
-            <a href="/Support&Contact" class="btn-primary hidden md:inline-flex text-xs py-1.5 px-3">
+            <a href="/support" class="btn-primary hidden md:inline-flex text-xs py-1.5 px-3">
                 <span>Get In Touch</span>
                 <i class="lni lni-arrow-right text-[10px]"></i>
             </a>
@@ -69,12 +69,12 @@
                 <span>MBKAuthe Platform</span>
                 <span class="rounded bg-primary-600 text-white px-1.5 py-0.5 text-[10px] font-mono">v5.6</span>
             </a>
-            <a href="/Services" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Services</a>
-            <a href="/FAQs" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">FAQs</a>
-            <a href="/Support&Contact" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Support</a>
-            <a href="/TrackTicket" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Track Ticket</a>
-            <a href="/Status" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Service Status</a>
-            <a href="/Support&Contact" class="btn-primary mt-2 justify-center" @click="open = false">Get In Touch</a>
+            <a href="/services" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Services</a>
+            <a href="/faqs" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">FAQs</a>
+            <a href="/support" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Support</a>
+            <a href="/tickets/track" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Track Ticket</a>
+            <a href="/status" class="rounded-lg px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-primary-50 hover:text-primary-700 dark:text-slate-200 dark:hover:bg-primary-950/60 dark:hover:text-primary-300" @click="open = false">Service Status</a>
+            <a href="/support" class="btn-primary mt-2 justify-center" @click="open = false">Get In Touch</a>
         </nav>
     </div>
 </header>

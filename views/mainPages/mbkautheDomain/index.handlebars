@@ -80,7 +80,7 @@
                 <!-- Code Block -->
                 <div class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300 space-y-1">
                     <div><span class="text-purple-400">import</span> express <span class="text-purple-400">from</span> <span class="text-emerald-300">"express"</span>;</div>
-                    <div><span class="text-purple-400">import</span> mbkauthe, { sessVal, roleChk } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe"</span>;</div>
+                    <div><span class="text-purple-400">import</span> mbkauthe, { sessVal, sessRole, sessPerm } <span class="text-purple-400">from</span> <span class="text-emerald-300">"mbkauthe"</span>;</div>
                     <div class="pt-2"><span class="text-blue-400">const</span> app = <span class="text-yellow-300">express</span>();</div>
                     <div class="pt-2 text-slate-500">// 1. Mount authentication core router</div>
                     <div>app.<span class="text-yellow-300">use</span>(mbkauthe);</div>
@@ -89,8 +89,12 @@
                     <div class="pl-4">res.<span class="text-yellow-300">send</span>(<span class="text-emerald-300">`Welcome ${req.session.user.username}!`</span>);</div>
                     <div>});</div>
                     <div class="pt-2 text-slate-500">// 3. Enforce role-based access</div>
-                    <div>app.<span class="text-yellow-300">get</span>(<span class="text-emerald-300">"/admin"</span>, sessVal, <span class="text-yellow-300">roleChk</span>(<span class="text-emerald-300">"superadmin"</span>), (req, res) => {</div>
+                    <div>app.<span class="text-yellow-300">get</span>(<span class="text-emerald-300">"/admin"</span>, <span class="text-yellow-300">sessRole</span>(<span class="text-emerald-300">"superadmin"</span>), (req, res) => {</div>
                     <div class="pl-4">res.<span class="text-yellow-300">send</span>(<span class="text-emerald-300">"Admin Control Panel"</span>);</div>
+                    <div>});</div>
+                    <div class="pt-2 text-slate-500">// 4. Enforce granular permissions</div>
+                    <div>app.<span class="text-yellow-300">post</span>(<span class="text-emerald-300">"/reports/export"</span>, <span class="text-yellow-300">sessPerm</span>(<span class="text-emerald-300">"reports:export"</span>), (req, res) => {</div>
+                    <div class="pl-4">res.<span class="text-yellow-300">json</span>({ success: <span class="text-amber-300">true</span> });</div>
                     <div>});</div>
                     <div class="pt-2">app.<span class="text-yellow-300">listen</span>(<span class="text-amber-300">3000</span>);</div>
                 </div>
@@ -380,7 +384,7 @@ console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">
                     Prerequisites, package installation, environment templates, and table creation.
                 </p>
                 <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 dark:text-primary-400 pt-1">
-                    Start Guide <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    Start Guide <i class="lni lni-arrow-right"></i>
                 </span>
             </a>
 
@@ -393,7 +397,7 @@ console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">
                     mbkautheVar vs mbkauthShared, case-insensitivity, proxy mappings, and defaults.
                 </p>
                 <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 dark:text-primary-400 pt-1">
-                    View Config <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    View Config <i class="lni lni-arrow-right"></i>
                 </span>
             </a>
 
@@ -406,7 +410,7 @@ console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">
                     Dual database architecture, BaseRepository, and translatePgToSqlite engine.
                 </p>
                 <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 dark:text-primary-400 pt-1">
-                    Read Architecture <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    Read Architecture <i class="lni lni-arrow-right"></i>
                 </span>
             </a>
 
@@ -419,7 +423,7 @@ console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">
                     Full catalog of REST endpoints, authentication methods, payloads, and rate limits.
                 </p>
                 <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 dark:text-primary-400 pt-1">
-                    Browse API <i class="lni lni-arrow-right transition-transform group-hover:translate-x-1"></i>
+                    Browse API <i class="lni lni-arrow-right"></i>
                 </span>
             </a>
         </div>

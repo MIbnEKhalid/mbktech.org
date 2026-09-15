@@ -9,9 +9,9 @@ const router = Router();
 router.post("/tickets", botProtectionGuard, formRateLimit, createTicket);
 
 // Get ticket by number (public tracking)
-router.get("/tickets/:ticketNumber", getTicket);
+router.get("/tickets/:ticket_number", getTicket);
 
 // Get ticket audit trail
-router.get("/tickets/:ticketNumber/audit", getAuditTrail);
+router.get("/tickets/:ticket_number/audit", getAuditTrail);
 
 export default router;

@@ -234,7 +234,7 @@
                 '<span class="ticket-code" onclick="copyTicketCode(this)">' + esc(tn) + '</span>' +
                 '<button class="btn-copy" onclick="copyTicketCode(this.previousElementSibling)">Copy</button>' +
                 '</div>' +
-                '<a class="resp-link" href="/TrackTicket#' + tn + '">Track your ticket <i class="fas fa-arrow-right"></i></a>');
+                '<a class="resp-link" href="/tickets/track#' + tn + '">Track your ticket <i class="fas fa-arrow-right"></i></a>');
             form.reset();
             resetBotProtection();
             toggleFields();
@@ -257,7 +257,7 @@
         if (botHoneypot) payload._bot_hp = botHoneypot.value;
         if (botTsInput) payload._bot_ts = botTsInput.value;
 
-        fetch("/post/SubmitForm", {
+        fetch("/api/forms/submit", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),

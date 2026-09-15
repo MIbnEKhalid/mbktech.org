@@ -48,17 +48,6 @@ app.use("/", express.static(path.join(projectRoot, "public")));
 // ---------------------
 configureHandlebars(app);
 
-import { createHealthRouter } from "mbkhealth";
-
-// ---------------------
-// Health check & test runner
-// ---------------------
-app.use("/api/health", createHealthRouter({
-    appName: "mbktech.org",
-    app,
-}));
-app.get("/health", (req, res) => res.redirect("/api/health"));
-
 // ---------------------
 // Routes
 // ---------------------

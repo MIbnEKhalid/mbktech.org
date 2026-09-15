@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { homePage, faqsPage, supportPage, termsPage, privacyPage, trackTicketPage, servicesPage, basicPackagePage, advancedPackagePage, statusPage, trackTicketRedirect } from "../controllers/page.controller.js";
+import { homePage, faqsPage, supportPage, termsPage, privacyPage, trackTicketPage, servicesPage, basicPackagePage, advancedPackagePage, statusPage } from "../controllers/page.controller.js";
 import { mbkautheSplatRedirect, mbkautheDocsRoute, mbkautheFeaturesRoute, mbkautheApiReferenceRoute, mbkautheExamplesRoute, mbkautheChangelogRoute } from "../controllers/mbkauthe.controller.js";
 import { sitemapXML, sitemapByType, robotsTxt } from "../controllers/sitemap.controller.js";
 import { domainRedirect } from "../middleware/domain-redirect.js";
@@ -17,27 +17,25 @@ router.get("/", homePage);
 router.all(["/mbkauthe", "/mbkauthe/*splat"], mbkautheSplatRedirect);
 
 // MBKAuthe dedicated product & doc routes (domain-aware)
-router.get(["/docs", "/Docs"], mbkautheDocsRoute);
-router.get(["/docs/:slug", "/Docs/:slug"], mbkautheDocsRoute);
-router.get(["/features", "/Features", "/security", "/Security"], mbkautheFeaturesRoute);
-router.get(["/api-reference", "/apiReference", "/api"], mbkautheApiReferenceRoute);
-router.get(["/examples", "/Examples"], mbkautheExamplesRoute);
-router.get(["/changelog", "/Changelog"], mbkautheChangelogRoute);
+router.get("/docs", mbkautheDocsRoute);
+router.get("/docs/:slug", mbkautheDocsRoute);
+router.get("/features", mbkautheFeaturesRoute);
+router.get("/security", mbkautheFeaturesRoute);
+router.get("/api-reference", mbkautheApiReferenceRoute);
+router.get("/examples", mbkautheExamplesRoute);
+router.get("/changelog", mbkautheChangelogRoute);
 
 // Static pages
-router.get(["/FAQS", "/FAQs", "/faqs", "/FrequentlyAskedQuestions"], faqsPage);
-router.get("/FAQs/:slug", faqsPage);
-router.get(["/Support&Contact", "/Support%26Contact", "/Support", "/Contact", "/Contact&Support", "/Contact%26Support"], supportPage);
-router.get(["/Terms&Conditions", "/Terms%26Conditions", "/terms&conditions", "/terms%26conditions"], termsPage);
-router.get(["/PrivacyPolicy", "/privacypolicy"], privacyPage);
-router.get(["/TrackTicket"], trackTicketPage);
-router.get(["/Services", "/services"], servicesPage);
-router.get(["/Services/WebDevBasicPackage", "/Services/webdevbasicpackage", "/Services/webdevbasic-package"], basicPackagePage);
-router.get(["/Services/WebDevFullStackPackage", "/Services/webdevfullstackpackage", "/Services/webdevfullstack-package"], advancedPackagePage);
-router.get(["/Status", "/status"], statusPage);
-
-// Redirects
-router.get(["/Ticket", "/Track", "/trackticket"], trackTicketRedirect);
+router.get(["/faqs", "/FAQs"], faqsPage);
+router.get("/faqs/:slug", faqsPage);
+router.get(["/support", "/Support", "/contact", "/Contact"], supportPage);
+router.get(["/terms", "/Terms", "/Terms&Conditions", "/terms-and-conditions"], termsPage);
+router.get(["/privacy", "/Privacy", "/PrivacyPolicy", "/privacy-policy"], privacyPage);
+router.get(["/tickets/track", "/TrackTicket", "/track-ticket"], trackTicketPage);
+router.get(["/services", "/Services"], servicesPage);
+router.get(["/services/web-dev-basic", "/Services/WebDevBasicPackage"], basicPackagePage);
+router.get(["/services/web-dev-full-stack", "/Services/WebDevFullStackPackage"], advancedPackagePage);
+router.get(["/status", "/Status"], statusPage);
 
 // ============================ SITEMAP / ROBOTS ============================
 router.get("/sitemap.xml", sitemapXML);

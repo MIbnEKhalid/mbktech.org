@@ -26,6 +26,7 @@
             <div class="flex flex-wrap items-center gap-1.5">
                 <button type="button" @click="activeFilter = 'all'" :class="activeFilter === 'all' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">All Endpoints</button>
                 <button type="button" @click="activeFilter = 'auth'" :class="activeFilter === 'auth' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">Auth &amp; Login</button>
+                <button type="button" @click="activeFilter = 'oauth'" :class="activeFilter === 'oauth' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">OAuth &amp; OIDC</button>
                 <button type="button" @click="activeFilter = '2fa'" :class="activeFilter === '2fa' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">2FA (TOTP)</button>
                 <button type="button" @click="activeFilter = 'tokens'" :class="activeFilter === 'tokens' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">API Tokens</button>
                 <button type="button" @click="activeFilter = 'cli'" :class="activeFilter === 'cli' ? 'bg-primary-600 text-white' : 'bg-white/80 dark:bg-dark-surface/80 text-slate-700 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-primary-950/60'" class="btn text-xs py-1.5 px-3 rounded-lg font-semibold transition-all">CLI Device Flow</button>
@@ -187,6 +188,49 @@
                         }
                     </div>
                 </div>
+            </div>
+
+            <!-- GET /mbkauthe/oauth/providers -->
+            <div class="card p-6 border-primary-600/20 space-y-4"
+                 x-show="(activeFilter === 'all' || activeFilter === 'oauth') && (!search || 'get /mbkauthe/oauth/providers oauth oidc social'.includes(search.toLowerCase()))">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="rounded bg-blue-500 px-2.5 py-1 text-xs font-bold font-mono text-white">GET</span>
+                        <code class="font-mono text-sm sm:text-base font-bold text-slate-900 dark:text-white">/mbkauthe/oauth/providers</code>
+                    </div>
+                    <span class="badge-teal">Public</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Lists all configured and enabled OAuth/OIDC identity providers.</p>
+                <div class="rounded-lg bg-slate-900 p-3.5 font-mono text-xs text-slate-300">
+                    <span class="text-slate-500 block text-[11px] mb-1 font-sans">Success Response (200 OK)</span>
+                    { <span class="text-emerald-400">"providers"</span>: [<span class="text-amber-300">"google"</span>, <span class="text-amber-300">"github"</span>, <span class="text-amber-300">"microsoft"</span>] }
+                </div>
+            </div>
+
+            <!-- GET /mbkauthe/oauth/:provider/begin -->
+            <div class="card p-6 border-primary-600/20 space-y-4"
+                 x-show="(activeFilter === 'all' || activeFilter === 'oauth') && (!search || 'get /mbkauthe/oauth/begin pkce state authorization'.includes(search.toLowerCase()))">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="rounded bg-blue-500 px-2.5 py-1 text-xs font-bold font-mono text-white">GET</span>
+                        <code class="font-mono text-sm sm:text-base font-bold text-slate-900 dark:text-white">/mbkauthe/oauth/:provider/begin</code>
+                    </div>
+                    <span class="badge-teal">Public (302 Redirect)</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Generates state &amp; PKCE code challenge and redirects browser to IDP authorization URL.</p>
+            </div>
+
+            <!-- GET /mbkauthe/oauth/:provider/callback -->
+            <div class="card p-6 border-primary-600/20 space-y-4"
+                 x-show="(activeFilter === 'all' || activeFilter === 'oauth') && (!search || 'get /mbkauthe/oauth/callback authorization code tokens'.includes(search.toLowerCase()))">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-primary-600/10 dark:border-primary-500/20 pb-3">
+                    <div class="flex items-center gap-3">
+                        <span class="rounded bg-blue-500 px-2.5 py-1 text-xs font-bold font-mono text-white">GET</span>
+                        <code class="font-mono text-sm sm:text-base font-bold text-slate-900 dark:text-white">/mbkauthe/oauth/:provider/callback</code>
+                    </div>
+                    <span class="badge-teal">Public</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Handles IDP callback with authorization code, validates PKCE and remote JWKS signatures, links account, and issues encrypted session cookie.</p>
             </div>
 
             <!-- GET /mbkauthe/api/checkSession -->

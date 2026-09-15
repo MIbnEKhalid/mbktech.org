@@ -7,6 +7,6 @@ import { spamGuard } from "../middleware/spam-guard.js";
 const router = Router();
 
 // Form submission (spam-guarded + rate limited + bot protected)
-router.post("/SubmitForm", botProtectionGuard, formRateLimit, spamGuard, submitForm);
+router.post(["/submit", "/SubmitForm"], botProtectionGuard, formRateLimit, spamGuard, submitForm);
 
 export default router;

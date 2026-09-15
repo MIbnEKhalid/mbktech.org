@@ -134,11 +134,6 @@ export function statusPage(req, res) {
     });
 }
 
-// TrackTicket redirect
-export function trackTicketRedirect(req, res) {
-    res.redirect("/TrackTicket");
-}
-
 // 404 handler
 export function notFound(req, res) {
     console.log(`Path not found: ${req.url}`);

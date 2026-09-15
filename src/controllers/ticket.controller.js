@@ -63,7 +63,7 @@ export async function createTicket(req, res) {
  */
 export async function getTicket(req, res) {
     try {
-        const { ticketNumber } = req.params;
+        const ticketNumber = req.params.ticket_number || req.params.ticketNumber;
 
         if (!ticketNumber || !/^T\d{9}$/.test(ticketNumber)) {
             return res.status(400).json({
@@ -97,7 +97,7 @@ export async function getTicket(req, res) {
  */
 export async function getAuditTrail(req, res) {
     try {
-        const { ticketNumber } = req.params;
+        const ticketNumber = req.params.ticket_number || req.params.ticketNumber;
 
         if (!ticketNumber || !/^T\d{9}$/.test(ticketNumber)) {
             return res.status(400).json({

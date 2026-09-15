@@ -2,10 +2,13 @@ import { SitemapStream, streamToPromise } from 'sitemap';
 
 const defaultRoutes = [
   { url: '/', changefreq: 'daily', priority: 1.0 },
-  { url: '/FAQS', changefreq: 'monthly', priority: 0.8 },
-  { url: '/Terms&Conditions', changefreq: 'monthly', priority: 0.5 },
-  { url: '/Support&Contact', changefreq: 'monthly', priority: 0.7 },
-  { url: '/TrackTicket', changefreq: 'monthly', priority: 0.6 },
+  { url: '/faqs', changefreq: 'monthly', priority: 0.8 },
+  { url: '/terms', changefreq: 'monthly', priority: 0.5 },
+  { url: '/privacy', changefreq: 'monthly', priority: 0.5 },
+  { url: '/support', changefreq: 'monthly', priority: 0.7 },
+  { url: '/tickets/track', changefreq: 'monthly', priority: 0.6 },
+  { url: '/services', changefreq: 'monthly', priority: 0.8 },
+  { url: '/status', changefreq: 'monthly', priority: 0.6 },
 ];
 
 const domainRoutes = {
