@@ -51,6 +51,8 @@ CREATE INDEX IF NOT EXISTS idx_mbkcore_support_submissions_email ON mbkcore_supp
 CREATE INDEX IF NOT EXISTS idx_mbkcore_support_submissions_status ON mbkcore_support_submissions USING btree (status);
 CREATE INDEX IF NOT EXISTS idx_mbkcore_support_submissions_subject ON mbkcore_support_submissions USING btree (subject);
 CREATE INDEX IF NOT EXISTS idx_mbkcore_support_submissions_timestamp ON mbkcore_support_submissions USING btree (submission_timestamp);
+CREATE INDEX IF NOT EXISTS idx_mbkcore_support_submissions_page_url ON mbkcore_support_submissions USING btree (page_url);
+CREATE INDEX IF NOT EXISTS idx_mbkcore_support_submissions_project_cat ON mbkcore_support_submissions USING btree (project_category);
 
 -- Backward-compatibility views for legacy queries
 CREATE OR REPLACE VIEW support_submissions AS SELECT * FROM mbkcore_support_submissions;

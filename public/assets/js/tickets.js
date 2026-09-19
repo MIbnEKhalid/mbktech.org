@@ -375,6 +375,8 @@ window.copyTicketCode = function (el) {
             '<h2><i class="fas fa-ticket-alt"></i> Ticket ' + escapeHTML(ticket.ticketNumber) + "</h2>" +
             '<div class="detail-row"><span class="detail-label">Status</span><span class="detail-value"><span class="status-badge ' + statusClass + '">' + escapeHTML(ticket.status) + "</span></span></div>" +
             '<div class="detail-row"><span class="detail-label">Issue</span><span class="detail-value">' + escapeHTML(ticket.title) + "</span></div>" +
+            '<div class="detail-row"><span class="detail-label">Origin Domain</span><span class="detail-value font-mono font-bold text-xs">' + escapeHTML(ticket.domain || "mbktech.org") + "</span></div>" +
+            '<div class="detail-row"><span class="detail-label">Page Reference</span><span class="detail-value font-mono text-xs text-slate-500 break-all">' + escapeHTML(ticket.pageUrl || "—") + "</span></div>" +
             '<div class="detail-row"><span class="detail-label">Priority</span><span class="detail-value">' + escapeHTML(ticket.priority) + "</span></div>" +
             '<div class="detail-row"><span class="detail-label">Submitted by</span><span class="detail-value">' + escapeHTML(ticket.name) + "</span></div>" +
             '<div class="detail-row"><span class="detail-label">Created</span><span class="detail-value">' + formatDate(ticket.createdAt) + "</span></div>" +

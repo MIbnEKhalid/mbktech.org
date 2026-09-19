@@ -37,7 +37,7 @@ export async function createTicket(req, res) {
             subject: subject || "Support",
             category: category || null,
             message,
-            pageUrl: pageUrl || null,
+            pageUrl: pageUrl || req.body.PageUrl || req.headers.referer || `${req.protocol}://${req.get("host") || "mbktech.org"}/Support`,
         });
 
         return res.status(201).json({

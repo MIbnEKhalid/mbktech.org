@@ -57,7 +57,7 @@ export async function submitForm(req, res) {
             email,
             subject,
             message,
-            pageUrl: PageUrl || null,
+            pageUrl: PageUrl || req.headers.referer || `${req.protocol}://${req.get("host") || "mbktech.org"}/Contact`,
             phoneNumber,
             rating,
             support,
