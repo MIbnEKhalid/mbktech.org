@@ -53,7 +53,7 @@ export function mbkautheHome(req, res) {
     const product = mbkautheContentService.getProduct();
     const isSubdomain = req.site === "mbkauthe";
 
-    res.render("mainPages/mbkautheDomain/index.handlebars", {
+    res.render("mainPages/mbkautheDomain/index.hbs", {
         layout: "main",
         title: "MBKAuthe — Modern Node.js & Express Authentication Engine",
         isAutheSite: true,
@@ -73,7 +73,7 @@ export function mbkautheDocs(req, res) {
     const product = mbkautheContentService.getProduct();
 
     if (!doc) {
-        return res.status(404).render("mainPages/404.handlebars", {
+        return res.status(404).render("mainPages/404.hbs", {
             layout: "main",
             title: "Document Not Found — MBKAuthe Docs",
             isAutheSite: true,
@@ -81,7 +81,7 @@ export function mbkautheDocs(req, res) {
         });
     }
 
-    res.render("mainPages/mbkautheDomain/doc.handlebars", {
+    res.render("mainPages/mbkautheDomain/doc.hbs", {
         layout: "main",
         title: `${doc.title} — MBKAuthe Documentation`,
         isAutheSite: true,
@@ -100,7 +100,7 @@ export function mbkautheFeatures(req, res) {
     const product = mbkautheContentService.getProduct();
     const isSubdomain = req.site === "mbkauthe";
 
-    res.render("mainPages/mbkautheDomain/features.handlebars", {
+    res.render("mainPages/mbkautheDomain/features.hbs", {
         layout: "main",
         title: "Security & Features Architecture — MBKAuthe",
         isAutheSite: true,
@@ -116,7 +116,7 @@ export function mbkautheApiReference(req, res) {
     const product = mbkautheContentService.getProduct();
     const isSubdomain = req.site === "mbkauthe";
 
-    res.render("mainPages/mbkautheDomain/apiReference.handlebars", {
+    res.render("mainPages/mbkautheDomain/apiReference.hbs", {
         layout: "main",
         title: "API Reference & Endpoints — MBKAuthe",
         isAutheSite: true,
@@ -132,7 +132,7 @@ export function mbkautheExamples(req, res) {
     const product = mbkautheContentService.getProduct();
     const isSubdomain = req.site === "mbkauthe";
 
-    res.render("mainPages/mbkautheDomain/examples.handlebars", {
+    res.render("mainPages/mbkautheDomain/examples.hbs", {
         layout: "main",
         title: "Code Examples & Recipes — MBKAuthe",
         isAutheSite: true,
@@ -148,7 +148,7 @@ export function mbkautheChangelog(req, res) {
     const product = mbkautheContentService.getProduct();
     const isSubdomain = req.site === "mbkauthe";
 
-    res.render("mainPages/mbkautheDomain/changelog.handlebars", {
+    res.render("mainPages/mbkautheDomain/changelog.hbs", {
         layout: "main",
         title: "Changelog & Version History — MBKAuthe",
         isAutheSite: true,

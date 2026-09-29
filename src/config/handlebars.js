@@ -27,8 +27,9 @@ Handlebars.registerHelper("conditionalEnv", function (trueResult, falseResult) {
  */
 export function configureHandlebars(app) {
     app.engine(
-        "handlebars",
+        "hbs",
         engine({
+            extname: ".hbs",
             defaultLayout: false,
             partialsDir: [
                 path.join(projectRoot, "views/templates"),
@@ -44,7 +45,7 @@ export function configureHandlebars(app) {
         })
     );
 
-    app.set("view engine", "handlebars");
+    app.set("view engine", "hbs");
     app.set("views", [
         path.join(projectRoot, "views"),
     ]);

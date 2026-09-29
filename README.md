@@ -46,7 +46,7 @@ mbktech.org/
 │   └── TermsofService.md
 ├── public/                         # Static assets (CSS, JS, images)
 │   ├── robots.txt
-│   └── Assets/
+│   └── assets/
 ├── src/
 │   ├── app.js                      # Express application assembly & middleware
 │   ├── server.js                   # Dedicated server bootstrap & listener
@@ -96,7 +96,7 @@ mbktech.org/
 │   └── integration/                # Supertest HTTP integration tests
 └── views/
     ├── layouts/
-    │   └── main.handlebars         # Main layout template
+    │   └── main.hbs         # Main layout template
     └── mainPages/                  # Page templates
 ```
 

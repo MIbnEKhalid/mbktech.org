@@ -14,7 +14,7 @@ export function notFoundHandler(req, res) {
     }
 
     console.log(`Path not found: ${req.url}`);
-    return res.status(404).render("mainPages/404.handlebars", {
+    return res.status(404).render("mainPages/404.hbs", {
         layout: "main",
     });
 }
@@ -39,7 +39,7 @@ export function errorHandler(err, req, res, next) {
         });
     }
 
-    return res.status(statusCode).render("mainPages/404.handlebars", {
+    return res.status(statusCode).render("mainPages/404.hbs", {
         layout: "main",
         error: isClientError ? (err.name || "Client Error") : "Internal Server Error",
         message: err.message || "An unexpected error occurred.",

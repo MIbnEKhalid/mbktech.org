@@ -5,18 +5,18 @@ import { mbkautheHome } from "./mbkauthe.controller.js";
 
 const siteViews = {
     main: {
-        view: "mainPages/mainDomain/index.handlebars",
+        view: "mainPages/mainDomain/index.hbs",
         layout: "main",
     },
     download: {
-        view: "mainPages/otherDomain/download.handlebars",
+        view: "mainPages/otherDomain/download.hbs",
         layout: "main",
         mainAppLink: process.env.PortalVersionControlJson
             ? JSON.parse(process.env.PortalVersionControlJson)
             : null,
     },
     mbkauthe: {
-        view: "mainPages/mbkautheDomain/index.handlebars",
+        view: "mainPages/mbkautheDomain/index.hbs",
         layout: "main",
         title: "MBKAuthe — Modern Node.js & Express Authentication Engine",
         isAutheSite: true,
@@ -45,7 +45,7 @@ export function homePage(req, res) {
 
 // FAQs page
 export function faqsPage(req, res) {
-    res.render("mainPages/mainDomain/FAQs.handlebars", {
+    res.render("mainPages/mainDomain/FAQs.hbs", {
         layout: "main",
         title: "Frequently Asked Questions - MBK Tech",
     });
@@ -53,7 +53,7 @@ export function faqsPage(req, res) {
 
 // Support & Contact page
 export function supportPage(req, res) {
-    res.render("mainPages/mainDomain/Support&Contact.handlebars", {
+    res.render("mainPages/mainDomain/Support&Contact.hbs", {
         layout: "main",
         title: "Support Ticket System - MBK Tech Support & Contact",
         turnstileSiteKey: process.env.TURNSTILE_SITE_KEY || null,
@@ -62,7 +62,7 @@ export function supportPage(req, res) {
 
 // Terms & Conditions page
 export function termsPage(req, res) {
-    res.render("mainPages/mainDomain/LegalDocument.handlebars", {
+    res.render("mainPages/mainDomain/LegalDocument.hbs", {
         layout: "main",
         title: "Terms & Conditions - MBK Tech",
         docCategory: "Terms of Service & Governance",
@@ -79,7 +79,7 @@ export function termsPage(req, res) {
 
 // Privacy Policy page
 export function privacyPage(req, res) {
-    res.render("mainPages/mainDomain/LegalDocument.handlebars", {
+    res.render("mainPages/mainDomain/LegalDocument.hbs", {
         layout: "main",
         title: "Privacy Policy - MBK Tech",
         docCategory: "Legal & Compliance",
@@ -96,7 +96,7 @@ export function privacyPage(req, res) {
 
 // Track Ticket page
 export function trackTicketPage(req, res) {
-    res.render("mainPages/mainDomain/TrackTicket.handlebars", {
+    res.render("mainPages/mainDomain/TrackTicket.hbs", {
         layout: "main",
         title: "Support Ticket System - MBK Tech",
     });
@@ -104,7 +104,7 @@ export function trackTicketPage(req, res) {
 
 // Services page
 export function servicesPage(req, res) {
-    res.render("mainPages/mainDomain/services.handlebars", {
+    res.render("mainPages/mainDomain/services.hbs", {
         layout: "main",
         title: "Services - MBK Tech",
     });
@@ -112,7 +112,7 @@ export function servicesPage(req, res) {
 
 // Basic Package page
 export function basicPackagePage(req, res) {
-    res.render("mainPages/mainDomain/BasicPackage.handlebars", {
+    res.render("mainPages/mainDomain/BasicPackage.hbs", {
         layout: "main",
         title: "Basic Package - MBK Tech",
     });
@@ -120,7 +120,7 @@ export function basicPackagePage(req, res) {
 
 // Advanced Package page
 export function advancedPackagePage(req, res) {
-    res.render("mainPages/mainDomain/AdvancedPackage.handlebars", {
+    res.render("mainPages/mainDomain/AdvancedPackage.hbs", {
         layout: "main",
         title: "Advanced Package - MBK Tech",
     });
@@ -128,7 +128,7 @@ export function advancedPackagePage(req, res) {
 
 // Service Status page
 export function statusPage(req, res) {
-    res.render("mainPages/mainDomain/Status.handlebars", {
+    res.render("mainPages/mainDomain/Status.hbs", {
         layout: "main",
         title: "Service Status - MBK Tech",
     });
@@ -137,7 +137,7 @@ export function statusPage(req, res) {
 // 404 handler
 export function notFound(req, res) {
     console.log(`Path not found: ${req.url}`);
-    res.status(404).render("mainPages/404.handlebars", {
+    res.status(404).render("mainPages/404.hbs", {
         layout: "main",
     });
 }
