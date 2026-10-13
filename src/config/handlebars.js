@@ -1,52 +1,22 @@
 import path from "path";
 import { fileURLToPath } from "url";
-import { engine } from "express-handlebars";
-import Handlebars from "handlebars";
+import { setupViewEngine } from "mbkutils";
 import { icon } from "../utils/icon.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "../../");
 
-// Register Handlebars helpers
-Handlebars.registerHelper("eq", function (a, b) {
-    return a === b;
-});
-
-Handlebars.registerHelper("encodeURIComponent", function (str) {
-    return encodeURIComponent(str);
-});
-
-Handlebars.registerHelper("conditionalEnv", function (trueResult, falseResult) {
-    console.log(`Checking conditionalEnv: ${process.env.localenv}`);
-    return process.env.localenv ? trueResult : falseResult;
-});
-
 /**
- * Configures Handlebars engine on the Express app.
+ * Configures Handlebars engine on the Express app using mbkutils setupViewEngine.
  */
 export function configureHandlebars(app) {
-    app.engine(
-        "hbs",
-        engine({
-            extname: ".hbs",
-            defaultLayout: false,
-            partialsDir: [
-                path.join(projectRoot, "views/templates"),
-                path.join(projectRoot, "views/notice"),
-                path.join(projectRoot, "views"),
-            ],
-            cache: process.env.localenv === "production",
-            helpers: {
-                icon_base64() {
-                    return icon;
-                },
-            },
-        })
-    );
-
-    app.set("view engine", "hbs");
-    app.set("views", [
-        path.join(projectRoot, "views"),
-    ]);
+    setupViewEngine(app, {
+        rootDir: projectRoot,
+        viewsDir: path.join(projectRoot, "views"),
+        defaultLayout: false,
+        helpers: {
+            icon_base64: () => icon,
+        },
+    });
 }
