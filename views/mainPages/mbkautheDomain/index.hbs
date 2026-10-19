@@ -316,7 +316,7 @@ router.<span class="text-yellow-300">post</span>(<span class="text-emerald-300">
                 <span>cli/auth.js</span>
                 <span>RFC 8628 Device Flow Client</span>
             </div>
-            <pre class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-purple-400">const</span> init = <span class="text-purple-400">await</span> <span class="text-yellow-300">fetch</span>(<span class="text-emerald-300">"https://portal.mbktech.org/api/cli/device"</span>, {
+            <pre class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-purple-400">const</span> init = <span class="text-purple-400">await</span> <span class="text-yellow-300">fetch</span>(<span class="text-emerald-300">"https://core.mbktech.org/api/cli/device"</span>, {
   method: <span class="text-emerald-300">"POST"</span>,
   headers: { <span class="text-emerald-300">"Content-Type"</span>: <span class="text-emerald-300">"application/json"</span> },
   body: JSON.<span class="text-yellow-300">stringify</span>({ client_name: <span class="text-emerald-300">"my-cli"</span>, profile_key: <span class="text-emerald-300">"1362403658a3"</span> })
@@ -327,7 +327,7 @@ console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">
 <span class="text-slate-500">// Poll for issued token</span>
 <span class="text-purple-400">for</span> (;;) {
   <span class="text-purple-400">await</span> <span class="text-yellow-300">sleep</span>(init.interval * <span class="text-amber-300">1000</span>);
-  <span class="text-purple-400">const</span> res = <span class="text-purple-400">await</span> <span class="text-yellow-300">fetch</span>(<span class="text-emerald-300">"https://portal.mbktech.org/api/cli/device/token"</span>, {
+  <span class="text-purple-400">const</span> res = <span class="text-purple-400">await</span> <span class="text-yellow-300">fetch</span>(<span class="text-emerald-300">"https://core.mbktech.org/api/cli/device/token"</span>, {
     method: <span class="text-emerald-300">"POST"</span>,
     headers: { <span class="text-emerald-300">"Content-Type"</span>: <span class="text-emerald-300">"application/json"</span> },
     body: JSON.<span class="text-yellow-300">stringify</span>({ device_code: init.device_code })
@@ -349,7 +349,7 @@ console.<span class="text-yellow-300">log</span>(<span class="text-emerald-300">
             <pre class="p-5 font-mono text-xs leading-relaxed overflow-x-auto text-slate-300"><code><span class="text-purple-400">import</span> fetch <span class="text-purple-400">from</span> <span class="text-emerald-300">"node-fetch"</span>;
 
 <span class="text-purple-400">async function</span> <span class="text-yellow-300">queryProtectedApi</span>(token) {
-  <span class="text-blue-400">const</span> res = <span class="text-purple-400">await</span> <span class="text-yellow-300">fetch</span>(<span class="text-emerald-300">"https://portal.mbktech.org/api/tokens/verify"</span>, {
+  <span class="text-blue-400">const</span> res = <span class="text-purple-400">await</span> <span class="text-yellow-300">fetch</span>(<span class="text-emerald-300">"https://core.mbktech.org/api/tokens/verify"</span>, {
     method: <span class="text-emerald-300">"POST"</span>,
     headers: { <span class="text-emerald-300">"Content-Type"</span>: <span class="text-emerald-300">"application/json"</span> },
     body: JSON.<span class="text-yellow-300">stringify</span>({ token })
