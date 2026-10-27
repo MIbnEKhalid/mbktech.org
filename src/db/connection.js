@@ -1,21 +1,19 @@
-import pkg from "pg";
 import path from "node:path";
 import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
-import { registerGracefulShutdown, wrapPoolWithRetry } from "mbkauthe";
+import { dblogin, dbType as mbkDbType, mbkautheVar } from "mbkauthe";
 
-const { Pool } = pkg;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, "../../");
 
 dotenv.config();
 
-export const dbType = (process.env.DB_TYPE || "postgres").toLowerCase();
+export const dbType = (process.env.DB_TYPE || mbkautheVar.DB_TYPE || mbkDbType || "postgres").toLowerCase();
 
 /** Path to SQLite database file (used when DB_TYPE=sqlite). */
 export const sqlitePath =
-  process.env.SQLITE_PATH || path.join(ROOT_DIR, "data", "mbktech.org.db");
+  process.env.SQLITE_PATH || mbkautheVar.SQLITE_PATH || path.join(ROOT_DIR, "data", "mbktech.org.db");
 
 // Ensure data directory exists if using SQLite file path
 if (dbType === "sqlite" && sqlitePath !== ":memory:") {
@@ -25,57 +23,16 @@ if (dbType === "sqlite" && sqlitePath !== ":memory:") {
   }
 }
 
-// PostgreSQL connection configuration
-const connectionString = process.env.NEON_POSTGRES || process.env.DATABASE_URL;
-const connectionTimeoutMillis = Number(process.env.DB_CONNECTION_TIMEOUT_MS) || 15000;
-const idleTimeoutMillis = Number(process.env.DB_IDLE_TIMEOUT_MS) || 30000;
+// Utilize same connection pool as mbkauthe (dblogin) for host app and auth queries
+export const pool = dblogin;
 
 export const poolConfig = {
-  connectionString,
-  ssl:
-    process.env.NODE_ENV === "production" || !connectionString?.includes("localhost")
-      ? { rejectUnauthorized: false }
-      : false,
-  max: process.env.VERCEL ? 3 : 15,
-  idleTimeoutMillis,
-  connectionTimeoutMillis,
-  keepAlive: true,
-  keepAliveInitialDelayMillis: 10000,
-  application_name: "mbktech-org-app",
+  connectionString: mbkautheVar.LOGIN_DB || process.env.LOGIN_DB || process.env.NEON_POSTGRES || process.env.DATABASE_URL,
+  application_name: `${mbkautheVar.APP_NAME || "mbktech.org"}-shared`,
 };
-
-const dummyPool = {
-  query: async () => ({ rows: [], rowCount: 0 }),
-  connect: async () => ({ query: async () => ({ rows: [], rowCount: 0 }), release: () => {} }),
-  on: () => {},
-  end: async () => {},
-};
-
-export const pool = dbType !== "sqlite" ? new Pool(poolConfig) : dummyPool;
-
-if (dbType !== "sqlite" && pool && typeof pool.on === "function") {
-  wrapPoolWithRetry(pool, {
-    name: "mbktech.org PostgreSQL",
-    maxRetries: Number(process.env.DB_MAX_RETRIES) || 3,
-  });
-
-  registerGracefulShutdown(pool);
-
-  if (process.env.NODE_ENV !== "test" && connectionString) {
-    (async () => {
-      try {
-        const client = await pool.connect();
-        console.log("Connected to PostgreSQL database!");
-        client.release();
-      } catch (err) {
-        console.error("PostgreSQL database connection error:", err?.message || err);
-      }
-    })();
-  }
-}
 
 /**
- * Tests database connectivity.
+ * Tests database connectivity using the shared pool.
  */
 export async function testDbConnection() {
   if (dbType === "sqlite") return true;
