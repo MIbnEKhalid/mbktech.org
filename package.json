@@ -27,8 +27,8 @@
     "express-rate-limit": "^8.7.0",
     "highlight.js": "^11.12.0",
     "marked": "^18.0.14",
-    "mbkauthe": "file:../mbkauthe",
-    "mbkutils": "file:../mbkutils",
+    "mbkauthe": "latest",
+    "mbkutils": "latest",
     "node-cache": "^5.1.2",
     "pg": "^8.23.1",
     "sitemap": "^8.0.0"
